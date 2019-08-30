@@ -1,0 +1,10 @@
+# project deps
+node_modules
+.cache
+
+# build
+public
+
+# Other
+.DS_Store
+yarn-error.log
