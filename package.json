@@ -25,6 +25,7 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-live": "2.2.1",
+    "react-seo-component": "0.1.8",
     "styled-components": "4.3.2"
   }
 }
