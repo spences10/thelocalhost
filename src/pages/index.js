@@ -1,8 +1,10 @@
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
+import SEO from 'react-seo-component'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 const IndexWrapper = styled.main``
 
@@ -13,8 +15,26 @@ const Image = styled(Img)`
 `
 
 export default ({ data }) => {
+  const {
+    description,
+    title,
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+  } = useSiteMetadata()
   return (
     <Layout>
+      <SEO
+        title={title}
+        description={description || `nothin’`}
+        image={`${siteUrl}${image}`}
+        pathname={siteUrl}
+        siteLanguage={siteLanguage}
+        siteLocale={siteLocale}
+        twitterUsername={twitterUsername}
+      />
       <IndexWrapper>
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
