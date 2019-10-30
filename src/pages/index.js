@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 import SEO from 'react-seo-component'
