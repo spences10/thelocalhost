@@ -66,7 +66,7 @@ export const query = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        date
+        date(formatString: "YYYY MMMM Do")
         cover {
           publicURL
         }
