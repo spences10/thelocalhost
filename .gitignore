@@ -8,3 +8,6 @@ public
 # Other
 .DS_Store
 yarn-error.log
+
+# Local Netlify folder
+.netlify
