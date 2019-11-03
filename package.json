@@ -24,7 +24,7 @@
     "gatsby-remark-images": "3.1.25",
     "gatsby-source-filesystem": "2.1.18",
     "gatsby-transformer-sharp": "2.2.19",
-    "prism-react-renderer": "0.1.7",
+    "prism-react-renderer": "0.2.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-live": "2.2.1",
