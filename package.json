@@ -25,8 +25,8 @@
     "gatsby-source-filesystem": "2.1.35",
     "gatsby-transformer-sharp": "2.3.2",
     "prism-react-renderer": "0.2.0",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
     "react-live": "2.2.1",
     "react-seo-component": "0.1.10",
     "styled-components": "4.4.1"
