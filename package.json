@@ -1,6 +1,6 @@
 {
   "name": "the-localhost-blog",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "gatsby-remark-images": "3.1.28",
     "gatsby-source-filesystem": "2.1.35",
     "gatsby-transformer-sharp": "2.3.2",
-    "prism-react-renderer": "0.2.0",
+    "prism-react-renderer": "1.0.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-live": "2.2.1",
