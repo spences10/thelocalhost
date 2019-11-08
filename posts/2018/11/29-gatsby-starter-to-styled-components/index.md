@@ -1,5 +1,4 @@
 ---
-path: /gatsby-starter-to-styled-components
 date: 2018-11-29
 title: Convert the Gatsby default starter to styled-components
 tags:
@@ -67,7 +66,7 @@ visual feedback we're going to add the font directly to the body
 element.
 
 ```js
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Kodchasan:400,700');
@@ -83,7 +82,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     list-style-type: none;
   }
-`;
+`
 ```
 
 Ok, now we can use the export component here to apply styles globally
@@ -94,8 +93,8 @@ wraps all the pages in this project.
 In `layout.js` import the `GlobalStyle` component.
 
 ```js
-import Header from './header';
-import { GlobalStyle } from '../theme/globalStyle';
+import Header from './header'
+import { GlobalStyle } from '../theme/globalStyle'
 ```
 
 Then add it in with the other components being rendered.
@@ -131,14 +130,14 @@ src/pages/index.js
 **header.js**
 
 ```js
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 const HeaderWrapper = styled.div`
   background: rebeccapurple;
   margin-bottom: 1.45rem;
-`;
+`
 
 const Headline = styled.div`
   margin: 0 auto;
@@ -147,12 +146,12 @@ const Headline = styled.div`
   h1 {
     margin: 0;
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   color: white;
   textdecoration: none;
-`;
+`
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
@@ -162,30 +161,30 @@ const Header = ({ siteTitle }) => (
       </h1>
     </Headline>
   </HeaderWrapper>
-);
+)
 
-export default Header;
+export default Header
 ```
 
 **layout.js**
 
 ```js
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import Header from './header';
-import { GlobalStyle } from '../theme/globalStyle';
+import Header from './header'
+import { GlobalStyle } from '../theme/globalStyle'
 
 const ContentWrapper = styled.div`
   margin: 0 auto;
   maxwidth: 960;
   padding: 0px 1.0875rem 1.45rem;
   paddingtop: 0;
-`;
+`
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -206,7 +205,8 @@ const Layout = ({ children }) => (
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
-          ]}>
+          ]}
+        >
           <html lang="en" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
@@ -214,29 +214,29 @@ const Layout = ({ children }) => (
       </>
     )}
   />
-);
+)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-export default Layout;
+export default Layout
 ```
 
 **index.js**
 
 ```js
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
-import Layout from '../components/layout';
-import Image from '../components/image';
+import Layout from '../components/layout'
+import Image from '../components/image'
 
 const ImgWrapper = styled.div`
   max-width: 300px;
   margin-bottom: 1.45rem;
-`;
+`
 
 const IndexPage = () => (
   <Layout>
@@ -248,9 +248,9 @@ const IndexPage = () => (
     </ImgWrapper>
     <Link to="/page-2/">Go to page 2</Link>
   </Layout>
-);
+)
 
-export default IndexPage;
+export default IndexPage
 ```
 
 ## 5. Done

@@ -1,5 +1,4 @@
 ---
-path: /react-advanced-london-2019
 date: 2019-12-31
 title: React Advanced - London 2019
 tags: ['conferences', 'react']
@@ -113,7 +112,7 @@ const element = {
   props: {
     children: 'Hello world',
   },
-};
+}
 ```
 
 Then went on to define what a fiber was, which is an extension on the
@@ -132,7 +131,7 @@ const element = {
   alternate: currentFiber,
   effectTag: PLACEMENT,
   hooks: [],
-};
+}
 ```
 
 I'll be honest, the speed at which Sean went, although very concise
@@ -290,29 +289,29 @@ Sid then went on to talks about how awesome styled-components was and
 some nice touches for that:
 
 ```js
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const FormLabel = styled.label(
   props => `
   color: ${props.theme.colors.text.subtle}
   font-size: ${props.theme.fontSizes[2]}
 `
-);
+)
 ```
 
 Looks pretty verbose so you could use `@styled-system/css` to reduce
 that:
 
 ```js
-import styled from 'styled-components';
-import css from '@styled-system/css';
+import styled from 'styled-components'
+import css from '@styled-system/css'
 
 const FormLabel = styled.label(
   css({
     color: 'text.subtle',
     fontSize: 2,
   })
-);
+)
 ```
 
 Pretty neat stuff!

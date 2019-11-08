@@ -1,7 +1,6 @@
 ---
-path: '/starting-again-with-jekyll'
-date: '2016-12-17'
-title: 'Starting again with Jekyll'
+date: 2016-12-17
+title: Starting again with Jekyll
 tags: ['ramble']
 published: true
 ---

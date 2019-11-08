@@ -1,7 +1,6 @@
 ---
-path: '/twitter-bot-bootstrap'
-date: '2017-01-28'
-title: 'Easily set up your own Twitter bot'
+date: 2017-01-28
+title: Easily set up your own Twitter bot
 tags: ['information', 'guide']
 published: true
 ---
@@ -35,10 +34,10 @@ retweet your tweets that also happen to be an
 [Accidental Haiku](https://twitter.com/accidental575)
 
 Bots can be used for many purposes in my case I have used it to
-enhance my [@spences10](https://twitter.com/spences10)
-account by liking and re-tweeting subjects I have an interest in, in
-the case of the [#100DaysOfCode][100docchallenge] community challenge
-there is a community bot which congratulates you on starting
+enhance my [@spences10](https://twitter.com/spences10) account by
+liking and re-tweeting subjects I have an interest in, in the case of
+the [#100DaysOfCode][100docchallenge] community challenge there is a
+community bot which congratulates you on starting
 [#100DaysOfCode][100doc] and again on completing it, these are
 specific responses to tweets with keywords for a community, there is
 also sentiment detection used under the [#100DaysOfCode][100doc]

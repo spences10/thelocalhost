@@ -1,5 +1,4 @@
 ---
-path: /react-context-api-with-gatsby
 date: 2018-05-22
 title: Use the React Context API with Gatsby
 tags: ['information', 'learning', 'guide', 'gatsby', 'api']
@@ -96,35 +95,36 @@ Let's create the `Context` and the `Consumer` in this component.
 ###### `src/layouts/components/BlogThemeContext.js`
 
 ```js
-import React from 'react';
+import React from 'react'
 // Context is made up of two things
 // Provider - Single as close to top level as possible
 // Consumer - Multiple have multiple consumers
-export const BlogThemeContext = React.createContext();
+export const BlogThemeContext = React.createContext()
 
 export class BlogThemeProvider extends React.Component {
   state = {
     item1: 1,
     item2: 2,
-  };
+  }
 
   // add function here
   functionHere = () => {
     this.setState({
       item1: 2,
       item2: 3,
-    });
-  };
+    })
+  }
   render() {
     return (
       <BlogThemeContext.Provider
         value={{
           ...this.state,
           functionHere: this.functionHere,
-        }}>
+        }}
+      >
         {this.props.children}
       </BlogThemeContext.Provider>
-    );
+    )
   }
 }
 ```
@@ -154,7 +154,7 @@ const TemplateWrapper = ({ children }) => (
       <Footer />
     </PageContainer>
   </ThemeProvider>
-);
+)
 ```
 
 Now we already have the styled-components `ThemeProvider` which
@@ -164,44 +164,45 @@ context provider. So let's import the existing theme from the
 state of the `BlogThemeProvider`:
 
 ```js
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { theme } from '../../theme/globalStyle';
+import { theme } from '../../theme/globalStyle'
 
 // Context is made up of two things
 // Provider - Single as close to top level as possible
 // Consumer - Multiple have multiple consumers
-export const BlogThemeContext = React.createContext();
+export const BlogThemeContext = React.createContext()
 
 export class BlogThemeProvider extends React.Component {
   state = {
     theme,
-  };
+  }
 
   // add function here
   functionHere = () => {
     this.setState({
       item1: 2,
       item2: 3,
-    });
-  };
+    })
+  }
   render() {
     return (
       <BlogThemeContext.Provider
         value={{
           ...this.state,
           functionHere: this.functionHere,
-        }}>
+        }}
+      >
         {this.props.children}
       </BlogThemeContext.Provider>
-    );
+    )
   }
 }
 
 BlogThemeProvider.propTypes = {
   children: PropTypes.any,
-};
+}
 ```
 
 While we're here let's also add the function to handle the theme
@@ -209,39 +210,40 @@ changing by replacing the dummy `functionHere` function in the snippet
 and also bring in the themes we want to switch between.
 
 ```js
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { theme1, theme2 } from '../../theme/globalStyle';
+import { theme1, theme2 } from '../../theme/globalStyle'
 
-export const BlogThemeContext = React.createContext();
+export const BlogThemeContext = React.createContext()
 
 export class BlogThemeProvider extends React.Component {
   state = {
     theme,
-  };
+  }
 
   handleThemeChange = e => {
-    let theme = e.target.value;
-    theme === 'theme1' ? (theme = theme1) : (theme = theme2);
-    this.setState({ theme });
-  };
+    let theme = e.target.value
+    theme === 'theme1' ? (theme = theme1) : (theme = theme2)
+    this.setState({ theme })
+  }
   render() {
     return (
       <BlogThemeContext.Provider
         value={{
           ...this.state,
           handleThemeChange: this.handleThemeChange,
-        }}>
+        }}
+      >
         {this.props.children}
       </BlogThemeContext.Provider>
-    );
+    )
   }
 }
 
 BlogThemeProvider.propTypes = {
   children: PropTypes.any,
-};
+}
 ```
 
 ## Use the `Context.Consumer`
@@ -294,7 +296,7 @@ const TemplateWrapper = ({ children }) => (
       )}
     </BlogThemeContext.Consumer>
   </BlogThemeProvider>
-);
+)
 ```
 
 There's also a template `src/template/blog-posts.js` which Gatsby uses
@@ -373,9 +375,9 @@ returns a random HERO pattern:
 
 ```js
 export const randoHero = () => {
-  const keys = Object.keys(HERO);
-  return HERO[keys[(keys.length * Math.random()) << 0]];
-};
+  const keys = Object.keys(HERO)
+  return HERO[keys[(keys.length * Math.random()) << 0]]
+}
 ```
 
 This function sets the background on the `body` each reload with a

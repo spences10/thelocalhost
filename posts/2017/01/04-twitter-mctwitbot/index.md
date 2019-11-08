@@ -1,7 +1,6 @@
 ---
-path: '/twitter-mctwitbot'
-date: '2017-01-04'
-title: 'Twitter McTwitBot'
+date: 2017-01-04
+title: Twitter McTwitBot
 tags: ['information', 'guide']
 published: true
 ---
@@ -178,7 +177,7 @@ var queryString = uniqueRandomArray([
   'vue.js',
   'inferno_js',
   'inferno.js',
-  'jekyll'
+  'jekyll',
 ])
 ```
 

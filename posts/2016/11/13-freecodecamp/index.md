@@ -1,7 +1,6 @@
 ---
-path: '/freecodecamp'
-date: '2016-11-13'
-title: 'freeCodeCamp'
+date: 2016-11-13
+title: freeCodeCamp
 tags: ['freecodecamp', 'learning']
 published: true
 ---

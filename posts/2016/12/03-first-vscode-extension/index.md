@@ -1,7 +1,6 @@
 ---
-path: '/my-first-vscode-extension'
-date: '2016-12-03'
-title: 'My first Microsoft Visual Studio Code [VSCode] extension'
+date: 2016-12-03
+title: My first Microsoft Visual Studio Code [VSCode] extension
 tags: ['information', 'vscode', 'extension']
 published: true
 ---

@@ -1,5 +1,4 @@
 ---
-path: /twitter-bot-playground
 date: 2017-05-23
 title: Twitter bot playground
 tags: ['information', 'guide']
@@ -121,7 +120,7 @@ Now we can add the following pointer to the bot in `index.js`, like
 so:
 
 ```js
-require('./src/bot');
+require('./src/bot')
 ```
 
 So when we use `yarn start` to run the bot it calls the `index.js`
@@ -169,24 +168,24 @@ Then we can set up the bot config, open the `config.js` file and add
 the following:
 
 ```js
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
   access_token: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-};
+}
 ```
 
 Ok, that's the bot config done now we can set up the bot, each of the
 examples detailed here will have the same three lines of code:
 
 ```js
-const Twit = require('twit');
-const config = require('./config');
+const Twit = require('twit')
+const config = require('./config')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 ```
 
 Ok, that's it out bot is ready to go, do a test with `yarn start` from
@@ -214,12 +213,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} tweeted!`);
+      console.log(`${data.text} tweeted!`)
     }
   }
-);
+)
 ```
 
 ## Work with users
@@ -238,12 +237,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 You can specify with the `count` parameter how many results you get up
@@ -262,14 +261,14 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
       data.users.forEach(user => {
-        console.log(user.screen_name);
-      });
+        console.log(user.screen_name)
+      })
     }
   }
-);
+)
 ```
 
 To follow back a follower we can use `.post('friendships/create'...`
@@ -285,12 +284,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 Like with followers you can get a list of accounts that your bot is
@@ -304,12 +303,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 And also a detailed list.
@@ -322,12 +321,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 Get friendship status, this is useful for following new followers,
@@ -346,12 +345,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 If the user follows the bot, then relationship will be:
@@ -398,12 +397,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 ## Interact with tweets
@@ -419,12 +418,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data);
+      console.log(data)
     }
   }
-);
+)
 ```
 
 To be more granular you can pull out specific information on each
@@ -438,17 +437,17 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
       data.forEach(t => {
-        console.log(t.text);
-        console.log(t.user.screen_name);
-        console.log(t.id_str);
-        console.log('\n');
-      });
+        console.log(t.text)
+        console.log(t.user.screen_name)
+        console.log(t.id_str)
+        console.log('\n')
+      })
     }
   }
-);
+)
 ```
 
 To retweet use `.post('statuses/retweet/:id'...` and pass in a tweet
@@ -462,12 +461,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} retweet success!`);
+      console.log(`${data.text} retweet success!`)
     }
   }
-);
+)
 ```
 
 To unretweet just use `.post('statuses/unretweet/:id'...`
@@ -480,12 +479,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} unretweet success!`);
+      console.log(`${data.text} unretweet success!`)
     }
   }
-);
+)
 ```
 
 To like a tweet use `.post('favorites/create'...`
@@ -498,12 +497,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} tweet liked!`);
+      console.log(`${data.text} tweet liked!`)
     }
   }
-);
+)
 ```
 
 To unlike a post use `.post('favorites/destroy'...`
@@ -516,12 +515,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} tweet unliked!`);
+      console.log(`${data.text} tweet unliked!`)
     }
   }
-);
+)
 ```
 
 To reply to a tweet is much the same a posting a tweet but you need to
@@ -538,12 +537,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} tweeted!`);
+      console.log(`${data.text} tweeted!`)
     }
   }
-);
+)
 ```
 
 Finally if you want to delete a tweet use
@@ -558,12 +557,12 @@ bot.post(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(`${data.text} tweet deleted!`);
+      console.log(`${data.text} tweet deleted!`)
     }
   }
-);
+)
 ```
 
 ## Use Twitter search
@@ -584,12 +583,12 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log(data.statuses);
+      console.log(data.statuses)
     }
   }
-);
+)
 ```
 
 Like we did with the timeline we will pull out specific items from the
@@ -604,16 +603,16 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
       data.statuses.forEach(s => {
-        console.log(s.text);
-        console.log(s.user.screen_name);
-        console.log('\n');
-      });
+        console.log(s.text)
+        console.log(s.user.screen_name)
+        console.log('\n')
+      })
     }
   }
-);
+)
 ```
 
 The search API returns for relevance and not completeness, if you want
@@ -649,16 +648,16 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
       data.statuses.forEach(s => {
-        console.log(s.text);
-        console.log(s.user.screen_name);
-        console.log('\n');
-      });
+        console.log(s.text)
+        console.log(s.user.screen_name)
+        console.log('\n')
+      })
     }
   }
-);
+)
 ```
 
 Last few now, there's the `result_type` parameter that will return
@@ -677,16 +676,16 @@ bot.get(
   },
   (err, data, response) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
       data.statuses.forEach(s => {
-        console.log(s.text);
-        console.log(s.user.screen_name);
-        console.log('\n');
-      });
+        console.log(s.text)
+        console.log(s.user.screen_name)
+        console.log('\n')
+      })
     }
   }
-);
+)
 ```
 
 ## Use Twitter Stream API
@@ -695,11 +694,11 @@ There are two ways to use the Stream API first there's
 `.stream('statuses/sample')` example:
 
 ```js
-const stream = bot.stream('statuses/sample');
+const stream = bot.stream('statuses/sample')
 
 stream.on('tweet', t => {
-  console.log(`${t.text}\n`);
-});
+  console.log(`${t.text}\n`)
+})
 ```
 
 This will give you a random sampling of tweets.
@@ -710,11 +709,11 @@ pass some parameters, use `track:` to specify a search string:
 ```js
 var stream = bot.stream('statuses/filter', {
   track: 'bot',
-});
+})
 
 stream.on('tweet', function(t) {
-  console.log(t.text + '\n');
-});
+  console.log(t.text + '\n')
+})
 ```
 
 You can also use multiple words in the `track` parameter, tis will get
@@ -723,11 +722,11 @@ you results with either `twitter` or `bot` in them.
 ```js
 const stream = bot.stream('statuses/filter', {
   track: 'twitter, bot',
-});
+})
 
 stream.on('tweet', t => {
-  console.log(`${t.text}\n`);
-});
+  console.log(`${t.text}\n`)
+})
 ```
 
 If you want both words then remove the comma `,` you can think of
@@ -739,11 +738,11 @@ of specific users, example:
 ```js
 const stream = bot.stream('statuses/filter', {
   follow: '4897735439',
-});
+})
 
 stream.on('tweet', t => {
-  console.log(`${t.text}\n`);
-});
+  console.log(`${t.text}\n`)
+})
 ```
 
 ## Tweet media files
@@ -759,12 +758,12 @@ For this we will need references to `request` and `fs` for working
 with the file system.
 
 ```js
-const Twit = require('twit');
-const request = require('request');
-const fs = require('fs');
-const config = require('./config');
+const Twit = require('twit')
+const request = require('request')
+const fs = require('fs')
+const config = require('./config')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 ```
 
 First up get the photo from the NASA api, for this we will need to
@@ -779,7 +778,7 @@ function getPhoto() {
       api_key: process.env.NASA_KEY,
     },
     encoding: 'binary',
-  };
+  }
 }
 ```
 
@@ -811,11 +810,11 @@ function getPhoto() {
       api_key: process.env.NASA_KEY,
     },
     encoding: 'binary',
-  };
+  }
   request.get(parameters, (err, respone, body) => {
-    body = JSON.parse(body);
-    saveFile(body, 'nasa.jpg');
-  });
+    body = JSON.parse(body)
+    saveFile(body, 'nasa.jpg')
+  })
 }
 ```
 
@@ -825,17 +824,17 @@ now:
 
 ```js
 function saveFile(body, fileName) {
-  const file = fs.createWriteStream(fileName);
+  const file = fs.createWriteStream(fileName)
   request(body)
     .pipe(file)
     .on('close', err => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log('Media saved!');
-        console.log(body);
+        console.log('Media saved!')
+        console.log(body)
       }
-    });
+    })
 }
 ```
 
@@ -852,18 +851,18 @@ Two parts to this, first save the file.
 
 ```js
 function saveFile(body, fileName) {
-  const file = fs.createWriteStream(fileName);
+  const file = fs.createWriteStream(fileName)
   request(body)
     .pipe(file)
     .on('close', err => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log('Media saved!');
-        const descriptionText = body.title;
-        uploadMedia(descriptionText, fileName);
+        console.log('Media saved!')
+        const descriptionText = body.title
+        uploadMedia(descriptionText, fileName)
       }
-    });
+    })
 }
 ```
 
@@ -876,33 +875,33 @@ Add a `require` to `path` then use `join` with the relevant relative
 file path.
 
 ```js
-const path = require('path');
+const path = require('path')
 //...
-const filePath = path.join(__dirname, '../' + fileName);
+const filePath = path.join(__dirname, '../' + fileName)
 ```
 
 Complete function here:
 
 ```js
 function uploadMedia(descriptionText, fileName) {
-  console.log(`uploadMedia: file PATH ${fileName}`);
+  console.log(`uploadMedia: file PATH ${fileName}`)
   bot.postMediaChunked(
     {
       file_path: fileName,
     },
     (err, data, respone) => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log(data);
+        console.log(data)
         const params = {
           status: descriptionText,
           media_ids: data.media_id_string,
-        };
-        postStatus(params);
+        }
+        postStatus(params)
       }
     }
-  );
+  )
 }
 ```
 
@@ -913,11 +912,11 @@ straightforward `.post('statuses/update'...`
 function postStatus(params) {
   bot.post('statuses/update', params, (err, data, respone) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log('Status posted!');
+      console.log('Status posted!')
     }
-  });
+  })
 }
 ```
 
@@ -928,13 +927,13 @@ forward, right 😀 no, I know it wasn't. Here's the complete module:
   <summary>Click to expand</summary>
 
 ```js
-const Twit = require('twit');
-const request = require('request');
-const fs = require('fs');
-const config = require('./config');
-const path = require('path');
+const Twit = require('twit')
+const request = require('request')
+const fs = require('fs')
+const config = require('./config')
+const path = require('path')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 
 function getPhoto() {
   const parameters = {
@@ -943,61 +942,61 @@ function getPhoto() {
       api_key: process.env.NASA_KEY,
     },
     encoding: 'binary',
-  };
+  }
   request.get(parameters, (err, respone, body) => {
-    body = JSON.parse(body);
-    saveFile(body, 'nasa.jpg');
-  });
+    body = JSON.parse(body)
+    saveFile(body, 'nasa.jpg')
+  })
 }
 
 function saveFile(body, fileName) {
-  const file = fs.createWriteStream(fileName);
+  const file = fs.createWriteStream(fileName)
   request(body)
     .pipe(file)
     .on('close', err => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log('Media saved!');
-        const descriptionText = body.title;
-        uploadMedia(descriptionText, fileName);
+        console.log('Media saved!')
+        const descriptionText = body.title
+        uploadMedia(descriptionText, fileName)
       }
-    });
+    })
 }
 
 function uploadMedia(descriptionText, fileName) {
-  const filePath = path.join(__dirname, `../${fileName}`);
-  console.log(`file PATH ${filePath}`);
+  const filePath = path.join(__dirname, `../${fileName}`)
+  console.log(`file PATH ${filePath}`)
   bot.postMediaChunked(
     {
       file_path: filePath,
     },
     (err, data, respone) => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log(data);
+        console.log(data)
         const params = {
           status: descriptionText,
           media_ids: data.media_id_string,
-        };
-        postStatus(params);
+        }
+        postStatus(params)
       }
     }
-  );
+  )
 }
 
 function postStatus(params) {
   bot.post('statuses/update', params, (err, data, respone) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log('Status posted!');
+      console.log('Status posted!')
     }
-  });
+  })
 }
 
-getPhoto();
+getPhoto()
 ```
 
 </details>
@@ -1026,7 +1025,7 @@ going to go over now.
 Use `fs` to set up a read stream...
 
 ```js
-const filePath = path.join(__dirname, './twitter-archive/tweets.csv');
+const filePath = path.join(__dirname, './twitter-archive/tweets.csv')
 
 const tweetData = fs
   .createReadStream(filePath)
@@ -1036,8 +1035,8 @@ const tweetData = fs
     })
   )
   .on('data', row => {
-    console.log(row[5]);
-  });
+    console.log(row[5])
+  })
 ```
 
 When you run this from the console you should get the output from your
@@ -1056,7 +1055,7 @@ function cleanText(text) {
   return rita.RiTa.tokenize(text, ' ')
     .filter(hasNoStopWords)
     .join(' ')
-    .trim();
+    .trim()
 }
 ```
 
@@ -1065,8 +1064,8 @@ to be sanitized for use in `tweetData`
 
 ```js
 function hasNoStopWords(token) {
-  const stopwords = ['@', 'http', 'RT'];
-  return stopwords.every(sw => !token.includes(sw));
+  const stopwords = ['@', 'http', 'RT']
+  return stopwords.every(sw => !token.includes(sw))
 }
 ```
 
@@ -1202,11 +1201,11 @@ links.
 So, set up the bot and require `tabletop`:
 
 ```js
-const Twit = require('twit');
-const config = require('./config');
-const Tabletop = require('tabletop');
+const Twit = require('twit')
+const config = require('./config')
+const Tabletop = require('tabletop')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 ```
 
 On your [`Google spreadsheet`][google-sheets] you'll need to have a
@@ -1230,15 +1229,15 @@ example here:
 
 ```js
 const spreadsheetUrl =
-  'https://docs.google.com/spreadsheets/d/1842GC9JS9qDWHc-9leZoEn9Q_-jcPUcuDvIqd_MMPZQ/pubhtml';
+  'https://docs.google.com/spreadsheets/d/1842GC9JS9qDWHc-9leZoEn9Q_-jcPUcuDvIqd_MMPZQ/pubhtml'
 
 Tabletop.init({
   key: spreadsheetUrl,
   callback(data, tabletop) {
-    console.log(data);
+    console.log(data)
   },
   simpleSheet: true,
-});
+})
 ```
 
 Running the bot now should give output like this:
@@ -1259,7 +1258,7 @@ Tabletop.init({
   key: spreadsheetUrl,
   callback(data, tabletop) {
     data.forEach(d => {
-      const status = `${d.links} a link from a Google spreadsheet`;
+      const status = `${d.links} a link from a Google spreadsheet`
       bot.post(
         'statuses/update',
         {
@@ -1267,16 +1266,16 @@ Tabletop.init({
         },
         (err, response, data) => {
           if (err) {
-            console.log(err);
+            console.log(err)
           } else {
-            console.log('Post success!');
+            console.log('Post success!')
           }
         }
-      );
-    });
+      )
+    })
   },
   simpleSheet: true,
-});
+})
 ```
 
 Note that `${d.links}` is the header name we use in the Google
@@ -1289,21 +1288,21 @@ The completed code here:
   <summary>Click to expand</summary>
 
 ```js
-const Twit = require('twit');
-const config = require('./config');
-const Tabletop = require('tabletop');
+const Twit = require('twit')
+const config = require('./config')
+const Tabletop = require('tabletop')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 
 const spreadsheetUrl =
-  'https://docs.google.com/spreadsheets/d/1842GC9JS9qDWHc-9leZoEn9Q_-jcPUcuDvIqd_MMPZQ/pubhtml';
+  'https://docs.google.com/spreadsheets/d/1842GC9JS9qDWHc-9leZoEn9Q_-jcPUcuDvIqd_MMPZQ/pubhtml'
 
 Tabletop.init({
   key: spreadsheetUrl,
   callback(data, tabletop) {
     data.forEach(d => {
-      const status = `${d.links} a link from a Google spreadsheet`;
-      console.log(status);
+      const status = `${d.links} a link from a Google spreadsheet`
+      console.log(status)
       bot.post(
         'statuses/update',
         {
@@ -1311,16 +1310,16 @@ Tabletop.init({
         },
         (err, response, data) => {
           if (err) {
-            console.log(err);
+            console.log(err)
           } else {
-            console.log('Post success!');
+            console.log('Post success!')
           }
         }
-      );
-    });
+      )
+    })
   },
   simpleSheet: true,
-});
+})
 ```
 
 </details>
@@ -1354,18 +1353,18 @@ const getPhoto = () => {
       api_key: process.env.NASA_KEY,
     },
     encoding: 'binary',
-  };
+  }
   request.get(parameters, (err, respone, body) => {
-    body = JSON.parse(body);
-    saveFile(body, 'nasa.jpg');
-  });
-};
+    body = JSON.parse(body)
+    saveFile(body, 'nasa.jpg')
+  })
+}
 ```
 
 Then at the bottom of the module add:
 
 ```js
-module.exports = getPhoto;
+module.exports = getPhoto
 ```
 
 So now we can call the `getPhoto` function from the `picture-bot.js`
@@ -1373,9 +1372,9 @@ module in our `bot.js` module, our `bot.js` module should look
 something like this:
 
 ```js
-const picture = require('./picture-bot');
+const picture = require('./picture-bot')
 
-picture();
+picture()
 ```
 
 That's it, two lines of code, try running that from the terminal now:
@@ -1412,10 +1411,10 @@ I work it out like this, 1000 _ 60 = 1 minute, so 1000 _ 60 _ 60 _ 24
 so for now let's add that directly into the `setInterval` function:
 
 ```js
-const picture = require('./picture-bot');
+const picture = require('./picture-bot')
 
-picture();
-setInterval(picture, 1000 * 60 * 60 * 24);
+picture()
+setInterval(picture, 1000 * 60 * 60 * 24)
 ```
 
 Cool, that's a bot that will post the NASA image of the day every 24
@@ -1443,15 +1442,15 @@ const tweetData = () => {
       })
     )
     .on('data', row => {
-      inputText = `${inputText} ${cleanText(row[5])}`;
+      inputText = `${inputText} ${cleanText(row[5])}`
     })
     .on('end', () => {
-      const markov = new rita.RiMarkov(10);
+      const markov = new rita.RiMarkov(10)
       markov
         .loadText(inputText)
         .toString()
-        .substring(0, 140);
-      const sentence = markov.generateSentences(1);
+        .substring(0, 140)
+      const sentence = markov.generateSentences(1)
       bot.post(
         'statuses/update',
         {
@@ -1459,20 +1458,20 @@ const tweetData = () => {
         },
         (err, data, response) => {
           if (err) {
-            console.log(err);
+            console.log(err)
           } else {
-            console.log('Markov status tweeted!', sentence);
+            console.log('Markov status tweeted!', sentence)
           }
         }
-      );
-    });
-};
+      )
+    })
+}
 ```
 
 Then at the bottom of the module add:
 
 ```js
-module.exports = tweetData;
+module.exports = tweetData
 ```
 
 Ok, same again as with the picture bot example we're going to add the
@@ -1480,28 +1479,28 @@ Ok, same again as with the picture bot example we're going to add the
 should now look something like this:
 
 ```js
-const picture = require('./picture-bot');
-const markov = require('./markov-bot');
+const picture = require('./picture-bot')
+const markov = require('./markov-bot')
 
-picture();
-setInterval(picture, 1000 * 60 * 60 * 24);
+picture()
+setInterval(picture, 1000 * 60 * 60 * 24)
 
-markov();
+markov()
 ```
 
 Let's make the Markov bot tweet at random intervals between 5 minutes
 and 3 hours
 
 ```js
-const picture = require('./picture-bot');
-const markov = require('./markov-bot');
+const picture = require('./picture-bot')
+const markov = require('./markov-bot')
 
-picture();
-setInterval(picture, 1000 * 60 * 60 * 24);
+picture()
+setInterval(picture, 1000 * 60 * 60 * 24)
 
-const markovInterval = (Math.floor(Math.random() * 180) + 1) * 1000;
-markov();
-setInterval(markov, markovInterval);
+const markovInterval = (Math.floor(Math.random() * 180) + 1) * 1000
+markov()
+setInterval(markov, markovInterval)
 ```
 
 Allrighty! Picture bot, Markov bot, done 👍
@@ -1524,8 +1523,8 @@ const link = () => {
     key: spreadsheetUrl,
     callback(data, tabletop) {
       data.forEach(d => {
-        const status = `${d.links} a link from a Google spreadsheet`;
-        console.log(status);
+        const status = `${d.links} a link from a Google spreadsheet`
+        console.log(status)
         bot.post(
           'statuses/update',
           {
@@ -1533,38 +1532,38 @@ const link = () => {
           },
           (err, response, data) => {
             if (err) {
-              console.log(err);
+              console.log(err)
             } else {
-              console.log('Post success!');
+              console.log('Post success!')
             }
           }
-        );
-      });
+        )
+      })
     },
     simpleSheet: true,
-  });
-};
+  })
+}
 
-module.exports = link;
+module.exports = link
 ```
 
 Then we can call it from the bot, so it should look something like
 this:
 
 ```js
-const picture = require('./picture-bot');
-const markov = require('./markov-bot');
-const link = require('./link-bot');
+const picture = require('./picture-bot')
+const markov = require('./markov-bot')
+const link = require('./link-bot')
 
-picture();
-setInterval(picture, 1000 * 60 * 60 * 24);
+picture()
+setInterval(picture, 1000 * 60 * 60 * 24)
 
-const markovInterval = (Math.floor(Math.random() * 180) + 1) * 1000;
-markov();
-setInterval(markov, markovInterval);
+const markovInterval = (Math.floor(Math.random() * 180) + 1) * 1000
+markov()
+setInterval(markov, markovInterval)
 
-link();
-setInterval(link, 1000 * 60 * 60 * 24);
+link()
+setInterval(link, 1000 * 60 * 60 * 24)
 ```
 
 Ok? Cool 👍😎
@@ -1746,8 +1745,8 @@ In the `picture-bot.js` module add the following two lines to the top
 of the module:
 
 ```js
-const os = require('os');
-const tmpDir = os.tmpdir();
+const os = require('os')
+const tmpDir = os.tmpdir()
 ```
 
 Those two lines give us the `temp` directory of the operating system,
@@ -1765,31 +1764,31 @@ video:
 ```js
 function saveFile(body) {
   const fileName =
-    body.media_type === 'image/jpeg' ? 'nasa.jpg' : 'nasa.mp4';
-  const filePath = path.join(tmpDir + `/${fileName}`);
+    body.media_type === 'image/jpeg' ? 'nasa.jpg' : 'nasa.mp4'
+  const filePath = path.join(tmpDir + `/${fileName}`)
 
-  console.log(`saveFile: file PATH ${filePath}`);
+  console.log(`saveFile: file PATH ${filePath}`)
   if (fileName === 'nasa.mp4') {
     // tweet the link
     const params = {
       status: 'NASA video link: ' + body.url,
-    };
-    postStatus(params);
-    return;
+    }
+    postStatus(params)
+    return
   }
-  const file = fs.createWriteStream(filePath);
+  const file = fs.createWriteStream(filePath)
 
   request(body)
     .pipe(file)
     .on('close', err => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log('Media saved!');
-        const descriptionText = body.title;
-        uploadMedia(descriptionText, filePath);
+        console.log('Media saved!')
+        const descriptionText = body.title
+        uploadMedia(descriptionText, filePath)
       }
-    });
+    })
 }
 ```
 
@@ -1799,16 +1798,16 @@ The completed code here:
   <summary>Click to expand</summary>
 
 ```js
-const Twit = require('twit');
-const request = require('request');
-const fs = require('fs');
-const config = require('./config');
-const path = require('path');
+const Twit = require('twit')
+const request = require('request')
+const fs = require('fs')
+const config = require('./config')
+const path = require('path')
 
-const bot = new Twit(config);
+const bot = new Twit(config)
 
-const os = require('os');
-const tmpDir = os.tmpdir();
+const os = require('os')
+const tmpDir = os.tmpdir()
 
 const getPhoto = () => {
   const parameters = {
@@ -1817,74 +1816,74 @@ const getPhoto = () => {
       api_key: process.env.NASA_KEY,
     },
     encoding: 'binary',
-  };
+  }
   request.get(parameters, (err, respone, body) => {
-    body = JSON.parse(body);
-    saveFile(body);
-  });
-};
+    body = JSON.parse(body)
+    saveFile(body)
+  })
+}
 
 function saveFile(body) {
   const fileName =
-    body.media_type === 'image/jpeg' ? 'nasa.jpg' : 'nasa.mp4';
-  const filePath = path.join(tmpDir + `/${fileName}`);
+    body.media_type === 'image/jpeg' ? 'nasa.jpg' : 'nasa.mp4'
+  const filePath = path.join(tmpDir + `/${fileName}`)
 
-  console.log(`saveFile: file PATH ${filePath}`);
+  console.log(`saveFile: file PATH ${filePath}`)
   if (fileName === 'nasa.mp4') {
     // tweet the link
     const params = {
       status: 'NASA video link: ' + body.url,
-    };
-    postStatus(params);
-    return;
+    }
+    postStatus(params)
+    return
   }
-  const file = fs.createWriteStream(filePath);
+  const file = fs.createWriteStream(filePath)
 
   request(body)
     .pipe(file)
     .on('close', err => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log('Media saved!');
-        const descriptionText = body.title;
-        uploadMedia(descriptionText, filePath);
+        console.log('Media saved!')
+        const descriptionText = body.title
+        uploadMedia(descriptionText, filePath)
       }
-    });
+    })
 }
 
 function uploadMedia(descriptionText, fileName) {
-  console.log(`uploadMedia: file PATH ${fileName}`);
+  console.log(`uploadMedia: file PATH ${fileName}`)
   bot.postMediaChunked(
     {
       file_path: fileName,
     },
     (err, data, respone) => {
       if (err) {
-        console.log(err);
+        console.log(err)
       } else {
-        console.log(data);
+        console.log(data)
         const params = {
           status: descriptionText,
           media_ids: data.media_id_string,
-        };
-        postStatus(params);
+        }
+        postStatus(params)
       }
     }
-  );
+  )
 }
 
 function postStatus(params) {
   bot.post('statuses/update', params, (err, data, respone) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log('Status posted!');
+      console.log('Status posted!')
     }
-  });
+  })
 }
 
-module.exports = getPhoto;
+module.exports = getPhoto
 ```
 
 </details>

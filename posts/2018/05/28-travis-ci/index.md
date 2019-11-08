@@ -1,5 +1,4 @@
 ---
-path: /travis-ci-with-now
 date: 2018-05-28
 title: Making a CI pipeline with Travis CI
 tags: ['information', 'guide', 'travis-ci', 'now', 'zeit']

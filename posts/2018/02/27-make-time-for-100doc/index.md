@@ -1,5 +1,4 @@
 ---
-path: /make-time-for-100doc
 date: 2018-02-27
 title: How to make time for 100 days of code
 tags: ['information', 'guide', 'learning', 'habits']

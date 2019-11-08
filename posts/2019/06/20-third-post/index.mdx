@@ -1,9 +1,0 @@
----
-title: Third Post!
-date: 2019-06-20
-published: true
----
-
-This is my third post!
-
-> with a block quote!

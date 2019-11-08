@@ -1,5 +1,4 @@
 ---
-path: /wsl-bootstrap-2019
 date: 2018-12-24
 title: Windows Web-dev bootstrap
 tags:
@@ -344,7 +343,7 @@ module.exports = {
     copyOnSelect: true,
     plugins: ['hyper-altair'],
   },
-};
+}
 ```
 
 ![final hyper config](./hyper-final-config.gif)

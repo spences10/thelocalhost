@@ -1,7 +1,6 @@
 ---
-path: '/git-and-github'
-date: '2017-01-05'
-title: 'Git and GitHub'
+date: 2017-01-05
+title: Git and GitHub
 tags: ['information', 'guide']
 published: true
 ---
