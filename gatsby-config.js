@@ -7,6 +7,9 @@ const siteMetadata = {
   siteLocale: `en_gb`,
   twitterUsername: `@spences10`,
   authorName: `Scott Spence`,
+  favicon: `./static/favicon.png`,
+  backgroundColor: `#f7f0eb`,
+  themeColor: `#a2466c`,
 }
 
 module.exports = {
@@ -45,5 +48,18 @@ module.exports = {
         name: `posts`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `The Localhost Blog`,
+        short_name: `TLHB`,
+        start_url: `/`,
+        background_color: siteMetadata.backgroundColor,
+        theme_color: siteMetadata.themeColor,
+        display: `standalone`,
+        icon: siteMetadata.favicon,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
