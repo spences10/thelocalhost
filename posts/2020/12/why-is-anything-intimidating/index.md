@@ -1,9 +1,8 @@
 ---
-path: /why-is-anything-intimidating
-date: 2019-12-31
+date: 2020-12-31
 title: Why is anything intimidating?
-tags: ['ramble', '!dev', 'habits']
-excerpt: ''
+tags: ["ramble", "!dev", "habits"]
+excerpt: ""
 published: false
 ---
 
