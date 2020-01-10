@@ -1,8 +1,7 @@
 ---
-path: /track-custom-events-with-google-analytics
-date: 2019-12-31
+date: 2020-12-31
 title: Track Custom Events With Google Analytics
-tags: ['information', 'learning', 'guide', 'hooks', 'react']
+tags: ["information", "learning", "guide", "hooks", "react"]
 published: false
 cover: ./cover.jpg
 coverCredit: Photo by Braden Collum on Unsplash
@@ -25,13 +24,13 @@ Ambulance Chasers
 We're going to use the React context API
 
 ```js
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from "react";
 
 const AnalyticsContext = React.createContext({});
 
 export const AnalyticsProvider = ({ children }) => {
   useEffect(() => {
-    if (typeof window.ga === 'undefined') {
+    if (typeof window.ga === "undefined") {
       window.ga = (x, y) => {
         console.log(`I'm a fake GA`, x, y);
       };
@@ -40,29 +39,29 @@ export const AnalyticsProvider = ({ children }) => {
 
   const events = {
     logButtonPress: e => {
-      window.ga('send', {
-        hitType: 'event',
-        eventCategory: 'buttonPress',
-        eventAction: 'click',
-        eventLabel: e.target.innerText,
+      window.ga("send", {
+        hitType: "event",
+        eventCategory: "buttonPress",
+        eventAction: "click",
+        eventLabel: e.target.innerText
       });
     },
     logSocial: socialMediaPlatform => {
-      window.ga('send', {
-        hitType: 'event',
-        eventCategory: 'socialShareClicks',
-        eventAction: 'click',
-        eventLabel: socialMediaPlatform,
+      window.ga("send", {
+        hitType: "event",
+        eventCategory: "socialShareClicks",
+        eventAction: "click",
+        eventLabel: socialMediaPlatform
       });
     },
     logNavigation: navItem => {
-      window.ga('send', {
-        hitType: 'event',
-        eventCategory: 'navigationClicks',
-        eventAction: 'click',
-        eventLabel: navItem,
+      window.ga("send", {
+        hitType: "event",
+        eventCategory: "navigationClicks",
+        eventAction: "click",
+        eventLabel: navItem
       });
-    },
+    }
   };
   return (
     <AnalyticsContext.Provider value={events}>
@@ -79,7 +78,7 @@ export const useAnalytics = () => {
 As high up the component tree add the provider.
 
 ```js
-import { AnalyticsProvider } from '../components/GAEventTracking';
+import { AnalyticsProvider } from "../components/GAEventTracking";
 ```
 
 Then use in the areas you Want

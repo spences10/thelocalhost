@@ -1,8 +1,7 @@
 ---
-path: /css-snippets
-date: 2019-12-31
+date: 2020-12-31
 title: CSS Snippets from around the web
-tags: ['information', 'learning', 'guide', 'css', 'best-practice']
+tags: ["information", "learning", "guide", "css", "best-practice"]
 published: false
 ---
 

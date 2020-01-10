@@ -1,8 +1,7 @@
 ---
-path: /javascript-snippets
-date: 2019-12-31
+date: 2020-12-31
 title: JavaScript snippets from around the web
-tags: ['information', 'learning', 'javascript', 'snippets']
+tags: ["information", "learning", "javascript", "snippets"]
 published: false
 ---
 
@@ -19,19 +18,19 @@ one item in an array meets what you are looking for
 
 ```js
 const user = {
-  name: 'Scott',
-  permissions: ['USER', 'CREATE_ITEM'],
+  name: "Scott",
+  permissions: ["USER", "CREATE_ITEM"]
 };
 
 // check if the user is either admin or can delete in item
 const canDelete = user.permissions.some(p =>
-  ['ADMIN', 'DELETE_ITEM'].includes(p)
+  ["ADMIN", "DELETE_ITEM"].includes(p)
 );
 // canDelete is false
 
 // check if a user is either admin or can create in item
 const canCreate = user.permissions.some(p =>
-  ['ADMIN', 'CREATE_ITEM'].includes(p)
+  ["ADMIN", "CREATE_ITEM"].includes(p)
 );
 // canDelete is true
 ```
@@ -41,9 +40,9 @@ array meets what you are looking for.
 
 ```js
 const people = [
-  { name: 'Scott', age: 42 },
-  { name: 'Sue', age: 26 },
-  { name: 'Orla', age: 9 },
+  { name: "Scott", age: 42 },
+  { name: "Sue", age: 26 },
+  { name: "Orla", age: 9 }
 ];
 
 const canEveryoneDrink = people.every(p => p.age >= 18);
@@ -67,13 +66,13 @@ const uniqueArray = arr => [...new Set(arr)];
 uniqueArray([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 0, 0, 10, 10]);
 // Array(9) [ 1, 2, 3, 4, 5, 6, 7, 0, 10 ]
 uniqueArray([
-  'London',
-  'Manchester',
-  'Cambridge',
-  'London',
-  'Greater London',
-  'London',
-  'Manchester',
+  "London",
+  "Manchester",
+  "Cambridge",
+  "London",
+  "Greater London",
+  "London",
+  "Manchester"
 ]);
 // Array(4) [ "London", "Manchester", "Cambridge", "Greater London" ]
 ```
@@ -85,7 +84,7 @@ each element of a created array.
 const year = new Date().getFullYear();
 const totalYears = 5;
 
-Array.from('web');
+Array.from("web");
 // Array(3) [ "w", "e", "b" ]
 
 Array.from(Array(totalYears), (_, i) => year + i);
@@ -97,10 +96,21 @@ Array.from({ length: totalYears }, (_, i) => year + i);
 
 ## Async await
 
+```js
+const getAsyncStuff = async name => {
+  try {
+    const response = await fetch(`https://api.github.com/users/${name}`);
+    return await response.json();
+  } catch (err) {
+    console.error(err);
+  }
+};
+```
+
 🔥 4 Ways to handle the double promise with fetch() and async+await
 
 ```js
-const url = 'https://api.github.com/users/spences10';
+const url = "https://api.github.com/users/spences10";
 
 async function go() {
   // 1. tac a promise onto the end

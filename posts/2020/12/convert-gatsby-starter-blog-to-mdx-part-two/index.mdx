@@ -1,6 +1,5 @@
 ---
-path: /convert-gatsby-starter-blog-to-use-mdx-part-two
-date: 2019-12-31
+date: 2020-12-31
 title: Convert the Gatsby starter blog to use MDX part two
 tags:
   ['information', 'learning', 'gatsby', 'guide', 'mdx', 'markdown']
@@ -20,6 +19,7 @@ for free.
 I've already covered the conversion [here] if you want to check that
 out, I'll be going over that again here but also adding:
 
+- Code blocks 🎉
 - Using components for page elements
 
 I've gone and made a video of the conversion as well, here:
@@ -193,13 +193,13 @@ We're going to use this component in a `.mdx` document, first the
 component:
 
 ```js
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Butt = styled.button`
   background-color: red;
   height: 40px;
   width: 80px;
-`;
+`
 ```
 
 Spicy, right! 🌶
@@ -232,7 +232,7 @@ title: My First MDX Post!
 date: '2019-04-07T23:46:37.121Z'
 ---
 
-import { Butt } from '../../../src/components/button';
+import { Butt } from '../../../src/components/button'
 
 # make a site they said, it'll be fun they said
 
