@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 import { Header } from './Header'
 
 const AppStyles = styled.main`
