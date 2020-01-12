@@ -4,7 +4,7 @@ import React from 'react'
 import SEO from 'react-seo-component'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const IndexWrapper = styled.main``
 
