@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
-import { Header } from './Header'
+import { Header } from './header'
 
 const AppStyles = styled.main`
   max-width: 540px;
