@@ -1,11 +1,11 @@
 import { MDXProvider } from '@mdx-js/react'
 import React from 'react'
+import { ThemeProvider } from 'styled-components'
 import { Code } from './src/components/page-elements/code'
+import { GlobalStyle, theme } from './src/theme/global-style'
 
 const components = {
-  h2: ({ children }) => (
-    <h2 style={{ color: 'rebeccapurple' }}>{children}</h2>
-  ),
+  h1: ({ children }) => <h2 style={{ color: 'red' }}>{children}</h2>,
   'p.inlineCode': props => (
     <code {...props} style={{ backgroundColor: 'lightgrey' }}></code>
   ),
@@ -26,5 +26,8 @@ const components = {
 }
 
 export const wrapRootElement = ({ element }) => (
-  <MDXProvider components={components}>{element}</MDXProvider>
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <MDXProvider components={components}>{element}</MDXProvider>
+  </ThemeProvider>
 )
