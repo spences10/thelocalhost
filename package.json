@@ -1,6 +1,6 @@
 {
   "name": "the-localhost-blog",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,6 @@
     "react-live": "2.2.2",
     "react-seo-component": "0.1.16",
     "styled-components": "5.0.0",
-    "styled-reset": "4.0.9"
+    "styled-reset": "4.0.10"
   }
 }
