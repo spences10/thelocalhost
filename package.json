@@ -25,6 +25,7 @@
     "gatsby-plugin-sharp": "2.3.13",
     "gatsby-plugin-sitemap": "2.2.26",
     "gatsby-plugin-styled-components": "3.1.17",
+    "gatsby-plugin-web-font-loader": "1.0.4",
     "gatsby-remark-images": "3.1.42",
     "gatsby-source-filesystem": "2.1.46",
     "gatsby-transformer-sharp": "2.3.13",
@@ -33,6 +34,7 @@
     "react-dom": "16.12.0",
     "react-live": "2.2.2",
     "react-seo-component": "0.1.16",
-    "styled-components": "5.0.0"
+    "styled-components": "5.0.0",
+    "styled-reset": "4.0.9"
   }
 }

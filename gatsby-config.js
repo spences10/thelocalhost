@@ -2,7 +2,7 @@ const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
   image: `/default-site-image.jpg`,
-  siteUrl: `https://the-localhost-blog.netlify.com`,
+  siteUrl: `https://thelocalhost.blog`,
   siteLanguage: `en-GB`,
   siteLocale: `en_gb`,
   twitterUsername: `@spences10`,
@@ -46,6 +46,18 @@ module.exports = {
       options: {
         path: `${__dirname}/posts`,
         name: `posts`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [
+            'Poppins:400,700',
+            'Pridi:400,700',
+            'Space Mono:400,700',
+          ],
+        },
       },
     },
     {
