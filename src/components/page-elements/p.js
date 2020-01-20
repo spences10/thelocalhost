@@ -3,9 +3,6 @@ import styled from 'styled-components'
 
 const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.base};
-  /* max-width: ${({ theme }) => theme.maxWidth}; */
-  margin: 0 auto;
-  margin-top: 40px;
   strong {
     font-weight: bold;
   }
