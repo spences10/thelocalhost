@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { H1, P } from './page-elements';
 import { Link } from './shared';
 
 const StyledLink = styled(Link)`
@@ -10,13 +9,18 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
-  font-style: italic;
+  font-size: ${({ theme }) => theme.fontSize['5xl']};
+  margin-top: ${({ theme }) => theme.spacing[5]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+  /* font-style: italic; */
 `;
 
-const StyledP = styled(P)`
+const StyledP = styled.p`
+  font-family: ${({ theme }) => theme.font.sans};
   font-size: ${({ theme }) => theme.fontSize.sm};
+  margin-top: ${({ theme }) => theme.spacing[1]};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
 `;

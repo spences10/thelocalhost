@@ -1,9 +1,10 @@
-import { graphql, Link } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React from 'react'
-import SEO from 'react-seo-component'
-import { Layout } from '../components/layout'
-import { useSiteMetadata } from '../hooks/use-site-metadata'
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import SEO from 'react-seo-component';
+import { Layout } from '../components/layout';
+import { H1, P } from '../components/page-elements';
+import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 export default ({ data, pageContext }) => {
   const {
@@ -13,10 +14,10 @@ export default ({ data, pageContext }) => {
     siteLocale,
     twitterUsername,
     authorName,
-  } = useSiteMetadata()
-  const { frontmatter, body, fields, excerpt } = data.mdx
-  const { title, date, cover } = frontmatter
-  const { previous, next } = pageContext
+  } = useSiteMetadata();
+  const { frontmatter, body, fields, excerpt } = data.mdx;
+  const { title, date, cover } = frontmatter;
+  const { previous, next } = pageContext;
   return (
     <Layout>
       <SEO
@@ -36,8 +37,8 @@ export default ({ data, pageContext }) => {
         publishedDate={date}
         modifiedDate={new Date(Date.now()).toISOString()}
       />
-      <h1>{frontmatter.title}</h1>
-      <p>{frontmatter.date}</p>
+      <H1>{frontmatter.title}</H1>
+      <P>{frontmatter.date}</P>
       <MDXRenderer>{body}</MDXRenderer>
       {previous === false ? null : (
         <>
@@ -58,8 +59,8 @@ export default ({ data, pageContext }) => {
         </>
       )}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
@@ -78,4 +79,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

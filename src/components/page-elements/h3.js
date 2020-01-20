@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { AutoLink } from './linked-headers';
 
 const StyledText = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.h3};
-  font-family: ${({ theme }) => theme.fonts.header};
+  font-size: ${({ theme }) => theme.fontSize['2xl']};
+  font-family: ${({ theme }) => theme.font.serif};
   ${() => AutoLink}
-  margin-top: 50px;
 `;
 
 export const H3 = ({ children }) => {
