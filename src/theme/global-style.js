@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import reset from 'styled-reset'
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export const theme = {
   colours: {
@@ -116,7 +116,7 @@ export const theme = {
     '56': '14rem',
     '64': '16rem',
   },
-}
+};
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -134,4 +134,4 @@ export const GlobalStyle = createGlobalStyle`
     line-height: ${({ theme }) => theme.lineHeight.normal};
     letter-spacing: ${({ theme }) => theme.normal};
   }
-`
+`;
