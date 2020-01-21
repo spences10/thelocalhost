@@ -5,7 +5,7 @@ import { AutoLink } from './linked-headers';
 const StyledText = styled.h1`
   font-size: ${({ theme }) => theme.fontSize['4xl']};
   font-family: ${({ theme }) => theme.font.serif};
-  ${() => AutoLink}
+  ${() => AutoLink};
   margin-top: ${({ theme }) => theme.spacing[5]};
   line-height: ${({ theme }) => theme.lineHeight.none};
 `;
