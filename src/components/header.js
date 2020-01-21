@@ -12,9 +12,16 @@ const StyledLink = styled(Link)`
 const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
   font-size: ${({ theme }) => theme.fontSize['5xl']};
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
   margin-top: ${({ theme }) => theme.spacing[5]};
+  padding-bottom: ${({ theme }) => theme.spacing[1]};
   line-height: ${({ theme }) => theme.lineHeight.none};
-  /* font-style: italic; */
+  background: linear-gradient(
+    ${({ theme }) => theme.colours.primary[200]},
+    ${({ theme }) => theme.colours.primary[500]}
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const StyledP = styled.p`
@@ -23,6 +30,7 @@ const StyledP = styled.p`
   margin-top: ${({ theme }) => theme.spacing[1]};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
+  color: ${({ theme }) => theme.colours.grey[900]};
 `;
 
 export const Header = ({ siteTitle, siteDescription }) => (

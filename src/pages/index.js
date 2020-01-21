@@ -16,6 +16,13 @@ const Image = styled(Img)`
   border-radius: 5px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export default ({ data }) => {
   const {
     description,
@@ -42,7 +49,7 @@ export default ({ data }) => {
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (
             <PostWrapper key={id}>
-              <Link to={fields.slug}>
+              <StyledLink to={fields.slug}>
                 {!!frontmatter.cover ? (
                   <Image
                     sizes={frontmatter.cover.childImageSharp.sizes}
@@ -51,7 +58,7 @@ export default ({ data }) => {
                 <H1>{frontmatter.title}</H1>
                 <P>{frontmatter.date}</P>
                 <P>{excerpt}</P>
-              </Link>
+              </StyledLink>
             </PostWrapper>
           )
         )}
