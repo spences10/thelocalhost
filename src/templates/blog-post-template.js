@@ -7,6 +7,7 @@ import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 export default ({ data, pageContext }) => {
   const {
+    title: siteTitle,
     image,
     siteUrl,
     siteLanguage,
@@ -21,6 +22,7 @@ export default ({ data, pageContext }) => {
     <Layout>
       <SEO
         title={title}
+        titleTemplate={siteTitle}
         description={excerpt}
         image={
           cover === null
