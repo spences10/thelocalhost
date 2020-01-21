@@ -5756,10 +5756,10 @@ gatsby-plugin-robots-txt@1.5.0:
     "@babel/runtime" "^7.5.1"
     generate-robotstxt "^7.1.0"
 
-gatsby-plugin-sharp@2.3.13:
-  version "2.3.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.3.13.tgz#664d24f148a59552ebcd2fa92bfdab0b8dc4e9d9"
-  integrity sha512-4R6H7qGRFjyYIv5nqKXKh3yXNg0iK5XZXRi1yDP0IWsytKDo5CKgmX9XWrvoRSnlYj5TWOsv32nfeCbgUPK0Lw==
+gatsby-plugin-sharp@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.4.0.tgz#9df4c2646a34fb7ea4ff5428f6662ef3c0a80cde"
+  integrity sha512-PmifXRuy0R16uoWPIMvjHgoPdkG30uUS9r+XYAp+WW4Q7oWy1q0R2tia3rcdwvGeOsxX98W95jy8QTqhQ3BDFQ==
   dependencies:
     "@babel/runtime" "^7.7.6"
     async "^2.6.3"
@@ -5773,7 +5773,6 @@ gatsby-plugin-sharp@2.3.13:
     imagemin-webp "^5.1.0"
     lodash "^4.17.15"
     mini-svg-data-uri "^1.1.3"
-    p-defer "^3.0.0"
     potrace "^2.1.2"
     probe-image-size "^4.1.1"
     progress "^2.0.3"
@@ -5792,10 +5791,10 @@ gatsby-plugin-sitemap@2.2.26:
     pify "^3.0.0"
     sitemap "^1.13.0"
 
-gatsby-plugin-styled-components@3.1.17:
-  version "3.1.17"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.1.17.tgz#d17ee15608b42b33a82b25035f2824e80c77a64c"
-  integrity sha512-RdAcFroqVSXvxcjqVlrvj6ptHq1AUZlI8Zv9iSE+wyr1ONx27wnOyS55ArChFeevC5FimQvRghEUiVgQN5gkuQ==
+gatsby-plugin-styled-components@3.1.18:
+  version "3.1.18"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.1.18.tgz#f9ae0c100aff9fb769aa224bbceea6edd36104f9"
+  integrity sha512-JPNCcc4Ubnkilh7yooDk8grelg2WkuJfmhBB66pH4ccbBEgIPStSvqTv7puUyUYgW3J6+LLsCZgsWU+Ag38g9g==
   dependencies:
     "@babel/runtime" "^7.7.6"
 
@@ -5935,10 +5934,10 @@ gatsby-transformer-sharp@2.3.13:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@2.18.25:
-  version "2.18.25"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.18.25.tgz#b56503b34e6a30a0a68874072c0a6fddfc869b1c"
-  integrity sha512-mXn1OY93On6D8YDYv4qpC4S8e83EzeSnzSgISgSlyPEKilXQYdAYNJn+QdfC74dLsm7lsaDeLKcb8PIjegaiQw==
+gatsby@2.19.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.1.tgz#eaea19aec7580a459a7d2b9acea6e1445902ec36"
+  integrity sha512-n4GCNLIdG+0Kf6qNlIN4cfRp+PMAtN45RMvKoRFHQ5hDKnBZf53+wKe0CH2WhYtYayxit32Cn4usDqe5iASWag==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
@@ -6011,6 +6010,7 @@ gatsby@2.18.25:
     graphql "^14.5.8"
     graphql-compose "^6.3.7"
     graphql-playground-middleware-express "^1.7.12"
+    hasha "^5.1.0"
     invariant "^2.2.4"
     is-relative "^1.0.0"
     is-relative-url "^3.0.0"
@@ -6033,6 +6033,7 @@ gatsby@2.18.25:
     null-loader "^0.1.1"
     opentracing "^0.14.4"
     optimize-css-assets-webpack-plugin "^5.0.3"
+    p-defer "^3.0.0"
     parseurl "^1.3.3"
     physical-cpu-count "^2.0.0"
     pnp-webpack-plugin "^1.5.0"
@@ -6600,6 +6601,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+hasha@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/hasha/-/hasha-5.1.0.tgz#dd05ccdfcfe7dab626247ce2a58efe461922f4ca"
+  integrity sha512-OFPDWmzPN1l7atOV1TgBVmNtBxaIysToK6Ve9DK+vT6pYuklw/nPNT+HJbZi0KDcI6vWB+9tgvZ5YD7fA3CXcA==
+  dependencies:
+    is-stream "^2.0.0"
+    type-fest "^0.8.0"
 
 hast-to-hyperscript@^7.0.0:
   version "7.0.4"
@@ -10721,10 +10730,10 @@ react-reconciler@^0.24.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
-react-seo-component@0.1.16:
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/react-seo-component/-/react-seo-component-0.1.16.tgz#fe4b6ad63c255307a9035c2adb1cce2b32b20da9"
-  integrity sha512-f9XdsD/hZoerr9HVva7KCikWmOCT7C1xqUN7paDKLwLwhqfs9dWToIj9oSrJLxqU82xmaJrj7hLI/XdG9UUuZA==
+react-seo-component@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-seo-component/-/react-seo-component-1.0.0.tgz#d8c0e2059c4d6eadc995b1e86cf59679e9e2b6a6"
+  integrity sha512-/yyHtjrofNlfN55qoW5XoMc7pNgoX+wTvrSJ5sayKSVXjV5fRUiFWlx+VmfD2+UHtdTTzM5mVnkYg/maCv5lMA==
   dependencies:
     prop-types "15.7.2"
     react "16.12.0"
@@ -12866,7 +12875,7 @@ type-fest@^0.3.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
   integrity sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ==
 
-type-fest@^0.8.1:
+type-fest@^0.8.0, type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
