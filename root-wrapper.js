@@ -9,8 +9,10 @@ import {
   H2,
   H3,
   Hr,
+  InlineCode,
   Li,
   P,
+  Small,
   Ul,
 } from './src/components/page-elements';
 import { GlobalStyle, theme } from './src/theme/global-style';
@@ -23,11 +25,8 @@ const components = {
   h3: props => <H3 {...props} />,
   hr: props => <Hr {...props} />,
   li: props => <Li {...props} />,
-  ul: props => <Ul {...props} />,
   p: props => <P {...props} />,
-  'p.inlineCode': props => (
-    <code {...props} style={{ backgroundColor: 'lightgrey' }}></code>
-  ),
+  'p.inlineCode': props => <InlineCode {...props} />,
   pre: ({ children: { props } }) => {
     if (props.mdxType === 'code') {
       return (
@@ -44,6 +43,8 @@ const components = {
       );
     }
   },
+  ul: props => <Ul {...props} />,
+  small: props => <Small {...props} />,
   wrapper: ({ children }) => <>{children}</>,
 };
 
