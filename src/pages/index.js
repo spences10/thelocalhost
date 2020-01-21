@@ -1,18 +1,19 @@
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import React from 'react'
-import SEO from 'react-seo-component'
-import styled from 'styled-components'
-import { Layout } from '../components/layout'
-import { useSiteMetadata } from '../hooks/use-site-metadata'
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import React from 'react';
+import SEO from 'react-seo-component';
+import styled from 'styled-components';
+import { H1, P } from '../components/page-elements';
+import { Link } from '../components/shared';
+import { useSiteMetadata } from '../hooks/use-site-metadata';
 
-const IndexWrapper = styled.main``
+const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``
+const PostWrapper = styled.div``;
 
 const Image = styled(Img)`
   border-radius: 5px;
-`
+`;
 
 export default ({ data }) => {
   const {
@@ -23,9 +24,9 @@ export default ({ data }) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
-  } = useSiteMetadata()
+  } = useSiteMetadata();
   return (
-    <Layout>
+    <>
       <SEO
         title={title}
         description={description || `nothin’`}
@@ -46,17 +47,17 @@ export default ({ data }) => {
                     sizes={frontmatter.cover.childImageSharp.sizes}
                   />
                 ) : null}
-                <h1>{frontmatter.title}</h1>
-                <p>{frontmatter.date}</p>
-                <p>{excerpt}</p>
+                <H1>{frontmatter.title}</H1>
+                <P>{frontmatter.date}</P>
+                <P>{excerpt}</P>
               </Link>
             </PostWrapper>
           )
         )}
       </IndexWrapper>
-    </Layout>
-  )
-}
+    </>
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -85,4 +86,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
