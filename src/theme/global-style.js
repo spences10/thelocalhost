@@ -128,10 +128,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: ${({ theme }) => theme.font.sans};
+    font-size: ${({ theme }) => theme.fontSize.xl};
     color: ${({ theme }) => theme.colours.grey[900]};
   }
   body {
     line-height: ${({ theme }) => theme.lineHeight.normal};
-    letter-spacing: ${({ theme }) => theme.normal};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
   }
 `;
