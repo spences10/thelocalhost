@@ -10,7 +10,7 @@ const siteMetadata = {
   favicon: `./static/favicon.png`,
   backgroundColor: `#f7f0eb`,
   themeColor: `#a2466c`,
-}
+};
 
 module.exports = {
   siteMetadata: siteMetadata,
@@ -23,15 +23,27 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-mdx`,
-      options: { extensions: [`.mdx`, `.md`] },
-      gatsbyRemarkPlugins: [
-        {
-          resolve: `gatsby-remark-images`,
-          options: {
-            maxWidth: 540,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 540,
+            },
           },
-        },
-      ],
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `noopener`,
+            },
+          },
+        ],
+      },
       plugin: [
         {
           resolve: `gatsby-remark-images`,
@@ -74,4 +86,4 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
   ],
-}
+};
