@@ -3,7 +3,6 @@ import Img from 'gatsby-image';
 import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
 import { H1, P } from '../components/page-elements';
 import { Link } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
@@ -27,7 +26,7 @@ export default ({ data }) => {
     twitterUsername,
   } = useSiteMetadata();
   return (
-    <Layout>
+    <>
       <SEO
         title={title}
         description={description || `nothin’`}
@@ -56,7 +55,7 @@ export default ({ data }) => {
           )
         )}
       </IndexWrapper>
-    </Layout>
+    </>
   );
 };
 

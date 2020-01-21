@@ -1,6 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Layout } from './src/components/layout';
 import {
   A,
   Code,
@@ -30,7 +31,6 @@ const components = {
   },
   a: props => <A {...props} />,
   h1: props => <H1 {...props} />,
-  // h1: <H1 />,
   h2: props => <H2 {...props} />,
   h3: props => <H3 {...props} />,
   hr: props => <Hr {...props} />,
@@ -43,6 +43,8 @@ const components = {
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <MDXProvider components={components}>{element}</MDXProvider>
+    <MDXProvider components={components}>
+      <Layout>{element}</Layout>
+    </MDXProvider>
   </ThemeProvider>
 );
