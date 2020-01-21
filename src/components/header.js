@@ -1,26 +1,41 @@
-import React from 'react'
-import styled from 'styled-components'
-import { H1, P } from './page-elements'
-import { Link } from './shared'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from './shared';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
-  font-style: italic;
-`
+  font-size: ${({ theme }) => theme.fontSize['5xl']};
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
+  margin-top: ${({ theme }) => theme.spacing[5]};
+  padding-bottom: ${({ theme }) => theme.spacing[1]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+  background: linear-gradient(
+    ${({ theme }) => theme.colours.primary[200]},
+    ${({ theme }) => theme.colours.primary[500]}
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
-const StyledP = styled(P)`
+const StyledP = styled.p`
+  font-family: ${({ theme }) => theme.font.sans};
   font-size: ${({ theme }) => theme.fontSize.sm};
+  margin-top: ${({ theme }) => theme.spacing[1]};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-`
+  color: ${({ theme }) => theme.colours.grey[900]};
+`;
 
 export const Header = ({ siteTitle, siteDescription }) => (
   <StyledLink to="/">
     <StyledH1>{siteTitle}</StyledH1>
     <StyledP>{siteDescription}</StyledP>
   </StyledLink>
-)
+);
