@@ -35,6 +35,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embed-video`,
           {
             resolve: `gatsby-remark-images`,
             options: {
