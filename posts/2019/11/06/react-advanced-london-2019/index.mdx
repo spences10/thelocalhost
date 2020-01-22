@@ -82,7 +82,7 @@ He finished up with an auto tune example made with Rust and a Google
 audio worklet to process a stream of audio to do the Daft Punk "one
 more time" vocoder example! Dope!
 
-`youtube: t8svxxtUTl8`
+<YouTube youTubeId="t8svxxtUTl8" />
 
 ## Sean Wang - React (with hooks) from scratch
 
@@ -112,7 +112,7 @@ const element = {
   props: {
     children: 'Hello world',
   },
-}
+};
 ```
 
 Then went on to define what a fiber was, which is an extension on the
@@ -131,7 +131,7 @@ const element = {
   alternate: currentFiber,
   effectTag: PLACEMENT,
   hooks: [],
-}
+};
 ```
 
 I'll be honest, the speed at which Sean went, although very concise
@@ -144,7 +144,7 @@ The only dependency used in the code was Babel with this [fetch
 example] where the we're using state and reading from a resource which
 suspends (or caches) as needed.
 
-`youtube: dFO4m7Y-yhs`
+<YouTube youTubeId="dFO4m7Y-yhs" />
 
 ## Vojtech Miksu - What a Drag
 
@@ -154,11 +154,11 @@ the complexities that come with it.
 He details the options available and why they implemented their own
 [React Movable] Accessible drag and drop project.
 
-`youtube: y_XkQ2qMTSA`
+<YouTube youTubeId="y_XkQ2qMTSA" />
 
 Here's the same talk from RSCONF 2019:
 
-`youtube: 373pc0AbR9M`
+<YouTube youTubeId="373pc0AbR9M" />
 
 ## Daniel Irvine - Don’t Let Your Unit Tests Slow You Down
 
@@ -212,7 +212,7 @@ Library's lock you into _their_ way of testing things.
 
 > No tests are better than bad tests!
 
-`youtube: 1vDXRDQ9aJE`
+<YouTube youTubeId="1vDXRDQ9aJE" />
 
 After this talk I was off to the React native hall to go see some of
 the lightening talks as I knew one of the speakers.
@@ -289,34 +289,34 @@ Sid then went on to talks about how awesome styled-components was and
 some nice touches for that:
 
 ```js
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const FormLabel = styled.label(
   props => `
   color: ${props.theme.colors.text.subtle}
   font-size: ${props.theme.fontSizes[2]}
 `
-)
+);
 ```
 
 Looks pretty verbose so you could use `@styled-system/css` to reduce
 that:
 
 ```js
-import styled from 'styled-components'
-import css from '@styled-system/css'
+import styled from 'styled-components';
+import css from '@styled-system/css';
 
 const FormLabel = styled.label(
   css({
     color: 'text.subtle',
     fontSize: 2,
   })
-)
+);
 ```
 
 Pretty neat stuff!
 
-`youtube: Dd-Y9K7IKmk`
+<YouTube youTubeId="Dd-Y9K7IKmk" />
 
 ## Emma Brillhart - A More Readable React Codebase Using TypeScript, GraphQL, and Hooks
 
@@ -326,7 +326,7 @@ readability enables faster onboarding for developers.
 Using TypeScript on the client side give built in documentation,
 better navigation, less technical debt.
 
-`youtube: nkJbGgieALI`
+<YouTube youTubeId="nkJbGgieALI" />
 
 <!-- Links -->
 

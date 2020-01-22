@@ -35,7 +35,6 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-embed-video`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -102,5 +101,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    `@pauliescanlon/gatsby-mdx-embed`,
+    `gatsby-plugin-typescript`,
   ],
 };
