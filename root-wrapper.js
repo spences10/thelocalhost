@@ -18,7 +18,7 @@ import {
 import { GlobalStyle, theme } from './src/theme/global-style';
 
 const components = {
-  blockquote: Blockquote,
+  blockquote: props => <Blockquote {...props} />,
   a: props => <A {...props} />,
   h1: props => <H1 {...props} />,
   h2: props => <H2 {...props} />,

@@ -4,7 +4,7 @@ import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
-import { Link } from '../components/shared';
+import { Link, StyledDate } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const IndexWrapper = styled.main``;
@@ -24,14 +24,6 @@ const StyledTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSize['3xl']};
   font-family: ${({ theme }) => theme.font.serif};
   line-height: ${({ theme }) => theme.lineHeight.none};
-`;
-
-const StyledDate = styled.p`
-  margin-top: ${({ theme }) => theme.spacing[0]};
-  color: ${({ theme }) => theme.colours.grey[700]};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
-  text-transform: uppercase;
 `;
 
 const StyledExcerpt = styled.p`

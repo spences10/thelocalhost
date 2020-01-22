@@ -1,11 +1,18 @@
+import React from 'react';
 import styled from 'styled-components';
 
-export const Blockquote = styled.blockquote`
-  border-left: 5px solid #ccc;
-  padding-left: 5px;
-  font-style: italic;
-  font-size: 30px;
-  margin: 20px;
-  opacity: 0.7;
-  word-break: break-word;
+const StyledText = styled.blockquote`
+  p {
+    border-left: 5px solid ${({ theme }) => theme.colours.grey[700]};
+    padding-left: 5px;
+    font-style: italic;
+    font-size: ${({ theme }) => theme.fontSize['2xl']};
+    color: ${({ theme }) => theme.colours.grey[700]};
+    margin: 20px;
+    word-break: break-word;
+  }
 `;
+
+export const Blockquote = ({ children }) => {
+  return <StyledText>{children}</StyledText>;
+};

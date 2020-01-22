@@ -10,6 +10,7 @@ const StyledText = styled.p`
   em {
     font-style: italic;
   }
+  word-break: break-word;
 `;
 
 export const P = props => {
