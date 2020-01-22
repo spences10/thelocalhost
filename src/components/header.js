@@ -13,7 +13,7 @@ const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
   font-size: ${({ theme }) => theme.fontSize['4xl']};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
-  margin-top: ${({ theme }) => theme.spacing[5]};
+  margin-top: ${({ theme }) => theme.spacing[2]};
   padding-bottom: ${({ theme }) => theme.spacing[1]};
   line-height: ${({ theme }) => theme.lineHeight.none};
   background: linear-gradient(
