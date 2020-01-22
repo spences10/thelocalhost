@@ -11,7 +11,7 @@ const StyledLink = styled(Link)`
 
 const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
-  font-size: ${({ theme }) => theme.fontSize['5xl']};
+  font-size: ${({ theme }) => theme.fontSize['4xl']};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
   margin-top: ${({ theme }) => theme.spacing[5]};
   padding-bottom: ${({ theme }) => theme.spacing[1]};
@@ -26,8 +26,8 @@ const StyledH1 = styled.h1`
 
 const StyledP = styled.p`
   font-family: ${({ theme }) => theme.font.sans};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  margin-top: ${({ theme }) => theme.spacing[1]};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  margin-top: ${({ theme }) => theme.spacing[0]};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
   color: ${({ theme }) => theme.colours.grey[900]};

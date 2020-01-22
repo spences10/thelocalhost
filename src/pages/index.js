@@ -10,17 +10,19 @@ import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``;
+const PostWrapper = styled.div`
+  margin: ${({ theme }) => theme.spacing[8]} 0;
+  padding: 0 ${({ theme }) => theme.spacing[8]};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+`;
 
 const Image = styled(Img)`
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  margin-top: ${({ theme }) => theme.spacing[8]};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export default ({ data }) => {
@@ -49,8 +51,8 @@ export default ({ data }) => {
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (
-            <PostWrapper key={id}>
-              <StyledLink to={fields.slug}>
+            <StyledLink to={fields.slug} key={id}>
+              <PostWrapper key={id}>
                 {!!frontmatter.cover ? (
                   <Image
                     sizes={frontmatter.cover.childImageSharp.sizes}
@@ -59,8 +61,8 @@ export default ({ data }) => {
                 <H1>{frontmatter.title}</H1>
                 <P>{frontmatter.date}</P>
                 <P>{excerpt}</P>
-              </StyledLink>
-            </PostWrapper>
+              </PostWrapper>
+            </StyledLink>
           )
         )}
       </IndexWrapper>
@@ -76,7 +78,7 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
+        excerpt(pruneLength: 100)
         frontmatter {
           title
           date(formatString: "YYYY MMMM Do")
