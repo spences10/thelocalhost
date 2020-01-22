@@ -4,16 +4,49 @@ import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
-import { H1, P } from '../components/page-elements';
 import { Link } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``;
+const PostWrapper = styled.div`
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  color: ${({ theme }) => theme.colours.grey[900]};
+  overflow: hidden;
+`;
+
+const CopyWrapper = styled.div`
+  padding: ${({ theme }) => theme.spacing[4]};
+`;
+
+const StyledTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+`;
+
+const StyledDate = styled.p`
+  margin-top: ${({ theme }) => theme.spacing[0]};
+  color: ${({ theme }) => theme.colours.grey[700]};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  text-transform: uppercase;
+`;
+
+const StyledExcerpt = styled.p`
+  margin-top: ${({ theme }) => theme.spacing[3]};
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  margin: ${({ theme }) => theme.spacing[8]} 0;
+  padding: 0 ${({ theme }) => theme.spacing[8]};
+`;
 
 const Image = styled(Img)`
-  border-radius: 5px;
+  height: ${({ theme }) => theme.spacing[56]};
+  object-fit: cover;
 `;
 
 export default ({ data }) => {
@@ -29,7 +62,8 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={title}
+        title={`Home`}
+        titleTemplate={title}
         description={description || `nothin’`}
         image={`${siteUrl}${image}`}
         pathname={siteUrl}
@@ -41,18 +75,20 @@ export default ({ data }) => {
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (
-            <PostWrapper key={id}>
-              <Link to={fields.slug}>
+            <StyledLink to={fields.slug} key={id}>
+              <PostWrapper key={id}>
                 {!!frontmatter.cover ? (
                   <Image
                     sizes={frontmatter.cover.childImageSharp.sizes}
                   />
                 ) : null}
-                <H1>{frontmatter.title}</H1>
-                <P>{frontmatter.date}</P>
-                <P>{excerpt}</P>
-              </Link>
-            </PostWrapper>
+                <CopyWrapper>
+                  <StyledTitle>{frontmatter.title}</StyledTitle>
+                  <StyledDate>{frontmatter.date}</StyledDate>
+                  <StyledExcerpt>{excerpt}</StyledExcerpt>
+                </CopyWrapper>
+              </PostWrapper>
+            </StyledLink>
           )
         )}
       </IndexWrapper>
@@ -68,7 +104,7 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
+        excerpt(pruneLength: 100)
         frontmatter {
           title
           date(formatString: "YYYY MMMM Do")

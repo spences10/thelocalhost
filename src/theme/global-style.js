@@ -116,6 +116,13 @@ export const theme = {
     '56': '14rem',
     '64': '16rem',
   },
+  borderRadius: {
+    none: '0',
+    sm: '0.125rem',
+    default: '0.25rem',
+    lg: '0.5rem',
+    full: '9999px',
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -128,10 +135,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: ${({ theme }) => theme.font.sans};
+    font-size: ${({ theme }) => theme.fontSize.xl};
     color: ${({ theme }) => theme.colours.grey[900]};
   }
   body {
     line-height: ${({ theme }) => theme.lineHeight.normal};
-    letter-spacing: ${({ theme }) => theme.normal};
+    letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
+    background-color: ${({ theme }) => theme.colours.grey[100]};
   }
 `;
