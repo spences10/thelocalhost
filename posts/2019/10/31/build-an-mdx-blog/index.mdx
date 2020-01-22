@@ -124,11 +124,11 @@ Ok, now you can commence the hello word incantation! In the newly
 created `index.js` enter the following:
 
 ```jsx
-import React from 'react'
+import React from 'react';
 
 export default () => {
-  return <h1>Hello World!</h1>
-}
+  return <h1>Hello World!</h1>;
+};
 ```
 
 Now you need to add the Gatsby develop script to the `package.json`
@@ -153,7 +153,7 @@ yarn dev
 
 And with that the "Hello World" incantation is complete 🧙!
 
-`youtube: 2vP3ZTDbN1g`
+<YouTube youTubeId="2vP3ZTDbN1g" />
 
 ## Add content
 
@@ -289,7 +289,7 @@ module.exports = {
       },
     },
   ],
-}
+};
 ```
 
 ## Query data from GraphQL
@@ -311,7 +311,7 @@ GraphQL GraphiQL explorer and check out the data:
 }
 ```
 
-`youtube: MPNJu24ad_s`
+<YouTube youTubeId="MPNJu24ad_s" />
 
 ## Site Metadata
 
@@ -327,7 +327,7 @@ metadata:
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
-}
+};
 ```
 
 Now query the Site Metadata with GraphQL.
@@ -361,7 +361,7 @@ Ok, and in your newly created file were going to use the Gatsby
 `useStaticQuery` hook to make your own hook:
 
 ```js
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby';
 
 export const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -375,30 +375,30 @@ export const useSiteMetadata = () => {
         }
       }
     `
-  )
-  return site.siteMetadata
-}
+  );
+  return site.siteMetadata;
+};
 ```
 
 Now you can use this hook anywhere in your site, so do that now in
 `src/pages/index.js`:
 
 ```jsx
-import React from 'react'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import React from 'react';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 export default () => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <>
       <h1>{title}</h1>
       <p>{description}</p>
     </>
-  )
-}
+  );
+};
 ```
 
-`youtube: TfycpV4yyqY`
+<YouTube youTubeId="TfycpV4yyqY" />
 
 ## Styling
 
@@ -428,7 +428,7 @@ Ok, with that detailed explanation out of the way, configure them in
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
-}
+};
 
 module.exports = {
   siteMetadata: siteMetadata,
@@ -445,7 +445,7 @@ module.exports = {
       options: { path: `${__dirname}/posts`, name: `posts` },
     },
   ],
-}
+};
 ```
 
 Ok, time to go over a styled component, in `index.js` you're going to
@@ -458,29 +458,29 @@ destructuring from the `useSiteMetadata` hook you made previously.
 For this example make it the now iconic Gatsby `rebeccapurple`.
 
 ```jsx
-import React from 'react'
-import styled from 'styled-components'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import React from 'react';
+import styled from 'styled-components';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 const StyledH1 = styled.h1`
   color: rebeccapurple;
-`
+`;
 
 export default () => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <>
       <StyledH1>{title}</StyledH1>
       <p>{description}</p>
     </>
-  )
-}
+  );
+};
 ```
 
 That is styled-components on a very basic level, basically create the
 styling you want for your page elements you're creating in the JSX.
 
-`youtube: 41aNkb2tLyg`
+<YouTube youTubeId="41aNkb2tLyg" />
 
 ## Layout
 
@@ -508,15 +508,15 @@ from the `Layout` component to here. You're going to add Gatsby Link
 to this so users can click on the header to go back to the home page.
 
 ```jsx
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 
 export const Header = ({ siteTitle, siteDescription }) => (
   <Link to="/">
     <h1>{siteTitle}</h1>
     <p>{siteDescription}</p>
   </Link>
-)
+);
 ```
 
 Now to the Layout component, this is going to be a basic wrapper
@@ -525,19 +525,19 @@ title and description and pass them to the header component and return
 the children of the wrapper (`Layout`).
 
 ```jsx
-import React from 'react'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import { Header } from './Header'
+import React from 'react';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import { Header } from './Header';
 
 export const Layout = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <>
       <Header siteTitle={title} siteDescription={description} />
       {children}
     </>
-  )
-}
+  );
+};
 ```
 
 Now to add the slightest of styles for some alignment for
@@ -545,43 +545,43 @@ Now to add the slightest of styles for some alignment for
 make it the main wrapper of your `Layout`.
 
 ```jsx
-import React from 'react'
-import styled from 'styled-components'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
-import { Header } from './Header'
+import React from 'react';
+import styled from 'styled-components';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import { Header } from './Header';
 
 const AppStyles = styled.main`
   width: 800px;
   margin: 0 auto;
-`
+`;
 
 export const Layout = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <AppStyles>
       <Header siteTitle={title} siteDescription={description} />
       {children}
     </AppStyles>
-  )
-}
+  );
+};
 ```
 
 Ok, now refactor your homepage (`src/pages/index.js`) with `Layout`.
 
 ```jsx
-import React from 'react'
-import { Layout } from '../components/Layout'
+import React from 'react';
+import { Layout } from '../components/Layout';
 
 export default () => {
   return (
     <>
       <Layout />
     </>
-  )
-}
+  );
+};
 ```
 
-`youtube: Ase7bjxtQ3w`
+<YouTube youTubeId="Ase7bjxtQ3w" />
 
 ## Index page posts query
 
@@ -634,9 +634,9 @@ we just put together to get a list of published posts in date order;
 add the following to the `index.js` file:
 
 ```jsx
-import { graphql } from 'gatsby'
-import React from 'react'
-import { Layout } from '../components/Layout'
+import { graphql } from 'gatsby';
+import React from 'react';
+import { Layout } from '../components/Layout';
 
 export default ({ data }) => {
   return (
@@ -651,8 +651,8 @@ export default ({ data }) => {
         ))}
       </Layout>
     </>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -670,7 +670,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 Woah! WTF was all that yo!?
@@ -680,7 +680,7 @@ GraphQL query. Gatsby `graphql` runs the query (`SITE_INDEX_QUERY`) at
 runtime and gives us the results as props to your component via the
 `data` prop.
 
-`youtube: 2GDbxZ0mHbM`
+<YouTube youTubeId="2GDbxZ0mHbM" />
 
 ## Slugs and Paths
 
@@ -701,19 +701,19 @@ destructuring out `node`, `actions` and `getNode` for use in creating
 the file locations and associated value.
 
 ```js
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};
 ```
 
 Now to help visualise some of the data being passed into the
@@ -729,7 +729,7 @@ touch /src/components/Dump.js
 ```
 
 ```jsx
-import React from 'react'
+import React from 'react';
 
 const Dump = props => (
   <div
@@ -749,9 +749,9 @@ const Dump = props => (
       </pre>
     ))}
   </div>
-)
+);
 
-export default Dump
+export default Dump;
 ```
 
 Now you can use the `Dump` component anywhere in your project. To
@@ -762,10 +762,10 @@ component and pass in the `data` prop and see what the output looks
 like.
 
 ```jsx
-import { graphql } from 'gatsby'
-import React from 'react'
-import Dump from '../components/Dump'
-import { Layout } from '../components/Layout'
+import { graphql } from 'gatsby';
+import React from 'react';
+import Dump from '../components/Dump';
+import { Layout } from '../components/Layout';
 
 export default ({ data }) => {
   return (
@@ -781,8 +781,8 @@ export default ({ data }) => {
         ))}
       </Layout>
     </>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -800,10 +800,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
-`youtube: 7eZZk7aJnUU`
+<YouTube youTubeId="7eZZk7aJnUU" />
 
 ## Link Paths
 
@@ -815,14 +815,14 @@ You're also going to create some styled-components for wrapping the
 list of posts and each individual post as well.
 
 ```jsx
-import { graphql, Link } from 'gatsby'
-import React from 'react'
-import styled from 'styled-components'
-import { Layout } from '../components/Layout'
+import { graphql, Link } from 'gatsby';
+import React from 'react';
+import styled from 'styled-components';
+import { Layout } from '../components/Layout';
 
-const IndexWrapper = styled.main``
+const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``
+const PostWrapper = styled.div``;
 
 export default ({ data }) => {
   return (
@@ -841,8 +841,8 @@ export default ({ data }) => {
         )}
       </IndexWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -863,7 +863,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 ## Adding a Blog Post Template
@@ -887,15 +887,15 @@ For now you're going to scaffold out a basic template, you'll be
 adding data to this shortly:
 
 ```jsx
-import React from 'react'
+import React from 'react';
 
 export default () => {
   return (
     <>
       <p>post here</p>
     </>
-  )
-}
+  );
+};
 ```
 
 To populate the template you'll need to use Gatsby node to create your
@@ -912,14 +912,14 @@ In your `gatsby-node.js` file you're going to add in the following in
 addition to the `onCreateNode` export you did earlier.
 
 ```js
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`);
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const blogPostTemplate = path.resolve(
     'src/templates/blogPostTemplate.js'
-  )
+  );
 
   return graphql(`
     {
@@ -936,10 +936,10 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
-    const posts = result.data.allMdx.nodes
+    const posts = result.data.allMdx.nodes;
 
     // create page for each mdx file
     posts.forEach(post => {
@@ -949,22 +949,22 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           slug: post.fields.slug,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};
 ```
 
 So the part that you need to pay particular attention to right now is
@@ -984,11 +984,11 @@ posts.forEach(post => {
     context: {
       slug: post.fields.slug,
     },
-  })
-})
+  });
+});
 ```
 
-`youtube: OyQfIvXr4YA`
+<YouTube youTubeId="OyQfIvXr4YA" />
 
 ## Build out Blog Post Template
 
@@ -1049,21 +1049,21 @@ you'll get the Title and the Data from the frontmatter object and wrap
 the `body` in the `MDXRenderer`.
 
 ```jsx
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React from 'react'
-import { Layout } from '../components/Layout'
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import { Layout } from '../components/Layout';
 
 export default ({ data }) => {
-  const { frontmatter, body } = data.mdx
+  const { frontmatter, body } = data.mdx;
   return (
     <Layout>
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.date}</p>
       <MDXRenderer>{body}</MDXRenderer>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostsBySlug($slug: String!) {
@@ -1075,7 +1075,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 If you haven't done so already now would be a good time to restart
@@ -1084,7 +1084,7 @@ your dev server.
 Now you can click on one of the post links and see your blog post
 template in all it's basic glory!
 
-`youtube: S7cnkRoCjsc`
+<YouTube youTubeId="S7cnkRoCjsc" />
 
 ## Previous and Next
 
@@ -1102,8 +1102,8 @@ out the previous and next posts.
 // create page for each mdx node
 posts.forEach((post, index) => {
   const previous =
-    index === posts.length - 1 ? null : posts[index + 1]
-  const next = index === 0 ? null : posts[index - 1]
+    index === posts.length - 1 ? null : posts[index + 1];
+  const next = index === 0 ? null : posts[index - 1];
 
   createPage({
     path: post.fields.slug,
@@ -1113,8 +1113,8 @@ posts.forEach((post, index) => {
       previous,
       next,
     },
-  })
-})
+  });
+});
 ```
 
 So this should now match up with the query you have on the homepage
@@ -1123,14 +1123,14 @@ applied here so do that now in `gatsby-node.js` and apply the same
 filters as on the homepage query:
 
 ```js
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`);
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   const blogPostTemplate = path.resolve(
     'src/templates/blogPostTemplate.js'
-  )
+  );
 
   return graphql(`
     {
@@ -1150,16 +1150,16 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
-    const posts = result.data.allMdx.nodes
+    const posts = result.data.allMdx.nodes;
 
     // create page for each mdx node
     posts.forEach((post, index) => {
       const previous =
-        index === posts.length - 1 ? null : posts[index + 1]
-      const next = index === 0 ? null : posts[index - 1]
+        index === posts.length - 1 ? null : posts[index + 1];
+      const next = index === 0 ? null : posts[index - 1];
 
       createPage({
         path: post.fields.slug,
@@ -1169,22 +1169,22 @@ exports.createPages = ({ actions, graphql }) => {
           previous,
           next,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};
 ```
 
 Now you will be able to expose the `previous` and `next` objects
@@ -1195,15 +1195,15 @@ now pop them into your super handy `Dump` component to take a look at
 their contents.
 
 ```jsx
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React from 'react'
-import Dump from '../components/Dump'
-import { Layout } from '../components/Layout'
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import Dump from '../components/Dump';
+import { Layout } from '../components/Layout';
 
 export default ({ data, pageContext }) => {
-  const { frontmatter, body } = data.mdx
-  const { previous, next } = pageContext
+  const { frontmatter, body } = data.mdx;
+  const { previous, next } = pageContext;
   return (
     <Layout>
       <Dump previous={previous} />
@@ -1212,8 +1212,8 @@ export default ({ data, pageContext }) => {
       <p>{frontmatter.date}</p>
       <MDXRenderer>{body}</MDXRenderer>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostsBySlug($slug: String!) {
@@ -1225,7 +1225,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
 Add in previous and next navigation, this is a couple of ternary
@@ -1233,15 +1233,15 @@ operations, if the variable is empty then return `null` else render a
 Gatsby `Link` component with the page slug and the frontmatter title:
 
 ```jsx
-import { graphql, Link } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React from 'react'
-import Dump from '../components/Dump'
-import { Layout } from '../components/Layout'
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import Dump from '../components/Dump';
+import { Layout } from '../components/Layout';
 
 export default ({ data, pageContext }) => {
-  const { frontmatter, body } = data.mdx
-  const { previous, next } = pageContext
+  const { frontmatter, body } = data.mdx;
+  const { previous, next } = pageContext;
   return (
     <Layout>
       <Dump previous={previous} />
@@ -1268,8 +1268,8 @@ export default ({ data, pageContext }) => {
         </>
       )}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostsBySlug($slug: String!) {
@@ -1281,10 +1281,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
-`youtube: AjLimYEwDOk`
+<YouTube youTubeId="AjLimYEwDOk" />
 
 ## Code Blocks
 
@@ -1324,9 +1324,9 @@ both `gatsby-browser.js` and `gatsby-ssr.js`, in both code modules
 paste the following:
 
 ```js
-import { wrapRootElement as wrap } from './root-wrapper'
+import { wrapRootElement as wrap } from './root-wrapper';
 
-export const wrapRootElement = wrap
+export const wrapRootElement = wrap;
 ```
 
 Ok, now you can work on the code that will be used in both modules.
@@ -1337,8 +1337,8 @@ override the markdown page elements.
 Quick demonstration, in `root-wrapper.js` add the following:
 
 ```jsx
-import { MDXProvider } from '@mdx-js/react'
-import React from 'react'
+import { MDXProvider } from '@mdx-js/react';
+import React from 'react';
 
 const components = {
   h2: ({ children }) => (
@@ -1347,17 +1347,17 @@ const components = {
   'p.inlineCode': props => (
     <code style={{ backgroundColor: 'lightgray' }} {...props} />
   ),
-}
+};
 
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
-)
+);
 ```
 
 You're now overriding any `h2` in your rendered markdown along with
 any `code` blocks (that's words wrapped in `` `backticks` ``).
 
-`youtube: kN8ld7iLQso`
+<YouTube youTubeId="kN8ld7iLQso" />
 
 Ok, now for the syntax highlighting, create a post with a block of
 code in it:
@@ -1381,7 +1381,7 @@ published: true
 Here is the `Dump` component!
 
 ```jsx
-import React from 'react'
+import React from 'react';
 
 const Dump = props => (
   <div
@@ -1401,9 +1401,9 @@ const Dump = props => (
       </pre>
     ))}
   </div>
-)
+);
 
-export default Dump
+export default Dump;
 ```
 ````
 
@@ -1414,9 +1414,9 @@ You're going to copy the provided code for highlighting to validate it
 works.
 
 ```jsx
-import { MDXProvider } from '@mdx-js/react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import React from 'react'
+import { MDXProvider } from '@mdx-js/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import React from 'react';
 
 const components = {
   h2: ({ children }) => (
@@ -1457,11 +1457,11 @@ const components = {
       )}
     </Highlight>
   ),
-}
+};
 
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
-)
+);
 ```
 
 Cool, cool! Now you want to replace the pasted in code example with
@@ -1469,9 +1469,9 @@ the props of the child component of the pre component, you can do that
 with `props.children.props.children.trim()` 🙃.
 
 ```jsx
-import { MDXProvider } from '@mdx-js/react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import React from 'react'
+import { MDXProvider } from '@mdx-js/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import React from 'react';
 
 const components = {
   pre: props => (
@@ -1499,20 +1499,20 @@ const components = {
       )}
     </Highlight>
   ),
-}
+};
 
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
-)
+);
 ```
 
 Then to match the language, for now you're going to add in a `matches`
 function to match the language class assigned to the code block.
 
 ```jsx
-import { MDXProvider } from '@mdx-js/react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import React from 'react'
+import { MDXProvider } from '@mdx-js/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import React from 'react';
 
 const components = {
   h2: ({ children }) => (
@@ -1522,8 +1522,8 @@ const components = {
     <code style={{ backgroundColor: 'lightgray' }} {...props} />
   ),
   pre: props => {
-    const className = props.children.props.className || ''
-    const matches = className.match(/language-(?<lang>.*)/)
+    const className = props.children.props.className || '';
+    const matches = className.match(/language-(?<lang>.*)/);
     return (
       <Highlight
         {...defaultProps}
@@ -1552,13 +1552,13 @@ const components = {
           </pre>
         )}
       </Highlight>
-    )
+    );
   },
-}
+};
 
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
-)
+);
 ```
 
 [prism-react-renderer] comes with additional themes over the default
@@ -1569,15 +1569,15 @@ Import the `theme` then use it in the props of the `Highlight`
 component.
 
 ```jsx
-import { MDXProvider } from '@mdx-js/react'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
+import { MDXProvider } from '@mdx-js/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import React from 'react';
 
 const components = {
   pre: props => {
-    const className = props.children.props.className || ''
-    const matches = className.match(/language-(?<lang>.*)/)
+    const className = props.children.props.className || '';
+    const matches = className.match(/language-(?<lang>.*)/);
 
     return (
       <Highlight
@@ -1608,16 +1608,16 @@ const components = {
           </pre>
         )}
       </Highlight>
-    )
+    );
   },
-}
+};
 
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
-)
+);
 ```
 
-`youtube: k6gI3jVxjKg`
+<YouTube youTubeId="k6gI3jVxjKg" />
 
 Ok, now time to abstract this out into it's own component so your
 `root-wrapper.js` isn't so crowded.
@@ -1646,11 +1646,11 @@ Comment out the code you added earlier and add in a `console.log`:
 
 ```js
 pre: props => {
-  console.log('=====================')
-  console.log(props)
-  console.log('=====================')
-  return <pre />
-}
+  console.log('=====================');
+  console.log(props);
+  console.log('=====================');
+  return <pre />;
+};
 ```
 
 Now if you pop open the developer tools of your browser you can see
@@ -1691,9 +1691,9 @@ module you created earlier.
 The `Code` module should look something like this now:
 
 ```jsx
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import React from 'react';
 
 const Code = ({ codeString, language }) => {
   return (
@@ -1721,10 +1721,10 @@ const Code = ({ codeString, language }) => {
         </pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
-export default Code
+export default Code;
 ```
 
 Back to the `root-wrapper` where you're going to pass the `props`
@@ -1756,12 +1756,12 @@ pre: ({ children: { props } }) => {
         }
         {...props}
       />
-    )
+    );
   }
-}
+};
 ```
 
-`youtube: m0tWxa9Ip5E`
+<YouTube youTubeId="m0tWxa9Ip5E" />
 
 Ok, now you're back to where you were before abstracting out the
 `Highlight` component to it's own module. Add some additional styles
@@ -1770,10 +1770,10 @@ you can also add in some line numbers with a styled span and style
 that as well.
 
 ```js
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
-import styled from 'styled-components'
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import React from 'react';
+import styled from 'styled-components';
 
 export const Pre = styled.pre`
   text-align: left;
@@ -1787,14 +1787,14 @@ export const Pre = styled.pre`
     height: 1.3em;
   }
   font-family: 'Courier New', Courier, monospace;
-`
+`;
 
 export const LineNo = styled.span`
   display: inline-block;
   width: 2em;
   user-select: none;
   opacity: 0.3;
-`
+`;
 
 const Code = ({ codeString, language, ...props }) => {
   return (
@@ -1823,13 +1823,13 @@ const Code = ({ codeString, language, ...props }) => {
         </Pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
-export default Code
+export default Code;
 ```
 
-`youtube: PPH153kWpqc`
+<YouTube youTubeId="PPH153kWpqc" />
 
 ### Copy code to clipboard
 
@@ -1852,33 +1852,33 @@ touch src/utils/copy-to-clipboard.js
 // https://github.com/gatsbyjs/gatsby/blob/master/www/src/utils/copy-to-clipboard.js
 
 export const copyToClipboard = str => {
-  const clipboard = window.navigator.clipboard
+  const clipboard = window.navigator.clipboard;
   /*
    * fallback to older browsers (including Safari)
    * if clipboard API not supported
    */
   if (!clipboard || typeof clipboard.writeText !== `function`) {
-    const textarea = document.createElement(`textarea`)
-    textarea.value = str
-    textarea.setAttribute(`readonly`, true)
-    textarea.setAttribute(`contenteditable`, true)
-    textarea.style.position = `absolute`
-    textarea.style.left = `-9999px`
-    document.body.appendChild(textarea)
-    textarea.select()
-    const range = document.createRange()
-    const sel = window.getSelection()
-    sel.removeAllRanges()
-    sel.addRange(range)
-    textarea.setSelectionRange(0, textarea.value.length)
-    document.execCommand(`copy`)
-    document.body.removeChild(textarea)
+    const textarea = document.createElement(`textarea`);
+    textarea.value = str;
+    textarea.setAttribute(`readonly`, true);
+    textarea.setAttribute(`contenteditable`, true);
+    textarea.style.position = `absolute`;
+    textarea.style.left = `-9999px`;
+    document.body.appendChild(textarea);
+    textarea.select();
+    const range = document.createRange();
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    textarea.setSelectionRange(0, textarea.value.length);
+    document.execCommand(`copy`);
+    document.body.removeChild(textarea);
 
-    return Promise.resolve(true)
+    return Promise.resolve(true);
   }
 
-  return clipboard.writeText(str)
-}
+  return clipboard.writeText(str);
+};
 ```
 
 Now you're going to want a way to trigger copying the code to the
@@ -1898,18 +1898,18 @@ const CopyCode = styled.button`
   &:hover {
     opacity: 1;
   }
-`
+`;
 ```
 
 And now you need to use the `copyToClipboard` function in the
 `onClick` of the button:
 
 ```jsx
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
-import styled from 'styled-components'
-import { copyToClipboard } from '../utils/copy-to-clipboard'
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import React from 'react';
+import styled from 'styled-components';
+import { copyToClipboard } from '../utils/copy-to-clipboard';
 
 export const Pre = styled.pre`
   text-align: left;
@@ -1924,14 +1924,14 @@ export const Pre = styled.pre`
   }
   font-family: 'Courier New', Courier, monospace;
   position: relative;
-`
+`;
 
 export const LineNo = styled.span`
   display: inline-block;
   width: 2rem;
   user-select: none;
   opacity: 0.3;
-`
+`;
 
 const CopyCode = styled.button`
   position: absolute;
@@ -1943,12 +1943,12 @@ const CopyCode = styled.button`
   &:hover {
     opacity: 1;
   }
-`
+`;
 
 const Code = ({ codeString, language }) => {
   const handleClick = () => {
-    copyToClipboard(codeString)
-  }
+    copyToClipboard(codeString);
+  };
 
   return (
     <Highlight
@@ -1977,13 +1977,13 @@ const Code = ({ codeString, language }) => {
         </Pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
-export default Code
+export default Code;
 ```
 
-`youtube: j-EINXVe2WA`
+<YouTube youTubeId="j-EINXVe2WA" />
 
 ## React live
 
@@ -1998,7 +1998,7 @@ import {
   LiveError,
   LivePreview,
   LiveProvider,
-} from 'react-live'
+} from 'react-live';
 ```
 
 Then ypu're going to check if `react-live` has been added to the
@@ -2012,24 +2012,24 @@ if (props['react-live']) {
       <LiveError />
       <LivePreview />
     </LiveProvider>
-  )
+  );
 }
 ```
 
 Here's the full component:
 
 ```jsx
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import React from 'react';
 import {
   LiveEditor,
   LiveError,
   LivePreview,
   LiveProvider,
-} from 'react-live'
-import styled from 'styled-components'
-import { copyToClipboard } from '../../utils/copy-to-clipboard'
+} from 'react-live';
+import styled from 'styled-components';
+import { copyToClipboard } from '../../utils/copy-to-clipboard';
 
 const Pre = styled.pre`
   position: relative;
@@ -2044,14 +2044,14 @@ const Pre = styled.pre`
     height: 1.3em;
   }
   font-family: 'Courier New', Courier, monospace;
-`
+`;
 
 const LineNo = styled.span`
   display: inline-block;
   width: 2em;
   user-select: none;
   opacity: 0.3;
-`
+`;
 
 const CopyCode = styled.button`
   position: absolute;
@@ -2063,7 +2063,7 @@ const CopyCode = styled.button`
   &:hover {
     opacity: 1;
   }
-`
+`;
 
 export const Code = ({ codeString, language, ...props }) => {
   if (props['react-live']) {
@@ -2073,12 +2073,12 @@ export const Code = ({ codeString, language, ...props }) => {
         <LiveError />
         <LivePreview />
       </LiveProvider>
-    )
+    );
   }
 
   const handleClick = () => {
-    copyToClipboard(codeString)
-  }
+    copyToClipboard(codeString);
+  };
 
   return (
     <Highlight
@@ -2107,8 +2107,8 @@ export const Code = ({ codeString, language, ...props }) => {
         </Pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 ```
 
 To test this, add `react-live` next to the language on your `Dump`
@@ -2140,12 +2140,12 @@ const Dump = props => (
       </pre>
     ))}
   </div>
-)
+);
 
-render(<Dump props={['One', 'Two', 'Three', 'Four']} />)
+render(<Dump props={['One', 'Two', 'Three', 'Four']} />);
 ```
 
-`youtube: AlOdd-TvqHE`
+<YouTube youTubeId="AlOdd-TvqHE" />
 
 ## Cover Image
 
@@ -2199,7 +2199,7 @@ module.exports = {
       options: { path: `${__dirname}/posts`, name: `posts` },
     },
   ],
-}
+};
 ```
 
 Add image to index query in `src/pages.index.js`:
@@ -2233,7 +2233,7 @@ Add `gatsby-image` use that in a styled component:
 ```js
 const Image = styled(Img)`
   border-radius: 5px;
-`
+`;
 ```
 
 Add some JavaScript to determine if there's anything to render:
@@ -2242,26 +2242,26 @@ Add some JavaScript to determine if there's anything to render:
 {
   !!frontmatter.cover ? (
     <Image sizes={frontmatter.cover.childImageSharp.sizes} />
-  ) : null
+  ) : null;
 }
 ```
 
 Here's what the full module should look like now:
 
 ```js
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import React from 'react'
-import styled from 'styled-components'
-import { Layout } from '../components/Layout'
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import React from 'react';
+import styled from 'styled-components';
+import { Layout } from '../components/Layout';
 
-const IndexWrapper = styled.main``
+const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``
+const PostWrapper = styled.div``;
 
 const Image = styled(Img)`
   border-radius: 5px;
-`
+`;
 
 export default ({ data }) => {
   return (
@@ -2286,8 +2286,8 @@ export default ({ data }) => {
         )}
       </IndexWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -2316,10 +2316,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
-`youtube: 9S5GNtql02w`
+<YouTube youTubeId="9S5GNtql02w" />
 
 **Additional resources:**
 
@@ -2331,7 +2331,7 @@ export const query = graphql`
 
 ## Adding an SEO component to the site
 
-`youtube: I9qQslUJknw`
+<YouTube youTubeId="I9qQslUJknw" />
 
 There's a Gatsby [github PR on seo] with some [great notes from Andrew
 Welch] on SEO and a link to a presentation he did back in 2017.
@@ -2409,7 +2409,7 @@ Update the `useSiteMetadata` hook now to reflect the newly added
 properties:
 
 ```js
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby';
 
 export const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -2429,9 +2429,9 @@ export const useSiteMetadata = () => {
         }
       }
     `
-  )
-  return site.siteMetadata
-}
+  );
+  return site.siteMetadata;
+};
 ```
 
 Begin with importing the `Dump` component in `src/pages/index.js` then
@@ -2474,21 +2474,21 @@ out the `Dump` component with the `SEO` component.
 The complete `src/pages/index.js` should look like this now:
 
 ```js
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import React from 'react'
-import SEO from 'react-seo-component'
-import styled from 'styled-components'
-import { Layout } from '../components/Layout'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import React from 'react';
+import SEO from 'react-seo-component';
+import styled from 'styled-components';
+import { Layout } from '../components/Layout';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
-const IndexWrapper = styled.main``
+const IndexWrapper = styled.main``;
 
-const PostWrapper = styled.div``
+const PostWrapper = styled.div``;
 
 const Image = styled(Img)`
   border-radius: 5px;
-`
+`;
 
 export default ({ data }) => {
   const {
@@ -2499,7 +2499,7 @@ export default ({ data }) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
-  } = useSiteMetadata()
+  } = useSiteMetadata();
   return (
     <Layout>
       <SEO
@@ -2531,8 +2531,8 @@ export default ({ data }) => {
         )}
       </IndexWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -2561,10 +2561,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
-`youtube: O0jk9AqM_ls`
+<YouTube youTubeId="O0jk9AqM_ls" />
 
 ### Configure SEO Component for Blog Posts
 
@@ -2622,12 +2622,12 @@ The complete `src/templates/blogPostTemplate.js` should look like this
 now:
 
 ```js
-import { graphql, Link } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React from 'react'
-import SEO from 'react-seo-component'
-import { Layout } from '../components/Layout'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import SEO from 'react-seo-component';
+import { Layout } from '../components/Layout';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 export default ({ data, pageContext }) => {
   const {
@@ -2637,10 +2637,10 @@ export default ({ data, pageContext }) => {
     siteLocale,
     twitterUsername,
     authorName,
-  } = useSiteMetadata()
-  const { frontmatter, body, fields, excerpt } = data.mdx
-  const { title, date, cover } = frontmatter
-  const { previous, next } = pageContext
+  } = useSiteMetadata();
+  const { frontmatter, body, fields, excerpt } = data.mdx;
+  const { title, date, cover } = frontmatter;
+  const { previous, next } = pageContext;
   return (
     <Layout>
       <SEO
@@ -2682,8 +2682,8 @@ export default ({ data, pageContext }) => {
         </>
       )}
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
@@ -2702,10 +2702,10 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 ```
 
-`youtube: a2fcgYIQRIU`
+<YouTube youTubeId="a2fcgYIQRIU" />
 
 ### Build Site and Validate Meta Tags
 
@@ -2731,7 +2731,7 @@ site as it will appear when it is on the internet. Validate meta tags
 have been added to the build by selecting "View page source" (Crtl+u
 in Windows and Linux) on the page and do a Ctrl+f to find them.
 
-`youtube: c6bB9ddAgjc`
+<YouTube youTubeId="c6bB9ddAgjc" />
 
 ## Adding the Project to GitHub
 
@@ -2749,7 +2749,7 @@ command looks like.
 Some good resources for authenticating with GitHub via SSH are [Kent
 Dodds Egghead.io video] and also a how-to [on CheatSheets.xyz].
 
-`youtube: r2eiJ8E_YT0`
+<YouTube youTubeId="r2eiJ8E_YT0" />
 
 ## Deploy to Netlify
 
@@ -2784,7 +2784,7 @@ You will be prompted to commit the changes and push them to GitHub
 (with `git push`), once you have done that your site will be published
 and ready for all to see!
 
-`youtube: voWeHvIGB0g`
+<YouTube youTubeId="voWeHvIGB0g" />
 
 ## Validate Metadata with Heymeta
 
@@ -2799,7 +2799,7 @@ Once your site is built with a valid url you can then test the
 homepage and a blog page for the correct meta tags with
 [heymeta.com](http://heymeta.com/).
 
-`youtube: JH1AVanYhwo`
+<YouTube youTubeId="JH1AVanYhwo" />
 
 **OpenGraph checking tools:**
 

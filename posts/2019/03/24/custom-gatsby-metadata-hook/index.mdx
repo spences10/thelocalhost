@@ -38,7 +38,7 @@ hook for getting site metadata in Gatsby.
 
 **Here's a video:**
 
-`video: https://www.youtube.com/watch?v=qWay-LjXwbk`
+<YouTube youTubeId="qWay-LjXwbk" />
 
 The `StaticQuery` component uses the [render props] pattern, which
 means it takes in a function and returns/renders based off of that.
@@ -95,9 +95,9 @@ const Layout = ({ children }) => (
       </>
     )}
   />
-)
+);
 
-export default Layout
+export default Layout;
 ```
 
 The `StaticQuery` takes in two props, the `query` and what you want to
@@ -117,7 +117,7 @@ const Layout = ({ children, data }) => (
       <footer />
     </div>
   </>
-)
+);
 
 export default props => (
   <StaticQuery
@@ -132,7 +132,7 @@ export default props => (
     `}
     render={data => <Layout data={data} {...props} />}
   />
-)
+);
 ```
 
 I found this more acceptable because you didn't have to have all the
@@ -162,7 +162,7 @@ use in the video.
 _useSiteMetadata.js_
 
 ```js
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby';
 
 const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -177,18 +177,18 @@ const useSiteMetadata = () => {
         }
       }
     `
-  )
-  return site.siteMetadata
-}
+  );
+  return site.siteMetadata;
+};
 
-export default useSiteMetadata
+export default useSiteMetadata;
 ```
 
 This can now be implemented in the rest of the code as a function
 call:
 
 ```js
-const { title, description, author } = useSiteMetadata()
+const { title, description, author } = useSiteMetadata();
 ```
 
 ## Let's implement it!
@@ -201,15 +201,15 @@ It should look something like this, I have taken the styling out for
 brevity:
 
 ```js
-import React from 'react'
-import PropTypes from 'prop-types'
-import useSiteMetadata from './useSiteMetadata'
+import React from 'react';
+import PropTypes from 'prop-types';
+import useSiteMetadata from './useSiteMetadata';
 
-import Header from './header'
-import './layout.css'
+import Header from './header';
+import './layout.css';
 
 const Layout = ({ children }) => {
-  const { title } = useSiteMetadata()
+  const { title } = useSiteMetadata();
   return (
     <>
       <Header siteTitle={title} />
@@ -222,13 +222,13 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </>
-  )
-}
+  );
+};
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
 ```
 
 Here's the comparison:
