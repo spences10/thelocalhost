@@ -1,3 +1,12 @@
+const activeEnv =
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
+
+console.log(`Using environment config: '${activeEnv}'`);
+
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+});
+
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
@@ -70,6 +79,13 @@ module.exports = {
             'Space Mono:400,700',
           ],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-fathom`,
+      options: {
+        siteId:
+          process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST_BLOG,
       },
     },
     {
