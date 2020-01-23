@@ -3,7 +3,6 @@ import Img from 'gatsby-image';
 import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
 import { Link, StyledDate } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
@@ -32,8 +31,11 @@ const StyledExcerpt = styled.p`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+`;
+
+const LinkWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[8]} 0;
-  padding: 0 ${({ theme }) => theme.spacing[8]};
+  /* padding: 0 ${({ theme }) => theme.spacing[8]}; */
 `;
 
 const Image = styled(Img)`
@@ -52,7 +54,7 @@ export default ({ data }) => {
     twitterUsername,
   } = useSiteMetadata();
   return (
-    <Layout>
+    <>
       <SEO
         title={`Home`}
         titleTemplate={title}
@@ -67,24 +69,26 @@ export default ({ data }) => {
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (
-            <StyledLink to={fields.slug} key={id}>
-              <PostWrapper key={id}>
-                {!!frontmatter.cover ? (
-                  <Image
-                    sizes={frontmatter.cover.childImageSharp.sizes}
-                  />
-                ) : null}
-                <CopyWrapper>
-                  <StyledTitle>{frontmatter.title}</StyledTitle>
-                  <StyledDate>{frontmatter.date}</StyledDate>
-                  <StyledExcerpt>{excerpt}</StyledExcerpt>
-                </CopyWrapper>
-              </PostWrapper>
-            </StyledLink>
+            <LinkWrapper>
+              <StyledLink to={fields.slug} key={id}>
+                <PostWrapper key={id}>
+                  {!!frontmatter.cover ? (
+                    <Image
+                      sizes={frontmatter.cover.childImageSharp.sizes}
+                    />
+                  ) : null}
+                  <CopyWrapper>
+                    <StyledTitle>{frontmatter.title}</StyledTitle>
+                    <StyledDate>{frontmatter.date}</StyledDate>
+                    <StyledExcerpt>{excerpt}</StyledExcerpt>
+                  </CopyWrapper>
+                </PostWrapper>
+              </StyledLink>
+            </LinkWrapper>
           )
         )}
       </IndexWrapper>
-    </Layout>
+    </>
   );
 };
 
