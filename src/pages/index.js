@@ -70,9 +70,9 @@ export default ({ data }) => {
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (
-            <LinkWrapper>
-              <StyledLink to={fields.slug} key={id}>
-                <PostWrapper key={id}>
+            <LinkWrapper key={id}>
+              <StyledLink to={fields.slug}>
+                <PostWrapper>
                   {!!frontmatter.cover ? (
                     <Image
                       sizes={frontmatter.cover.childImageSharp.sizes}
