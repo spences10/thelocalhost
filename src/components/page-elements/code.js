@@ -23,7 +23,7 @@ const Pre = styled.pre`
 
 const LineNo = styled.span`
   display: inline-block;
-  width: 2em;
+  width: 1.8em;
   user-select: none;
   opacity: 0.3;
 `;
@@ -33,11 +33,14 @@ const CopyCode = styled.button`
   right: 0.25rem;
   border: 0;
   border-radius: 3px;
-  margin: 0.25em;
-  opacity: 0.5;
+  margin-right: ${({ theme }) => theme.spacing[1]};
+  padding: ${({ theme }) => theme.spacing[1]};
+  color: ${({ theme }) => theme.colours.grey[500]};
   &:hover {
-    opacity: 1;
+    background-color: ${({ theme }) => theme.colours.grey[100]};
+    color: ${({ theme }) => theme.colours.grey[900]};
   }
+  background-color: ${({ theme }) => theme.colours.primary[500]};
 `;
 
 export const Code = ({ codeString, language, ...props }) => {
