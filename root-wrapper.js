@@ -1,6 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Layout } from './src/components/layout';
 import {
   A,
   Blockquote,
@@ -18,7 +19,7 @@ import {
 import { GlobalStyle, theme } from './src/theme/global-style';
 
 const components = {
-  blockquote: Blockquote,
+  blockquote: props => <Blockquote {...props} />,
   a: props => <A {...props} />,
   h1: props => <H1 {...props} />,
   h2: props => <H2 {...props} />,
@@ -51,6 +52,8 @@ const components = {
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <MDXProvider components={components}>{element}</MDXProvider>
+    <MDXProvider components={components}>
+      <Layout>{element}</Layout>
+    </MDXProvider>
   </ThemeProvider>
 );

@@ -10,6 +10,10 @@ const StyledText = styled.p`
   em {
     font-style: italic;
   }
+  img {
+    width: 100%;
+  }
+  word-break: break-word;
 `;
 
 export const P = props => {

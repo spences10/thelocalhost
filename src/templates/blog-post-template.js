@@ -2,18 +2,9 @@ import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
-import styled from 'styled-components';
-import { Layout } from '../components/layout';
-import { H1, P as StyledP } from '../components/page-elements';
+import { H1 } from '../components/page-elements';
+import { StyledDate } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
-
-const P = styled(StyledP)`
-  color: ${({ theme }) => theme.colours.grey[500]};
-  font-weight: ${({ theme }) => theme.fontWeight.semibold};
-  letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  margin-top: ${({ theme }) => theme.spacing[3]};
-`;
 
 export default ({ data, pageContext }) => {
   const {
@@ -29,7 +20,7 @@ export default ({ data, pageContext }) => {
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
   return (
-    <Layout>
+    <>
       <SEO
         title={title}
         titleTemplate={siteTitle}
@@ -49,7 +40,7 @@ export default ({ data, pageContext }) => {
         modifiedDate={new Date(Date.now()).toISOString()}
       />
       <H1>{frontmatter.title}</H1>
-      <P>{frontmatter.date}</P>
+      <StyledDate>{frontmatter.date}</StyledDate>
       <MDXRenderer>{body}</MDXRenderer>
       {previous === false ? null : (
         <>
@@ -69,7 +60,7 @@ export default ({ data, pageContext }) => {
           )}
         </>
       )}
-    </Layout>
+    </>
   );
 };
 
