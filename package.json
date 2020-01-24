@@ -1,6 +1,6 @@
 {
-  "name": "thelocalhost.blog",
-  "version": "0.1.32",
+  "name": "the-localhost-blog",
+  "version": "0.1.33",
   "description": "",
   "main": "index.js",
   "scripts": {
