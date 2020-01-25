@@ -117,6 +117,60 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ 'content:encoded': node.html }],
+                });
+              });
+            },
+            query: `
+              {
+                allMdx(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: {frontmatter: {published: {eq:true}}}
+                ) {
+                  nodes {
+                    excerpt
+                    html
+                    fields { 
+                      slug 
+                    }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: `${siteMetadata.title} Feed`,
+          },
+        ],
+      },
+    },
     `gatsby-plugin-offline`,
     `@pauliescanlon/gatsby-mdx-embed`,
     `gatsby-plugin-typescript`,
