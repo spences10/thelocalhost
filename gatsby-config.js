@@ -30,6 +30,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
+    `@pauliescanlon/gatsby-mdx-embed`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -172,7 +173,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `@pauliescanlon/gatsby-mdx-embed`,
-    `gatsby-plugin-typescript`,
   ],
 };
