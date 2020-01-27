@@ -8,7 +8,32 @@ coverCredit: Photo by Daniel Kuruvilla on Unsplash
 ---
 
 In this guide I'm going to detail upgrading your Windows Subsystem
-Linux (WSL) Ubuntu install from the current 18.04 to 19.10.
+Linux (WSL) Ubuntu install from the current version 18.04 to 19.10.
+
+I have documented [this process in the past] for moving from Ubuntu
+version 18.04 to 18.10. You can see [my comments] as I went through
+the process back then.
+
+[lxd error]
+
+## Check the current Ubuntu version
+
+Ok, to check the current installed version of Ubuntu from the terminal
+enter `lsb_release -a` and you'll have the current version displayed.
+
+> LSB stands for Linux Standard Base and the -a is for all information
+
+```bash
+lsb_release -a
+```
+
+Output should look something similar to this:
+
+![](./1.current-version.png)
+
+## Do the release upgrade!
+
+![](./2.do-release-upgrade.png)
 
 ```bash
 lsb_release -a
@@ -21,10 +46,6 @@ sudo dpkg --force depends -P lxd; sudo dpkg --force depends -P lxd-client
 sudo do-release-upgrade
 # take maintainers version on all conflicts
 ```
-
-https://dev.to/spences10/comment/9n19
-
-https://askubuntu.com/questions/1119301/your-system-is-unable-to-reach-the-snap-store
 
 ## 📺 Here's a video detailing the process.
 
@@ -123,6 +144,11 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 
 [twitter]: https://twitter.com/spences10
 [ask me anything]: https://github.com/spences10/ama
+[this process in the past]:
+  https://thelocalhost.blog/2019/04/01/update-wsl-from-18.04-18.10/
+[my comments]: https://dev.to/spences10/comment/9n19
+[lxd error]:
+  https://askubuntu.com/questions/1119301/your-system-is-unable-to-reach-the-snap-store
 [dev.to]: https://dev.to
 [stack overflow]:
   https://askubuntu.com/questions/1119301/your-system-is-unable-to-reach-the-snap-store
