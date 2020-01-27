@@ -1,15 +1,7 @@
 ---
 date: 2020-12-31
 title: Upgrade Windows Subsystem Linux - Ubuntu 18.04 to Ubuntu 19.10
-tags:
-  [
-    'information',
-    'learning',
-    'wsl',
-    'guide',
-    'bash on windows',
-    'ubuntu',
-  ]
+tags: ['information', 'wsl', 'guide', 'bash on windows', 'ubuntu']
 published: true
 cover: ./cover.jpg
 coverCredit: Photo by Daniel Kuruvilla on Unsplash
@@ -17,6 +9,26 @@ coverCredit: Photo by Daniel Kuruvilla on Unsplash
 
 In this guide I'm going to detail upgrading your Windows Subsystem
 Linux (WSL) Ubuntu install from the current 18.04 to 19.10.
+
+```bash
+lsb_release -a
+sudo do-release-upgrade
+sudo nano /etc/update-manager/release-upgrades
+# change lts to normal
+# ctrl+o then ctrl+x
+# if you want to
+sudo dpkg --force depends -P lxd; sudo dpkg --force depends -P lxd-client
+sudo do-release-upgrade
+# take maintainers version on all conflicts
+```
+
+https://dev.to/spences10/comment/9n19
+
+https://askubuntu.com/questions/1119301/your-system-is-unable-to-reach-the-snap-store
+
+## 📺 Here's a video detailing the process.
+
+<YouTube youTubeId="IErQ4RnzPOg" />
 
 This is a guide that will cover upgrading Windows Subsystem Linux
 (WSL) from the current LTS version to the latest 'normal' version
