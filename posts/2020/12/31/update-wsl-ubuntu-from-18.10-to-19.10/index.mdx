@@ -7,14 +7,14 @@ cover: ./cover.jpg
 coverCredit: Photo by Daniel Kuruvilla on Unsplash
 ---
 
-In this guide I'm going to detail upgrading your Windows Subsystem
-Linux (WSL) Ubuntu install from the current version 18.04 to 19.10.
+In this guide I'm going to detail upgrading a Windows Subsystem Linux
+(WSL) Ubuntu install from the current version 18.04 to 19.10 this is
+an intermediary release before Ubuntu 20.04 is released on 2020
+April 23.
 
 I have documented [this process in the past] for moving from Ubuntu
 version 18.04 to 18.10. You can see [my comments] as I went through
 the process back then.
-
-[lxd error]
 
 ## Check the current Ubuntu version
 
@@ -27,13 +27,44 @@ enter `lsb_release -a` and you'll have the current version displayed.
 lsb_release -a
 ```
 
+[lxd error]
+
 Output should look something similar to this:
 
 ![](./1.current-version.png)
 
 ## Do the release upgrade!
 
+To start the upgrade use the terminal command `do-release-upgrade`.
+
+```bash
+sudo do-release-upgrade
+```
+
 ![](./2.do-release-upgrade.png)
+
+## Set release upgrades to normal
+
+This will prompt you if your `release-upgrades` file isn't set to
+`normal`.
+
+Open the `release-upgrades` file path to edit, in this example I'm
+using [Nano] to edit the file.
+
+```bash
+sudo nano /etc/update-manager/release-upgrades
+```
+
+Enter the command:
+
+![](./3.upgrade-path.png)
+
+In the file change the `Prompt` from `Prompt=lts` to `Prompt=normal`.
+
+![](./4.release-upgrdes-normal.png)
+
+To save the file in Nano use Ctrl+o to write out the file, confirm
+then to close use Ctrl+x.
 
 ```bash
 lsb_release -a
@@ -147,6 +178,9 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 [this process in the past]:
   https://thelocalhost.blog/2019/04/01/update-wsl-from-18.04-18.10/
 [my comments]: https://dev.to/spences10/comment/9n19
+[`do-release-upgrade`]:
+  https://help.ubuntu.com/lts/serverguide/installing-upgrading.html
+[nano]: https://help.ubuntu.com/community/Nano
 [lxd error]:
   https://askubuntu.com/questions/1119301/your-system-is-unable-to-reach-the-snap-store
 [dev.to]: https://dev.to
