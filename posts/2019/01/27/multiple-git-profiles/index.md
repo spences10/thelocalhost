@@ -152,4 +152,4 @@ Work specific config `~/work/.gitconfig`
   https://github.com/spences10/cheat-sheets/blob/master/git.md#use-multiple-ssh-keys
 [re use ssh keys from one machine to another]:
   https://github.com/spences10/cheat-sheets/blob/master/git.md#re-use-ssh-keys-from-one-machine-to-another
-[wsl set-up]: https://blog.scottspence.me/wsl-bootstrap-2019
+[wsl set-up]: https://thelocalhost.blog/wsl-bootstrap-2019
