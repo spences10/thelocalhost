@@ -6,7 +6,7 @@ const StyledText = styled.blockquote`
   p {
     margin-top: 0;
     border-left: 5px solid ${({ theme }) => theme.colours.grey[700]};
-    padding-left: 5px;
+    padding-left: 15px;
     font-style: italic;
     font-size: ${({ theme }) => theme.fontSize['2xl']};
     color: ${({ theme }) => theme.colours.grey[700]};
