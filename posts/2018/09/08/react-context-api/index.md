@@ -231,18 +231,18 @@ we're going to define several theme aspects we want to change, these
 are going to be:
 
 ```js
-primary // colour
-secondary // colour
-danger // colour
-fontHeader // font
-fontBody // font
+primary; // colour
+secondary; // colour
+danger; // colour
+fontHeader; // font
+fontBody; // font
 ```
 
 Create a file to contain the theme object in the `theme` directory and
 call it `globalStyle.js` and add in the following:
 
 ```js
-import { injectGlobal } from 'styled-components'
+import { injectGlobal } from 'styled-components';
 
 export const themes = {
   theme1: {
@@ -268,7 +268,7 @@ export const themes = {
     fontHeader: 'Kaushan Script, sans, sans-serif',
     fontBody: 'Headland One, sans-serif',
   },
-}
+};
 
 injectGlobal`
   @import url('
@@ -285,7 +285,7 @@ injectGlobal`
     padding: 0;
     margin: 0;
   }
-`
+`;
 ```
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/qnxbteccbaw92jbwsq9c.gif)
@@ -312,7 +312,7 @@ const AppHeader = styled.div`
   padding: 1rem;
   color: ${({ theme }) => theme.dark};
   background-color: ${({ theme }) => theme.primary};
-`
+`;
 ```
 
 You will notice here that we're beginning to use the
@@ -329,7 +329,7 @@ there won't be any change until the `ThemeProvider` is passed the
 ```js
 const AppTitle = styled.h1`
   font-family: ${({ theme }) => theme.fontHeader};
-`
+`;
 ```
 
 For the spinning React logo we can use the asset used previously in
@@ -340,7 +340,7 @@ and add it into the `AppLogo` styled component as an `img` tag:
 
 ```js
 const logo = `https://user-images.githubusercontent.com/
-    234708/37256552-32635a02-2554-11e8-8fe3-8ab5bd969d8e.png`
+    234708/37256552-32635a02-2554-11e8-8fe3-8ab5bd969d8e.png`;
 ```
 
 The `keyframes` helper will need to be imported alongside the
@@ -354,7 +354,7 @@ const rotate360 = keyframes`
   to { 
     transform: rotate(360deg); 
   }
-`
+`;
 
 const AppLogo = styled.img`
   animation: ${rotate360} infinite 5s linear;
@@ -362,7 +362,7 @@ const AppLogo = styled.img`
   &:hover {
     animation: ${rotate360} infinite 1s linear;
   }
-`
+`;
 ```
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/pxe3fb5zqvprvtjthq5b.gif)
@@ -378,7 +378,7 @@ following:
 **`src/Shared.js`**
 
 ```js
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
   padding: 0.5rem 1rem;
@@ -414,7 +414,7 @@ export const Button = styled.button`
     transform: translateY(2px);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   }
-`
+`;
 
 export const StyledHyperLink = styled.a`
   cursor: pointer;
@@ -426,7 +426,7 @@ export const StyledHyperLink = styled.a`
     color: ${({ theme }) => theme.secondary};
   }
   color: ${({ theme }) => theme.primary};
-`
+`;
 ```
 
 Then import the components like any other:
@@ -444,17 +444,17 @@ const AppIntro = styled.p`
     font-size: 1.3rem;
   }
   font-family: ${({ theme }) => theme.fontBody};
-`
+`;
 
 const Underline = styled.span`
   border-bottom: 4px solid ${({ theme }) => theme.secondary};
-`
+`;
 
 const StyledHyperLink = SHL.extend`
   text-decoration: none;
   font-family: ${({ theme }) => theme.fontBody};
   color: ${({ theme }) => theme.fontDark};
-`
+`;
 ```
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/smm6hpg2w71sxm6nf3ln.gif)
@@ -564,9 +564,9 @@ In our `src/contexts/` directory we're going to make our
 `SiteThemeContext.js`, import React and define and export our context:
 
 ```js
-import React from 'react'
+import React from 'react';
 
-export const SiteThemeContext = React.createContext()
+export const SiteThemeContext = React.createContext();
 ```
 
 ### So what is a context?
@@ -587,9 +587,9 @@ Now to create a provider, the provider is a regular React component,
 so:
 
 ```js
-import React from 'react'
+import React from 'react';
 
-export const SiteThemeContext = React.createContext()
+export const SiteThemeContext = React.createContext();
 
 export class SiteThemeProvider extends React.Component {
   render() {
@@ -597,7 +597,7 @@ export class SiteThemeProvider extends React.Component {
       <SiteThemeContext.Provider value={}>
         {this.props.children}
       </SiteThemeContext.Provider>
-    )
+    );
   }
 }
 ```
@@ -619,17 +619,17 @@ copy of that into the `value` prop by spreading into state `...❤️`, it
 should look like this:
 
 ```js
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { themes } from '../theme/globalStyle'
+import { themes } from '../theme/globalStyle';
 
-export const SiteThemeContext = React.createContext()
+export const SiteThemeContext = React.createContext();
 
 export class SiteThemeProvider extends React.Component {
   state = {
     theme: themes['theme1'],
-  }
+  };
 
   render() {
     return (
@@ -640,7 +640,7 @@ export class SiteThemeProvider extends React.Component {
       >
         {this.props.children}
       </SiteThemeContext.Provider>
-    )
+    );
   }
 }
 ```
@@ -659,33 +659,33 @@ value:
 
 ```js
 handleThemeChange = e => {
-  const key = e.target.value
-  const theme = themes[key]
-  this.setState({ theme })
-}
+  const key = e.target.value;
+  const theme = themes[key];
+  this.setState({ theme });
+};
 ```
 
 This can then be consumed by any provider that wants to use it, we're
 going to need to add it into the `value` prop, like this:
 
 ```js
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { themes } from '../theme/globalStyle'
+import { themes } from '../theme/globalStyle';
 
-export const SiteThemeContext = React.createContext()
+export const SiteThemeContext = React.createContext();
 
 export class SiteThemeProvider extends React.Component {
   state = {
     theme: themes['theme1'],
-  }
+  };
 
   handleThemeChange = e => {
-    const key = e.target.value
-    const theme = themes[key]
-    this.setState({ theme })
-  }
+    const key = e.target.value;
+    const theme = themes[key];
+    this.setState({ theme });
+  };
 
   render() {
     return (
@@ -697,7 +697,7 @@ export class SiteThemeProvider extends React.Component {
       >
         {this.props.children}
       </SiteThemeContext.Provider>
-    )
+    );
   }
 }
 ```
@@ -742,15 +742,15 @@ First we'll do it without the consumer then we'll add it in.
 **`ThemeSelect.js`**
 
 ```js
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { themes } from '../theme/globalStyle'
+import { themes } from '../theme/globalStyle';
 
 const SelectWrapper = styled.div`
   margin: 0rem 0.5rem 0rem 0.25rem;
   padding: 0rem 0.5rem 0rem 0.25rem;
-`
+`;
 
 const Select = styled.select`
   margin: 1.5rem 0.5rem;
@@ -760,11 +760,11 @@ const Select = styled.select`
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   background: ${({ theme }) => theme.foreground};
   border-radius: 4px;
-`
+`;
 
 export const SelectOpt = styled.option`
   font-family: ${({ theme }) => theme.fontBody};
-`
+`;
 
 const ThemeSelect = props => {
   return (
@@ -775,14 +775,14 @@ const ThemeSelect = props => {
             <SelectOpt key={index} value={theme}>
               Theme {index + 1}
             </SelectOpt>
-          )
+          );
         })}
       </Select>
     </SelectWrapper>
-  )
-}
+  );
+};
 
-export default ThemeSelect
+export default ThemeSelect;
 ```
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/43e15llsi8uhlmi1z1ut.gif)
@@ -865,14 +865,14 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 <!-- Links -->
 
 [how that went here]:
-  https://blog.scottspence.me/react-context-api-with-gatsby
+  https://thelocalhost.blog/react-context-api-with-gatsby
 [styled-components getting started]:
-  https://blog.scottspence.me/styled-components-getting-started
+  https://thelocalhost.blog/styled-components-getting-started
 [example]: https://codesandbox.io/s/7wwr706nz0
 [react docs]: https://reactjs.org/docs/context.html
 [prop drilling]:
   https://blog.kentcdodds.com/prop-drilling-bb62e02cb691
-[my gatsby blog]: https://blog.scottspence.me
+[my gatsby blog]: https://thelocalhost.blog
 [@leighchalliday]: https://twitter.com/leighchalliday
 [great usecase]: https://www.youtube.com/watch?v=yzQ_XulhQFw
 [codesandbox]: https://codesandbox.io
