@@ -146,4 +146,7 @@ export const GlobalStyle = createGlobalStyle`
   .youtube-mdx-embed {
     margin-top: ${({ theme }) => theme.spacing[8]};
   }
+  .gatsby-resp-image-wrapper {
+    margin-top: ${({ theme }) => theme.spacing[8]};
+  }
 `;
