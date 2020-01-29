@@ -11,6 +11,12 @@ import styled from 'styled-components';
 import 'victormono';
 import { copyToClipboard } from '../../utils/copy-to-clipboard';
 
+export const CodeWrapper = styled.div`
+  position: relative;
+  margin-left: -${({ theme }) => theme.spacing[4]};
+  margin-right: -${({ theme }) => theme.spacing[4]};
+`;
+
 const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;

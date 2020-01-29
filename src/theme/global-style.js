@@ -139,14 +139,14 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colours.grey[900]};
   }
   body {
-    line-height: ${({ theme }) => theme.lineHeight.normal};
+    line-height: ${({ theme }) => theme.lineHeight.relaxed};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
     background-color: ${({ theme }) => theme.colours.grey[100]};
   }
   .youtube-mdx-embed {
-    margin-top: ${({ theme }) => theme.spacing[8]};
+    margin-top: ${({ theme }) => theme.spacing[10]};
   }
   .gatsby-resp-image-wrapper {
-    margin-top: ${({ theme }) => theme.spacing[8]};
+    margin-top: ${({ theme }) => theme.spacing[10]};
   }
 `;
