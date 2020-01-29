@@ -5,6 +5,7 @@ import {
   A,
   Blockquote,
   Code,
+  CodeWrapper,
   H1,
   H2,
   H3,
@@ -30,7 +31,7 @@ const components = {
   pre: ({ children: { props } }) => {
     if (props.mdxType === 'code') {
       return (
-        <div style={{ position: 'relative' }}>
+        <CodeWrapper>
           <Code
             codeString={props.children.trim()}
             language={
@@ -39,7 +40,7 @@ const components = {
             }
             {...props}
           />
-        </div>
+        </CodeWrapper>
       );
     }
   },
