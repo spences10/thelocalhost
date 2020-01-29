@@ -1,6 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
-import Player from 'react-player';
 import { ThemeProvider } from 'styled-components';
 import {
   A,
@@ -49,16 +48,6 @@ const components = {
   },
   small: props => <Small {...props} />,
   ul: props => <Ul {...props} />,
-  Video: props => (
-    <Player
-      {...props}
-      css={{
-        margin: 'auto',
-        paddingBottom: '1.5rem',
-        paddingTop: '1.5rem',
-      }}
-    />
-  ),
   wrapper: ({ children }) => <>{children}</>,
 };
 
