@@ -16,11 +16,13 @@ import {
   Small,
   Ul,
 } from './src/components/page-elements';
+import { Div } from './src/components/page-elements/div';
 import { GlobalStyle, theme } from './src/theme/global-style';
 
 const components = {
-  blockquote: props => <Blockquote {...props} />,
   a: props => <A {...props} />,
+  blockquote: props => <Blockquote {...props} />,
+  div: props => <Div {...props} />,
   h1: props => <H1 {...props} />,
   h2: props => <H2 {...props} />,
   h3: props => <H3 {...props} />,
