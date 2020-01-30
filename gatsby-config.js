@@ -39,7 +39,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 540,
+              maxWidth: 680,
             },
           },
           `gatsby-remark-copy-linked-files`,
@@ -58,7 +58,7 @@ module.exports = {
         {
           resolve: `gatsby-remark-images`,
           options: {
-            maxWidth: 540,
+            maxWidth: 680,
           },
         },
       ],
@@ -71,15 +71,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        google: {
-          families: [
-            'Poppins:400,700',
-            'Pridi:400,700',
-            'Space Mono:400,700',
-          ],
-        },
+        fonts: [
+          `poppins\:400,700`,
+          `pridi\:400,700`,
+          `space mono\:400,700`,
+        ],
+        display: 'swap',
       },
     },
     {

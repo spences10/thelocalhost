@@ -5,6 +5,7 @@ import {
   A,
   Blockquote,
   Code,
+  CodeWrapper,
   H1,
   H2,
   H3,
@@ -18,8 +19,9 @@ import {
 import { GlobalStyle, theme } from './src/theme/global-style';
 
 const components = {
-  blockquote: props => <Blockquote {...props} />,
   a: props => <A {...props} />,
+  blockquote: props => <Blockquote {...props} />,
+  // div: props => <Div {...props} />,
   h1: props => <H1 {...props} />,
   h2: props => <H2 {...props} />,
   h3: props => <H3 {...props} />,
@@ -30,7 +32,7 @@ const components = {
   pre: ({ children: { props } }) => {
     if (props.mdxType === 'code') {
       return (
-        <div style={{ position: 'relative' }}>
+        <CodeWrapper>
           <Code
             codeString={props.children.trim()}
             language={
@@ -39,20 +41,18 @@ const components = {
             }
             {...props}
           />
-        </div>
+        </CodeWrapper>
       );
     }
   },
-  ul: props => <Ul {...props} />,
   small: props => <Small {...props} />,
+  ul: props => <Ul {...props} />,
   wrapper: ({ children }) => <>{children}</>,
 };
 
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <MDXProvider components={components}>
-      <>{element}</>
-    </MDXProvider>
+    <MDXProvider components={components}>{element}</MDXProvider>
   </ThemeProvider>
 );
