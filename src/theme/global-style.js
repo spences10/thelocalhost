@@ -149,4 +149,11 @@ export const GlobalStyle = createGlobalStyle`
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
   }
+  .highlight-line {
+    background-color: rgba(201, 167, 255, 0.2);
+    margin: 0 -10px;
+    padding: 0 5px;
+    border-left: 5px solid ${({ theme }) =>
+      theme.colours.primary[500]};
+  }
 `;
