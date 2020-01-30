@@ -15,8 +15,8 @@ const RE = /{([\d,-]+)}/;
 
 export const CodeWrapper = styled.div`
   position: relative;
-  margin-left: -${({ theme }) => theme.spacing[4]};
-  margin-right: -${({ theme }) => theme.spacing[4]};
+  margin-left: -${({ theme }) => theme.spacing[8]};
+  margin-right: -${({ theme }) => theme.spacing[8]};
 `;
 
 const Pre = styled.pre`
@@ -25,8 +25,8 @@ const Pre = styled.pre`
   padding: 0.5em;
   overflow-x: auto;
   border-radius: 3px;
-
   font-family: 'Victor Mono', 'Courier New', Courier, monospace;
+  ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
 `;
 
 const LineNo = styled.span`
