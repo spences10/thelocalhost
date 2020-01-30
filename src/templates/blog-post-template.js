@@ -6,6 +6,7 @@ import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import { StyledDate } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 
 export default ({ data, pageContext }) => {
   const {
@@ -42,7 +43,9 @@ export default ({ data, pageContext }) => {
       />
       <H1>{frontmatter.title}</H1>
       <StyledDate>{frontmatter.date}</StyledDate>
-      <MDXRenderer>{body}</MDXRenderer>
+      <MdxEmbedProvider>
+        <MDXRenderer>{body}</MDXRenderer>
+      </MdxEmbedProvider>
       {previous === false ? null : (
         <>
           {previous && (
