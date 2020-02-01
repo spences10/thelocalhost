@@ -1,3 +1,4 @@
+import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
@@ -6,7 +7,6 @@ import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import { StyledDate } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
-import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 
 export default ({ data, pageContext }) => {
   const {
@@ -18,7 +18,12 @@ export default ({ data, pageContext }) => {
     twitterUsername,
     authorName,
   } = useSiteMetadata();
-  const { frontmatter, body, fields, excerpt } = data.mdx;
+  const {
+    frontmatter,
+    body,
+    fields: { slug, editLink },
+    excerpt,
+  } = data.mdx;
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
   return (
@@ -32,7 +37,7 @@ export default ({ data, pageContext }) => {
             ? `${siteUrl}${image}`
             : `${siteUrl}${cover.publicURL}`
         }
-        pathname={`${siteUrl}${fields.slug}`}
+        pathname={`${siteUrl}${slug}`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}
         twitterUsername={twitterUsername}
@@ -82,6 +87,7 @@ export const query = graphql`
       excerpt
       fields {
         slug
+        editLink
       }
     }
   }
