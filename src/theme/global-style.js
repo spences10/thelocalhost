@@ -2,6 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 export const theme = {
+  breakpoints: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
   colours: {
     transparent: 'transparent',
 
