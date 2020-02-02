@@ -7,7 +7,6 @@ import { Layout } from '../components/layout';
 import {
   Link,
   PostDate,
-  PostEditOnGitHub,
   PostInfo,
   PostTimeToRead,
 } from '../components/shared';
@@ -98,15 +97,6 @@ export default ({ data }) => {
                       <PostTimeToRead>
                         {timeToRead} minutes to read
                       </PostTimeToRead>
-                      <PostEditOnGitHub>
-                        <a
-                          href={editLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Edit on GitHub
-                        </a>
-                      </PostEditOnGitHub>
                     </PostInfo>
                     <StyledExcerpt>{excerpt}</StyledExcerpt>
                   </CopyWrapper>

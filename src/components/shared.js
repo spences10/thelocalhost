@@ -40,18 +40,18 @@ export const PostDate = styled.div`
 export const PostTimeToRead = styled.div`
   grid-area: ttr;
   margin-right: ${({ theme }) => theme.spacing[1]};
-  &:after {
-    content: ' ·';
-  }
-  ${down('sm')} {
-    &:after {
-      content: '';
-    }
-  }
 `;
 
 export const PostEditOnGitHub = styled.div`
   grid-area: edit;
+  &:before {
+    content: '· ';
+  }
+  ${down('sm')} {
+    &:before {
+      content: '';
+    }
+  }
   a {
     color: ${({ theme }) => theme.colours.grey[700]};
     text-decoration: underline;
