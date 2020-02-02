@@ -11,6 +11,7 @@ import {
   PostTimeToRead,
 } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 
 export default ({ data, pageContext }) => {
   const {

@@ -8,8 +8,6 @@ cover: ./cover.jpg
 coverCredit: Photo by SpaceX on Unsplash
 ---
 
-import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
-
 I have been a Gatsby user since around [v0 May 2017], at that time was
 using a template called [Lumen] and it was just what I needed at the
 time. Since then I have have gone from using a template to creating my
@@ -426,7 +424,7 @@ The Gatsby plugin is for built-in server-side rendering support.
 Ok, with that detailed explanation out of the way, configure them in
 `gatsby-config.js`:
 
-```js
+```js {1-4,7,9}
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
@@ -444,7 +442,10 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/posts`, name: `posts` },
+      options: {
+        path: `${__dirname}/posts`,
+        name: `posts`,
+      },
     },
   ],
 };
@@ -459,7 +460,7 @@ destructuring from the `useSiteMetadata` hook you made previously.
 
 For this example make it the now iconic Gatsby `rebeccapurple`.
 
-```jsx
+```jsx {2-3,5-7,10-16}
 import React from 'react';
 import styled from 'styled-components';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
