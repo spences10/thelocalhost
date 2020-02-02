@@ -1,3 +1,4 @@
+import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
@@ -11,7 +12,6 @@ import {
   PostTimeToRead,
 } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
-import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 
 export default ({ data, pageContext }) => {
   const {
@@ -67,7 +67,9 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
-      <MDXRenderer>{body}</MDXRenderer>
+      <MdxEmbedProvider>
+        <MDXRenderer>{body}</MDXRenderer>
+      </MdxEmbedProvider>
       {previous === false ? null : (
         <>
           {previous && (
