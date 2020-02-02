@@ -11,6 +11,7 @@ import {
   PostInfo,
   PostTimeToRead,
 } from '../components/shared';
+import { useAnalytics } from '../contexts/event-tracking';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 export default ({ data, pageContext }) => {
@@ -33,6 +34,7 @@ export default ({ data, pageContext }) => {
   } = data.mdx;
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
+  const fa = useAnalytics();
   return (
     <Layout>
       <SEO
@@ -59,6 +61,9 @@ export default ({ data, pageContext }) => {
         <PostTimeToRead>{timeToRead} minutes to read</PostTimeToRead>
         <PostEditOnGitHub>
           <a
+            onClick={() => {
+              fa('MRMZX5TM');
+            }}
             href={editLink}
             target="_blank"
             rel="noopener noreferrer"
