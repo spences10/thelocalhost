@@ -59,5 +59,6 @@ export const PostEditOnGitHub = styled.div`
     &:hover {
       opacity: 0.5;
     }
+    cursor: pointer;
   }
 `;
