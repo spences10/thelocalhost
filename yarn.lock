@@ -11076,10 +11076,10 @@ react-live@2.2.2:
     react-simple-code-editor "^0.10.0"
     unescape "^1.0.1"
 
-react-player@1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/react-player/-/react-player-1.15.0.tgz#bc2ebfe18f632087a2f0e5c8516ab9b8165058e3"
-  integrity sha512-zw4MW2zyy4pEPtAWkaIsFCt6jRtlZ172+3GebsPsTHe9jhsSXP1jmvW+nPPl8pNcueB5KuhyRPCX1X6OUMCNzg==
+react-player@1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/react-player/-/react-player-1.15.1.tgz#bfcf9a571dce833a2e63cecd08cec99b6c549642"
+  integrity sha512-mq9c7BU4isE3Ym3488WVcdNPuNRwv4SwTaI3ic0w2bEC655M0cueC5srgdCzI2AYolyXEAz4yovOlPHoya0yIA==
   dependencies:
     "@ava/babel" "^1.0.0"
     deepmerge "^4.0.0"
