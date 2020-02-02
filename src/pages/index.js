@@ -4,7 +4,13 @@ import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
-import { Link, StyledDate } from '../components/shared';
+import {
+  Link,
+  PostDate,
+  PostEditOnGitHub,
+  PostInfo,
+  PostTimeToRead,
+} from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const IndexWrapper = styled.main``;
@@ -69,18 +75,39 @@ export default ({ data }) => {
       <IndexWrapper>
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
-          ({ id, excerpt, frontmatter, fields }) => (
+          ({
+            id,
+            excerpt,
+            frontmatter,
+            fields: { slug, editLink },
+            timeToRead,
+          }) => (
             <LinkWrapper key={id}>
-              <StyledLink to={fields.slug}>
+              <StyledLink to={slug}>
                 <PostWrapper>
                   {!!frontmatter.cover ? (
                     <Image
                       sizes={frontmatter.cover.childImageSharp.sizes}
+                      alt={`cover image`}
                     />
                   ) : null}
                   <CopyWrapper>
                     <StyledTitle>{frontmatter.title}</StyledTitle>
-                    <StyledDate>{frontmatter.date}</StyledDate>
+                    <PostInfo>
+                      <PostDate>{frontmatter.date}</PostDate>
+                      <PostTimeToRead>
+                        {timeToRead} minutes to read
+                      </PostTimeToRead>
+                      <PostEditOnGitHub>
+                        <a
+                          href={editLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Edit on GitHub
+                        </a>
+                      </PostEditOnGitHub>
+                    </PostInfo>
                     <StyledExcerpt>{excerpt}</StyledExcerpt>
                   </CopyWrapper>
                 </PostWrapper>
@@ -114,8 +141,11 @@ export const query = graphql`
             }
           }
         }
+        tableOfContents
+        timeToRead
         fields {
           slug
+          editLink
         }
       }
     }
