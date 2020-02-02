@@ -4,7 +4,12 @@ import React from 'react';
 import SEO from 'react-seo-component';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
-import { StyledDate } from '../components/shared';
+import {
+  PostDate,
+  PostEditOnGitHub,
+  PostInfo,
+  PostTimeToRead,
+} from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 import { MdxEmbedProvider } from '@pauliescanlon/gatsby-mdx-embed';
 
@@ -18,7 +23,14 @@ export default ({ data, pageContext }) => {
     twitterUsername,
     authorName,
   } = useSiteMetadata();
-  const { frontmatter, body, fields, excerpt } = data.mdx;
+  const {
+    frontmatter,
+    body,
+    fields: { slug, editLink },
+    excerpt,
+    tableOfContents,
+    timeToRead,
+  } = data.mdx;
   const { title, date, cover } = frontmatter;
   const { previous, next } = pageContext;
   return (
@@ -32,7 +44,7 @@ export default ({ data, pageContext }) => {
             ? `${siteUrl}${image}`
             : `${siteUrl}${cover.publicURL}`
         }
-        pathname={`${siteUrl}${fields.slug}`}
+        pathname={`${siteUrl}${slug}`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}
         twitterUsername={twitterUsername}
@@ -42,10 +54,20 @@ export default ({ data, pageContext }) => {
         modifiedDate={new Date(Date.now()).toISOString()}
       />
       <H1>{frontmatter.title}</H1>
-      <StyledDate>{frontmatter.date}</StyledDate>
-      <MdxEmbedProvider>
-        <MDXRenderer>{body}</MDXRenderer>
-      </MdxEmbedProvider>
+      <PostInfo>
+        <PostDate>{frontmatter.date}</PostDate>
+        <PostTimeToRead>{timeToRead} minutes to read</PostTimeToRead>
+        <PostEditOnGitHub>
+          <a
+            href={editLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Edit on GitHub
+          </a>
+        </PostEditOnGitHub>
+      </PostInfo>
+      <MDXRenderer>{body}</MDXRenderer>
       {previous === false ? null : (
         <>
           {previous && (
@@ -80,8 +102,11 @@ export const query = graphql`
       }
       body
       excerpt
+      tableOfContents
+      timeToRead
       fields {
         slug
+        editLink
       }
     }
   }
