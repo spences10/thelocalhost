@@ -1253,10 +1253,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@pauliescanlon/gatsby-mdx-embed@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@pauliescanlon/gatsby-mdx-embed/-/gatsby-mdx-embed-0.0.16.tgz#f5e0d3c407ecbdd5ee7aacd3b79b5b3e8c97f750"
-  integrity sha512-3BHNkXna/1n58rYEQ5lzokr2JmCM0OL8jT8zd+DvycbO2PUoldfGF9YDWZbgWtZ+KHGAuUpvk95HIgUqANw99g==
+"@pauliescanlon/gatsby-mdx-embed@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@pauliescanlon/gatsby-mdx-embed/-/gatsby-mdx-embed-0.0.17.tgz#ef67ff62b117ccfa9d8e58c0ed520bf6ae5a4db1"
+  integrity sha512-thdvpcC7TBD3hEN+6CzJ0Jl7ln37z4XFU+U1vHEHKKGnxntNlajx/4LkIyONGJA9+tCjYaLls+p7h8Cl7A7Z3g==
 
 "@pieh/friendly-errors-webpack-plugin@1.7.0-chalk-2":
   version "1.7.0-chalk-2"
@@ -5586,7 +5586,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 fsevents@~2.1.1:
   version "2.1.2"
