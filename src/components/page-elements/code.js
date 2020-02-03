@@ -1,10 +1,16 @@
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import React from 'react';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
+import {
+  LiveEditor,
+  LiveError,
+  LivePreview,
+  LiveProvider,
+} from 'react-live';
 import styled from 'styled-components';
 import 'victormono';
 import { copyToClipboard } from '../../utils/copy-to-clipboard';
+import { down, up } from 'styled-breakpoints';
 
 const RE = /{([\d,-]+)}/;
 
@@ -12,6 +18,10 @@ export const CodeWrapper = styled.div`
   position: relative;
   margin-left: -${({ theme }) => theme.spacing[8]};
   margin-right: -${({ theme }) => theme.spacing[8]};
+  ${down('sm')} {
+    margin-left: -${({ theme }) => theme.spacing[0]};
+    margin-right: -${({ theme }) => theme.spacing[0]};
+  }
 `;
 
 const Pre = styled.pre`
