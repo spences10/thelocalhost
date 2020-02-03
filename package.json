@@ -1,6 +1,6 @@
 {
   "name": "the-localhost-blog",
-  "version": "0.1.47",
+  "version": "0.1.48",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "@mdx-js/mdx": "1.5.5",
     "@mdx-js/react": "1.5.5",
-    "@pauliescanlon/gatsby-mdx-embed": "0.0.15",
+    "@pauliescanlon/gatsby-mdx-embed": "0.0.17",
     "babel-plugin-styled-components": "1.10.7",
     "gatsby": "2.19.12",
     "gatsby-image": "2.2.40",
