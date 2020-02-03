@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import {
+  Link as GatsbyLink,
   PostDate,
   PostEditOnGitHub,
   PostInfo,
@@ -19,33 +20,24 @@ import { useSiteMetadata } from '../hooks/use-site-metadata';
 const PostNavigationWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
   display: grid;
-  grid-template-areas: 'prev next';
+  grid-template-areas:
+    'prev'
+    'next';
   ${down('sm')} {
     grid-template-areas:
       'prev'
       'next';
-    margin: ${({ theme }) => theme.spacing[4]};
+    margin: ${({ theme }) => theme.spacing[0]};
   }
 `;
 
 const PrevNextWrapper = styled.div`
   display: grid;
   justify-items: ${props => props.justify};
-  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  margin-top: ${({ theme }) => theme.spacing[2]};
 `;
 
-const PrevNextButton = styled.button`
-  grid-area: ${props => props.area};
-  margin-right: ${({ theme }) => theme.spacing[1]};
-  border: 0;
-  margin: ${({ theme }) => theme.spacing[4]};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-  color: ${({ theme }) => theme.colours.grey[100]};
-  background-color: ${({ theme }) => theme.colours.primary[500]};
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-`;
+const Link = styled(GatsbyLink)``;
 
 export default ({ data, pageContext }) => {
   const {
@@ -115,16 +107,12 @@ export default ({ data, pageContext }) => {
                 <Link
                   to={previous.fields.slug}
                   aria-label="View previous page"
+                  data-tip={`${previous.excerpt.substring(
+                    0,
+                    180
+                  )}...`}
                 >
-                  <PrevNextButton
-                    area={'prev'}
-                    data-tip={`${previous.excerpt.substring(
-                      0,
-                      180
-                    )}...`}
-                  >
-                    ← {previous.frontmatter.title.substring(0, 80)}...
-                  </PrevNextButton>
+                  ← {previous.frontmatter.title.substring(0, 80)}...
                 </Link>
               )}
             </>
@@ -137,13 +125,9 @@ export default ({ data, pageContext }) => {
                 <Link
                   to={next.fields.slug}
                   aria-label="View next page"
+                  data-tip={`${next.excerpt.substring(0, 180)}...`}
                 >
-                  <PrevNextButton
-                    area={'next'}
-                    data-tip={`${next.excerpt.substring(0, 180)}...`}
-                  >
-                    {next.frontmatter.title.substring(0, 50)}... →
-                  </PrevNextButton>
+                  {next.frontmatter.title.substring(0, 50)}... →
                 </Link>
               )}
             </>
