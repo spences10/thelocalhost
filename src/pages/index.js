@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import { isIE } from 'react-device-detect';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
@@ -59,6 +60,16 @@ export default ({ data }) => {
     siteLocale,
     twitterUsername,
   } = useSiteMetadata();
+  if (isIE)
+    return (
+      <IndexWrapper>
+        <StyledTitle>IE is not supported.</StyledTitle>
+        <StyledExcerpt>
+          Please use a modern browser, download Firefox, Chrome or
+          Edge
+        </StyledExcerpt>
+      </IndexWrapper>
+    );
   return (
     <Layout>
       <SEO
