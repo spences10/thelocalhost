@@ -1,42 +1,27 @@
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import { isIE } from 'react-device-detect';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
 import {
-  Link,
+  CopyWrapper,
+  IndexWrapper,
   PostDate,
   PostInfo,
   PostTimeToRead,
+  StyledExcerpt,
+  StyledLink,
+  StyledTitle,
 } from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
-
-const IndexWrapper = styled.main``;
 
 const PostWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow: ${({ theme }) => theme.boxShadow.lg};
   color: ${({ theme }) => theme.colours.grey[900]};
   overflow: hidden;
-`;
-
-const CopyWrapper = styled.div`
-  padding: ${({ theme }) => theme.spacing[4]};
-`;
-
-const StyledTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize['3xl']};
-  font-family: ${({ theme }) => theme.font.serif};
-  line-height: ${({ theme }) => theme.lineHeight.none};
-`;
-
-const StyledExcerpt = styled.p`
-  margin-top: ${({ theme }) => theme.spacing[3]};
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
 `;
 
 const LinkWrapper = styled.div`
@@ -59,6 +44,16 @@ export default ({ data }) => {
     siteLocale,
     twitterUsername,
   } = useSiteMetadata();
+  if (isIE)
+    return (
+      <IndexWrapper>
+        <StyledTitle>IE is not supported.</StyledTitle>
+        <StyledExcerpt>
+          Please use a modern browser, download Firefox, Chrome or
+          Edge
+        </StyledExcerpt>
+      </IndexWrapper>
+    );
   return (
     <Layout>
       <SEO

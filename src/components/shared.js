@@ -62,3 +62,23 @@ export const PostEditOnGitHub = styled.div`
     cursor: pointer;
   }
 `;
+
+export const CopyWrapper = styled.div`
+  padding: ${({ theme }) => theme.spacing[4]};
+`;
+
+export const StyledTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+`;
+
+export const StyledExcerpt = styled.p`
+  margin-top: ${({ theme }) => theme.spacing[3]};
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export const IndexWrapper = styled.main``;
