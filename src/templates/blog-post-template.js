@@ -3,6 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
@@ -19,6 +20,12 @@ const PostNavigationWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
   display: grid;
   grid-template-areas: 'prev next';
+  ${down('sm')} {
+    grid-template-areas:
+      'prev'
+      'next';
+    margin: ${({ theme }) => theme.spacing[4]};
+  }
 `;
 
 const PrevNextWrapper = styled.div`
@@ -31,14 +38,13 @@ const PrevNextButton = styled.button`
   grid-area: ${props => props.area};
   margin-right: ${({ theme }) => theme.spacing[1]};
   border: 0;
-  /* margin: ${({ theme }) => theme.spacing[4]}; */
+  margin: ${({ theme }) => theme.spacing[4]};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   color: ${({ theme }) => theme.colours.grey[100]};
   background-color: ${({ theme }) => theme.colours.primary[500]};
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-
 `;
 
 export default ({ data, pageContext }) => {
