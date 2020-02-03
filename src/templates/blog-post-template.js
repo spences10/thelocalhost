@@ -105,9 +105,7 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
-      <MdxEmbedProvider>
-        <MDXRenderer>{body}</MDXRenderer>
-      </MdxEmbedProvider>
+      <MDXRenderer>{body}</MDXRenderer>
       <ReactTooltip />
       <PostNavigationWrapper>
         <PrevNextWrapper justify={'start'}>
