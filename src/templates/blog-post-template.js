@@ -3,6 +3,8 @@ import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
+import ReactTooltip from 'react-tooltip';
+import styled from 'styled-components';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import {
@@ -13,6 +15,32 @@ import {
 } from '../components/shared';
 import { useAnalytics } from '../contexts/event-tracking';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+
+const PostNavigationWrapper = styled.div`
+  margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
+  display: grid;
+  grid-template-areas: 'prev next';
+`;
+
+const PrevNextWrapper = styled.div`
+  display: grid;
+  justify-items: ${props => props.justify};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+`;
+
+const PrevNextButton = styled.button`
+  grid-area: ${props => props.area};
+  margin-right: ${({ theme }) => theme.spacing[1]};
+  border: 0;
+  /* margin: ${({ theme }) => theme.spacing[4]}; */
+  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  color: ${({ theme }) => theme.colours.grey[100]};
+  background-color: ${({ theme }) => theme.colours.primary[500]};
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+
+`;
 
 export default ({ data, pageContext }) => {
   const {
@@ -75,24 +103,50 @@ export default ({ data, pageContext }) => {
       <MdxEmbedProvider>
         <MDXRenderer>{body}</MDXRenderer>
       </MdxEmbedProvider>
-      {previous === false ? null : (
-        <>
-          {previous && (
-            <Link to={previous.fields.slug}>
-              <p>{previous.frontmatter.title}</p>
-            </Link>
+      <ReactTooltip />
+      <PostNavigationWrapper>
+        <PrevNextWrapper justify={'start'}>
+          {previous === false ? null : (
+            <>
+              {previous && (
+                <Link
+                  to={previous.fields.slug}
+                  aria-label="View previous page"
+                >
+                  <PrevNextButton
+                    area={'prev'}
+                    data-tip={`${previous.excerpt.substring(
+                      0,
+                      180
+                    )}...`}
+                  >
+                    ← {previous.frontmatter.title.substring(0, 80)}...
+                  </PrevNextButton>
+                </Link>
+              )}
+            </>
           )}
-        </>
-      )}
-      {next === false ? null : (
-        <>
-          {next && (
-            <Link to={next.fields.slug}>
-              <p>{next.frontmatter.title}</p>
-            </Link>
+        </PrevNextWrapper>
+        <PrevNextWrapper justify={'end'}>
+          {next === false ? null : (
+            <>
+              {next && (
+                <Link
+                  to={next.fields.slug}
+                  aria-label="View next page"
+                >
+                  <PrevNextButton
+                    area={'next'}
+                    data-tip={`${next.excerpt.substring(0, 180)}...`}
+                  >
+                    {next.frontmatter.title.substring(0, 50)}... →
+                  </PrevNextButton>
+                </Link>
+              )}
+            </>
           )}
-        </>
-      )}
+        </PrevNextWrapper>
+      </PostNavigationWrapper>
     </Layout>
   );
 };
