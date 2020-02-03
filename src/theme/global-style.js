@@ -162,4 +162,8 @@ export const GlobalStyle = createGlobalStyle`
     border-left: 5px solid ${({ theme }) =>
       theme.colours.primary[500]};
   }
+  .__react_component_tooltip {
+    height: 100px;
+    max-width: 400px;
+  }
 `;

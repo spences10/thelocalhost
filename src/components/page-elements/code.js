@@ -7,10 +7,10 @@ import {
   LivePreview,
   LiveProvider,
 } from 'react-live';
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import 'victormono';
 import { copyToClipboard } from '../../utils/copy-to-clipboard';
-import { down, up } from 'styled-breakpoints';
 
 const RE = /{([\d,-]+)}/;
 

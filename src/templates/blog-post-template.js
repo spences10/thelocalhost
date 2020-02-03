@@ -1,10 +1,14 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
+import ReactTooltip from 'react-tooltip';
+import { down } from 'styled-breakpoints';
+import styled from 'styled-components';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import {
+  Link as GatsbyLink,
   PostDate,
   PostEditOnGitHub,
   PostInfo,
@@ -12,6 +16,28 @@ import {
 } from '../components/shared';
 import { useAnalytics } from '../contexts/event-tracking';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+
+const PostNavigationWrapper = styled.div`
+  margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
+  display: grid;
+  grid-template-areas:
+    'prev'
+    'next';
+  ${down('sm')} {
+    grid-template-areas:
+      'prev'
+      'next';
+    margin: ${({ theme }) => theme.spacing[0]};
+  }
+`;
+
+const PrevNextWrapper = styled.div`
+  display: grid;
+  justify-items: ${props => props.justify};
+  margin-top: ${({ theme }) => theme.spacing[2]};
+`;
+
+const Link = styled(GatsbyLink)``;
 
 export default ({ data, pageContext }) => {
   const {
@@ -71,26 +97,43 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
-
       <MDXRenderer>{body}</MDXRenderer>
-      {previous === false ? null : (
-        <>
-          {previous && (
-            <Link to={previous.fields.slug}>
-              <p>{previous.frontmatter.title}</p>
-            </Link>
+      <ReactTooltip />
+      <PostNavigationWrapper>
+        <PrevNextWrapper justify={'start'}>
+          {previous === false ? null : (
+            <>
+              {previous && (
+                <Link
+                  to={previous.fields.slug}
+                  aria-label="View previous page"
+                  data-tip={`${previous.excerpt.substring(
+                    0,
+                    180
+                  )}...`}
+                >
+                  ← {previous.frontmatter.title.substring(0, 80)}...
+                </Link>
+              )}
+            </>
           )}
-        </>
-      )}
-      {next === false ? null : (
-        <>
-          {next && (
-            <Link to={next.fields.slug}>
-              <p>{next.frontmatter.title}</p>
-            </Link>
+        </PrevNextWrapper>
+        <PrevNextWrapper justify={'end'}>
+          {next === false ? null : (
+            <>
+              {next && (
+                <Link
+                  to={next.fields.slug}
+                  aria-label="View next page"
+                  data-tip={`${next.excerpt.substring(0, 180)}...`}
+                >
+                  {next.frontmatter.title.substring(0, 50)}... →
+                </Link>
+              )}
+            </>
           )}
-        </>
-      )}
+        </PrevNextWrapper>
+      </PostNavigationWrapper>
     </Layout>
   );
 };
