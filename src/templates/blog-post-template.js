@@ -5,7 +5,6 @@ import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { Dump } from '../components/dump';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import {
@@ -115,7 +114,6 @@ export default ({ data, pageContext }) => {
         </PostEditOnGitHub>
       </PostInfo>
       <MDXRenderer>{body}</MDXRenderer>
-      <Dump toc={tableOfContents} />
       <Toc>
         {tableOfContents.items.map(i => (
           <a href={i.url}>{i.title}</a>

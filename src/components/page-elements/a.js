@@ -11,5 +11,9 @@ export const StyledA = styled.a`
 `;
 
 export const A = props => {
-  return <StyledA {...props}>{props.children}</StyledA>;
+  return (
+    <StyledA {...props} id={props.id}>
+      {props.children}
+    </StyledA>
+  );
 };
