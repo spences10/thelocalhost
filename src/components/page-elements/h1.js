@@ -10,6 +10,10 @@ const StyledText = styled.h1`
   line-height: ${({ theme }) => theme.lineHeight.none};
 `;
 
-export const H1 = ({ children }) => {
-  return <StyledText>{children}</StyledText>;
+export const H1 = props => {
+  return (
+    <StyledText {...props} id={props.id}>
+      {props.children}
+    </StyledText>
+  );
 };
