@@ -8,14 +8,94 @@ cover: ./cover.jpg
 coverCredit: Photo by Misael Moreno on Unsplash
 ---
 
+Smooth scrooolllll!!!1
+
+Ok in this guide I implement smooth scroll on a table of contents
+
+Gatsby Default Starter on CodeSandbox
+
+add deps
+
+- gatsby-plugin-mdx
+- @mdx-js/mdx
+- @mdx-js/react
+- remark-slug
+
+config
+
+Adding `remark-slug` will add `id`'s to the headers
+
+```js {1,9}
+const remarkSlug = require('remark-slug');
+
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.mdx', '.md'],
+        remarkPlugins: [remarkSlug],
+        gatsbyRemarkPlugins: [],
+      },
+    },
+  ],
+};
+```
+
+## Use styled-components to apply scroll-behaviour
+
+Use `createGlobalStyle` in styled-components to add
+`scroll-behaviour: smooth;`
+
+## Confirm the id is present in the headings
+
+## Make a TOC component
+
+```jsx
+const Toc = styled.ul`
+  position: fixed;
+  left: calc(50% + 400px);
+  top: 80px;
+  max-height: 70vh;
+  width: 310px;
+  display: flex;
+`;
+
+const InnerScroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+`;
+```
+
+## Conditionally render the TOC
+
+```jsx
+{
+  typeof tableOfContents.items === 'undefined' ? null : (
+    <Toc>
+      <InnerScroll>
+        <h3>Table of contents</h3>
+        {tableOfContents.items.map(i => (
+          <li>
+            <a href={i.url} key={i.url}>
+              {i.title}
+            </a>
+          </li>
+        ))}
+      </InnerScroll>
+    </Toc>
+  );
+}
+```
+
 ## Resources that helped me
 
-https://johno.com/mdx-table-of-contents-components-in-gatsby
-https://theme-ui.com/guides/linked-headings/
-https://github.com/ChristopherBiscardi/gatsby-mdx/issues/396
-https://github.com/mdx-js/mdx/issues/810
-https://github.com/remarkjs/remark-slug
-https://github.com/ChristopherBiscardi/gatsby-mdx/issues/140
+- [4pine's blog]
+- [Theme UI guide]
+- [Gatsby MDX repo issue 396]
+- [Gatsby MDX repo issue 140]
+- [MDX JS repo issue 810]
+- [remark-slug repo]
 
 ## Thanks for reading 🙏
 
@@ -29,3 +109,12 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 
 [twitter]: https://twitter.com/spences10
 [ask me anything]: https://github.com/spences10/ama
+[4pine's blog]:
+  https://johno.com/mdx-table-of-contents-components-in-gatsby
+[theme ui guide]: https://theme-ui.com/guides/linked-headings/
+[gatsby mdx repo issue 396]:
+  https://github.com/ChristopherBiscardi/gatsby-mdx/issues/396
+[gatsby mdx repo issue 140]: https://github.com/mdx-js/mdx/issues/810
+[mdx js repo issue 810]: https://github.com/remarkjs/remark-slug
+[remark-slug repo]:
+  https://github.com/ChristopherBiscardi/gatsby-mdx/issues/140
