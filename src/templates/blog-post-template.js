@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
-import { H1 } from '../components/page-elements';
+import { A, H1 } from '../components/page-elements';
 import {
   Link as GatsbyLink,
   PostDate,
@@ -38,6 +38,35 @@ const PrevNextWrapper = styled.div`
 `;
 
 const Link = styled(GatsbyLink)``;
+
+const Toc = styled.ul`
+  position: fixed;
+  left: calc(50% + 400px);
+  top: 80px;
+  max-height: 70vh;
+  width: 310px;
+  display: flex;
+  box-shadow: ${({ theme }) => theme.boxShadow.xl};
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  ${down('sm')} {
+    display: none;
+  }
+  h3 {
+    font-size: ${({ theme }) => theme.fontSize['2xl']};
+    font-family: ${({ theme }) => theme.font.serif};
+    margin-top: ${({ theme }) => theme.spacing[2]};
+  }
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
+`;
+
+const InnerScroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: ${({ theme }) => theme.spacing[3]};
+`;
 
 export default ({ data, pageContext }) => {
   const {
@@ -98,6 +127,20 @@ export default ({ data, pageContext }) => {
         </PostEditOnGitHub>
       </PostInfo>
       <MDXRenderer>{body}</MDXRenderer>
+      {typeof tableOfContents.items === 'undefined' ? null : (
+        <Toc>
+          <InnerScroll>
+            <h3>Table of contents</h3>
+            {tableOfContents.items.map(i => (
+              <li>
+                <A href={i.url} key={i.url}>
+                  {i.title}
+                </A>
+              </li>
+            ))}
+          </InnerScroll>
+        </Toc>
+      )}
       <ReactTooltip />
       <PostNavigationWrapper>
         <PrevNextWrapper justify={'start'}>
