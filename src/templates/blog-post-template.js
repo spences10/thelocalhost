@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import { Layout } from '../components/layout';
-import { H1 } from '../components/page-elements';
+import { A, H1 } from '../components/page-elements';
 import {
   Link as GatsbyLink,
   PostDate,
@@ -39,20 +39,33 @@ const PrevNextWrapper = styled.div`
 
 const Link = styled(GatsbyLink)``;
 
-const Toc = styled.div`
-  display: block;
+const Toc = styled.ul`
   position: fixed;
-  left: calc(50% + 298px);
+  left: calc(50% + 400px);
   top: 80px;
-  bottom: 20px;
+  max-height: 70vh;
   width: 310px;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-flow: column wrap;
+  box-shadow: ${({ theme }) => theme.boxShadow.xl};
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  ${down('sm')} {
+    display: none;
+  }
+  h3 {
+    font-size: ${({ theme }) => theme.fontSize['2xl']};
+    font-family: ${({ theme }) => theme.font.serif};
+    margin-top: ${({ theme }) => theme.spacing[2]};
+  }
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
+`;
+
+const InnerScroll = styled.div`
   overflow: hidden;
-  z-index: 100;
+  overflow-y: scroll;
+  margin: ${({ theme }) => theme.spacing[3]};
 `;
 
 export default ({ data, pageContext }) => {
@@ -115,9 +128,16 @@ export default ({ data, pageContext }) => {
       </PostInfo>
       <MDXRenderer>{body}</MDXRenderer>
       <Toc>
-        {tableOfContents.items.map(i => (
-          <a href={i.url}>{i.title}</a>
-        ))}
+        <InnerScroll>
+          <h3>Table of contents</h3>
+          {tableOfContents.items.map(i => (
+            <li>
+              <A style={{ lineHeight: '1' }} href={i.url} key={i.url}>
+                {i.title}
+              </A>
+            </li>
+          ))}
+        </InnerScroll>
       </Toc>
       <ReactTooltip />
       <PostNavigationWrapper>
