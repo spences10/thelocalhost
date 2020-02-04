@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.48",
+  "version": "0.1.49",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "react-live": "2.2.2",
     "react-seo-component": "1.0.0",
     "styled-breakpoints": "7.2.0",
-    "styled-components": "5.0.0",
+    "styled-components": "5.0.1",
     "styled-reset": "4.1.0",
     "victormono": "1.3.1"
   }
