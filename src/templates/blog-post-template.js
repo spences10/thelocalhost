@@ -127,18 +127,20 @@ export default ({ data, pageContext }) => {
         </PostEditOnGitHub>
       </PostInfo>
       <MDXRenderer>{body}</MDXRenderer>
-      <Toc>
-        <InnerScroll>
-          <h3>Table of contents</h3>
-          {tableOfContents.items.map(i => (
-            <li>
-              <A style={{ lineHeight: '1' }} href={i.url} key={i.url}>
-                {i.title}
-              </A>
-            </li>
-          ))}
-        </InnerScroll>
-      </Toc>
+      {typeof tableOfContents.items === 'undefined' ? null : (
+        <Toc>
+          <InnerScroll>
+            <h3>Table of contents</h3>
+            {tableOfContents.items.map(i => (
+              <li>
+                <A href={i.url} key={i.url}>
+                  {i.title}
+                </A>
+              </li>
+            ))}
+          </InnerScroll>
+        </Toc>
+      )}
       <ReactTooltip />
       <PostNavigationWrapper>
         <PrevNextWrapper justify={'start'}>
