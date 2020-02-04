@@ -5,6 +5,7 @@ import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
+import { Dump } from '../components/dump';
 import { Layout } from '../components/layout';
 import { H1 } from '../components/page-elements';
 import {
@@ -38,6 +39,22 @@ const PrevNextWrapper = styled.div`
 `;
 
 const Link = styled(GatsbyLink)``;
+
+const Toc = styled.div`
+  display: block;
+  position: fixed;
+  left: calc(50% + 298px);
+  top: 80px;
+  bottom: 20px;
+  width: 310px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column wrap;
+  overflow: hidden;
+  z-index: 100;
+`;
 
 export default ({ data, pageContext }) => {
   const {
@@ -98,6 +115,12 @@ export default ({ data, pageContext }) => {
         </PostEditOnGitHub>
       </PostInfo>
       <MDXRenderer>{body}</MDXRenderer>
+      <Dump toc={tableOfContents} />
+      <Toc>
+        {tableOfContents.items.map(i => (
+          <a href={i.url}>{i.title}</a>
+        ))}
+      </Toc>
       <ReactTooltip />
       <PostNavigationWrapper>
         <PrevNextWrapper justify={'start'}>

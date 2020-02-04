@@ -44,7 +44,13 @@ module.exports = {
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              enableCustomId: true,
+              className: 'anchor-toc',
+            },
+          },
           {
             resolve: `gatsby-remark-external-links`,
             options: {
