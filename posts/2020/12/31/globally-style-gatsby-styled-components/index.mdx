@@ -14,6 +14,10 @@ styled-components v5, I've done this in the [past with
 styled-components v4] but there's been a change in v5 that I want to
 document.
 
+I'll be swapping out the styles included with a CSS reset and adding
+in a global style function and also adding in the styled-components
+theme provider.
+
 To do this I'm going to be using CodeSandbox so you can follow along
 if you like.
 
@@ -22,8 +26,83 @@ if you like.
 - `gatsby-plugin-styled-components`
 - `styled-components`
 - `babel-plugin-styled-components`
+- `styled-reset`
 
 ## Configure `createGlobalStyle`
+
+Create a `global-style.js` file in `src/theme` then import the
+styled-components helper function `createGlobalStyle`.
+
+The base styles go in here, the `styled-reset` is optional.
+
+```jsx {2,5}
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+
+export const GlobalStyle = createGlobalStyle`
+  ${reset}
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: '#1a202c';
+  }
+  body {
+    line-height: 1.5;
+    letter-spacing: 0;
+    background-color: '#f7fafc';
+  }
+`;
+```
+
+## Place `GlobalStyle` at the top of your React tree 🌳
+
+I'm adding this as high up the component tree as possible so that the
+global styles will affect everything that is 'underneath' it.
+
+In the case of the Gatsby Default Starter you'll notice that the
+`<Layout>` component wraps a the `index.js` page and `page-2.js` so
+adding the `<GlobalStyle />` component here is a sound option.
+
+There is an alternative to adding it to the layout and that is to use
+the Gatsby Browser and Gatsby SSR API [wrapRootElement].
+
+If I add in the following code to `gatsby-browser.js` the styles are
+applied.
+
+```js
+import React from 'react';
+import Layout from './src/components/layout';
+import { GlobalStyle } from './src/theme/global-style';
+
+export const wrapRootElement = ({ element }) => (
+  <>
+    <GlobalStyle />
+    <Layout>{element}</Layout>
+  </>
+);
+```
+
+I also have a double header, that's because the layout component is
+still wrapping the index page and page 2.
+
+I also need to add the same code into `gatsby-ssr.js` so when FINISH
+THIS!!!
+
+Rather than have the code duplicated in the two files I'll create a
+`root-wrapper.js` file add the code in there and import that into both
+the `gatsby-browser.js` and `gatsby-ssr.js` files:
+
+```js
+import { wrapRootElement as wrap } from './root-wrapper';
+
+export const wrapRootElement = wrap;
+```
 
 ## Global fonts with `gatsby-plugin-google-fonts`
 
@@ -31,3 +110,5 @@ if you like.
 
 [past with styled-components v4]:
   https://thelocalhost.blog/2018/11/29/gatsby-starter-to-styled-components/
+[wraprootelement]:
+  https://www.gatsbyjs.org/docs/browser-apis/#wrapRootElement
