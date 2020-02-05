@@ -28,7 +28,17 @@ if you like.
 - `babel-plugin-styled-components`
 - `styled-reset`
 
-## Configure `createGlobalStyle`
+## Configure `gatsby-plugin-styled-components` and `createGlobalStyle`
+
+Pop `gatsby-plugin-styled-components` into the `gatsby-config.js` file
+`plugins` array:
+
+```js {2}
+  plugins: [
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`,
+    {
+```
 
 Create a `global-style.js` file in `src/theme` then import the
 styled-components helper function `createGlobalStyle`.
@@ -89,14 +99,19 @@ export const wrapRootElement = ({ element }) => (
 ```
 
 I also have a double header, that's because the layout component is
-still wrapping the index page and page 2.
+still wrapping the index page, page 2 and the 404 page. Remove the
+layout component from those locations so I have it in one place to
+manage.
 
-I also need to add the same code into `gatsby-ssr.js` so when FINISH
-THIS!!!
+## Make a Root Wrapper to keep things DRY 🌵
+
+I also need to add the same code into `gatsby-ssr.js` so so that the
+styles are rendered on the server when the site is built.
 
 Rather than have the code duplicated in the two files I'll create a
-`root-wrapper.js` file add the code in there and import that into both
-the `gatsby-browser.js` and `gatsby-ssr.js` files:
+`root-wrapper.js` file _(you can call it what you like!)_ and add it
+to the root of the project. I'll import that into both the
+`gatsby-browser.js` and `gatsby-ssr.js` files:
 
 ```js
 import { wrapRootElement as wrap } from './root-wrapper';
@@ -106,9 +121,50 @@ export const wrapRootElement = wrap;
 
 ## Global fonts with `gatsby-plugin-google-fonts`
 
+Onto the main reason for this post, with the [v5 release] of
+styled-components the use of `@imports` in `createGlobalStyle` isn't
+working, (that approach is [detailed here]) it's recommended that you
+embed these into your HTML index file, etc.
+
+> NOTE: At this time we recommend not using @import inside of
+> `createGlobalStyle`. We're working on better behavior for this
+> functionality but it just doesn't really work at the moment and it's
+> better if you just embed these imports in your HTML index file, etc.
+
+But! As I'm using Gatsby, of course, _**"There's a Plugin For
+That™️"**_ so I'm going to use `gatsby-plugin-google-fonts` for this,
+I'm using this in place of `gatsby-plugin-web-font-loader` because it
+uses `display=swap`.
+
+```bash
+yarn add gatsby-plugin-google-fonts
+```
+
+Configure, I'll add three fonts, sans, sans serif and monospace to the
+Gatsby plugin array in `gatsby-config.js`:
+
+```js
+{
+  resolve: `gatsby-plugin-google-fonts`,
+  options: {
+    fonts: [
+      `cambay\:400,700`,
+      `arvo\:400,700`,
+      `ibm plex mono\:400,700`,
+    ],
+    display: 'swap',
+  },
+},
+```
+
+I can now use these fonts throughout my site.
+
 <!-- Links -->
 
 [past with styled-components v4]:
   https://thelocalhost.blog/2018/11/29/gatsby-starter-to-styled-components/
 [wraprootelement]:
   https://www.gatsbyjs.org/docs/browser-apis/#wrapRootElement
+[v5 release]: https://styled-components.com/releases#v5.0.0
+[detailed here]:
+  http://thelocalhost.blog/2018/11/29/gatsby-starter-to-styled-components/#3-global-style
