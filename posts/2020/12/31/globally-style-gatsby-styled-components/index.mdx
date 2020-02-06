@@ -11,20 +11,23 @@ coverCredit: Photo by Jeremy Bishop on Unsplash
 
 I'm going to go over globally styling the Gatsby Default Starter with
 styled-components v5, I've done this in the [past with
-styled-components v4] but there's been a change in v5 that I want to
-document.
+styled-components v4] but I've changed my approach and want to
+document it.
 
 I'll be swapping out the styles included with a CSS reset and adding
 in global style with the styled-components `createGlobalStyle` helper
 function and also adding in the styled-components theme provider.
 
+To start I'll make a new Gatsby project using npx:
+
 ```bash
 npx gatsby new gatsby-starter-styled-components
 ```
 
-## Install dependencies
+## Install styled-components dependencies
 
-I'm using yarn, you can use npm
+I'm using yarn to install my dependencies, the backslash is to have
+the packages on multiple lines instead of one long line:
 
 ```bash
 yarn add gatsby-plugin-styled-components \
@@ -45,12 +48,113 @@ Pop `gatsby-plugin-styled-components` into the `gatsby-config.js` file
     {
 ```
 
-Create a `global-style.js` file in `src/theme` then import the
-styled-components helper function `createGlobalStyle`.
+Now I'm going to create a `global-style.js` file in a new directory
+`src/theme` then import the styled-components helper function
+`createGlobalStyle` into that, this is where the styles for the site
+are going to live now.
 
-The base styles go in here, the `styled-reset` is optional.
+Create the dir and file with the terminal command:
 
-```jsx {2,5}
+```bash
+mkdir src/theme && touch src/theme/global-style.js
+```
+
+The base styles go in here, along with the `styled-reset`.
+
+To start with I'll create the `GlobalStyle` object and add in the the
+reset.
+
+```jsx
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+
+export const GlobalStyle = createGlobalStyle`
+  ${reset}
+`;
+```
+
+## Remove current styling
+
+Remove the current styling that is used in the `<Layout>` component,
+it's the `import './layout.css'` line, I'll also delete the
+`layout.css` file as I'm going to be adding in my styles.
+
+```jsx {5}
+import { graphql, useStaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Header from './header';
+import './layout.css';
+```
+
+Now the site has the base browser default styles, time to add in my
+own styles. Before that I'm going to confirm the reset is doing it
+thing.
+
+## Confirm CSS reset
+
+Now I have the base browser styles I'm going to confirm the CSS reset
+in the `<Layout>` component. This is where I've removed the previous
+global styles (`layout.css`) from.
+
+```jsx {4,19}
+import { graphql, useStaticQuery } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+import { GlobalStyle } from "../theme/global-style"
+import Header from "./header"
+
+const Layout = ({ children }) => {
+  // static query for the data here
+  return (
+    <>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `0 1.0875rem 1.45rem`,
+        }}
+      >
+        <GlobalStyle />
+        <main>{children}</main>
+        <footer>
+```
+
+In the code example here 👆I've I removed the `useStaticQuery` hook
+for readability.
+
+![reset page](./reset-page.png)
+
+Ok, cool, looks pretty reset to me!
+
+## Create the new browser base styles
+
+Time to add in some more styles to the global style. First, the
+`box-sizing` reset, take a look at the CSS Tricks post on [Box Sizing]
+for a great explanation of why we do this.
+
+```jsx {7-12}
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+
+export const GlobalStyle = createGlobalStyle`
+  ${reset}
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  html {
+    box-sizing: border-box;
+  }
+`;
+```
+
+Then I'm adding in the smooth scroll html property and some additional
+styles for base font size and colour along with base line height
+letter spacing and background colour.
+
+```jsx {12-15,17-21}
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
@@ -75,9 +179,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 ```
 
-## Remove current styling
-
-## Place `GlobalStyle` at the top of your React tree 🌳
+## Place `GlobalStyle` at the top of the React tree 🌳
 
 I'm adding this as high up the component tree as possible so that the
 global styles will affect everything that is 'underneath' it.
@@ -107,8 +209,8 @@ export const wrapRootElement = ({ element }) => (
 ```
 
 I also have a double header, that's because the layout component is
-still wrapping the index page, page 2 and the 404 page. Remove the
-layout component from those locations so I have it in one place to
+still wrapping the index page, page 2 and the 404 page. I'll remove
+the layout component from those locations so I have it in one place to
 manage.
 
 ## Make a Root Wrapper to keep things DRY 🌵
@@ -169,7 +271,21 @@ I can now use these fonts throughout my site.
 
 ## styled-components Theme provider
 
-The styled-components ThemeProvider
+The [styled-components ThemeProvider] is a great solution for managing
+your styles throughout a project.
+
+Part of the inspiration for my approach came from Sid's talk at React
+Advanced which [I wrote about] and part from watching the Tailwind CSS
+courses from Adam Wathan on Egghead.io check out the playlist here:
+[Introduction to Tailwind and the Utility first workflow]
+
+## Resources
+
+- [Design Systems Design System - Siddharth Kshetrapal]
+- [Introduction to Tailwind and the Utility first workflow]
+- [Design and Implement Common Tailwind Components]
+- [Build a Responsive Navbar with Tailwind]
+- [Build and Style a Dropdown in Tailwind]
 
 <!-- Links -->
 
@@ -179,4 +295,19 @@ The styled-components ThemeProvider
   https://www.gatsbyjs.org/docs/browser-apis/#wrapRootElement
 [v5 release]: https://styled-components.com/releases#v5.0.0
 [detailed here]:
-  http://thelocalhost.blog/2018/11/29/gatsby-starter-to-styled-components/#3-global-style
+  https://thelocalhost.blog/2018/11/29/gatsby-starter-to-styled-components/#3-global-style
+[box sizing]: https://css-tricks.com/box-sizing/#article-header-id-3
+[styled-components themeprovider]:
+  https://styled-components.com/docs/api#themeprovider
+[introduction to tailwind and the utility first workflow]:
+  https://egghead.io/playlists/introduction-to-tailwind-and-the-utility-first-workflow-0b697b10
+[design and implement common tailwind components]:
+  https://egghead.io/playlists/design-and-implement-common-tailwind-components-8fbb9b19
+[build a responsive navbar with tailwind]:
+  https://egghead.io/playlists/build-a-responsive-navbar-with-tailwind-4d328a35
+[build and style a dropdown in tailwind]:
+  https://egghead.io/playlists/build-and-style-a-dropdown-in-tailwind-7f34fead
+[i wrote about]:
+  https://thelocalhost.blog/2019/11/06/react-advanced-london-2019/#siddharth-kshetrapal---design-systems-design-system
+[design systems design system - siddharth kshetrapal]:
+  https://www.youtube.com/watch?v=Dd-Y9K7IKmk&feature=emb_title
