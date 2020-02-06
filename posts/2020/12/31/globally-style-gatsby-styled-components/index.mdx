@@ -15,18 +15,23 @@ styled-components v4] but there's been a change in v5 that I want to
 document.
 
 I'll be swapping out the styles included with a CSS reset and adding
-in a global style function and also adding in the styled-components
-theme provider.
+in global style with the styled-components `createGlobalStyle` helper
+function and also adding in the styled-components theme provider.
 
-To do this I'm going to be using CodeSandbox so you can follow along
-if you like.
+```bash
+npx gatsby new gatsby-starter-styled-components
+```
 
 ## Install dependencies
 
-- `gatsby-plugin-styled-components`
-- `styled-components`
-- `babel-plugin-styled-components`
-- `styled-reset`
+I'm using yarn, you can use npm
+
+```bash
+yarn add gatsby-plugin-styled-components \
+  styled-components \
+  babel-plugin-styled-components \
+  styled-reset
+```
 
 ## Configure `gatsby-plugin-styled-components` and `createGlobalStyle`
 
@@ -70,14 +75,17 @@ export const GlobalStyle = createGlobalStyle`
 `;
 ```
 
+## Remove current styling
+
 ## Place `GlobalStyle` at the top of your React tree 🌳
 
 I'm adding this as high up the component tree as possible so that the
 global styles will affect everything that is 'underneath' it.
 
 In the case of the Gatsby Default Starter you'll notice that the
-`<Layout>` component wraps a the `index.js` page and `page-2.js` so
-adding the `<GlobalStyle />` component here is a sound option.
+`<Layout>` component wraps a the `index.js` page, `page-2.js` and the
+`404.js` page so adding the `<GlobalStyle />` component here is a
+sound option.
 
 There is an alternative to adding it to the layout and that is to use
 the Gatsby Browser and Gatsby SSR API [wrapRootElement].
@@ -158,6 +166,10 @@ Gatsby plugin array in `gatsby-config.js`:
 ```
 
 I can now use these fonts throughout my site.
+
+## styled-components Theme provider
+
+The styled-components ThemeProvider
 
 <!-- Links -->
 
