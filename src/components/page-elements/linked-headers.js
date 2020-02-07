@@ -1,4 +1,6 @@
-export const AutoLink = `
+import { css } from 'styled-components';
+
+export const AutoLink = css`
   a {
     float: left;
     padding-right: 4px;
@@ -7,7 +9,7 @@ export const AutoLink = `
   svg {
     visibility: hidden;
   }
-  &: hover {
+  &:hover {
     a {
       svg {
         visibility: visible;
