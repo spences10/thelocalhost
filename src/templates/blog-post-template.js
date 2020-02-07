@@ -112,7 +112,9 @@ export default ({ data, pageContext }) => {
       <H1>{frontmatter.title}</H1>
       <PostInfo>
         <PostDate>{frontmatter.date}</PostDate>
-        <PostTimeToRead>{timeToRead} minutes to read</PostTimeToRead>
+        <PostTimeToRead>
+          {timeToRead * 2} minutes to read
+        </PostTimeToRead>
         <PostEditOnGitHub>
           <a
             onClick={() => {

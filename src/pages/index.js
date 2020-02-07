@@ -90,7 +90,7 @@ export default ({ data }) => {
                     <PostInfo>
                       <PostDate>{frontmatter.date}</PostDate>
                       <PostTimeToRead>
-                        {timeToRead} minutes to read
+                        {timeToRead * 2} minutes to read
                       </PostTimeToRead>
                     </PostInfo>
                     <StyledExcerpt>{excerpt}</StyledExcerpt>
