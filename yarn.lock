@@ -10923,10 +10923,10 @@ react-simple-code-editor@^0.10.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
   integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
 
-react-tooltip@3.11.6:
-  version "3.11.6"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.11.6.tgz#4f9735a2a4aa50580af351ce23e74a56f41afc0c"
-  integrity sha512-nTc1yHHaPCHHURvMpf/VNF17pIZiU4zwUGFJBUVr1fZkezFC7E0VPMMVrCfDjt+IpwTHICyzlyx+1FiQ7lw5LQ==
+react-tooltip@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.0.0.tgz#a3ea46c9fae6ceeaa0969000793ad75c49f9572c"
+  integrity sha512-AddFMtuHNZT6ISwsyh3VGfCDqv8fl5ra4Nctga3U4c05Es/YjWHqdsIxLC9Iq+u4OwnTBEnfYq4xqr2USvvg3A==
   dependencies:
     prop-types "^15.6.0"
 
