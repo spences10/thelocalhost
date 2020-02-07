@@ -1,7 +1,6 @@
 import React from 'react';
 import { isIE } from 'react-device-detect';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
 import {
   IndexWrapper,
   StyledExcerpt,
@@ -33,7 +32,7 @@ export default () => {
       </IndexWrapper>
     );
   return (
-    <Layout>
+    <>
       <PageWrapper>
         <Styled404>
           <StyledTitle>That's a nope!</StyledTitle>
@@ -43,6 +42,6 @@ export default () => {
           </StyledExcerpt>
         </Styled404>
       </PageWrapper>
-    </Layout>
+    </>
   );
 };

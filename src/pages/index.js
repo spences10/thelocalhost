@@ -4,7 +4,6 @@ import React from 'react';
 import { isIE } from 'react-device-detect';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
 import {
   CopyWrapper,
   IndexWrapper,
@@ -55,7 +54,7 @@ export default ({ data }) => {
       </IndexWrapper>
     );
   return (
-    <Layout>
+    <>
       <SEO
         title={`Home`}
         titleTemplate={title}
@@ -90,7 +89,7 @@ export default ({ data }) => {
                     <PostInfo>
                       <PostDate>{frontmatter.date}</PostDate>
                       <PostTimeToRead>
-                        {timeToRead} minutes to read
+                        {timeToRead * 2} minutes to read
                       </PostTimeToRead>
                     </PostInfo>
                     <StyledExcerpt>{excerpt}</StyledExcerpt>
@@ -101,7 +100,7 @@ export default ({ data }) => {
           )
         )}
       </IndexWrapper>
-    </Layout>
+    </>
   );
 };
 

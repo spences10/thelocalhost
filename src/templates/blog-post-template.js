@@ -5,7 +5,6 @@ import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
 import { A, H1 } from '../components/page-elements';
 import {
   Link as GatsbyLink,
@@ -90,7 +89,7 @@ export default ({ data, pageContext }) => {
   const { previous, next } = pageContext;
   const fa = useAnalytics();
   return (
-    <Layout>
+    <>
       <SEO
         title={title}
         titleTemplate={siteTitle}
@@ -112,7 +111,9 @@ export default ({ data, pageContext }) => {
       <H1>{frontmatter.title}</H1>
       <PostInfo>
         <PostDate>{frontmatter.date}</PostDate>
-        <PostTimeToRead>{timeToRead} minutes to read</PostTimeToRead>
+        <PostTimeToRead>
+          {timeToRead * 2} minutes to read
+        </PostTimeToRead>
         <PostEditOnGitHub>
           <a
             onClick={() => {
@@ -177,7 +178,7 @@ export default ({ data, pageContext }) => {
           )}
         </PrevNextWrapper>
       </PostNavigationWrapper>
-    </Layout>
+    </>
   );
 };
 
