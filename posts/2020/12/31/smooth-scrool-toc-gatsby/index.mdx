@@ -3,25 +3,262 @@ date: 2020-12-31
 title: Add a Table of Contents with Smooth scroll using Gatsby and MDX
 tags:
   ['information', 'learning', 'gatsby', 'guide', 'mdx', 'markdown']
-published: false
+published: true
 cover: ./cover.jpg
 coverCredit: Photo by Misael Moreno on Unsplash
 ---
 
-Smooth scrooolllll!!!1
+The main purpose for me documenting this is to demonstrate
+implementing a table of contents with smooth scroll to the anchors in
+a Gatsby project using MDX.
 
-Ok in this guide I implement smooth scroll on a table of contents
+I like using styled-components for my styling and would like to use
+them in this example, so I'm going to clone the Gatsby starter I made
+in a [previous post].
 
-Gatsby Default Starter on CodeSandbox
+## Clone the Gatsby Default Starter with styled-components
 
-add deps
+Spin up a new project using the template I made:
 
-- gatsby-plugin-mdx
-- @mdx-js/mdx
-- @mdx-js/react
-- remark-slug
+```bash
+npx gatsby new \
+  gatsby-toc-example \
+  https://github.com/spences10/gatsby-starter-styled-components
+```
 
-config
+Once that has finished installing I'm going to `cd` into the project
+(`cd gatsby-toc-example`) and install dependencies for using MDX
+
+```bash
+# you can use npm if you like
+yarn add gatsby-plugin-mdx \
+  @mdx-js/mdx \
+  @mdx-js/react
+```
+
+also `remark-slug` `gatsby-remark-autolink-headers`
+
+## Add some content
+
+I'm creating a posts directory where all the posts will live. I'm
+going to create a posts directory with the toc-example directory in
+that which contains the `index.mdx` file I'll be adding the content
+to.
+
+```bash
+mkdir -p posts/toc-example
+touch posts/toc-example/index.mdx
+```
+
+I'll paste in some frontmatter and some content.
+
+```markdown
+---
+date: 2020-02-09
+title: Add a Table of Contents with Smooth scroll using Gatsby and MDX
+published: true
+---
+
+## Heading one of several headings
+
+Some filler text between the headers
+
+## Heading two of several headings
+
+Some filler text between the headers
+
+## Heading three of several headings
+
+Some filler text between the headers
+
+## Heading four of several headings
+
+Some filler text between the headers
+```
+
+## Configure the project to use MDX
+
+Add in the base MDX config to the `gatsby-config.js` file.
+
+```js
+{
+  resolve: `gatsby-plugin-mdx`,
+  options: {
+    extensions: [`.mdx`, `.md`],
+    gatsbyRemarkPlugins: [],
+  },
+},
+```
+
+Add the posts directory to the `gatsby-source-filesystem` config as
+well.
+
+```js
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    name: `posts`,
+    path: `${__dirname}/posts`,
+  },
+},
+```
+
+Stop the dev server and start with the new configuration.
+
+Validate the config by selecting `allMdx` data in Graph<em>i</em>QL.
+
+```graphql
+{
+  allMdx {
+    nodes {
+      excerpt
+    }
+  }
+}
+```
+
+## Configure Gatsby node to create the fields and pages
+
+First up, here I'll make the paths for the files in the `posts`
+directory. I'll do that with `createFilePath` when creating the node
+fields with `createNodeField`.
+
+```js
+const { createFilePath } = require(`gatsby-source-filesystem`);
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode });
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    });
+  }
+};
+```
+
+In the Gatsby GraphQL explorer (Graph<em>i</em>QL) validate that the
+fields are being created.
+
+```graphql
+{
+  allMdx {
+    nodes {
+      fields {
+        slug
+      }
+    }
+  }
+}
+```
+
+## Create a post template
+
+Now to make the pages, for that I'll need a template to use with the
+Gatsby `createPages` API.
+
+Create the `templates` directory in `src` then make a
+`post-template.js` file.
+
+```bash
+mkdir src/templates
+touch src/templates/post-template.js
+```
+
+For now add in a return so I can validate the page was created by
+Gatsby node.
+
+```jsx
+import React from 'react';
+
+export default () => {
+  return (
+    <>
+      <h1>Hello template</h1>
+    </>
+  );
+};
+```
+
+Save the template, now to create the pages in `gatsby-node.js`.
+
+```js {2,4-35}
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const path = require(`path`);
+
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  const postTemplate = path.resolve('src/templates/post-template.js');
+
+  return graphql(`
+    {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+
+    const posts = result.data.allMdx.nodes;
+
+    posts.forEach((post, index) => {
+      createPage({
+        path: post.fields.slug,
+        component: postTemplate,
+        context: {
+          slug: post.fields.slug,
+        },
+      });
+    });
+  });
+};
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({ node, getNode });
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    });
+  }
+};
+```
+
+I know there's a lot in there to unpack, so, if you need more detail
+check out the sections in the "[Build a coding blog from scratch with
+Gatsby and MDX]", I have listed here:
+
+- [Index page posts query]
+
+- [Slugs and Paths]
+
+- [Link Paths]
+
+- [Adding a Blog Post Template]
+
+- [Build out Blog Post Template]
+
+## Confirm the pages were created with Gatsby's built in 404 page
+
+Stop and start the dev server as there's been changes to Gatsby node,
+I'll need to run the code I just added.
+
+Check the page for the content was created, to do that I'll add
+`/404.js` to the dev server url which will show me all the available
+pages in the project.
+
+From here I can select the path created to `/toc-example/` and confirm
+the page was created.
 
 Adding `remark-slug` will add `id`'s to the headers
 
@@ -118,3 +355,17 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 [mdx js repo issue 810]: https://github.com/remarkjs/remark-slug
 [remark-slug repo]:
   https://github.com/ChristopherBiscardi/gatsby-mdx/issues/140
+[previous post]:
+  https://thelocalhost.blog/2020/02/06/globally-style-gatsby-styled-components/
+[build a coding blog from scratch with gatsby and mdx]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog
+[index page posts query]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#index-page-posts-query
+[slugs and paths]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#slugs-and-paths
+[link paths]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#link-paths
+[adding a blog post template]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#adding-a-blog-post-template
+[build out blog post template]:
+  https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#build-out-blog-post-template
