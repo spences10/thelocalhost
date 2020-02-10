@@ -260,6 +260,129 @@ pages in the project.
 From here I can select the path created to `/toc-example/` and confirm
 the page was created.
 
+## Build out the post template to use the MDXRenderer
+
+Now I can add data to the page from a GraphQL query, I'll do that with
+the Gatsby `graphql` tag and query some frontmatter the body and the
+table of contents.
+
+Destructure the `body` data from `mdx` and wrap that in the
+`<MDXRenderer>` component.
+
+```jsx {1-2,5-6,10,15-31}
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+
+export default ({ data }) => {
+  const { body } = data.mdx;
+  return (
+    <>
+      <h1>Hello template</h1>
+      <MDXRenderer>{body}</MDXRenderer>
+    </>
+  );
+};
+
+export const query = graphql`
+  query PostBySlug($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date(formatString: "YYYY MMMM Do")
+      }
+      body
+      excerpt
+      tableOfContents
+      timeToRead
+      fields {
+        slug
+      }
+    }
+  }
+`;
+```
+
+## Add page elements
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+
+export const StyledH1 = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize['4xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  margin-top: ${({ theme }) => theme.spacing[8]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+`;
+
+export const H1 = props => {
+  return <StyledH1 {...props}>{props.children}</StyledH1>;
+};
+```
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+
+export const StyledH2 = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  margin-top: ${({ theme }) => theme.spacing[6]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+`;
+
+export const H2 = props => {
+  return <StyledH2 {...props}>{props.children}</StyledH2>;
+};
+```
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+
+export const StyledP = styled.p`
+  margin-top: ${({ theme }) => theme.spacing[3]};
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+`;
+
+export const P = props => {
+  const { children, ...rest } = props;
+  return <StyledP {...rest}>{children}</StyledP>;
+};
+```
+
+```jsx {1,5,8-12,17-19}
+import { MDXProvider } from '@mdx-js/react';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import Layout from './src/components/layout';
+import { H1, H2, P } from './src/components/page-elements';
+import { GlobalStyle, theme } from './src/theme/global-style';
+
+const components = {
+  h1: props => <H1 {...props} />,
+  h2: props => <H2 {...props} />,
+  p: props => <P {...props} />,
+};
+
+export const wrapRootElement = ({ element }) => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <MDXProvider components={components}>
+      <Layout>{element}</Layout>
+    </MDXProvider>
+  </ThemeProvider>
+);
+```
+
+## Add remark-slug for adding id's to headers
+
 Adding `remark-slug` will add `id`'s to the headers
 
 ```js {1,9}
