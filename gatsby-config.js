@@ -7,8 +7,6 @@ require('dotenv').config({
   path: `.env.${activeEnv}`,
 });
 
-const remarkSlug = require('remark-slug');
-
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
@@ -37,23 +35,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        remarkPlugins: [remarkSlug],
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 640,
               withWebp: true,
               tracedSVG: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              enableCustomId: true,
-              className: 'anchor-toc',
             },
           },
           {
