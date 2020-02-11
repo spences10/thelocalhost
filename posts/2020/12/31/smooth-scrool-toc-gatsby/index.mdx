@@ -119,9 +119,12 @@ Validate the config by selecting `allMdx` data in Graph<em>i</em>QL.
 
 ## Configure Gatsby node to create the fields and pages
 
-First up, here I'll make the paths for the files in the `posts`
-directory. I'll do that with `createFilePath` when creating the node
-fields with `createNodeField`.
+Here I'll make the paths for the files in the `posts` directory. I'll
+do that with `createFilePath` when creating the node fields with
+`createNodeField`.
+
+Stop and start the gatsby dev server again as I changed
+`gatsby-node.js`.
 
 ```js
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -184,7 +187,7 @@ export default () => {
 
 Save the template, now to create the pages in `gatsby-node.js`.
 
-```js {2,4-35}
+```jsx {2,4-35}
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require(`path`);
 
@@ -236,7 +239,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 I know there's a lot in there to unpack, so, if you need more detail
 check out the sections in the "[Build a coding blog from scratch with
-Gatsby and MDX]", I have listed here:
+Gatsby and MDX]", listed here:
 
 - [Index page posts query]
 
@@ -451,10 +454,15 @@ const InnerScroll = styled.div`
 ## Resources that helped me
 
 - [4pine's blog]
+
 - [Theme UI guide]
+
 - [Gatsby MDX repo issue 396]
+
 - [Gatsby MDX repo issue 140]
+
 - [MDX JS repo issue 810]
+
 - [remark-slug repo]
 
 ## Thanks for reading 🙏
