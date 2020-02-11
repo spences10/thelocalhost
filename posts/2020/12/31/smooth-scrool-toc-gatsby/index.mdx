@@ -55,23 +55,9 @@ date: 2020-02-09
 title: Add a Table of Contents with Smooth scroll using Gatsby and MDX
 published: true
 ---
-
-## Heading one of several headings
-
-Some filler text between the headers
-
-## Heading two of several headings
-
-Some filler text between the headers
-
-## Heading three of several headings
-
-Some filler text between the headers
-
-## Heading four of several headings
-
-Some filler text between the headers
 ```
+
+The content I'll take from the [Gatsby starter blog MDX]
 
 ## Configure the project to use MDX
 
@@ -395,7 +381,10 @@ export const wrapRootElement = ({ element }) => (
 
 ## Add remark-slug for adding id's to headers
 
-`remark-slug` `gatsby-remark-autolink-headers`
+Check the headings, none of them have id's and I need id's for the
+href to go to, add `remark-slug`
+
+`gatsby-remark-autolink-headers`
 
 Adding `remark-slug` will add `id`'s to the headers
 
@@ -513,3 +502,5 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
   https://thelocalhost.blog/2019/10/31/build-an-mdx-blog/#build-out-blog-post-template
 [autolink headers]:
   https://github.com/ChristopherBiscardi/gatsby-mdx/issues/204
+[gatsby starter blog mdx]:
+  https://github.com/hagnerd/gatsby-starter-blog-mdx
