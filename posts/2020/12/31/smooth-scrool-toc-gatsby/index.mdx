@@ -298,12 +298,14 @@ export const query = graphql`
 
 ## Add page elements for the MDXProvider
 
-The content (headings, paragraphs, etc.) was reset in the template
-being used.
+The content (headings, paragraphs, etc.) were reset with
+`styled-reset` in the template being used.
 
-I'm going to add components for headings and paragraphs.
+I'm going to be amending the already existing `H1` and `<P>`
+styled-components to be React components so that I can spread in the
+props needed.
 
-```jsx
+```jsx {1,4,11-13}
 import React from 'react';
 import styled from 'styled-components';
 
@@ -318,6 +320,9 @@ export const H1 = props => {
   return <StyledH1 {...props}>{props.children}</StyledH1>;
 };
 ```
+
+Create a `<H2>` component based off of the `<H1>`, adjust the spacing
+and font size.
 
 ```jsx
 import React from 'react';
@@ -334,6 +339,8 @@ export const H2 = props => {
   return <StyledH2 {...props}>{props.children}</StyledH2>;
 };
 ```
+
+Same with the `<P>`, I'll switch it to use React.
 
 ```jsx
 import React from 'react';
@@ -355,7 +362,17 @@ export const P = props => {
 };
 ```
 
-```jsx {1,5,8-12,17-19}
+Importing the modified components into the `root-wrapper.js` I can now
+pass them into the `<MDXProvider>` which is used to map to the HTML
+elements.
+
+There's a complete listing of all the HTML elements that can be
+customised on the [MDX table of components].
+
+In this example I'm mapping the `H1`, `H2` and `P` components to the
+corresponding HTML elements and passing them into the `<MDXProvider>`.
+
+```jsx {1,5,8-12,17,19}
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -379,7 +396,10 @@ export const wrapRootElement = ({ element }) => (
 );
 ```
 
-## Add remark-slug for adding id's to headers
+## Add gatsby-remark-autolink-headers for adding id's to headers
+
+We now have the links being displayed, but you might notice that they
+don’t work.
 
 Check the headings, none of them have id's and I need id's for the
 href to go to, add `remark-slug`
@@ -504,3 +524,5 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
   https://github.com/ChristopherBiscardi/gatsby-mdx/issues/204
 [gatsby starter blog mdx]:
   https://github.com/hagnerd/gatsby-starter-blog-mdx
+[mdx table of components]:
+  https://mdxjs.com/getting-started#table-of-components
