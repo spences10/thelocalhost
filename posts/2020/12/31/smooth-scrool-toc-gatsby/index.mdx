@@ -340,7 +340,17 @@ export const H2 = props => {
 };
 ```
 
-Same with the `<P>`, I'll switch it to use React.
+I'll need to add the newly created `H2` to the index file for
+`page-elements`:
+
+```js
+export * from './h1';
+export * from './h2';
+export * from './p';
+```
+
+Same with the `<P>` as I did with the `H1`, I'll switch it to use
+React.
 
 ```jsx
 import React from 'react';
@@ -398,39 +408,74 @@ export const wrapRootElement = ({ element }) => (
 
 ## Add gatsby-remark-autolink-headers for adding id's to headers
 
+```bash
+yarn add gatsby-remark-autolink-headers
+```
+
+Add `gatsby-remark-autolink-headers` in the Gatsby MDX config.
+
+```js
+{
+  resolve: `gatsby-plugin-mdx`,
+  options: {
+    extensions: [`.mdx`, `.md`],
+    gatsbyRemarkPlugins: [`gatsby-remark-autolink-headers`],
+  },
+},
+```
+
+Fix the weird positioning on the SVGs for the links added by
+`gatsby-remark-autolink-headers`.
+
+Do that by making some reusable css with a tagged template literal.
+
+```jsx
+export const AutoLink = `
+  a {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+  }
+  svg {
+    visibility: hidden;
+  }
+  &:hover {
+    a {
+      svg {
+        visibility: visible;
+      }
+    }
+  }
+`;
+```
+
+Then I'm going to use that in the `H2`.
+
+```jsx {10}
+import React from 'react';
+import styled from 'styled-components';
+import { AutoLink } from './linked-headers';
+
+export const StyledH2 = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  margin-top: ${({ theme }) => theme.spacing[6]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+  ${AutoLink}
+`;
+
+export const H2 = props => {
+  return <StyledH2 {...props}>{props.children}</StyledH2>;
+};
+```
+
+## Confirm the id is present in the headings
+
 We now have the links being displayed, but you might notice that they
 don’t work.
 
 Check the headings, none of them have id's and I need id's for the
 href to go to, add `remark-slug`
-
-`gatsby-remark-autolink-headers`
-
-Adding `remark-slug` will add `id`'s to the headers
-
-```js {1,9}
-const remarkSlug = require('remark-slug');
-
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.mdx', '.md'],
-        remarkPlugins: [remarkSlug],
-        gatsbyRemarkPlugins: [],
-      },
-    },
-  ],
-};
-```
-
-## Use styled-components to apply scroll-behaviour
-
-Use `createGlobalStyle` in styled-components to add
-`scroll-behaviour: smooth;`
-
-## Confirm the id is present in the headings
 
 ## Make a TOC component
 
@@ -438,10 +483,14 @@ Use `createGlobalStyle` in styled-components to add
 const Toc = styled.ul`
   position: fixed;
   left: calc(50% + 400px);
-  top: 80px;
+  top: 110px;
   max-height: 70vh;
   width: 310px;
   display: flex;
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
 `;
 
 const InnerScroll = styled.div`
@@ -459,7 +508,7 @@ const InnerScroll = styled.div`
       <InnerScroll>
         <h3>Table of contents</h3>
         {tableOfContents.items.map(i => (
-          <li>
+          <li key={i.url}>
             <a href={i.url} key={i.url}>
               {i.title}
             </a>
