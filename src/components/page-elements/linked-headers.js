@@ -1,6 +1,4 @@
-import { css } from 'styled-components';
-
-export const AutoLink = css`
+export const AutoLink = `
   a {
     float: left;
     padding-right: 4px;

@@ -9,7 +9,7 @@ require('dotenv').config({
 
 const siteMetadata = {
   title: `The Localhost Blog`,
-  description: `This is my coding blog where I write about my coding journey.`,
+  description: `Modern web development guides hints and tips.`,
   image: `/default-site-image.jpg`,
   siteUrl: `https://thelocalhost.blog`,
   siteLanguage: `en-GB`,
