@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from './shared';
 
@@ -39,3 +40,10 @@ export const Header = ({ siteTitle, siteDescription }) => (
     <StyledP>{siteDescription}</StyledP>
   </StyledLink>
 );
+
+Header.propTypes = {
+  /** The title from siteMetadata */
+  siteTitle: PropTypes.string,
+  /** The siteDescription from siteMetadata */
+  siteDescription: PropTypes.string,
+};

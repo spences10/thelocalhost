@@ -172,5 +172,16 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `@pauliescanlon/gatsby-plugin-prop-shop`,
+      options: {
+        source: [
+          `src/components`,
+          `src/components/page-elements`,
+          `src/pages`,
+          `src/templates`,
+        ],
+      },
+    },
   ],
 };
