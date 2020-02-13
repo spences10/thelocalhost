@@ -10,8 +10,11 @@ coverCredit: Photo by Misael Moreno on Unsplash
 
 The main purpose for me documenting this is to demonstrate
 implementing a table of contents with smooth scroll to the anchors in
-a Gatsby project using MDX. In the process I'm also setting up the
-Gatsby starter with MDX.
+a Gatsby project using MDX.
+
+In the process I'm also setting up the Gatsby starter with MDX.
+
+**TL;DR, go here:** [Make a TOC component](#make-a-toc-component)
 
 I like using styled-components for my styling and would like to use
 them in this example, so I'm going to clone the Gatsby starter I made
@@ -318,10 +321,13 @@ export const query = graphql`
 `;
 ```
 
+I'm going to be using `tableOfContents` later when I make a table of
+contents component.
+
 ## Add page elements for the MDXProvider
 
 The content (headings, paragraphs, etc.) were reset with
-`styled-reset` in the template being used.
+`styled-reset` in the template being used so will need to be added in.
 
 I'm going to be amending the already existing `H1` and `<P>`
 styled-components to be React components so that I can spread in the
@@ -365,7 +371,7 @@ export const H2 = props => {
 I'll need to add the newly created `H2` to the index file for
 `page-elements`:
 
-```js
+```js {2}
 export * from './h1';
 export * from './h2';
 export * from './p';
@@ -436,7 +442,7 @@ to navigate to the individual headings, right?
 Well, not quite, although the headers are there, there's no IDs in
 them to scroll to yet.
 
-I can create heading IDs with [gatsby-remark-autolink-headers].
+I can use [gatsby-remark-autolink-headers] to create the heading IDs.
 
 ```bash
 yarn add gatsby-remark-autolink-headers
@@ -444,7 +450,7 @@ yarn add gatsby-remark-autolink-headers
 
 Add `gatsby-remark-autolink-headers` in the Gatsby MDX config.
 
-```js
+```js {5}
 {
   resolve: `gatsby-plugin-mdx`,
   options: {
@@ -454,10 +460,20 @@ Add `gatsby-remark-autolink-headers` in the Gatsby MDX config.
 },
 ```
 
+As I've changed the `gatsby-config.js` file I'll need to stop and
+start the dev server.
+
 Fix the weird positioning on the SVGs for the links added by
 `gatsby-remark-autolink-headers`.
 
-Do that by making some reusable css with a tagged template literal.
+Do that by making some reusable CSS with a tagged template literal,
+I'll put it in it's own file `heading-link.js`.
+
+```bash
+touch src/components/page-elements/heading-link.js
+```
+
+Then add the CSS in as a template literal:
 
 ```jsx
 export const AutoLink = `
@@ -500,15 +516,31 @@ export const H2 = props => {
 };
 ```
 
-## Confirm the id is present in the headings
-
-We now have the links being displayed, but you might notice that they
-don’t work.
-
-Check the headings, none of them have id's and I need id's for the
-href to go to, add `remark-slug`
+Clicking around on the links now should scroll to each one smoothly
+and have the SVG for the link only visible on hover.
 
 ## Make a TOC component
+
+From here onwards is what the whole post boils down to! I did want to
+go through the process of how you would do something similar yourself
+though, so I'm hoping this has helped in some way.
+
+For the TOC with smooth scroll you need several things:
+
+- `scroll-behavior: smooth;` added to your `html`, this is part of the
+  starter I made in a [previous post].
+
+- IDs in the headings to scroll to, this is done with
+  `gatsby-remark-autolink-headers`.
+
+- A table of contents which is provided by Gatsby MDX with
+  `tableOfContents`.
+
+The first two parts have been covered so now to create a TOC
+component, with styled-components.
+
+In the `post-template.js` I'll create a `Toc` component for some
+positioning and create a scrollable div to use inside of that.
 
 ```jsx
 const Toc = styled.ul`
@@ -530,14 +562,23 @@ const InnerScroll = styled.div`
 `;
 ```
 
+The `main` content is overlapping with the TOC here so I'm going to
+add a `maxWidth` inline on the `layout.js` component.
+
+```jsx
+<main style={{ maxWidth: '640px' }}>{children}</main>
+```
+
 ## Conditionally render the TOC
+
+Time to map over the `tableOfContents` object:
 
 ```jsx
 {
   typeof tableOfContents.items === 'undefined' ? null : (
     <Toc>
       <InnerScroll>
-        <h3>Table of contents</h3>
+        <H2>Table of contents</H2>
         {tableOfContents.items.map(i => (
           <li key={i.url}>
             <a href={i.url} key={i.url}>
@@ -550,6 +591,81 @@ const InnerScroll = styled.div`
   );
 }
 ```
+
+Here's the full `post-template.js` file, I've reused the
+`page-elements` components for the `h1`, `h2` on the TOC and `p`:
+
+```jsx {4-5,7-18,20-23,26,29-44}
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import styled from 'styled-components';
+import { H1, H2, P } from '../components/page-elements';
+
+const Toc = styled.ul`
+  position: fixed;
+  left: calc(50% + 400px);
+  top: 110px;
+  max-height: 70vh;
+  width: 310px;
+  display: flex;
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
+`;
+
+const InnerScroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+`;
+
+export default ({ data }) => {
+  const { body, frontmatter, tableOfContents } = data.mdx;
+  return (
+    <>
+      <H1>{frontmatter.title}</H1>
+      <P>{frontmatter.date}</P>
+      {typeof tableOfContents.items === 'undefined' ? null : (
+        <Toc>
+          <InnerScroll>
+            <H2>Table of contents</H2>
+            {tableOfContents.items.map(i => (
+              <li key={i.url}>
+                <a href={i.url} key={i.url}>
+                  {i.title}
+                </a>
+              </li>
+            ))}
+          </InnerScroll>
+        </Toc>
+      )}
+      <MDXRenderer>{body}</MDXRenderer>
+    </>
+  );
+};
+
+export const query = graphql`
+  query PostBySlug($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date(formatString: "YYYY MMMM Do")
+      }
+      body
+      excerpt
+      tableOfContents
+      timeToRead
+      fields {
+        slug
+      }
+    }
+  }
+`;
+```
+
+That's it, I can play around navigating between headings now from the
+TOC.
 
 ## Resources that helped me
 
