@@ -1,9 +1,9 @@
 ---
-date: 2020-12-31
+date: 2020-02-13
 title: Add a Table of Contents with Smooth scroll using Gatsby and MDX
 tags:
   ['information', 'learning', 'gatsby', 'guide', 'mdx', 'markdown']
-published: false
+published: true
 cover: ./cover.jpg
 coverCredit: Photo by Misael Moreno on Unsplash
 ---
@@ -11,6 +11,10 @@ coverCredit: Photo by Misael Moreno on Unsplash
 The main purpose for me documenting this is to demonstrate
 implementing a table of contents with smooth scroll to the anchors in
 a Gatsby project using MDX.
+
+In the process I'm also setting up the Gatsby starter with MDX.
+
+**TL;DR, go here:** [Make a TOC component](#make-a-toc-component)
 
 I like using styled-components for my styling and would like to use
 them in this example, so I'm going to clone the Gatsby starter I made
@@ -39,8 +43,8 @@ yarn add gatsby-plugin-mdx \
 
 ## Add some content
 
-I'm creating a `posts` directory with a `toc-example` directory in it
-which contains the `index.mdx` file I'll be adding the content to.
+Create a `posts` directory with a `toc-example` directory in it which
+contains the `index.mdx` file I'll be adding the content to.
 
 ```bash
 mkdir -p posts/toc-example
@@ -53,7 +57,6 @@ I'll paste in some frontmatter and some content.
 ---
 date: 2020-02-09
 title: Add a Table of Contents with Smooth scroll using Gatsby and MDX
-published: true
 ---
 ```
 
@@ -90,9 +93,9 @@ I'll also need to add the posts directory to the
 Stop the dev server (`Ctrl+c` in the terminal) and start with the new
 configuration.
 
-Once the dev server has started back up, validate the Gatsby MDX
-config by selecting `allMdx` data the Graph<em>i</em>QL explorer
-(`localhost:8000/___graphql`).
+Once the dev server has started back up, I'll validate the Gatsby MDX
+config by seeing if `allMdx` is available in the Graph<em>i</em>QL
+explorer (`localhost:8000/___graphql`).
 
 ```graphql
 {
@@ -106,9 +109,9 @@ config by selecting `allMdx` data the Graph<em>i</em>QL explorer
 
 ## Configure Gatsby node to create the fields and pages
 
-Here I'll make the paths for the files in the `posts` directory. I'll
-do that with `createFilePath` when creating the node fields with
-`createNodeField`.
+Here I'll make all the paths for the files in the `posts` directory,
+currently it's only `gatsby-toc-example`. I'll do that with
+`createFilePath` when creating the node fields with `createNodeField`.
 
 ```js
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -149,7 +152,7 @@ fields are being created.
 To make the pages for the content in the `posts` directory, I'll need
 a template to use with the Gatsby `createPages` API.
 
-To do that, create a `templates` directory in `src` then make a
+To do that, I'll create a `templates` directory in `src` then make a
 `post-template.js` file.
 
 ```bash
@@ -243,20 +246,42 @@ Gatsby and MDX]", listed here:
 
 Stop and start the dev server as there's been changes to Gatsby node.
 
-Check the page is created, to do that add `/404.js` to the dev server
-url which will show all the available pages in the project.
+Check the page has been created, to do that add `/404.js` to the dev
+server url which will show all the available pages in the project.
 
 From here I can select the path created to `/toc-example/` and confirm
 the page was created.
 
 ## Build out the post template to use the MDXRenderer
 
-Now I can add data to the `post-template.js` page from a GraphQL
-query, I'll do that with the Gatsby `graphql` tag and query some
-frontmatter the body and the table of contents.
+Now I can add the data to the `post-template.js` page from a GraphQL
+query. I'll do that with the Gatsby `graphql` tag and query some
+frontmatter, body and the table of contents.
 
-Destructure the `body` and `frontmatter` data from `data.mdx` wrap the
-`body` data in the `<MDXRenderer>` component.
+This query is taking the `String!` parameter of `slug` passed to it
+from `createPage` in `gatsby-node.js`.
+
+```graphql
+query PostBySlug($slug: String!) {
+  mdx(fields: { slug: { eq: $slug } }) {
+    frontmatter {
+      title
+      date(formatString: "YYYY MMMM Do")
+    }
+    body
+    excerpt
+    tableOfContents
+    timeToRead
+    fields {
+      slug
+    }
+  }
+}
+```
+
+Destructure the `body` and `frontmatter` data from `data.mdx`, `data`
+is the results of the `PostBySlug` query. Wrap the `body` data in the
+`<MDXRenderer>` component.`
 
 The `frontmatter.title` and `frontmatter.date` can be used in `h1` and
 `p` tags for now.
@@ -296,14 +321,19 @@ export const query = graphql`
 `;
 ```
 
+I'm going to be using `tableOfContents` later when I make a table of
+contents component.
+
 ## Add page elements for the MDXProvider
 
-The content (headings, paragraphs, etc.) was reset in the template
-being used.
+The content (headings, paragraphs, etc.) were reset with
+`styled-reset` in the template being used so will need to be added in.
 
-I'm going to add components for headings and paragraphs.
+I'm going to be amending the already existing `H1` and `<P>`
+styled-components to be React components so that I can spread in the
+props I need for the heading ID.
 
-```jsx
+```jsx {1,4,11-13}
 import React from 'react';
 import styled from 'styled-components';
 
@@ -318,6 +348,9 @@ export const H1 = props => {
   return <StyledH1 {...props}>{props.children}</StyledH1>;
 };
 ```
+
+Create a `<H2>` component based off of the `<H1>`, adjust the spacing
+and font size.
 
 ```jsx
 import React from 'react';
@@ -334,6 +367,18 @@ export const H2 = props => {
   return <StyledH2 {...props}>{props.children}</StyledH2>;
 };
 ```
+
+I'll need to add the newly created `H2` to the index file for
+`page-elements`:
+
+```js {2}
+export * from './h1';
+export * from './h2';
+export * from './p';
+```
+
+Same with the `<P>` as I did with the `H1`, I'll switch it to use
+React.
 
 ```jsx
 import React from 'react';
@@ -355,7 +400,17 @@ export const P = props => {
 };
 ```
 
-```jsx {1,5,8-12,17-19}
+Importing the modified components into the `root-wrapper.js` I can now
+pass them into the `<MDXProvider>` which is used to map to the HTML
+elements created in markdown.
+
+There's a complete listing of all the HTML elements that can be
+customised on the [MDX table of components].
+
+In this example I'm mapping the `H1`, `H2` and `P` components to the
+corresponding HTML elements and passing them into the `<MDXProvider>`.
+
+```jsx {1,5,8-12,17,19}
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -379,49 +434,126 @@ export const wrapRootElement = ({ element }) => (
 );
 ```
 
-## Add remark-slug for adding id's to headers
+## Add gatsby-remark-autolink-headers for adding id's to headers
 
-Check the headings, none of them have id's and I need id's for the
-href to go to, add `remark-slug`
+Now I have a page, with some content and headers I should now be able
+to navigate to the individual headings, right?
 
-`gatsby-remark-autolink-headers`
+Well, not quite, although the headers are there, there's no IDs in
+them to scroll to yet.
 
-Adding `remark-slug` will add `id`'s to the headers
+I can use [gatsby-remark-autolink-headers] to create the heading IDs.
 
-```js {1,9}
-const remarkSlug = require('remark-slug');
+```bash
+yarn add gatsby-remark-autolink-headers
+```
 
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.mdx', '.md'],
-        remarkPlugins: [remarkSlug],
-        gatsbyRemarkPlugins: [],
-      },
-    },
-  ],
+Add `gatsby-remark-autolink-headers` in the Gatsby MDX config.
+
+```js {5}
+{
+  resolve: `gatsby-plugin-mdx`,
+  options: {
+    extensions: [`.mdx`, `.md`],
+    gatsbyRemarkPlugins: [`gatsby-remark-autolink-headers`],
+  },
+},
+```
+
+As I've changed the `gatsby-config.js` file I'll need to stop and
+start the dev server.
+
+Fix the weird positioning on the SVGs for the links added by
+`gatsby-remark-autolink-headers`.
+
+Do that by making some reusable CSS with a tagged template literal,
+I'll put it in it's own file `heading-link.js`.
+
+```bash
+touch src/components/page-elements/heading-link.js
+```
+
+Then add the CSS in as a template literal:
+
+```jsx
+export const AutoLink = `
+  a {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+  }
+  svg {
+    visibility: hidden;
+  }
+  &:hover {
+    a {
+      svg {
+        visibility: visible;
+      }
+    }
+  }
+`;
+```
+
+Then I'm going to use that (`AutoLink`) in the `H2` and anywhere else
+that could have a link applied to it (any heading element).
+
+```jsx {10}
+import React from 'react';
+import styled from 'styled-components';
+import { AutoLink } from './linked-headers';
+
+export const StyledH2 = styled.h2`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-family: ${({ theme }) => theme.font.serif};
+  margin-top: ${({ theme }) => theme.spacing[6]};
+  line-height: ${({ theme }) => theme.lineHeight.none};
+  ${AutoLink}
+`;
+
+export const H2 = props => {
+  return <StyledH2 {...props}>{props.children}</StyledH2>;
 };
 ```
 
-## Use styled-components to apply scroll-behaviour
-
-Use `createGlobalStyle` in styled-components to add
-`scroll-behaviour: smooth;`
-
-## Confirm the id is present in the headings
+Clicking around on the links now should scroll to each one smoothly
+and have the SVG for the link only visible on hover.
 
 ## Make a TOC component
+
+From here onwards is what the whole post boils down to! I did want to
+go through the process of how you would do something similar yourself
+though, so I'm hoping this has helped in some way.
+
+For the TOC with smooth scroll you need several things:
+
+- `scroll-behavior: smooth;` added to your `html`, this is part of the
+  starter I made in a [previous post].
+
+- IDs in the headings to scroll to, this is done with
+  `gatsby-remark-autolink-headers`.
+
+- A table of contents which is provided by Gatsby MDX with
+  `tableOfContents`.
+
+The first two parts have been covered so now to create a TOC
+component, with styled-components.
+
+In the `post-template.js` I'll create a `Toc` component for some
+positioning and create a scrollable div to use inside of that.
 
 ```jsx
 const Toc = styled.ul`
   position: fixed;
   left: calc(50% + 400px);
-  top: 80px;
+  top: 110px;
   max-height: 70vh;
   width: 310px;
   display: flex;
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
 `;
 
 const InnerScroll = styled.div`
@@ -430,16 +562,25 @@ const InnerScroll = styled.div`
 `;
 ```
 
+The `main` content is overlapping with the TOC here so I'm going to
+add a `maxWidth` inline on the `layout.js` component.
+
+```jsx
+<main style={{ maxWidth: '640px' }}>{children}</main>
+```
+
 ## Conditionally render the TOC
+
+Time to map over the `tableOfContents` object:
 
 ```jsx
 {
   typeof tableOfContents.items === 'undefined' ? null : (
     <Toc>
       <InnerScroll>
-        <h3>Table of contents</h3>
+        <H2>Table of contents</H2>
         {tableOfContents.items.map(i => (
-          <li>
+          <li key={i.url}>
             <a href={i.url} key={i.url}>
               {i.title}
             </a>
@@ -450,6 +591,81 @@ const InnerScroll = styled.div`
   );
 }
 ```
+
+Here's the full `post-template.js` file, I've reused the
+`page-elements` components for the `h1`, `h2` on the TOC and `p`:
+
+```jsx {4-5,7-18,20-23,26,29-44}
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
+import styled from 'styled-components';
+import { H1, H2, P } from '../components/page-elements';
+
+const Toc = styled.ul`
+  position: fixed;
+  left: calc(50% + 400px);
+  top: 110px;
+  max-height: 70vh;
+  width: 310px;
+  display: flex;
+  li {
+    line-height: ${({ theme }) => theme.lineHeight.tight};
+    margin-top: ${({ theme }) => theme.spacing[3]};
+  }
+`;
+
+const InnerScroll = styled.div`
+  overflow: hidden;
+  overflow-y: scroll;
+`;
+
+export default ({ data }) => {
+  const { body, frontmatter, tableOfContents } = data.mdx;
+  return (
+    <>
+      <H1>{frontmatter.title}</H1>
+      <P>{frontmatter.date}</P>
+      {typeof tableOfContents.items === 'undefined' ? null : (
+        <Toc>
+          <InnerScroll>
+            <H2>Table of contents</H2>
+            {tableOfContents.items.map(i => (
+              <li key={i.url}>
+                <a href={i.url} key={i.url}>
+                  {i.title}
+                </a>
+              </li>
+            ))}
+          </InnerScroll>
+        </Toc>
+      )}
+      <MDXRenderer>{body}</MDXRenderer>
+    </>
+  );
+};
+
+export const query = graphql`
+  query PostBySlug($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date(formatString: "YYYY MMMM Do")
+      }
+      body
+      excerpt
+      tableOfContents
+      timeToRead
+      fields {
+        slug
+      }
+    }
+  }
+`;
+```
+
+That's it, I can play around navigating between headings now from the
+TOC.
 
 ## Resources that helped me
 
@@ -504,3 +720,7 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
   https://github.com/ChristopherBiscardi/gatsby-mdx/issues/204
 [gatsby starter blog mdx]:
   https://github.com/hagnerd/gatsby-starter-blog-mdx
+[mdx table of components]:
+  https://mdxjs.com/getting-started#table-of-components
+[gatsby-remark-autolink-headers]:
+  https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/
