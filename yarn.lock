@@ -5961,10 +5961,10 @@ gatsby-transformer-sharp@2.3.14:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@2.19.12:
-  version "2.19.12"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.12.tgz#9819d47407386912ad89f8067d69cec4ef7aec23"
-  integrity sha512-oI76KUEIebmaVOwtHuRINBspLvKHCIOdVPiNdgT/ly05iJLg9OsKd6/eYZ/rO+YYWew8t+MmoMVmRLpaWE2RBQ==
+gatsby@2.19.17:
+  version "2.19.17"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.17.tgz#f512b251d9aeb688bed270f3c2e490887edd2ee8"
+  integrity sha512-XJIW61osX5u/DltfAp0OkevQjHbCoRnzUfAElwwUTstUvlLCq4Ihz/1nX8+hp6e1/fxF2e/WRPD1HoDPacsKhQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
@@ -6027,7 +6027,7 @@ gatsby@2.19.12:
     fs-extra "^8.1.0"
     gatsby-cli "^2.8.29"
     gatsby-core-utils "^1.0.28"
-    gatsby-graphiql-explorer "^0.2.33"
+    gatsby-graphiql-explorer "^0.2.34"
     gatsby-link "^2.2.29"
     gatsby-plugin-page-creator "^2.1.40"
     gatsby-react-router-scroll "^2.1.21"
