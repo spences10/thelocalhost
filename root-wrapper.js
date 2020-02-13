@@ -52,7 +52,7 @@ const components = {
   wrapper: ({ children }) => <>{children}</>,
 };
 
-export const wrapRootElement = ({ element }) => (
+export const wrapPageElement = ({ element }) => (
   <AnalyticsProvider>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
