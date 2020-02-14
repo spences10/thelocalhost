@@ -7,21 +7,16 @@ import {
   LivePreview,
   LiveProvider,
 } from 'react-live';
-import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import 'victormono';
 import { copyToClipboard } from '../../utils/copy-to-clipboard';
+import { NegMargin } from '../shared';
 
 const RE = /{([\d,-]+)}/;
 
 export const CodeWrapper = styled.div`
   position: relative;
-  margin-left: -${({ theme }) => theme.spacing[8]};
-  margin-right: -${({ theme }) => theme.spacing[8]};
-  ${down('sm')} {
-    margin-left: -${({ theme }) => theme.spacing[0]};
-    margin-right: -${({ theme }) => theme.spacing[0]};
-  }
+  ${NegMargin}
 `;
 
 const Pre = styled.pre`

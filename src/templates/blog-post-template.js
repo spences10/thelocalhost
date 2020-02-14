@@ -6,9 +6,10 @@ import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { A, H1, Small } from '../components/page-elements';
+import { A, H1, Small as SM } from '../components/page-elements';
 import {
   Link as GatsbyLink,
+  NegMargin,
   PostDate,
   PostEditOnGitHub,
   PostInfo,
@@ -18,7 +19,6 @@ import { useAnalytics } from '../contexts/event-tracking';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const Image = styled(Img)`
-  height: ${({ theme }) => theme.spacing[56]};
   object-fit: cover;
 `;
 
@@ -71,6 +71,18 @@ const InnerScroll = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   margin: ${({ theme }) => theme.spacing[3]};
+`;
+
+const ImageWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.spacing[8]};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  overflow: hidden;
+  ${NegMargin}
+`;
+
+const Small = styled(SM)`
+  ${NegMargin}
 `;
 
 export default ({ data, pageContext }) => {
@@ -133,13 +145,14 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
-      <br />
-      {!!frontmatter.cover ? (
-        <Image
-          sizes={frontmatter.cover.childImageSharp.sizes}
-          alt={`cover image`}
-        />
-      ) : null}
+      <ImageWrapper>
+        {!!frontmatter.cover ? (
+          <Image
+            sizes={frontmatter.cover.childImageSharp.sizes}
+            alt={`cover image`}
+          />
+        ) : null}
+      </ImageWrapper>
       <Small>{frontmatter.coverCredit}</Small>
       <MDXRenderer>{body}</MDXRenderer>
       {typeof tableOfContents.items === 'undefined' ? null : (
