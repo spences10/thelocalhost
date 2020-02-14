@@ -83,6 +83,8 @@ const ImageWrapper = styled.div`
 
 const Small = styled(SM)`
   ${NegMargin}
+  color: ${({ theme }) => theme.colours.grey[700]};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
 `;
 
 export default ({ data, pageContext }) => {
