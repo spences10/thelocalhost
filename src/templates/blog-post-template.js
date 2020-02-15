@@ -1,13 +1,15 @@
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
 import ReactTooltip from 'react-tooltip';
 import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
-import { A, H1 } from '../components/page-elements';
+import { A, H1, Small as SM } from '../components/page-elements';
 import {
   Link as GatsbyLink,
+  NegMargin,
   PostDate,
   PostEditOnGitHub,
   PostInfo,
@@ -15,6 +17,10 @@ import {
 } from '../components/shared';
 import { useAnalytics } from '../contexts/event-tracking';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
+
+const Image = styled(Img)`
+  object-fit: cover;
+`;
 
 const PostNavigationWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
@@ -65,6 +71,20 @@ const InnerScroll = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   margin: ${({ theme }) => theme.spacing[3]};
+`;
+
+const ImageWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.spacing[8]};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  overflow: hidden;
+  ${NegMargin}
+`;
+
+const Small = styled(SM)`
+  ${NegMargin}
+  color: ${({ theme }) => theme.colours.grey[700]};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
 `;
 
 export default ({ data, pageContext }) => {
@@ -127,6 +147,15 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
+      <ImageWrapper>
+        {!!frontmatter.cover ? (
+          <Image
+            sizes={frontmatter.cover.childImageSharp.sizes}
+            alt={`cover image`}
+          />
+        ) : null}
+      </ImageWrapper>
+      <Small>{frontmatter.coverCredit}</Small>
       <MDXRenderer>{body}</MDXRenderer>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
@@ -190,7 +219,13 @@ export const query = graphql`
         date(formatString: "YYYY MMMM Do")
         cover {
           publicURL
+          childImageSharp {
+            sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+              ...GatsbyImageSharpSizes_tracedSVG
+            }
+          }
         }
+        coverCredit
       }
       body
       excerpt

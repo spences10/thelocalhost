@@ -1,7 +1,7 @@
 import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
 import { down } from 'styled-breakpoints';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Link = styled(props => <GatsbyLink {...props} />)``;
 
@@ -82,3 +82,12 @@ export const StyledLink = styled(Link)`
 `;
 
 export const IndexWrapper = styled.main``;
+
+export const NegMargin = css`
+  margin-left: -${({ theme }) => theme.spacing[12]};
+  margin-right: -${({ theme }) => theme.spacing[12]};
+  ${down('sm')} {
+    margin-left: -${({ theme }) => theme.spacing[0]};
+    margin-right: -${({ theme }) => theme.spacing[0]};
+  }
+`;
