@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dump = props => (
+export const Dump = props => (
   <div
     style={{
       fontSize: 20,

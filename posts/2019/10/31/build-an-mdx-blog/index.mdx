@@ -8,8 +8,6 @@ cover: ./cover.jpg
 coverCredit: Photo by SpaceX on Unsplash
 ---
 
-import { YouTube } from '@pauliescanlon/gatsby-mdx-embed';
-
 I have been a Gatsby user since around [v0 May 2017], at that time was
 using a template called [Lumen] and it was just what I needed at the
 time. Since then I have have gone from using a template to creating my
@@ -42,7 +40,7 @@ your own React components into your Markdown posts.
 - Configuring an SEO component
 - Deploying it to Netlify
 
-## Who is how-to this for?
+## Who's this how-to for?
 
 People that may have used Gatsby before as a template and now want to
 get more involved in how to make changes.
@@ -264,10 +262,6 @@ In the terminal install the dependencies:
 yarn add gatsby-plugin-mdx @mdx-js/mdx @mdx-js/react gatsby-source-filesystem
 ```
 
-```bash
-touch gatsby-config.js
-```
-
 Now its time to configure `gatsby-config.js`:
 
 ```js
@@ -426,7 +420,7 @@ The Gatsby plugin is for built-in server-side rendering support.
 Ok, with that detailed explanation out of the way, configure them in
 `gatsby-config.js`:
 
-```js
+```js {1-4,7,9}
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
@@ -444,7 +438,10 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/posts`, name: `posts` },
+      options: {
+        path: `${__dirname}/posts`,
+        name: `posts`,
+      },
     },
   ],
 };
@@ -459,7 +456,7 @@ destructuring from the `useSiteMetadata` hook you made previously.
 
 For this example make it the now iconic Gatsby `rebeccapurple`.
 
-```jsx
+```jsx {2-3,5-7,10-16}
 import React from 'react';
 import styled from 'styled-components';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
@@ -727,7 +724,7 @@ To get the component set up, create a `Dump.js` file in your
 page.
 
 ```bash
-touch /src/components/Dump.js
+touch src/components/Dump.js
 ```
 
 ```jsx
@@ -2251,7 +2248,7 @@ Add some JavaScript to determine if there's anything to render:
 Here's what the full module should look like now:
 
 ```js
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
@@ -2350,7 +2347,7 @@ First up, install and configure, `gatsby-plugin-react-helmet` this is
 used for server rendering data added with React Helmet.
 
 ```bash
-yarn add gatsby-plugin-react-helmet
+yarn add gatsby-plugin-react-helmet react-helmet react-seo-component
 ```
 
 You'll need to add the plugin to your `gatsby-config.js`. If you

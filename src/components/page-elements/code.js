@@ -7,14 +7,21 @@ import {
   LivePreview,
   LiveProvider,
 } from 'react-live';
+import { down } from 'styled-breakpoints';
 import styled from 'styled-components';
 import 'victormono';
 import { copyToClipboard } from '../../utils/copy-to-clipboard';
 
+const RE = /{([\d,-]+)}/;
+
 export const CodeWrapper = styled.div`
   position: relative;
-  margin-left: -${({ theme }) => theme.spacing[4]};
-  margin-right: -${({ theme }) => theme.spacing[4]};
+  margin-left: -${({ theme }) => theme.spacing[8]};
+  margin-right: -${({ theme }) => theme.spacing[8]};
+  ${down('sm')} {
+    margin-left: -${({ theme }) => theme.spacing[0]};
+    margin-right: -${({ theme }) => theme.spacing[0]};
+  }
 `;
 
 const Pre = styled.pre`
@@ -23,8 +30,8 @@ const Pre = styled.pre`
   padding: 0.5em;
   overflow-x: auto;
   border-radius: 3px;
-
   font-family: 'Victor Mono', 'Courier New', Courier, monospace;
+  ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
 `;
 
 const LineNo = styled.span`
@@ -49,7 +56,29 @@ const CopyCode = styled.button`
   background-color: ${({ theme }) => theme.colours.primary[500]};
 `;
 
+function calculateLinesToHighlight(meta) {
+  if (RE.test(meta)) {
+    const lineNumbers = RE.exec(meta)[1]
+      .split(',')
+      .map(v => v.split('-').map(y => parseInt(y, 10)));
+    return index => {
+      const lineNumber = index + 1;
+      const inRange = lineNumbers.some(([start, end]) =>
+        end
+          ? lineNumber >= start && lineNumber <= end
+          : lineNumber === start
+      );
+      return inRange;
+    };
+  } else {
+    return () => false;
+  }
+}
+
 export const Code = ({ codeString, language, ...props }) => {
+  const shouldHighlightLine = calculateLinesToHighlight(
+    props.metastring
+  );
   if (props['react-live']) {
     return (
       <LiveProvider code={codeString} noInline={true} theme={theme}>
@@ -79,7 +108,15 @@ export const Code = ({ codeString, language, ...props }) => {
         <Pre className={className} style={style}>
           <CopyCode onClick={handleClick}>Copy</CopyCode>
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
+            <div
+              {...getLineProps({
+                line,
+                key: i,
+                className: shouldHighlightLine(i)
+                  ? 'highlight-line'
+                  : '',
+              })}
+            >
               <LineNo>{i + 1}</LineNo>
               {line.map((token, key) => (
                 <span {...getTokenProps({ token, key })} />

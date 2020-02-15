@@ -1,37 +1,26 @@
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import { isIE } from 'react-device-detect';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
-import { Layout } from '../components/layout';
-import { Link, StyledDate } from '../components/shared';
+import {
+  CopyWrapper,
+  IndexWrapper,
+  PostDate,
+  PostInfo,
+  PostTimeToRead,
+  StyledExcerpt,
+  StyledLink,
+  StyledTitle,
+} from '../components/shared';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
-
-const IndexWrapper = styled.main``;
 
 const PostWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow: ${({ theme }) => theme.boxShadow.lg};
   color: ${({ theme }) => theme.colours.grey[900]};
   overflow: hidden;
-`;
-
-const CopyWrapper = styled.div`
-  padding: ${({ theme }) => theme.spacing[4]};
-`;
-
-const StyledTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize['3xl']};
-  font-family: ${({ theme }) => theme.font.serif};
-  line-height: ${({ theme }) => theme.lineHeight.none};
-`;
-
-const StyledExcerpt = styled.p`
-  margin-top: ${({ theme }) => theme.spacing[3]};
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
 `;
 
 const LinkWrapper = styled.div`
@@ -54,8 +43,18 @@ export default ({ data }) => {
     siteLocale,
     twitterUsername,
   } = useSiteMetadata();
+  if (isIE)
+    return (
+      <IndexWrapper>
+        <StyledTitle>IE is not supported.</StyledTitle>
+        <StyledExcerpt>
+          Please use a modern browser, download Firefox, Chrome or
+          Edge
+        </StyledExcerpt>
+      </IndexWrapper>
+    );
   return (
-    <Layout>
+    <>
       <SEO
         title={`Home`}
         titleTemplate={title}
@@ -69,18 +68,30 @@ export default ({ data }) => {
       <IndexWrapper>
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
-          ({ id, excerpt, frontmatter, fields }) => (
+          ({
+            id,
+            excerpt,
+            frontmatter,
+            fields: { slug, editLink },
+            timeToRead,
+          }) => (
             <LinkWrapper key={id}>
-              <StyledLink to={fields.slug}>
+              <StyledLink to={slug}>
                 <PostWrapper>
                   {!!frontmatter.cover ? (
                     <Image
                       sizes={frontmatter.cover.childImageSharp.sizes}
+                      alt={`cover image`}
                     />
                   ) : null}
                   <CopyWrapper>
                     <StyledTitle>{frontmatter.title}</StyledTitle>
-                    <StyledDate>{frontmatter.date}</StyledDate>
+                    <PostInfo>
+                      <PostDate>{frontmatter.date}</PostDate>
+                      <PostTimeToRead>
+                        {timeToRead * 2} minutes to read
+                      </PostTimeToRead>
+                    </PostInfo>
                     <StyledExcerpt>{excerpt}</StyledExcerpt>
                   </CopyWrapper>
                 </PostWrapper>
@@ -89,7 +100,7 @@ export default ({ data }) => {
           )
         )}
       </IndexWrapper>
-    </Layout>
+    </>
   );
 };
 
@@ -114,8 +125,11 @@ export const query = graphql`
             }
           }
         }
+        tableOfContents
+        timeToRead
         fields {
           slug
+          editLink
         }
       }
     }

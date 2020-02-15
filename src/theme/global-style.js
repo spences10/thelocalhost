@@ -2,6 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 export const theme = {
+  breakpoints: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+  },
   colours: {
     transparent: 'transparent',
 
@@ -148,5 +154,16 @@ export const GlobalStyle = createGlobalStyle`
   }
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
+  }
+  .highlight-line {
+    background-color: rgba(201, 167, 255, 0.2);
+    margin: 0 -10px;
+    padding: 0 5px;
+    border-left: 5px solid ${({ theme }) =>
+      theme.colours.primary[500]};
+  }
+  .__react_component_tooltip {
+    height: 100px;
+    max-width: 400px;
   }
 `;
