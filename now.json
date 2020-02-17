@@ -5,5 +5,6 @@
     "env": {
       "GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST_BLOG": "@gatsby_fathom_tracking_id_the_localhost_blog"
     }
-  }
+  },
+  "trailingSlash": false
 }
