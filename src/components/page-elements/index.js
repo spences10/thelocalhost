@@ -5,6 +5,7 @@ export * from './div';
 export * from './h1';
 export * from './h2';
 export * from './h3';
+export * from './h4';
 export * from './hr';
 export * from './inline-code';
 export * from './li';
