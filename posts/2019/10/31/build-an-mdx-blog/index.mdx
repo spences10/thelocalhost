@@ -40,7 +40,7 @@ your own React components into your Markdown posts.
 - Configuring an SEO component
 - Deploying it to Netlify
 
-## Who is how-to this for?
+## Who's this how-to for?
 
 People that may have used Gatsby before as a template and now want to
 get more involved in how to make changes.
@@ -231,7 +231,7 @@ This is my third post!
 
 Ok, now you're going to configure Gatsby so that it can read your
 super awesome content you just created. So, first up you need to
-create a the `gatsby-config.js` file, in the terminal create the file:
+create a `gatsby-config.js` file, in the terminal create the file:
 
 ```bash
 touch gatsby-config.js
@@ -260,10 +260,6 @@ In the terminal install the dependencies:
 
 ```bash
 yarn add gatsby-plugin-mdx @mdx-js/mdx @mdx-js/react gatsby-source-filesystem
-```
-
-```bash
-touch gatsby-config.js
 ```
 
 Now its time to configure `gatsby-config.js`:
@@ -728,7 +724,7 @@ To get the component set up, create a `Dump.js` file in your
 page.
 
 ```bash
-touch /src/components/Dump.js
+touch src/components/Dump.js
 ```
 
 ```jsx
@@ -2252,7 +2248,7 @@ Add some JavaScript to determine if there's anything to render:
 Here's what the full module should look like now:
 
 ```js
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
@@ -2351,7 +2347,7 @@ First up, install and configure, `gatsby-plugin-react-helmet` this is
 used for server rendering data added with React Helmet.
 
 ```bash
-yarn add gatsby-plugin-react-helmet
+yarn add gatsby-plugin-react-helmet react-helmet react-seo-component
 ```
 
 You'll need to add the plugin to your `gatsby-config.js`. If you

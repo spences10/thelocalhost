@@ -149,9 +149,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
     background-color: ${({ theme }) => theme.colours.grey[100]};
   }
-  .youtube-mdx-embed {
-    margin-top: ${({ theme }) => theme.spacing[10]};
-  }
+  .youtube-mdx-embed, 
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
   }
