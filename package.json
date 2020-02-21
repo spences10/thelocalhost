@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.63",
+  "version": "0.1.64",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@mdx-js/mdx": "1.5.6",
-    "@mdx-js/react": "1.5.6",
+    "@mdx-js/mdx": "1.5.7",
+    "@mdx-js/react": "1.5.7",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.17",
     "babel-plugin-styled-components": "1.10.7",
     "gatsby": "2.19.19",
