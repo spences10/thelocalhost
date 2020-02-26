@@ -54,7 +54,7 @@
     "gatsby-remark-images": "3.1.44",
     "gatsby-remark-smartypants": "2.1.21",
     "gatsby-source-filesystem": "2.1.48",
-    "gatsby-transformer-sharp": "2.3.14",
+    "gatsby-transformer-sharp": "2.3.15",
     "prism-react-renderer": "1.0.2",
     "react": "16.12.0",
     "react-device-detect": "1.11.14",
