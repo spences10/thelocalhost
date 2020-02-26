@@ -12618,10 +12618,10 @@ style-to-object@^0.2.1:
   dependencies:
     inline-style-parser "0.1.1"
 
-styled-breakpoints@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/styled-breakpoints/-/styled-breakpoints-8.0.0.tgz#8e22247df0b3229a01af39427ffd0ba9295a7f34"
-  integrity sha512-7OL11nFqhKCmaIiUsn1Ke7taAMi6VTkwtjSUotmU3T1mCmdOdJTIum8IfkjlRqcjS4r+Gnt/BraVL3Vzfz2Xbg==
+styled-breakpoints@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/styled-breakpoints/-/styled-breakpoints-8.0.1.tgz#e5083f1810173b3d2dfde524c6ee251f9d1555d1"
+  integrity sha512-PPQoTaVYvyj7rgGGKGwCTN1fE1w5B9dKp5wVExRf9X6PPWggbL/k4KVxa3ljPmxbMOVCgQ+Acu58Jri01pLKPQ==
 
 styled-components@5.0.1:
   version "5.0.1"
