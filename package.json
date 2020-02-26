@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.70",
+  "version": "0.1.71",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -38,9 +38,9 @@
     "gatsby-source-filesystem": "2.1.48",
     "gatsby-transformer-sharp": "2.3.15",
     "prism-react-renderer": "1.0.2",
-    "react": "16.12.0",
+    "react": "16.13.0",
     "react-device-detect": "1.11.14",
-    "react-dom": "16.12.0",
+    "react-dom": "16.13.0",
     "react-live": "2.2.2",
     "react-seo-component": "1.0.0",
     "react-tooltip": "4.0.3",
