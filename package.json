@@ -34,7 +34,7 @@
     "@mdx-js/react": "1.5.7",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.17",
     "babel-plugin-styled-components": "1.10.7",
-    "gatsby": "2.19.26",
+    "gatsby": "2.19.27",
     "gatsby-image": "2.2.42",
     "gatsby-plugin-fathom": "1.2.0",
     "gatsby-plugin-feed": "2.3.27",
