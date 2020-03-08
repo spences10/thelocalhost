@@ -19,6 +19,7 @@ exports.createPages = ({ actions, graphql }) => {
           frontmatter {
             title
             date
+            tags
           }
           fields {
             slug
@@ -32,6 +33,8 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMdx.nodes;
+
+    createTopics(createPage, posts);
 
     posts.forEach((post, index) => {
       const previous =
@@ -48,6 +51,21 @@ exports.createPages = ({ actions, graphql }) => {
         },
       });
     });
+  });
+};
+
+const createTopics = (createPage, posts) => {
+  const postsByTopic = {};
+
+  posts.forEach(post => {
+    if (post.frontmatter.tags) {
+      post.frontmatter.tags.forEach(tag => {
+        if (!postsByTopic[tag]) {
+          postsByTopic[tag] = [];
+        }
+        postsByTopic[tag].push(post);
+      });
+    }
   });
 };
 
