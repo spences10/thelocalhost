@@ -2,7 +2,6 @@
 date: 2018-05-22
 title: Use the React Context API with Gatsby
 tags: ['information', 'learning', 'guide', 'gatsby', 'api']
-excerpt: ''
 published: true
 cover: ./cover.jpg
 coverCredit: Photo by Robin Benzrihem on Unsplash

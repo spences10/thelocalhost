@@ -67,6 +67,8 @@ const createTopics = (createPage, posts) => {
       });
     }
   });
+
+  const tags = Object.keys(postsByTopic);
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

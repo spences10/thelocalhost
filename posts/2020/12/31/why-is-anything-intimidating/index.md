@@ -2,7 +2,6 @@
 date: 2020-12-31
 title: Why is anything intimidating?
 tags: ['ramble', '!dev', 'habits']
-excerpt: ''
 published: false
 ---
 
