@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.95",
+  "version": "0.1.96",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "@mdx-js/react": "1.5.7",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.17",
     "babel-plugin-styled-components": "1.10.7",
-    "gatsby": "2.19.41",
+    "gatsby": "2.19.42",
     "gatsby-image": "2.2.43",
     "gatsby-plugin-fathom": "1.2.0",
     "gatsby-plugin-feed": "2.3.28",
@@ -35,7 +35,7 @@
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-images": "3.1.49",
     "gatsby-remark-smartypants": "2.1.22",
-    "gatsby-source-filesystem": "2.1.54",
+    "gatsby-source-filesystem": "2.1.55",
     "gatsby-transformer-sharp": "2.3.18",
     "prism-react-renderer": "1.0.2",
     "react": "16.13.0",
