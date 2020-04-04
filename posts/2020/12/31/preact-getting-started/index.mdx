@@ -10,6 +10,8 @@ coverCredit: Photo by Tim Gouw on Unsplash
 For the past couple of weeks now I have been getting familiar with
 Preact and the Preact CLI.
 
+It's great, it's _similar_ to React
+
 ## The { h } isn't needed
 
 I was quite hung up on the `{ h }` import, I use the VSCode setting to
@@ -66,7 +68,31 @@ Tricks post] on it.
 </html>
 ```
 
-This can also do this with Google fonts.
+This can also do this with Google fonts, something like this:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title><% preact.title %></title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;700&family=BioRhyme+Expanded:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <% preact.headEnd %>
+  </head>
+  <body>
+    <% preact.bodyEnd %>
+  </body>
+</html>
+```
 
 <!-- Links -->
 
