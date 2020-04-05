@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.65",
+  "version": "0.1.66",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "husky": "4.2.3",
-    "prettier": "2.0.2",
+    "prettier": "2.0.3",
     "pretty-quick": "2.0.1"
   },
   "prettier": {
