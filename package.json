@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.68",
+  "version": "0.1.69",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -34,13 +34,13 @@
     "@mdx-js/react": "1.5.8",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.17",
     "babel-plugin-styled-components": "1.10.7",
-    "gatsby": "2.20.12",
+    "gatsby": "2.20.13",
     "gatsby-image": "2.3.1",
     "gatsby-plugin-fathom": "1.2.0",
     "gatsby-plugin-feed": "2.4.1",
     "gatsby-plugin-google-fonts": "1.0.1",
     "gatsby-plugin-manifest": "2.3.3",
-    "gatsby-plugin-mdx": "1.1.4",
+    "gatsby-plugin-mdx": "1.1.5",
     "gatsby-plugin-offline": "3.1.2",
     "gatsby-plugin-react-helmet": "3.2.1",
     "gatsby-plugin-robots-txt": "1.5.0",
