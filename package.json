@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.78",
+  "version": "0.1.79",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -55,7 +55,7 @@
     "gatsby-plugin-sharp": "2.5.4",
     "gatsby-plugin-sitemap": "2.3.1",
     "gatsby-plugin-styled-components": "3.2.1",
-    "gatsby-plugin-zeit-now": "0.2.0",
+    "gatsby-plugin-zeit-now": "0.3.0",
     "gatsby-remark-autolink-headers": "2.2.1",
     "gatsby-remark-copy-linked-files": "2.2.1",
     "gatsby-remark-external-links": "0.0.4",
