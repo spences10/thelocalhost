@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.80",
+  "version": "0.1.81",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -68,7 +68,7 @@
     "react-dom": "16.13.1",
     "react-live": "2.2.2",
     "react-seo-component": "1.0.0",
-    "react-tooltip": "4.2.1",
+    "react-tooltip": "4.2.2",
     "styled-breakpoints": "8.1.0",
     "styled-components": "5.1.0",
     "styled-reset": "4.1.2",
