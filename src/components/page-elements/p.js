@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.base};
@@ -14,9 +14,9 @@ const StyledText = styled.p`
     width: 100%;
   }
   word-break: break-word;
-`;
+`
 
 export const P = props => {
-  const { children, ...rest } = props;
-  return <StyledText {...rest}>{children}</StyledText>;
-};
+  const { children, ...rest } = props
+  return <StyledText {...rest}>{children}</StyledText>
+}

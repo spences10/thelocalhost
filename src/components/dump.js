@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const Dump = props => (
   <div
@@ -18,6 +18,6 @@ export const Dump = props => (
       </pre>
     ))}
   </div>
-);
+)
 
-export default Dump;
+export default Dump
