@@ -1,6 +1,10 @@
 {
   "name": "thelocalhost.blog",
+<<<<<<< HEAD
   "version": "0.1.91",
+=======
+  "version": "0.1.85",
+>>>>>>> Update dependency react-seo-component to v2
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -69,7 +73,11 @@
     "react-helmet": "6.0.0",
     "react-live": "2.2.2",
     "react-seo-component": "2.0.0",
+<<<<<<< HEAD
     "react-tooltip": "4.2.5",
+=======
+    "react-tooltip": "4.2.3",
+>>>>>>> Update dependency react-seo-component to v2
     "styled-breakpoints": "8.1.0",
     "styled-components": "5.1.0",
     "styled-reset": "4.1.3",
