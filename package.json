@@ -59,6 +59,7 @@
     "react": "16.13.1",
     "react-device-detect": "1.11.14",
     "react-dom": "16.13.1",
+    "react-helmet": "6.0.0",
     "react-live": "2.2.2",
     "react-seo-component": "1.0.0",
     "react-tooltip": "4.2.3",
