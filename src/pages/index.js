@@ -1,9 +1,9 @@
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import React from 'react';
-import { isIE } from 'react-device-detect';
-import SEO from 'react-seo-component';
-import styled from 'styled-components';
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import React from 'react'
+import { isIE } from 'react-device-detect'
+import SEO from 'react-seo-component'
+import styled from 'styled-components'
 import {
   CopyWrapper,
   IndexWrapper,
@@ -13,25 +13,25 @@ import {
   StyledExcerpt,
   StyledLink,
   StyledTitle,
-} from '../components/shared';
-import { useSiteMetadata } from '../hooks/use-site-metadata';
+} from '../components/shared'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const PostWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow: ${({ theme }) => theme.boxShadow.lg};
   color: ${({ theme }) => theme.colours.grey[900]};
   overflow: hidden;
-`;
+`
 
 const LinkWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[8]} 0;
   /* padding: 0 ${({ theme }) => theme.spacing[8]}; */
-`;
+`
 
 const Image = styled(Img)`
   height: ${({ theme }) => theme.spacing[56]};
   object-fit: cover;
-`;
+`
 
 export default ({ data }) => {
   const {
@@ -42,7 +42,7 @@ export default ({ data }) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
-  } = useSiteMetadata();
+  } = useSiteMetadata()
   if (isIE)
     return (
       <IndexWrapper>
@@ -52,7 +52,7 @@ export default ({ data }) => {
           Edge
         </StyledExcerpt>
       </IndexWrapper>
-    );
+    )
   return (
     <>
       <SEO
@@ -101,8 +101,8 @@ export default ({ data }) => {
         )}
       </IndexWrapper>
     </>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -134,4 +134,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

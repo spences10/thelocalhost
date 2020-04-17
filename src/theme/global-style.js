@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
 export const theme = {
   breakpoints: {
@@ -129,7 +129,7 @@ export const theme = {
     lg: '0.5rem',
     full: '9999px',
   },
-};
+}
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -164,4 +164,4 @@ export const GlobalStyle = createGlobalStyle`
     height: 100px;
     max-width: 400px;
   }
-`;
+`

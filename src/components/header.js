@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from './shared';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from './shared'
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
@@ -22,7 +22,7 @@ const StyledH1 = styled.h1`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-`;
+`
 
 const StyledP = styled.p`
   font-family: ${({ theme }) => theme.font.sans};
@@ -31,11 +31,11 @@ const StyledP = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
   color: ${({ theme }) => theme.colours.grey[900]};
-`;
+`
 
 export const Header = ({ siteTitle, siteDescription }) => (
   <StyledLink to="/">
     <StyledH1>{siteTitle}</StyledH1>
     <StyledP>{siteDescription}</StyledP>
   </StyledLink>
-);
+)
