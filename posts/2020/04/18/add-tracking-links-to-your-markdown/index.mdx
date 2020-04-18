@@ -1,5 +1,5 @@
 ---
-date: 2020-12-31
+date: 2020-04-18
 title: Add Analytics Tracking Links to your Markdown
 tags: ['analytics', 'learning', 'guide']
 published: true
@@ -7,8 +7,8 @@ cover: ./cover.jpg
 coverCredit: Photo by JJ Ying on Unsplash
 ---
 
-I'm talking Fathom Analytics again, this time about tracking custom
-events.
+I'm talking Fathom Analytics again, this time about tracking link
+clicks in my Markdown.
 
 I have written about how to [track custom events] with Fathom
 previously and this is really an extension to that post.
@@ -110,7 +110,7 @@ How do I do that then?
 The way I worked out how to do it was to use a URL parameter and
 intercept it in the `A` component.
 
-In the Markdown add the goal ID to the URL:
+In the Markdown I add the goal ID to the URL, on line 9:
 
 ```md {8-9}
 # My awesome Markdown
@@ -165,8 +165,8 @@ So reading into the URL API a bit more and reading up on some
 [StackOverflow posts] I found that I could delete the parameter after
 using it.
 
-On line 3 I'm checking if the `props.href` contains a `goalId`
-parameter.
+In the next block of code here, on line 3, I'm checking if the
+`props.href` contains a `goalId` parameter.
 
 I can then manipulate the `props.href` in `useEffect` and setting the
 `goalId` in state first on line 10.
@@ -210,13 +210,18 @@ export const A = props => {
 }
 ```
 
+Now clicking the link will only call the analytics provider when
+there's a goal ID in the `href` passed to the component in the props.
+
 ## 📺 Here's a video
 
-In this video I detail what I've been writing about.
+In this video detail what I've been writing about.
 
 <YouTube youTubeId="Ihbx0BVIhZk" />
 
 ## 📑 Resources
+
+These resources helped me along the way.
 
 - [MDN URL API]
 
