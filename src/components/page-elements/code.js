@@ -17,6 +17,8 @@ const RE = /{([\d,-]+)}/
 export const CodeWrapper = styled.div`
   position: relative;
   ${NegMargin}
+  margin-top: ${({ theme }) => theme.spacing['10']};
+  margin-bottom: ${({ theme }) => theme.spacing['10']};
 `
 
 const Pre = styled.pre`

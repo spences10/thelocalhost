@@ -152,6 +152,7 @@ export const GlobalStyle = createGlobalStyle`
   .youtube-mdx-embed, 
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
+    margin-bottom: ${({ theme }) => theme.spacing[10]};
   }
   .highlight-line {
     background-color: rgba(201, 167, 255, 0.2);

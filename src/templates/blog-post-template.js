@@ -162,7 +162,7 @@ export default ({ data, pageContext }) => {
           <InnerScroll>
             <h3>Table of contents</h3>
             {tableOfContents.items.map(i => (
-              <li>
+              <li key={i.url}>
                 <A href={i.url} key={i.url}>
                   {i.title}
                 </A>
