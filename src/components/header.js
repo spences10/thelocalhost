@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
 const StyledH1 = styled.h1`
   font-family: ${({ theme }) => theme.font.monospace};
@@ -23,7 +23,7 @@ const StyledH1 = styled.h1`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-`;
+`
 
 const StyledP = styled.p`
   font-family: ${({ theme }) => theme.font.sans};
@@ -32,7 +32,7 @@ const StyledP = styled.p`
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
   color: ${({ theme }) => theme.colours.grey[900]};
-`;
+`
 
 export const Header = ({ siteTitle, siteDescription }) => (
   <StyledLink to="/">

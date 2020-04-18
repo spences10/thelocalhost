@@ -1,20 +1,26 @@
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import React from 'react';
-import SEO from 'react-seo-component';
-import ReactTooltip from 'react-tooltip';
-import { down } from 'styled-breakpoints';
-import styled from 'styled-components';
-import { A, H1 } from '../components/page-elements';
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React from 'react'
+import SEO from 'react-seo-component'
+import ReactTooltip from 'react-tooltip'
+import { down } from 'styled-breakpoints'
+import styled from 'styled-components'
+import { A, H1, Small as SM } from '../components/page-elements'
 import {
   Link as GatsbyLink,
+  NegMargin,
   PostDate,
   PostEditOnGitHub,
   PostInfo,
   PostTimeToRead,
-} from '../components/shared';
-import { useAnalytics } from '../contexts/event-tracking';
-import { useSiteMetadata } from '../hooks/use-site-metadata';
+} from '../components/shared'
+import { useAnalytics } from '../contexts/event-tracking'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
+
+const Image = styled(Img)`
+  object-fit: cover;
+`
 
 const PostNavigationWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
@@ -28,15 +34,15 @@ const PostNavigationWrapper = styled.div`
       'next';
     margin: ${({ theme }) => theme.spacing[0]};
   }
-`;
+`
 
 const PrevNextWrapper = styled.div`
   display: grid;
   justify-items: ${props => props.justify};
   margin-top: ${({ theme }) => theme.spacing[2]};
-`;
+`
 
-const Link = styled(GatsbyLink)``;
+const Link = styled(GatsbyLink)``
 
 const Toc = styled.ul`
   position: fixed;
@@ -59,13 +65,27 @@ const Toc = styled.ul`
     line-height: ${({ theme }) => theme.lineHeight.tight};
     margin-top: ${({ theme }) => theme.spacing[3]};
   }
-`;
+`
 
 const InnerScroll = styled.div`
   overflow: hidden;
   overflow-y: scroll;
   margin: ${({ theme }) => theme.spacing[3]};
-`;
+`
+
+const ImageWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.spacing[8]};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  overflow: hidden;
+  ${NegMargin}
+`
+
+const Small = styled(SM)`
+  ${NegMargin}
+  color: ${({ theme }) => theme.colours.grey[700]};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
+`
 
 export default ({ data, pageContext }) => {
   const {
@@ -76,7 +96,7 @@ export default ({ data, pageContext }) => {
     siteLocale,
     twitterUsername,
     authorName,
-  } = useSiteMetadata();
+  } = useSiteMetadata()
   const {
     frontmatter,
     body,
@@ -84,10 +104,10 @@ export default ({ data, pageContext }) => {
     excerpt,
     tableOfContents,
     timeToRead,
-  } = data.mdx;
-  const { title, date, cover } = frontmatter;
-  const { previous, next } = pageContext;
-  const fa = useAnalytics();
+  } = data.mdx
+  const { title, date, cover } = frontmatter
+  const { previous, next } = pageContext
+  const fa = useAnalytics()
   return (
     <>
       <SEO
@@ -117,7 +137,7 @@ export default ({ data, pageContext }) => {
         <PostEditOnGitHub>
           <a
             onClick={() => {
-              fa('MRMZX5TM');
+              fa('MRMZX5TM')
             }}
             href={editLink}
             target="_blank"
@@ -127,6 +147,15 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
+      <ImageWrapper>
+        {!!frontmatter.cover ? (
+          <Image
+            sizes={frontmatter.cover.childImageSharp.sizes}
+            alt={`cover image`}
+          />
+        ) : null}
+      </ImageWrapper>
+      <Small>{frontmatter.coverCredit}</Small>
       <MDXRenderer>{body}</MDXRenderer>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
@@ -179,8 +208,8 @@ export default ({ data, pageContext }) => {
         </PrevNextWrapper>
       </PostNavigationWrapper>
     </>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
@@ -190,7 +219,13 @@ export const query = graphql`
         date(formatString: "YYYY MMMM Do")
         cover {
           publicURL
+          childImageSharp {
+            sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+              ...GatsbyImageSharpSizes_tracedSVG
+            }
+          }
         }
+        coverCredit
       }
       body
       excerpt
@@ -202,4 +237,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

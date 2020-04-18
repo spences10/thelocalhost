@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledText = styled.blockquote`
   margin: 20px;
@@ -12,8 +12,8 @@ const StyledText = styled.blockquote`
     color: ${({ theme }) => theme.colours.grey[700]};
     word-break: break-word;
   }
-`;
+`
 
 export const Blockquote = ({ children }) => {
-  return <StyledText>{children}</StyledText>;
-};
+  return <StyledText>{children}</StyledText>
+}

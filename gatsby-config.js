@@ -9,7 +9,7 @@ require('dotenv').config({
 
 const siteMetadata = {
   title: `The Localhost Blog`,
-  description: `This is my coding blog where I write about my coding journey.`,
+  description: `Modern web development guides hints and tips.`,
   image: `/default-site-image.jpg`,
   siteUrl: `https://thelocalhost.blog`,
   siteLanguage: `en-GB`,
@@ -76,7 +76,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `poppins\:400,700`,
+          `poppins\:400,500,700`,
           `pridi\:400,700`,
           `space mono\:400,700`,
         ],

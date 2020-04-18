@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
 export const theme = {
   breakpoints: {
@@ -129,7 +129,7 @@ export const theme = {
     lg: '0.5rem',
     full: '9999px',
   },
-};
+}
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -149,9 +149,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
     background-color: ${({ theme }) => theme.colours.grey[100]};
   }
-  .youtube-mdx-embed {
-    margin-top: ${({ theme }) => theme.spacing[10]};
-  }
+  .youtube-mdx-embed, 
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
   }
@@ -166,4 +164,4 @@ export const GlobalStyle = createGlobalStyle`
     height: 100px;
     max-width: 400px;
   }
-`;
+`

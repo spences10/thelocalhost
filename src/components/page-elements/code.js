@@ -1,28 +1,23 @@
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
-import React from 'react';
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import theme from 'prism-react-renderer/themes/nightOwl'
+import React from 'react'
 import {
   LiveEditor,
   LiveError,
   LivePreview,
   LiveProvider,
-} from 'react-live';
-import { down } from 'styled-breakpoints';
-import styled from 'styled-components';
-import 'victormono';
-import { copyToClipboard } from '../../utils/copy-to-clipboard';
+} from 'react-live'
+import styled from 'styled-components'
+import 'victormono'
+import { copyToClipboard } from '../../utils/copy-to-clipboard'
+import { NegMargin } from '../shared'
 
-const RE = /{([\d,-]+)}/;
+const RE = /{([\d,-]+)}/
 
 export const CodeWrapper = styled.div`
   position: relative;
-  margin-left: -${({ theme }) => theme.spacing[8]};
-  margin-right: -${({ theme }) => theme.spacing[8]};
-  ${down('sm')} {
-    margin-left: -${({ theme }) => theme.spacing[0]};
-    margin-right: -${({ theme }) => theme.spacing[0]};
-  }
-`;
+  ${NegMargin}
+`
 
 const Pre = styled.pre`
   text-align: left;
@@ -32,14 +27,14 @@ const Pre = styled.pre`
   border-radius: 3px;
   font-family: 'Victor Mono', 'Courier New', Courier, monospace;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
-`;
+`
 
 const LineNo = styled.span`
   display: inline-block;
   width: 1.8em;
   user-select: none;
   opacity: 0.3;
-`;
+`
 
 const CopyCode = styled.button`
   position: absolute;
@@ -54,31 +49,31 @@ const CopyCode = styled.button`
     color: ${({ theme }) => theme.colours.grey[900]};
   }
   background-color: ${({ theme }) => theme.colours.primary[500]};
-`;
+`
 
 function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
     const lineNumbers = RE.exec(meta)[1]
       .split(',')
-      .map(v => v.split('-').map(y => parseInt(y, 10)));
+      .map(v => v.split('-').map(y => parseInt(y, 10)))
     return index => {
-      const lineNumber = index + 1;
+      const lineNumber = index + 1
       const inRange = lineNumbers.some(([start, end]) =>
         end
           ? lineNumber >= start && lineNumber <= end
           : lineNumber === start
-      );
-      return inRange;
-    };
+      )
+      return inRange
+    }
   } else {
-    return () => false;
+    return () => false
   }
 }
 
 export const Code = ({ codeString, language, ...props }) => {
   const shouldHighlightLine = calculateLinesToHighlight(
     props.metastring
-  );
+  )
   if (props['react-live']) {
     return (
       <LiveProvider code={codeString} noInline={true} theme={theme}>
@@ -86,11 +81,11 @@ export const Code = ({ codeString, language, ...props }) => {
         <LiveError />
         <LivePreview />
       </LiveProvider>
-    );
+    )
   }
   const handleClick = () => {
-    copyToClipboard(codeString);
-  };
+    copyToClipboard(codeString)
+  }
   return (
     <Highlight
       {...defaultProps}
@@ -126,5 +121,5 @@ export const Code = ({ codeString, language, ...props }) => {
         </Pre>
       )}
     </Highlight>
-  );
-};
+  )
+}

@@ -1,53 +1,83 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.49",
-  "description": "",
+  "version": "0.1.64",
+  "description": "Modern web development guides hints and tips.",
   "main": "index.js",
+  "keywords": [
+    "localhost",
+    "blog",
+    "dev-tips"
+  ],
+  "author": "Scott Spence <yo@scottspence.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spences10/thelocalhost.blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spences10/thelocalhost.blog/issues"
+  },
+  "homepage": "https://github.com/spences10/thelocalhost.blog#readme",
   "scripts": {
     "dev": "gatsby develop -p 9988 -o",
     "build": "gatsby build",
-    "serve": "gatsby serve -p 9500 -o"
+    "serve": "gatsby serve -p 9500 -o",
+    "format": "pretty-quick"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5",
+    "printWidth": 70,
+    "arrowParens": "avoid"
+  },
   "dependencies": {
     "@mdx-js/mdx": "1.5.5",
     "@mdx-js/react": "1.5.5",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.15",
     "@pauliescanlon/gatsby-plugin-prop-shop": "^0.0.0-alpha-9",
     "babel-plugin-styled-components": "1.10.7",
-    "gatsby": "2.19.12",
-    "gatsby-image": "2.2.40",
+    "gatsby": "2.20.12",
+    "gatsby-image": "2.3.1",
     "gatsby-plugin-fathom": "1.2.0",
-    "gatsby-plugin-feed": "2.3.27",
+    "gatsby-plugin-feed": "2.4.1",
     "gatsby-plugin-google-fonts": "1.0.1",
-    "gatsby-plugin-manifest": "2.2.41",
-    "gatsby-plugin-mdx": "1.0.70",
-    "gatsby-plugin-offline": "3.0.34",
-    "gatsby-plugin-react-helmet": "3.1.22",
+    "gatsby-plugin-manifest": "2.3.3",
+    "gatsby-plugin-mdx": "1.1.4",
+    "gatsby-plugin-offline": "3.1.2",
+    "gatsby-plugin-react-helmet": "3.2.1",
     "gatsby-plugin-robots-txt": "1.5.0",
-    "gatsby-plugin-sharp": "2.4.5",
-    "gatsby-plugin-sitemap": "2.2.27",
-    "gatsby-plugin-styled-components": "3.1.16",
+    "gatsby-plugin-sharp": "2.5.3",
+    "gatsby-plugin-sitemap": "2.3.1",
+    "gatsby-plugin-styled-components": "3.2.1",
     "gatsby-plugin-zeit-now": "0.2.0",
-    "gatsby-remark-autolink-headers": "2.1.24",
-    "gatsby-remark-copy-linked-files": "2.1.37",
+    "gatsby-remark-autolink-headers": "2.2.1",
+    "gatsby-remark-copy-linked-files": "2.2.1",
     "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images": "3.1.44",
-    "gatsby-remark-smartypants": "2.1.21",
-    "gatsby-source-filesystem": "2.1.48",
-    "gatsby-transformer-sharp": "2.3.14",
+    "gatsby-remark-images": "3.2.1",
+    "gatsby-remark-smartypants": "2.2.1",
+    "gatsby-source-filesystem": "2.2.2",
+    "gatsby-transformer-sharp": "2.4.3",
     "prism-react-renderer": "1.0.2",
-    "react": "16.12.0",
+    "react": "16.13.1",
     "react-device-detect": "1.11.14",
-    "react-dom": "16.12.0",
+    "react-dom": "16.13.1",
     "react-live": "2.2.2",
     "react-seo-component": "1.0.0",
-    "react-tooltip": "3.11.3",
-    "styled-breakpoints": "7.2.0",
-    "styled-components": "4.4.1",
-    "styled-reset": "4.1.0",
+    "react-tooltip": "4.1.5",
+    "styled-breakpoints": "8.1.0",
+    "styled-components": "5.0.1",
+    "styled-reset": "4.1.2",
     "victormono": "1.3.1"
+  },
+  "devDependencies": {
+    "husky": "4.2.3",
+    "prettier": "2.0.2",
+    "pretty-quick": "2.0.1"
   }
 }
