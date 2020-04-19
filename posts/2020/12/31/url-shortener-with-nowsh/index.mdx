@@ -1,33 +1,102 @@
 ---
 date: 2020-12-31
-title: Make a simple personal URL shortener with Now.sh
-tags: ['information', 'learning', 'guide', 'hooks', 'react']
-published: false
+title: Make a simple, personal, URL shortener with Now.sh
+tags: ['information', 'learning', 'guide']
+published: true
 cover: ./cover.jpg
 coverCredit: Photo by Gautam Krishnan on Unsplash
 ---
 
-Remember services like bit.ly and TinyURL? They still exist,
-shortening your URLs for you.
+Remember services like [Bitly] and [TinyURL]? Yeah, they still exist,
+shortening your URLs for you, they've been around for a long time too.
 
-Make a URL shortener with Now.sh
+Bitly founded in 2008 and TinyURL founded in 2002 😱
+
+In this post I'm detailing how I made my own Bitly with Now.sh.
+
+You can make your own one too as I'm about to detail the process here,
+or you can **[TL;DR]** for the video.
 
 What you need:
 
 - Node (to run the now CLI)
-- A GitHub account (not essential)
-- A Zeit.co account
+- The [now CLI]
+- [ZEIT.co account]
+- [GitHub account] (not essential)
+- Yor own domain (not essential)
 
-## 📺 Here's a video detailing the process.
+## Examples, why would I use a short URL?
+
+I use short URLs for sharing my content, if you take a look at the
+blog URL is quite long and not something you can reel off quickly to
+someone.
+
+There's a talk I did on Gatsby "Build-time and Client Run-time Data
+Fetching in Gatsby" the URL for it is:
+
+- https://gatsby-build-and-run-time-data-fetching-talk.now.sh
+
+With a short URL I can condense it down a bit:
+
+- https://ss10.dev/gatsby-data-fetching
+
+Not massively shorter, and granted the original URL has no place being
+that long!
+
+Other examples could be the Build a Gatsby Blog from Scratch guide I
+did at the end of last year:
+
+- Full URL https://thelocalhost.blog/2019/10/31/build-an-mdx-blog
+- Short URL https://ss10.dev/bab-guide
+
+Or if you have a crazy URL no one is going to be able to recite from
+memory like my YouTube channel URL:
+
+- Full URL https://www.youtube.com/channel/UCnngLXpLSFsKkDhFoO9Ct3w
+- Short URL https://ss10.dev/youtube
+- Shorter still https://ss10.dev/yt
+
+I do have a vanity URL for my YouTube channel which is
+https://www.youtube.com/c/ScottSpencePlease, but it's case sensitive.
+🤦‍♂
+
+## Get set up 🛠
+
+If you don't have a machine set up for web development I have written
+about getting set up [for Windows].
+
+There's also a video I've made to go from scratch to Create React App
+on Ubuntu 19.04.
+
+<YouTube youTubeId="eSAsdQuQ-1o" />
+
+## Do I have to use ZEIT?
+
+No you can use Netlify as well. There's a great [Kent C Dodds example
+with Netlify] that I used Netlify before moving to ZEIT.
+
+## Here's a video detailing the process 📺
 
 <YouTube youTubeId="y807T6Q1qqw" />
 
 ## Resources
 
-- Kent C Dodds example with Netlify:
+- [Kent C Dodds example with Netlify]
+- [ZEIT's documentation]
+- [GitHub project]
+
+<!-- Links -->
+
+[bitly]: https://bitly.com
+[tinyurl]: https://tinyurl.com
+[tl;dr]: #-heres-a-video-detailing-the-process
+[now cli]: https://zeit.co/download
+[zeit.co account]: https://zeit.co/signup
+[github account]: https://github.com/join
+[for windows]:
+  https://thelocalhost.blog/2018/12/24/wsl-bootstrap-2019/
+[kent c dodds example with netlify]:
   https://www.youtube.com/watch?v=HL6paXyx6hM
-
-- Zeit's documentation:
+[zeit's documentation]:
   https://zeit.co/docs/configuration#project/redirects
-
-- GitHub project: https://github.com/spences10/now-short-urls
+[github project]: https://github.com/spences10/now-short-urls
