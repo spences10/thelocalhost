@@ -181,7 +181,7 @@ inspect the project.
 As I set the root of the redirect to go to my portfolio site that's
 what I have in my project overview in ZEIT.
 
-![](./zeit-project-overview.png)
+![zeit project overview](./zeit-project-overview.png)
 
 I can now take that URL (now-short-urls-fzph462o0.now.sh) add it to a
 browser and it will redirect to https://scottspence.me.
@@ -201,15 +201,58 @@ So, better get that project on GitHub!
 
 ## Add the Project to GitHub
 
+Go to GitHub, click on the plus icon next to my profile picture,
+select '[New repository]'.
+
+Enter the new project name and click the 'Create repository' button.
+
+GitHub supplies the git commands to get the project onto GitHub.
+
+Before that I'm going to initialise my project and add what I have to
+git:
+
+```bash
+git init
+git add .
+git commit -m 'init 🔥'
+```
+
+Then add the remote repository and push to it:
+
+```bash
+git remote add origin git@github.com:spences10/short-urls.git
+git push -u origin master
+```
+
+That's it the project is now on GitHub and I can start using the ZEIT
+GitHub integration.
+
 ## Use ZEIT for GitHub
 
 Zeit has a GitHub integration so that you can deploy automatically
 from a push to your master branch on your project or via a pull
 request.
 
+The ZEIT documentation for this is really good so I'm going to link
+that [here].
+
+Now each time I add a short url to my project all I have to do is git
+commit and push to GitHub and the ZEIT GitHub integration will take
+care of the rest.
+
 ## Add my domain to ZEIT
 
-Depending on your
+Now I'm going to add my own domain to ZEIT from the 'Settings' panel
+of my project I can select 'Domains' and add in my own domain.
+
+My domain isn't supplied by ZEIT so I will need to configure the DNS
+settings in my domain provider by adding the custom DNS configuration
+supplied here by ZEIT.
+
+![zeit domains settings](./zeit-domains-settings.png)
+
+The cool thing with ZEIT is that I can have many domains pointing to
+the same project.
 
 ## Here's a video detailing the process 📺
 
@@ -240,3 +283,5 @@ Depending on your
 [use commons host]:
   https://dev.to/commonshost/build-your-own-url-shortener-in-15-minutes-279n
 [zeit for github]: https://zeit.co/github
+[new repository]: https://github.com/new
+[here]: https://zeit.co/docs/v2/git-integrations/zeit-now-for-github
