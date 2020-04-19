@@ -27,12 +27,12 @@ What you need:
 
 ## Examples, why would I use a short URL?
 
-I use short URLs for sharing my content, if you take a look at the
-blog URL is quite long and not something you can reel off quickly to
-someone.
+I use short URLs for sharing my content, if you take a look at this
+blog post URL is quite long and not something you can reel off quickly
+to someone.
 
-There's a talk I did on Gatsby "Build-time and Client Run-time Data
-Fetching in Gatsby" the URL for it is:
+There's a talk I did about Gatsby, titled "Build-time and Client
+Run-time Data Fetching in Gatsby" the URL for it is:
 
 - https://gatsby-build-and-run-time-data-fetching-talk.now.sh
 
@@ -43,14 +43,14 @@ With a short URL I can condense it down a bit:
 Not massively shorter, and granted the original URL has no place being
 that long!
 
-Other examples could be the Build a Gatsby Blog from Scratch guide I
-did at the end of last year:
+Other examples could be the "Build a coding blog from scratch with
+Gatsby and MDX" guide I did at the end of last year:
 
 - Full URL https://thelocalhost.blog/2019/10/31/build-an-mdx-blog
 - Short URL https://ss10.dev/bab-guide
 
 Or if you have a crazy URL no one is going to be able to recite from
-memory like my YouTube channel URL:
+memory, like my YouTube channel URL:
 
 - Full URL https://www.youtube.com/channel/UCnngLXpLSFsKkDhFoO9Ct3w
 - Short URL https://ss10.dev/youtube
@@ -59,6 +59,29 @@ memory like my YouTube channel URL:
 I do have a vanity URL for my YouTube channel which is
 https://www.youtube.com/c/ScottSpencePlease, but it's case sensitive.
 🤦‍♂
+
+## Do I have to use ZEIT? 🤔
+
+No, you can use Netlify as well. There's a great [Kent C Dodds example
+with Netlify] that I used before moving to ZEIT.
+
+You don't have to use Netlify either, you do you. 😸
+
+There's many ways to do it and the best way for you may be different
+to me. You will need a domain name and a hosting service, that's what
+I'm doing with ZEIT here.
+
+## Redirects
+
+The way I'm doing this is with redirects, so it will be like in the
+examples earlier, give a path to your URL then use a redirect rule.
+
+```json
+{
+  "source": "/yt",
+  "destination": "https://www.youtube.com/channel/UCnngLXpLSFsKkDhFoO9Ct3w"
+}
+```
 
 ## Get set up 🛠
 
@@ -70,10 +93,123 @@ on Ubuntu 19.04.
 
 <YouTube youTubeId="eSAsdQuQ-1o" />
 
-## Do I have to use ZEIT?
+If you're following along and you haven't done so already, you'll need
+to install the ZEIT CLI:
 
-No you can use Netlify as well. There's a great [Kent C Dodds example
-with Netlify] that I used Netlify before moving to ZEIT.
+```bash
+# if you're using npm, then
+# npm i -g now
+yarn global add now
+```
+
+Then you'll need to authenticate with the CLI:
+
+```bash
+now login
+```
+
+You will be prompted with a phrase, something like `Handsome Turtle`
+that should match the phrase in the email ZEIT sends you. You can
+authenticate by clicking the link in the email.
+
+## Create the project
+
+I'm going to create a directory for the project to live in, then
+change into that directory and make the project with `yarn init -y`.
+
+```bash
+mkdir short-urls # create directory
+cd short-urls # change to newly created dir
+yarn init -y # initialise the project
+```
+
+That's going to create my `package.json` file with the project details
+in it.
+
+Next to create the `now.json` file this is going to be where all the
+redirects live:
+
+```bash
+touch now.json
+```
+
+In the `now.json` file I'm going to add the ZEIT Now platform version
+then the redirects array with the first redirect being where I want my
+domain to default to.
+
+```json
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://scottspence.me"
+    }
+  ]
+}
+```
+
+## Deploy the project
+
+That is all the configuration I need for now, now I'm going to deploy
+the project using the CLI this will push the project to the ZEIT
+hosting service.
+
+To deploy the current directory I'll do the following command:
+
+```bash
+now
+```
+
+As this is the first time I've deployed this project there will be a
+lot of prompts from the CLI, I'll answer the default answer to all of
+these questions:
+
+```bash
+- Set up and deploy project?: `y`
+- Which scope (this is my user account): `Scott Spence`
+- Link to an existing project?: `n`
+- Whats your project name (hit return): `short-urls`
+- In which directory is your code located (hit return)?: `/`
+- Want to override the settings?: `n`
+```
+
+The CLI will output two URLs, the first to my project on ZEIT Now and
+the second for the actual project. I'll click on the first one and and
+inspect the project.
+
+As I set the root of the redirect to go to my portfolio site that's
+what I have in my project overview in ZEIT.
+
+![](./zeit-project-overview.png)
+
+I can now take that URL (now-short-urls-fzph462o0.now.sh) add it to a
+browser and it will redirect to https://scottspence.me.
+
+Now when I deploy this with the `--prod` flag in the ZEIT CLI it will
+use the project URL (now-short-urls.now.sh).
+
+Ok so that was quite straightforward, right?
+
+Now each time I want to add a short URL I'll add it to the `now.json`
+file and run the ZEIT CLI again to deploy the project.
+
+But I can take out the deployment part and leave that to the ZEIT
+GitHub integration.
+
+So, better get that project on GitHub!
+
+## Add the Project to GitHub
+
+## Use ZEIT for GitHub
+
+Zeit has a GitHub integration so that you can deploy automatically
+from a push to your master branch on your project or via a pull
+request.
+
+## Add my domain to ZEIT
+
+Depending on your
 
 ## Here's a video detailing the process 📺
 
@@ -84,6 +220,7 @@ with Netlify] that I used Netlify before moving to ZEIT.
 - [Kent C Dodds example with Netlify]
 - [ZEIT's documentation]
 - [GitHub project]
+- [Use Commons Host]
 
 <!-- Links -->
 
@@ -100,3 +237,6 @@ with Netlify] that I used Netlify before moving to ZEIT.
 [zeit's documentation]:
   https://zeit.co/docs/configuration#project/redirects
 [github project]: https://github.com/spences10/now-short-urls
+[use commons host]:
+  https://dev.to/commonshost/build-your-own-url-shortener-in-15-minutes-279n
+[zeit for github]: https://zeit.co/github
