@@ -19,7 +19,7 @@ invoice check [my affiliate link].
 This situation is specific to using MDX and the MDXProvider as it
 gives the ability to override rendering of links.
 
-## 🤔 The problem
+## The problem 🤔
 
 I'd like to add a [Fathom goal] to a link in my Markdown, to do this
 I'll need to get the goal ID I've created in Fathom to the link so
@@ -28,7 +28,7 @@ that when it's clicked it's logged with Fathom.
 So I can add an `onClick` event to the `a` tag using the MDXProvider
 and pass that ID to the analytics provider.
 
-## 💡 The solution
+## The solution 💡
 
 Ok, so I need a way to add a prop to a specific link that contains the
 goal ID for Fathom.
@@ -70,7 +70,7 @@ Wellllll....
 
 No.
 
-## 😧 The other problem (for me anyway)
+## The other problem (for me anyway) 😧
 
 I spend a lot of my time in Markdown files and I rarely use inline
 links. With an inline Markdown link the link from that last example it
@@ -103,7 +103,7 @@ their service.
 [custom domains]: https://usefathom.com/blog/bypass-adblockers
 ```
 
-## 💥 The other solution
+## The other solution 🤯
 
 So, I'd prefer to have the goal ID in the link but not cluttering up
 my beautifully crafted Markdown with `a` tags everywhere. 😁
@@ -216,24 +216,20 @@ export const A = props => {
 Now clicking the link will only call the analytics provider when
 there's a goal ID in the `href` passed to the component in the props.
 
-## 📺 Here's a video
+## Here's a video 📺
 
 In this video detail what I've been writing about.
 
 <YouTube youTubeId="Ihbx0BVIhZk" />
 
-## 📑 Resources
+## Resources 📑
 
 These resources helped me along the way.
 
 - [MDN URL API]
-
 - [MDN searchParams Delete]
-
 - [SO Get Query String Values]
-
 - [SO Remove Query String Values]
-
 - [Google URLSearchParams]
 
 <!-- Links -->

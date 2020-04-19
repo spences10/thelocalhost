@@ -31,19 +31,15 @@ For now here's some of the Fathom marketing copy.
 
 - You don't need to display those cookie notices as they don't use
   cookies, nor do they track invasive data.
-
 - They are focused on privacy for website visitors, they don't track
   visitors, save their personal information, or need it to be
   profitable.
-
 - They have hundreds of customers and track tens of millions of page
   views per month, so they may be a small company, but they're doing
   big things!
-
 - They can handle viral content, so your site won't slow down because
   of them, an they wont ever stop tracking for you because of a spike
   in popularity.
-
 - All of the plans allow for unlimited websites to be tracked and
   receive top-notch customer support. Plans start at \$14 a month.
 
@@ -137,33 +133,33 @@ I'm going to use the React context API to create an analytics provider
 to be used throughout the app.
 
 ```js
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect } from 'react'
 
-const AnalyticsContext = createContext({});
+const AnalyticsContext = createContext({})
 
 export const AnalyticsProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window.fathom === 'undefined') {
       window.fathom = (x, y, z) => {
-        console.log(`I'm a fake Fathom`, x, y, z);
-      };
+        console.log(`I'm a fake Fathom`, x, y, z)
+      }
     }
-  }, []);
+  }, [])
 
   const logClicks = goalId => {
-    window.fathom('trackGoal', goalId, 0);
-  };
+    window.fathom('trackGoal', goalId, 0)
+  }
 
   return (
     <AnalyticsContext.Provider value={logClicks}>
       {children}
     </AnalyticsContext.Provider>
-  );
-};
+  )
+}
 
 export const useAnalytics = () => {
-  return useContext(AnalyticsContext);
-};
+  return useContext(AnalyticsContext)
+}
 ```
 
 In this example I'm defining one function to be available via the
@@ -187,12 +183,12 @@ Then use in the areas I want to track a goal I'll use the
 
 ```js
 const NavBar = ({ toggleNavbar, isActive }) => {
-  const fa = useAnalytics();
+  const fa = useAnalytics()
   return (
     // other wrapping elements
     <Link
       onClick={() => {
-        fa('CDDZY97C');
+        fa('CDDZY97C')
       }}
       className="navbar-item"
       to="/about"
@@ -200,8 +196,8 @@ const NavBar = ({ toggleNavbar, isActive }) => {
       About
     </Link>
     // other wrapping elements
-  );
-};
+  )
+}
 ```
 
 ## Wrap up
