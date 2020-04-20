@@ -62,6 +62,11 @@ const Toc = styled.aside`
     font-family: ${({ theme }) => theme.font.serif};
     margin-top: ${({ theme }) => theme.spacing[2]};
   }
+  ul {
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: ${({ theme }) => theme.spacing[3]};
+  }
   li {
     line-height: ${({ theme }) => theme.lineHeight.tight};
     margin-top: ${({ theme }) => theme.spacing[3]};
@@ -69,12 +74,6 @@ const Toc = styled.aside`
   a {
     text-decoration: none;
   }
-`
-
-const InnerScroll = styled.ul`
-  overflow: hidden;
-  overflow-y: scroll;
-  margin: ${({ theme }) => theme.spacing[3]};
 `
 
 const ImageWrapper = styled.div`
@@ -166,7 +165,7 @@ export default ({ data, pageContext }) => {
       </article>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
-          <InnerScroll>
+          <ul>
             <h3>Table of contents</h3>
             {tableOfContents.items.map(i => (
               <li key={i.url}>
@@ -175,7 +174,7 @@ export default ({ data, pageContext }) => {
                 </A>
               </li>
             ))}
-          </InnerScroll>
+          </ul>
         </Toc>
       )}
       <ReactTooltip />
