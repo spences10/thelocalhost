@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 `
 
 export const StyledUl = styled.ul`
-  margin: 0 ${({ theme }) => theme.spacing[8]};
+  margin: 0 ${({ theme }) => theme.spacing[4]};
 `
 
 export const Ul = props => {
