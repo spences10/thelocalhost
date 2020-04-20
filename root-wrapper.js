@@ -1,10 +1,11 @@
-import { MDXProvider } from '@mdx-js/react';
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { Layout } from './src/components/layout';
+import { MDXProvider } from '@mdx-js/react'
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { Layout } from './src/components/layout'
 import {
   A,
   Blockquote,
+  Br,
   Code,
   CodeWrapper,
   H1,
@@ -17,13 +18,14 @@ import {
   P,
   Small,
   Ul,
-} from './src/components/page-elements';
-import { AnalyticsProvider } from './src/contexts/event-tracking';
-import { GlobalStyle, theme } from './src/theme/global-style';
+} from './src/components/page-elements'
+import { AnalyticsProvider } from './src/contexts/event-tracking'
+import { GlobalStyle, theme } from './src/theme/global-style'
 
 const components = {
   a: props => <A {...props} />,
   blockquote: props => <Blockquote {...props} />,
+  br: props => <Br {...props} />,
   // div: props => <Div {...props} />,
   h1: props => <H1 {...props} />,
   h2: props => <H2 {...props} />,
@@ -46,13 +48,13 @@ const components = {
             {...props}
           />
         </CodeWrapper>
-      );
+      )
     }
   },
   small: props => <Small {...props} />,
   ul: props => <Ul {...props} />,
   wrapper: ({ children }) => <>{children}</>,
-};
+}
 
 export const wrapPageElement = ({ element }) => (
   <AnalyticsProvider>
@@ -63,4 +65,4 @@ export const wrapPageElement = ({ element }) => (
       </MDXProvider>
     </ThemeProvider>
   </AnalyticsProvider>
-);
+)
