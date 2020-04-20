@@ -6,7 +6,8 @@ const StyledText = styled.h2`
   font-size: ${({ theme }) => theme.fontSize['3xl']};
   font-family: ${({ theme }) => theme.font.serif};
   ${AutoLink};
-  margin-top: ${({ theme }) => theme.spacing[8]};
+  margin-top: ${({ theme }) => theme.spacing[12]};
+  margin-bottom: ${({ theme }) => theme.spacing[6]};
   line-height: ${({ theme }) => theme.lineHeight.none};
 `
 

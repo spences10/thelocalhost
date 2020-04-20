@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const StyledLi = styled.li`
   list-style-type: circle;
+  margin-bottom: ${({ theme }) => theme.spacing[2]};
   word-break: break-word;
   p {
     margin-top: 10px;
