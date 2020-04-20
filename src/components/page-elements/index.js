@@ -1,5 +1,6 @@
 export * from './a'
 export * from './blockquote'
+export * from './br'
 export * from './code'
 export * from './div'
 export * from './h1'

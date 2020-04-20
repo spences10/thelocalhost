@@ -6,7 +6,7 @@ import SEO from 'react-seo-component'
 import ReactTooltip from 'react-tooltip'
 import { down } from 'styled-breakpoints'
 import styled from 'styled-components'
-import { A, H1, Small as SM } from '../components/page-elements'
+import { A, Br, H1, Small as SM } from '../components/page-elements'
 import {
   Link as GatsbyLink,
   NegMargin,
@@ -44,7 +44,7 @@ const PrevNextWrapper = styled.div`
 
 const Link = styled(GatsbyLink)``
 
-const Toc = styled.ul`
+const Toc = styled.aside`
   position: fixed;
   left: calc(50% + 400px);
   top: 80px;
@@ -53,6 +53,7 @@ const Toc = styled.ul`
   display: flex;
   box-shadow: ${({ theme }) => theme.boxShadow.xl};
   border-radius: ${({ theme }) => theme.borderRadius.default};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   ${down('sm')} {
     display: none;
   }
@@ -65,9 +66,12 @@ const Toc = styled.ul`
     line-height: ${({ theme }) => theme.lineHeight.tight};
     margin-top: ${({ theme }) => theme.spacing[3]};
   }
+  a {
+    text-decoration: none;
+  }
 `
 
-const InnerScroll = styled.div`
+const InnerScroll = styled.ul`
   overflow: hidden;
   overflow-y: scroll;
   margin: ${({ theme }) => theme.spacing[3]};
@@ -156,7 +160,10 @@ export default ({ data, pageContext }) => {
         ) : null}
       </ImageWrapper>
       <Small>{frontmatter.coverCredit}</Small>
-      <MDXRenderer>{body}</MDXRenderer>
+      <article>
+        <Br />
+        <MDXRenderer>{body}</MDXRenderer>
+      </article>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
           <InnerScroll>
