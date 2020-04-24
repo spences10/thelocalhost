@@ -83,10 +83,21 @@ module.exports = {
         display: 'swap',
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-fathom`,
+    //   options: {
+    //     trackingUrl:
+    //       process.env.GATSBY_FATHOM_TRACKING_URL_THE_LOCALHOST_BLOG,
+    //     siteId:
+    //       process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST_BLOG,
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-fathom`,
+      resolve: require.resolve(
+        `../gatsby-plugin-fathom-custom-domain`
+      ),
       options: {
-        trackingUrl:
+        customDomainUrl:
           process.env.GATSBY_FATHOM_TRACKING_URL_THE_LOCALHOST_BLOG,
         siteId:
           process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST_BLOG,
