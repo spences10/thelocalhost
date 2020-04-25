@@ -1,10 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const StyledTable = styled.div`
+export const StyledTable = styled.table`
   margin-top: ${({ theme }) => theme.spacing[10]};
   margin-bottom: ${({ theme }) => theme.spacing[10]};
-  font table,
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  width: 100%;
+  thead {
+    font-size: ${({ theme }) => theme.fontSize.base};
+    font-weight: ${({ theme }) => theme.fontWeight.medium};
+    background-color: ${({ theme }) => theme.colours.grey[400]};
+    border: 1px solid ${({ theme }) => theme.colours.grey[500]};
+  }
   th,
   td {
     border: 1px solid ${({ theme }) => theme.colours.grey[500]};
@@ -17,10 +24,7 @@ export const StyledTable = styled.div`
     padding-bottom: ${({ theme }) => theme.spacing['1']};
     text-align: left;
   }
-  thead {
-    font-weight: ${({ theme }) => theme.fontWeight.medium};
-    background-color: ${({ theme }) => theme.colours.grey[400]};
-  }
+  th,
   td {
     &:hover {
       background-color: ${({ theme }) => theme.colours.grey[300]};
