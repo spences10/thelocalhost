@@ -17,6 +17,7 @@ import {
   Li,
   P,
   Small,
+  Table,
   Ul,
 } from './src/components/page-elements'
 import { AnalyticsProvider } from './src/contexts/event-tracking'
@@ -52,6 +53,7 @@ const components = {
     }
   },
   small: props => <Small {...props} />,
+  table: props => <Table {...props} />,
   ul: props => <Ul {...props} />,
   wrapper: ({ children }) => <>{children}</>,
 }
