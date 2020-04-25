@@ -15,7 +15,7 @@ extensions, not that Fathom wants to collect all your data, [far from
 it].
 
 The purpose of this post is to cover setting up my custom domain as I
-have a specific domain provider and I'm using Zeit's now.sh and
+have a specific domain provider and I'm using Vercel's now.sh and
 Netlify for hosting my projects I want to add the Fathom custom
 domains to.
 
@@ -45,7 +45,7 @@ find any good examples so I reached out to Fathom with a tweet:
 After I sent that I found [this gist] which detailed the command for
 adding the sub-domain which made sense to me.
 
-## Add DNS record in Zeit's now.sh
+## Add DNS record in Vercel's now.sh
 
 With the two values from Fathom dashboard, the CNAME is the sub-domain
 and the VALUE is the DNS server.
@@ -68,15 +68,15 @@ created, for me it was a refresh on the Fathom dashboard and it said
 the domain was active with a couple of emails from Fathom to confirm
 they were created.
 
-## DNS Editor for ZEIT domains
+## DNS Editor for Vercel domains
 
 It was after I worked out how to add the CNAME with the CLI that I
-found the [DNS Editor for ZEIT domains] which Jack mentioned in the
+found the [DNS Editor for Vercel domains] which Jack mentioned in the
 reply to my tweet! 🤦‍♂
 
-It's a free integration on the ZEIT Marketplace which is super
-straightforward to use once you add it to your zeit account you can
-pick it from the Integrations section on your ZEIT Dashboard.
+It's a free integration on the Vercel Marketplace which is super
+straightforward to use once you add it to your Vercel account you can
+pick it from the Integrations section on your Vercel Dashboard.
 
 ## Select custom domain in site settings
 
@@ -113,4 +113,4 @@ then I picked the custom domain like I did in the previous step.
   https://www.namecheap.com/support/knowledgebase/article.aspx/9646/2237/how-to-create-a-cname-record-for-your-domain
 [this gist]:
   https://gist.github.com/jaydenseric/f4147d7d9788d1f46b30e4ac7b57e6b2
-[dns editor for zeit domains]: https://zeit.co/integrations/dns
+[dns editor for vercel domains]: https://vercel.com/integrations/dns

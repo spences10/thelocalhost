@@ -21,7 +21,7 @@ What you need:
 
 - Node (to run the now CLI)
 - The [now CLI]
-- [ZEIT.co account]
+- [Vercel.com account]
 - [GitHub account] (not essential)
 - Yor own domain (not essential)
 
@@ -60,16 +60,16 @@ I do have a vanity URL for my YouTube channel which is
 https://www.youtube.com/c/ScottSpencePlease, but it's case sensitive.
 🤦‍♂
 
-## Do I have to use ZEIT? 🤔
+## Do I have to use Vercel? 🤔
 
 No, you can use Netlify as well. There's a great [Kent C Dodds example
-with Netlify] that I used before moving to ZEIT.
+with Netlify] that I used before moving to Vercel.
 
 You don't have to use Netlify either, you do you. 😸
 
 There's many ways to do it and the best way for you may be different
 to me. You will need a domain name and a hosting service, that's what
-I'm doing with ZEIT here.
+I'm doing with Vercel here.
 
 ## Redirects
 
@@ -94,7 +94,7 @@ on Ubuntu 19.04.
 <YouTube youTubeId="eSAsdQuQ-1o" />
 
 If you're following along and you haven't done so already, you'll need
-to install the ZEIT CLI:
+to install the Vercel CLI:
 
 ```bash
 # if you're using npm, then
@@ -109,7 +109,7 @@ now login
 ```
 
 You will be prompted with a phrase, something like `Handsome Turtle`
-that should match the phrase in the email ZEIT sends you. You can
+that should match the phrase in the email Vercel sends you. You can
 authenticate by clicking the link in the email.
 
 ## Create the project
@@ -133,9 +133,9 @@ redirects live:
 touch now.json
 ```
 
-In the `now.json` file I'm going to add the ZEIT Now platform version
-then the redirects array with the first redirect being where I want my
-domain to default to.
+In the `now.json` file I'm going to add the Vercel Now platform
+version then the redirects array with the first redirect being where I
+want my domain to default to.
 
 ```json
 {
@@ -152,7 +152,7 @@ domain to default to.
 ## Deploy the project
 
 That is all the configuration I need for now, now I'm going to deploy
-the project using the CLI this will push the project to the ZEIT
+the project using the CLI this will push the project to the Vercel
 hosting service.
 
 To deploy the current directory I'll do the following command:
@@ -174,27 +174,27 @@ these questions:
 - Want to override the settings?: n
 ```
 
-The CLI will output two URLs, the first to my project on ZEIT Now and
-the second for the actual project. I'll click on the first one and and
-inspect the project.
+The CLI will output two URLs, the first to my project on Vercel Now
+and the second for the actual project. I'll click on the first one and
+and inspect the project.
 
 As I set the root of the redirect to go to my portfolio site that's
-what I have in my project overview in ZEIT.
+what I have in my project overview in Vercel.
 
-![zeit project overview](./zeit-project-overview.png)
+![vercel project overview](./vercel-project-overview.png)
 
 I can now take that URL (now-short-urls-fzph462o0.now.sh) add it to a
 browser and it will redirect to https://scottspence.me.
 
-Now when I deploy this with the `--prod` flag in the ZEIT CLI it will
-use the project URL (now-short-urls.now.sh).
+Now when I deploy this with the `--prod` flag in the Vercel CLI it
+will use the project URL (now-short-urls.now.sh).
 
 Ok so that was quite straightforward, right?
 
 Now each time I want to add a short URL I'll add it to the `now.json`
-file and run the ZEIT CLI again to deploy the project.
+file and run the Vercel CLI again to deploy the project.
 
-But I can take out the deployment part and leave that to the ZEIT
+But I can take out the deployment part and leave that to the Vercel
 GitHub integration.
 
 So, better get that project on GitHub!
@@ -224,34 +224,39 @@ git remote add origin git@github.com:spences10/short-urls.git
 git push -u origin master
 ```
 
-That's it the project is now on GitHub and I can start using the ZEIT
-GitHub integration.
+That's it the project is now on GitHub and I can start using the
+Vercel GitHub integration.
 
-## Use ZEIT for GitHub
+## Use Vercel for GitHub
 
-Zeit has a GitHub integration so that you can deploy automatically
+Vercel has a GitHub integration so that you can deploy automatically
 from a push to your master branch on your project or via a pull
 request.
 
-The ZEIT documentation for this is really good so I'm going to link
+The Vercel documentation for this is really good so I'm going to link
 that [here].
 
+The docs will walk you through setting up the GitHub integration with
+your GitHub account and linking a project.
+
+There are also integrations available for [GitLab] and [Bitbucket].
+
 Now each time I add a short url to my project all I have to do is git
-commit and push to GitHub and the ZEIT GitHub integration will take
+commit and push to GitHub and the Vercel GitHub integration will take
 care of the rest.
 
-## Add my domain to ZEIT
+## Add my domain to Vercel
 
-Now I'm going to add my own domain to ZEIT from the 'Settings' panel
+Now I'm going to add my own domain to Vercel from the 'Settings' panel
 of my project I can select 'Domains' and add in my own domain.
 
-My domain isn't supplied by ZEIT so I will need to configure the DNS
+My domain isn't supplied by Vercel so I will need to configure the DNS
 settings in my domain provider by adding the custom DNS configuration
-supplied here by ZEIT.
+supplied here by Vercel.
 
-![zeit domains settings](./zeit-domains-settings.png)
+![vercel domains settings](./vercel-domains-settings.png)
 
-The cool thing with ZEIT is that I can have many domains pointing to
+The cool thing with Vercel is that I can have many domains pointing to
 the same project.
 
 ## Here's a video detailing the process 📺
@@ -261,7 +266,7 @@ the same project.
 ## Resources
 
 - [Kent C Dodds example with Netlify]
-- [ZEIT's documentation]
+- [Vercel's documentation]
 - [GitHub project]
 - [Use Commons Host]
 
@@ -270,18 +275,22 @@ the same project.
 [bitly]: https://bitly.com
 [tinyurl]: https://tinyurl.com
 [tl;dr]: #-heres-a-video-detailing-the-process
-[now cli]: https://zeit.co/download
-[zeit.co account]: https://zeit.co/signup
+[now cli]: https://vercel.com/download
+[vercel.com account]: https://vercel.com/signup
 [github account]: https://github.com/join
 [for windows]:
   https://thelocalhost.blog/2018/12/24/wsl-bootstrap-2019/
 [kent c dodds example with netlify]:
   https://www.youtube.com/watch?v=HL6paXyx6hM
-[zeit's documentation]:
-  https://zeit.co/docs/configuration#project/redirects
+[vercel's documentation]:
+  https://vercel.com/docs/configuration#project/redirects
 [github project]: https://github.com/spences10/now-short-urls
 [use commons host]:
   https://dev.to/commonshost/build-your-own-url-shortener-in-15-minutes-279n
-[zeit for github]: https://zeit.co/github
+[vercel for github]: https://vercel.com/github
 [new repository]: https://github.com/new
-[here]: https://zeit.co/docs/v2/git-integrations/zeit-now-for-github
+[here]: https://vercel.com/docs/v2/git-integrations/vercel-for-github
+[gitlab]:
+  https://vercel.com/docs/v2/git-integrations/vercel-for-gitlab
+[bitbucket]:
+  https://vercel.com/docs/v2/git-integrations/vercel-for-bitbucket

@@ -1,11 +1,11 @@
 const activeEnv =
-  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
-console.log(`Using environment config: '${activeEnv}'`);
+console.log(`Using environment config: '${activeEnv}'`)
 
 require('dotenv').config({
   path: `.env.${activeEnv}`,
-});
+})
 
 const siteMetadata = {
   title: `The Localhost Blog`,
@@ -19,7 +19,7 @@ const siteMetadata = {
   favicon: `./static/favicon.png`,
   backgroundColor: `#f7f0eb`,
   themeColor: `#a2466c`,
-};
+}
 
 module.exports = {
   siteMetadata: siteMetadata,
@@ -76,7 +76,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `poppins\:400,500,700`,
+          `poppins\:400,500,600,700`,
           `pridi\:400,700`,
           `space mono\:400,700`,
         ],
@@ -143,8 +143,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ 'content:encoded': node.html }],
-                });
-              });
+                })
+              })
             },
             query: `
               {
@@ -175,4 +175,4 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
   ],
-};
+}
