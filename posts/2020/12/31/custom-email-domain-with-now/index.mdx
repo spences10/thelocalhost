@@ -1,0 +1,58 @@
+---
+date: 2020-12-31
+title: Configure Custom Domain Email with Zoho and Now
+tags: ['information', 'guide', 'now', 'domains']
+published: true
+cover: ./cover.jpg
+coverCredit: Photo by Scott Horn on Unsplash
+---
+
+In this guide I'm going to cover the configuring of your custom domain
+with Vercel's Now platform using the Now CLI.
+
+I'll be primarily covering the steps you take after setting up an
+account with an email provider, the email provider I'm using is [Zoho
+Mail] if you don't use either of these services then this guide may no
+be much use to you.
+
+# Set up an account
+
+Zoho mail offer a 5 GB plan for free, so as long as you can manage
+your email archiving then you are good.
+
+# Create an admin super user
+
+when you sign up with [Zoho Mail] you will be prompted to create a
+super admin user for your zoho account and you're given the
+opportunity to set up two factor authentication (2fa).
+
+Zoho will even tell you about their authenticator app, which is only
+for authenticating with Zoho. Use this is you like, I use a 2fa app
+that you can use for multiple services.
+
+# Verify you own the domain
+
+You will be given a code to verify that you are the owner of the
+domain, which you will need to add as a `TXT` entry on your domain.
+something `zoho-verification=se4567894.zmverify.zoho.eu` Using the Now
+CLI
+
+```bash
+now dns add yourdomain.com @ TXT zoho-verification=se4567894.zmverify.zoho.eu
+```
+
+```bash
+now dns add yourdomain.com @ TXT zoho-verification=se4567894.zmverify.zoho.eu
+now dns add yourdomain.com @ TXT 'v=spf1 include:zoho.eu ~all'
+now dns add yourdomain.com @ MX mx.zoho.eu 10
+now dns add yourdomain.com @ MX mx.zoho.eu 20
+now dns add yourdomain.com @ MX mx.zoho.eu 50
+```
+
+[zoho mail]: https://www.zoho.com/mail/
+[dns integration]: https://vercel.com/integrations/dns
+[domains]: https://vercel.com/domains
+[now cli]: https://vercel.com/download
+[pricing]: https://www.zoho.com/mail/zohomail-pricing.html
+[control panel settings]:
+  https://mail.zoho.eu/cpanel/index.do#orgsettings/config
