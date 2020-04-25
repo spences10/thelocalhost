@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const StyledTable = styled.div`
+  margin-top: ${({ theme }) => theme.spacing[10]};
+  margin-bottom: ${({ theme }) => theme.spacing[10]};
   font table,
   th,
   td {
