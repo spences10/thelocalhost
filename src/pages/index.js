@@ -106,10 +106,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
-    ) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         id
         excerpt(pruneLength: 100)
