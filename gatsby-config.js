@@ -8,7 +8,7 @@ require('dotenv').config({
 })
 
 const siteMetadata = {
-  title: `The Localhost Blog`,
+  title: `The Localhost`,
   description: `Modern web development guides hints and tips.`,
   image: `/default-site-image.jpg`,
   siteUrl: `https://thelocalhost.blog`,
@@ -86,15 +86,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-fathom`,
       options: {
-        siteId:
-          process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST_BLOG,
+        siteId: process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `The Localhost Blog`,
-        short_name: `TLHB`,
+        name: `The Localhost`,
+        short_name: `Localhost`,
         start_url: `/`,
         background_color: siteMetadata.backgroundColor,
         theme_color: siteMetadata.themeColor,
