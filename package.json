@@ -1,23 +1,22 @@
 {
-  "name": "thelocalhost.blog",
+  "name": "thelocalhost",
   "version": "0.1.95",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
     "localhost",
-    "blog",
     "dev-tips"
   ],
   "author": "Scott Spence <yo@scottspence.dev>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spences10/thelocalhost.blog.git"
+    "url": "git+https://github.com/spences10/thelocalhost.git"
   },
   "bugs": {
-    "url": "https://github.com/spences10/thelocalhost.blog/issues"
+    "url": "https://github.com/spences10/thelocalhost/issues"
   },
-  "homepage": "https://github.com/spences10/thelocalhost.blog#readme",
+  "homepage": "https://github.com/spences10/thelocalhost#readme",
   "scripts": {
     "dev": "gatsby develop -p 9988 -o",
     "build": "gatsby build",
@@ -34,7 +33,8 @@
     "semi": false,
     "trailingComma": "es5",
     "printWidth": 70,
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "proseWrap": "always"
   },
   "dependencies": {
     "@mdx-js/mdx": "1.5.8",
