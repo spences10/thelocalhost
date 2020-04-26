@@ -5,7 +5,7 @@ const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.base};
   margin-bottom: ${({ theme }) => theme.spacing[6]};
   strong {
-    font-weight: bold;
+    font-weight: 500;
   }
   em {
     font-style: italic;

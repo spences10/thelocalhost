@@ -151,6 +151,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .vimeo-mdx-embed,
   .youtube-mdx-embed, 
+  .twitter-tweet-mdx-embed,
   .gatsby-resp-image-wrapper {
     margin-top: ${({ theme }) => theme.spacing[10]};
     margin-bottom: ${({ theme }) => theme.spacing[10]};
