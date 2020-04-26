@@ -11,7 +11,7 @@ const siteMetadata = {
   title: `The Localhost`,
   description: `Modern web development guides hints and tips.`,
   image: `/default-site-image.jpg`,
-  siteUrl: `https://thelocalhost.blog`,
+  siteUrl: `https://thelocalhost.io`,
   siteLanguage: `en-GB`,
   siteLocale: `en_gb`,
   twitterUsername: `@spences10`,

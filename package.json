@@ -33,7 +33,8 @@
     "semi": false,
     "trailingComma": "es5",
     "printWidth": 70,
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "proseWrap": "always"
   },
   "dependencies": {
     "@mdx-js/mdx": "1.5.8",
