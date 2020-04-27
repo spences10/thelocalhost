@@ -10,7 +10,6 @@ import { A, Br, H1, Small as SM } from '../components/page-elements'
 import {
   Link as GatsbyLink,
   NegMargin,
-  PostDate,
   PostEditOnGitHub,
   PostInfo,
   PostTimeToRead,
@@ -133,7 +132,6 @@ export default ({ data, pageContext }) => {
       />
       <H1>{frontmatter.title}</H1>
       <PostInfo>
-        <PostDate>{frontmatter.date}</PostDate>
         <PostTimeToRead>
           {timeToRead * 2} minutes to read
         </PostTimeToRead>
