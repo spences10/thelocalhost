@@ -24,19 +24,6 @@ export const PostInfo = styled.div`
   }
 `
 
-export const PostDate = styled.div`
-  grid-area: date;
-  margin-right: ${({ theme }) => theme.spacing[1]};
-  &:after {
-    content: ' ·';
-  }
-  ${down('sm')} {
-    &:after {
-      content: '';
-    }
-  }
-`
-
 export const PostTimeToRead = styled.div`
   grid-area: ttr;
   margin-right: ${({ theme }) => theme.spacing[1]};

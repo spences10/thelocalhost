@@ -7,7 +7,6 @@ import styled from 'styled-components'
 import {
   CopyWrapper,
   IndexWrapper,
-  PostDate,
   PostInfo,
   PostTimeToRead,
   StyledExcerpt,
@@ -87,7 +86,6 @@ export default ({ data }) => {
                   <CopyWrapper>
                     <StyledTitle>{frontmatter.title}</StyledTitle>
                     <PostInfo>
-                      <PostDate>{frontmatter.date}</PostDate>
                       <PostTimeToRead>
                         {timeToRead * 2} minutes to read
                       </PostTimeToRead>
