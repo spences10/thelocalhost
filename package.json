@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost.blog",
-  "version": "0.1.95",
+  "version": "0.1.96",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -62,7 +62,7 @@
     "gatsby-remark-smartypants": "2.2.3",
     "gatsby-source-filesystem": "2.2.4",
     "gatsby-transformer-sharp": "2.4.6",
-    "prism-react-renderer": "1.0.2",
+    "prism-react-renderer": "1.1.0",
     "react": "16.13.1",
     "react-device-detect": "1.11.14",
     "react-dom": "16.13.1",
