@@ -2,7 +2,7 @@
 date: 2016-10-24
 title: Hello World!
 tags: ['hello world', 'getting started']
-published: false
+published: true
 ---
 
 My first post using Gatsby, awesome static site generator

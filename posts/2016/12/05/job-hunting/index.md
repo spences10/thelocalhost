@@ -2,7 +2,7 @@
 date: 2016-12-05
 title: Job hunting, one class 'A' ballache
 tags: ['rant', 'job hunting', 'job']
-published: false
+published: true
 ---
 
 This is basically a rant about the job market, I was laid off back in
