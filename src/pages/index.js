@@ -17,7 +17,7 @@ import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const PostWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  box-shadow: var(--box-shadow-lg);
   color: var(--color-on-background);
   overflow: hidden;
 `
