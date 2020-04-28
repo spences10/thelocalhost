@@ -34,7 +34,18 @@ const StyledP = styled.p`
   margin-top: ${({ theme }) => theme.spacing[0]};
   font-weight: ${({ theme }) => theme.fontWeight.light};
   letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-  color: ${({ theme }) => theme.colours.grey[900]};
+  color: var(--color-on-background);
+`
+
+const ThemeButton = styled.button`
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  img {
+    width: 20px;
+  }
 `
 
 export const Header = ({ siteTitle, siteDescription }) => {
@@ -49,8 +60,7 @@ export const Header = ({ siteTitle, siteDescription }) => {
       <Helmet>
         <body data-theme={theme} />
       </Helmet>
-      <p>{theme}</p>
-      <button
+      <ThemeButton
         onClick={() =>
           setTheme(currentValue =>
             currentValue === 'light' ? 'dark' : 'light'
@@ -61,7 +71,7 @@ export const Header = ({ siteTitle, siteDescription }) => {
           src={theme === 'light' ? moon : sun}
           alt="toggle theme"
         />
-      </button>
+      </ThemeButton>
     </>
   )
 }

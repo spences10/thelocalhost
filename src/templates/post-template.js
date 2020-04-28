@@ -53,6 +53,9 @@ const Toc = styled.aside`
   box-shadow: ${({ theme }) => theme.boxShadow.xl};
   border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: ${({ theme }) => theme.fontSize.sm};
+  a {
+    color: var(--color-on-background);
+  }
   ${down('sm')} {
     display: none;
   }
@@ -85,7 +88,7 @@ const ImageWrapper = styled.div`
 
 const Small = styled(SM)`
   ${NegMargin}
-  color: ${({ theme }) => theme.colours.grey[700]};
+  color: var(--color-on-background);
   font-weight: ${({ theme }) => theme.fontWeight.medium};
 `
 
