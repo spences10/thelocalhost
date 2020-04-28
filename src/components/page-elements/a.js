@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const StyledA = styled.a`
-  color: ${({ theme }) => theme.colours.grey[900]};
   text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.colours.grey[900]};
+  color: var(--color-on-background);
+  text-decoration-color: var(--color-on-background);
   &:hover {
     opacity: 0.5;
   }
