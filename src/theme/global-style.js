@@ -133,7 +133,26 @@ export const theme = {
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-
+  body[data-theme="light"] {
+    --color-background: ${({ theme }) => theme.colours.grey[100]};
+    --color-on-background: ${({ theme }) => theme.colours.grey[900]};
+    --color-primary: #6200ee;
+    --color-on-primary: #fff;
+    --color-secondary: #03dac6;
+    --color-on-secondary: #000;
+    --color-error: #b00020;
+    --color-on-error: #fff;
+  }
+  body[data-theme="dark"] {
+    --color-background: ${({ theme }) => theme.colours.grey[900]};
+    --color-on-background: ${({ theme }) => theme.colours.grey[100]};
+    --color-primary: #bb86fc;
+    --color-on-primary: #000;
+    --color-secondary: #03dac6;
+    --color-on-secondary: #000;
+    --color-error: #cf6679;
+    --color-on-error: #000;
+  }
   *, *:before, *:after {
     box-sizing: border-box;
   }
@@ -142,12 +161,13 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: ${({ theme }) => theme.font.sans};
     font-size: ${({ theme }) => theme.fontSize.xl};
-    color: ${({ theme }) => theme.colours.grey[900]};
   }
   body {
     line-height: ${({ theme }) => theme.lineHeight.relaxed};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    background-color: ${({ theme }) => theme.colours.grey[100]};
+    background: var(--color-background);
+    color: var(--color-on-background);
+    -webkit-font-smoothing: antialiased;
   }
   .vimeo-mdx-embed,
   .youtube-mdx-embed, 
