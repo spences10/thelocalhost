@@ -50,7 +50,7 @@ const Toc = styled.aside`
   max-height: 70vh;
   width: 310px;
   display: flex;
-  box-shadow: ${({ theme }) => theme.boxShadow.xl};
+  box-shadow: var(--box-shadow-xl);
   border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: ${({ theme }) => theme.fontSize.sm};
   a {
@@ -81,7 +81,7 @@ const Toc = styled.aside`
 const ImageWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing[8]};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: ${({ theme }) => theme.boxShadow.lg};
+  box-shadow: var(--box-shadow-lg);
   overflow: hidden;
   ${NegMargin}
 `
