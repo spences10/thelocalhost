@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 export const useLocalState = (key, defaultValue) => {
-  if (typeof window.fathom === 'undefined') return
+  if (typeof window === 'undefined') return
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key)
     return storedValue === null
