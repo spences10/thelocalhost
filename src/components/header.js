@@ -74,10 +74,7 @@ export const Header = ({ siteTitle, siteDescription }) => {
           )
         }
       >
-        <img
-          src={theme === 'light' ? moon : sun}
-          alt="toggle theme"
-        />
+        <img src={theme === 'dark' ? sun : moon} alt="toggle theme" />
       </button>
     </HeaderWrapper>
   )
