@@ -38,7 +38,6 @@ const StyledP = styled.p`
 `
 
 export const Header = ({ siteTitle, siteDescription }) => {
-  const [username, setUsername] = useLocalState('username', '')
   const [theme, setTheme] = useLocalState('theme', 'light')
 
   return (
@@ -63,10 +62,6 @@ export const Header = ({ siteTitle, siteDescription }) => {
           alt="toggle theme"
         />
       </button>
-      <input
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
     </>
   )
 }
