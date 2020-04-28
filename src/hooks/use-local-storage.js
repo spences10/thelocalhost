@@ -2,8 +2,12 @@
 import { useEffect, useState } from 'react'
 
 export const useLocalState = (key, defaultValue) => {
-  if (typeof window === 'undefined') return
   const [value, setValue] = useState(() => {
+    if (typeof window === 'undefined') {
+      // console.log(`We SSR yo!`)
+      return
+    }
+
     const storedValue = localStorage.getItem(key)
     return storedValue === null
       ? defaultValue
