@@ -1,5 +1,9 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import moon from '../../static/moon.svg'
+import sun from '../../static/sun.svg'
+import { useLocalState } from '../hooks/use-local-storage'
 import { Link } from './shared'
 
 const StyledLink = styled(Link)`
@@ -33,9 +37,36 @@ const StyledP = styled.p`
   color: ${({ theme }) => theme.colours.grey[900]};
 `
 
-export const Header = ({ siteTitle, siteDescription }) => (
-  <StyledLink to="/">
-    <StyledH1>{siteTitle}</StyledH1>
-    <StyledP>{siteDescription}</StyledP>
-  </StyledLink>
-)
+export const Header = ({ siteTitle, siteDescription }) => {
+  const [username, setUsername] = useLocalState('username', '')
+  const [theme, setTheme] = useLocalState('theme', 'light')
+
+  return (
+    <>
+      <StyledLink to="/">
+        <StyledH1>{siteTitle}</StyledH1>
+        <StyledP>{siteDescription}</StyledP>
+      </StyledLink>
+      <Helmet>
+        <body data-theme={theme} />
+      </Helmet>
+      <p>{theme}</p>
+      <button
+        onClick={() =>
+          setTheme(currentValue =>
+            currentValue === 'light' ? 'dark' : 'light'
+          )
+        }
+      >
+        <img
+          src={theme === 'light' ? moon : sun}
+          alt="toggle theme"
+        />
+      </button>
+      <input
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      />
+    </>
+  )
+}
