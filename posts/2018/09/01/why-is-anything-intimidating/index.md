@@ -1,9 +1,9 @@
 ---
-date: 2020-12-31
+date: 2019-09-01
 title: Why is anything intimidating?
 tags: ['ramble', '!dev', 'habits']
 excerpt: ''
-published: false
+published: true
 ---
 
 Stand back everyone, I'm doing pontification! I've had a couple
