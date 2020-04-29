@@ -21,6 +21,7 @@ const HeaderWrapper = styled.header`
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
     margin-top: ${({ theme }) => theme.spacing[2]};
     padding-bottom: ${({ theme }) => theme.spacing[1]};
+    padding-right: ${({ theme }) => theme.spacing[16]};
     line-height: ${({ theme }) => theme.lineHeight.none};
     background: linear-gradient(
       ${({ theme }) => theme.colours.primary[200]},
