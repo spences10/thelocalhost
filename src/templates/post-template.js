@@ -78,27 +78,8 @@ const buildURL = (url, obj) => {
     .map(pair => pair.map(encodeURIComponent).join('='))
     .join('&')
 
-  console.log('=====================')
-  console.log(query)
-  console.log('=====================')
   return `${url}?${query}`
 }
-
-const preloads = [
-  'https://cdn.carbonads.com',
-  'https://fonts.gstatic.com',
-  'https://googleads.g.doubleclick.net',
-  'https://i.ytimg.com',
-  'https://pixel.adsafeprotected.com',
-  'https://s.ytimg.com',
-  'https://srv.carbonads.net',
-  'https://static.adsafeprotected.com',
-  'https://static.doubleclick.net',
-  'https://stats.g.doubleclick.net',
-  'https://www.google.ca',
-  'https://www.google.com',
-  'https://yt3.ggpht.com',
-]
 
 export default ({ data, pageContext }) => {
   const {
@@ -129,10 +110,6 @@ export default ({ data, pageContext }) => {
     image: 'https://scottspence.me/favicon.png',
   })
 
-  console.log('=====================')
-  console.log(`Build URL :: ${ogImageUrl}`)
-  console.log('=====================')
-
   return (
     <>
       <SEO
@@ -152,9 +129,6 @@ export default ({ data, pageContext }) => {
       <Helmet encodeSpecialCharacters={false}>
         <meta property="og:image" content={ogImageUrl} />
         <meta name="twitter:image:src" content={ogImageUrl} />
-        {preloads.map(url => (
-          <link rel="preconnect" href={url} key={url} crossorigin />
-        ))}
       </Helmet>
       <H1>{frontmatter.title}</H1>
       <PostInfo>
