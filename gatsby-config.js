@@ -38,10 +38,7 @@ module.exports = {
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: { icon: false },
-          },
+          `gatsby-remark-autolink-headers`,
           {
             resolve: `gatsby-remark-images`,
             options: {
