@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import SEO from 'react-seo-component'
 import ReactTooltip from 'react-tooltip'
 import { down } from 'styled-breakpoints'
@@ -72,6 +73,14 @@ const Toc = styled.aside`
   }
 `
 
+const buildURL = (url, obj) => {
+  const query = Object.entries(obj)
+    .map(pair => pair.map(encodeURIComponent).join('='))
+    .join('&')
+
+  return `${url}?${query}`
+}
+
 export default ({ data, pageContext }) => {
   const {
     title: siteTitle,
@@ -93,6 +102,14 @@ export default ({ data, pageContext }) => {
   const { title, date } = frontmatter
   const { previous, next } = pageContext
   const fa = useAnalytics()
+
+  const ogImageUrl = buildURL('https://image-og.now.sh/og.jpg', {
+    author: authorName,
+    website: 'thelocalhost.io',
+    title,
+    image: 'https://scottspence.me/favicon.png',
+  })
+
   return (
     <>
       <SEO
@@ -109,6 +126,10 @@ export default ({ data, pageContext }) => {
         publishedDate={date}
         modifiedDate={new Date(Date.now()).toISOString()}
       />
+      <Helmet encodeSpecialCharacters={false}>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:image:src" content={ogImageUrl} />
+      </Helmet>
       <H1>{frontmatter.title}</H1>
       <PostInfo>
         <PostTimeToRead>
