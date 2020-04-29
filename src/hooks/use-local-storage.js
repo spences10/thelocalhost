@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=BAf0uhKVHBk
 import { useEffect, useState } from 'react'
 
-export const useLocalState = (key, defaultValue) => {
+export const useLocalStorage = (key, defaultValue) => {
   const [value, setValue] = useState(() => {
     if (typeof window === 'undefined') {
       // console.log(`We SSR yo!`)
