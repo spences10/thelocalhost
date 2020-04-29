@@ -20,6 +20,12 @@ const PostWrapper = styled.div`
   box-shadow: var(--box-shadow-lg);
   color: var(--color-on-background);
   overflow: hidden;
+  &:before {
+    height: 5px;
+    display: block;
+    content: '';
+    background: var(--qrt-turn-gradient);
+  }
 `
 
 const LinkWrapper = styled.div`
@@ -114,14 +120,6 @@ export const query = graphql`
         frontmatter {
           title
           date(formatString: "YYYY MMMM Do")
-          cover {
-            publicURL
-            childImageSharp {
-              sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
-                ...GatsbyImageSharpSizes_tracedSVG
-              }
-            }
-          }
         }
         tableOfContents
         timeToRead
