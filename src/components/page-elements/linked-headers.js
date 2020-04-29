@@ -1,8 +1,7 @@
 export const AutoLink = `
   a {
     float: left;
-    padding-right: 4px;
-    margin-left: -30px;
+    margin-left: -24px;
   }
   svg {
     visibility: hidden;
@@ -10,7 +9,7 @@ export const AutoLink = `
   &:hover {
     svg {
       visibility: visible;
-      height: 20px;
+      height: 25px;
       width: 20px;
       fill: var(--color-on-background);
     }
