@@ -142,8 +142,18 @@ export const GlobalStyle = createGlobalStyle`
     --color-on-secondary: #000;
     --color-error: #b00020;
     --color-on-error: #fff;
-    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --title-gradient: linear-gradient(
+      ${({ theme }) => theme.colours.primary[200]},
+      ${({ theme }) => theme.colours.primary[500]}
+    );
+    --qrt-turn-gradient: linear-gradient(0.25turn,
+      ${({ theme }) => theme.colours.primary[200]},
+      ${({ theme }) => theme.colours.primary[500]}
+    );
   }
   body[data-theme="dark"] {
     --color-background: ${({ theme }) => theme.colours.grey[900]};
@@ -154,8 +164,18 @@ export const GlobalStyle = createGlobalStyle`
     --color-on-secondary: #000;
     --color-error: #cf6679;
     --color-on-error: #000;
-    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 5);
-    --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 4);
+    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 5);
+    --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 4);
+    --title-gradient: linear-gradient(
+      ${({ theme }) => theme.colours.primary[100]},
+      ${({ theme }) => theme.colours.primary[300]}
+    );
+    --qrt-turn-gradient: linear-gradient(0.25turn,
+      ${({ theme }) => theme.colours.primary[100]},
+      ${({ theme }) => theme.colours.primary[300]}
+    );
   }
   *, *:before, *:after {
     box-sizing: border-box;

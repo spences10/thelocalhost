@@ -1,25 +1,19 @@
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import SEO from 'react-seo-component'
 import ReactTooltip from 'react-tooltip'
 import { down } from 'styled-breakpoints'
 import styled from 'styled-components'
-import { A, Br, H1, Small as SM } from '../components/page-elements'
+import { A, Br, H1 } from '../components/page-elements'
 import {
   Link as GatsbyLink,
-  NegMargin,
   PostEditOnGitHub,
   PostInfo,
   PostTimeToRead,
 } from '../components/shared'
 import { useAnalytics } from '../contexts/event-tracking'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
-
-const Image = styled(Img)`
-  object-fit: cover;
-`
 
 const PostNavigationWrapper = styled.div`
   margin: ${({ theme }) => theme.spacing[12]} -${({ theme }) => theme.spacing[8]};
@@ -78,20 +72,6 @@ const Toc = styled.aside`
   }
 `
 
-const ImageWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing[8]};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: var(--box-shadow-lg);
-  overflow: hidden;
-  ${NegMargin}
-`
-
-const Small = styled(SM)`
-  ${NegMargin}
-  color: var(--color-on-background);
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-`
-
 export default ({ data, pageContext }) => {
   const {
     title: siteTitle,
@@ -110,7 +90,7 @@ export default ({ data, pageContext }) => {
     tableOfContents,
     timeToRead,
   } = data.mdx
-  const { title, date, cover } = frontmatter
+  const { title, date } = frontmatter
   const { previous, next } = pageContext
   const fa = useAnalytics()
   return (
@@ -119,11 +99,7 @@ export default ({ data, pageContext }) => {
         title={title}
         titleTemplate={siteTitle}
         description={excerpt}
-        image={
-          cover === null
-            ? `${siteUrl}${image}`
-            : `${siteUrl}${cover.publicURL}`
-        }
+        image={`${siteUrl}${image}`}
         pathname={`${siteUrl}${slug}`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}
@@ -151,15 +127,6 @@ export default ({ data, pageContext }) => {
           </a>
         </PostEditOnGitHub>
       </PostInfo>
-      <ImageWrapper>
-        {!!frontmatter.cover ? (
-          <Image
-            sizes={frontmatter.cover.childImageSharp.sizes}
-            alt={`cover image`}
-          />
-        ) : null}
-      </ImageWrapper>
-      <Small>{frontmatter.coverCredit}</Small>
       <article>
         <Br />
         <MDXRenderer>{body}</MDXRenderer>
@@ -224,15 +191,6 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "YYYY MMMM Do")
-        cover {
-          publicURL
-          childImageSharp {
-            sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
-              ...GatsbyImageSharpSizes_tracedSVG
-            }
-          }
-        }
-        coverCredit
       }
       body
       excerpt

@@ -12,8 +12,6 @@ tags:
     'node',
   ]
 published: true
-cover: ./cover.jpg
-coverCredit: Photo by Luana De Marco on Unsplash
 ---
 
 ## From scratch to Create React App on Windows
@@ -343,7 +341,7 @@ module.exports = {
     copyOnSelect: true,
     plugins: ['hyper-altair'],
   },
-};
+}
 ```
 
 ![final hyper config](./hyper-final-config.gif)
