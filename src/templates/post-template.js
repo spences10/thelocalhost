@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import SEO from 'react-seo-component'
 import ReactTooltip from 'react-tooltip'
 import { down } from 'styled-breakpoints'
@@ -77,9 +77,6 @@ const buildURL = (url, obj) => {
   const query = Object.entries(obj)
     .map(pair => pair.map(encodeURIComponent).join('='))
     .join('&')
-  console.log('=====================')
-  console.log(`${url}?${query}`)
-  console.log('=====================')
   return `${url}?${query}`
 }
 
@@ -107,7 +104,7 @@ export default ({ data, pageContext }) => {
 
   const ogImageUrl = buildURL('https://image-og.now.sh/og.jpg', {
     author: authorName,
-    website: siteUrl,
+    website: 'thelocalhost.io',
     title,
     image: 'https://scottspence.me/favicon.png',
   })
