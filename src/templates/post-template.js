@@ -77,6 +77,10 @@ const buildURL = (url, obj) => {
   const query = Object.entries(obj)
     .map(pair => pair.map(encodeURIComponent).join('='))
     .join('&')
+
+  console.log('=====================')
+  console.log(query)
+  console.log('=====================')
   return `${url}?${query}`
 }
 
@@ -109,6 +113,10 @@ export default ({ data, pageContext }) => {
     image: 'https://scottspence.me/favicon.png',
   })
 
+  console.log('=====================')
+  console.log(`Build URL :: ${ogImageUrl}`)
+  console.log('=====================')
+
   return (
     <>
       <SEO
@@ -125,7 +133,7 @@ export default ({ data, pageContext }) => {
         publishedDate={date}
         modifiedDate={new Date(Date.now()).toISOString()}
       />
-      <Helmet>
+      <Helmet encodeSpecialCharacters={false}>
         <meta property="og:image" content={ogImageUrl} />
         <meta name="twitter:image:src" content={ogImageUrl} />
       </Helmet>
