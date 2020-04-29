@@ -23,10 +23,7 @@ const HeaderWrapper = styled.header`
     padding-bottom: ${({ theme }) => theme.spacing[1]};
     padding-right: ${({ theme }) => theme.spacing[16]};
     line-height: ${({ theme }) => theme.lineHeight.none};
-    background: linear-gradient(
-      ${({ theme }) => theme.colours.primary[200]},
-      ${({ theme }) => theme.colours.primary[500]}
-    );
+    background: var(--title-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

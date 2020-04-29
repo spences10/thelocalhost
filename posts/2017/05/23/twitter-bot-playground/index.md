@@ -3,7 +3,6 @@ date: 2017-05-23
 title: Twitter bot playground
 tags: ['information', 'guide']
 published: true
-cover: ./cover.jpg
 ---
 
 How to build and deploy a multifunctional Twitter bot!
@@ -711,7 +710,7 @@ var stream = bot.stream('statuses/filter', {
   track: 'bot',
 })
 
-stream.on('tweet', function(t) {
+stream.on('tweet', function (t) {
   console.log(t.text + '\n')
 })
 ```
@@ -1446,10 +1445,7 @@ const tweetData = () => {
     })
     .on('end', () => {
       const markov = new rita.RiMarkov(10)
-      markov
-        .loadText(inputText)
-        .toString()
-        .substring(0, 140)
+      markov.loadText(inputText).toString().substring(0, 140)
       const sentence = markov.generateSentences(1)
       bot.post(
         'statuses/update',

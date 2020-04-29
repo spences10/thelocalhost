@@ -3,7 +3,6 @@ date: 2018-01-13
 title: Windows Subsystem Linux setup
 tags: ['information', 'guide', 'wsl', 'bash on windows', 'n', 'node']
 published: true
-cover: ./cover.jpg
 ---
 
 I'm a Windows user, I have been a Linux user as well but I have found

@@ -11,8 +11,6 @@ tags:
     'git',
   ]
 published: true
-cover: ./cover.jpg
-coverCredit: Photo by Evelyn on Unsplash
 ---
 
 Over the past couple of weeks now I have set up several development
