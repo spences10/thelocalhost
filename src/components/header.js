@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import moon from '../../static/moon.svg'
 import sun from '../../static/sun.svg'
-import { useLocalState } from '../hooks/use-local-storage'
+import { useLocalStorage } from '../hooks/use-local-storage'
 import { Link } from './shared'
 
 const StyledLink = styled(Link)`
@@ -21,6 +21,7 @@ const HeaderWrapper = styled.header`
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
     margin-top: ${({ theme }) => theme.spacing[2]};
     padding-bottom: ${({ theme }) => theme.spacing[1]};
+    padding-right: ${({ theme }) => theme.spacing[16]};
     line-height: ${({ theme }) => theme.lineHeight.none};
     background: linear-gradient(
       ${({ theme }) => theme.colours.primary[200]},
@@ -56,7 +57,7 @@ const HeaderWrapper = styled.header`
 `
 
 export const Header = ({ siteTitle, siteDescription }) => {
-  const [theme, setTheme] = useLocalState('theme', 'light')
+  const [theme, setTheme] = useLocalStorage('theme', 'light')
 
   return (
     <HeaderWrapper>
