@@ -8,10 +8,8 @@ export const AutoLink = `
     visibility: hidden;
   }
   &:hover {
-    a {
-      svg {
-        visibility: visible;
-      }
+    svg {
+      visibility: visible;
     }
   }
 `
