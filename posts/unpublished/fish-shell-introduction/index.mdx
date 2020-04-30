@@ -1,0 +1,116 @@
+---
+date: 2020-12-31
+title: Fish Shell Introduction
+tags: ['information', 'learning']
+published: false
+---
+
+As a developer you spend a lot of time in the terminal so it's
+important to be happy and as productive as possible whilst you're in
+there.
+
+This is why I'm a big fan of the Fish Shell in particular. The Fish
+Shell is a user friendly shell with really handy features like
+auto-suggestions and tab completions that come preconfigured, no need
+to install additional plugins and mess around with config files.
+That's not to say Fish Shell isn't configurable, there are plugins
+available.
+
+## Navigation
+
+Ok, let's look at a typical navigation example in bash, if you want to
+change directory, you have to enter `cd` followed by the directory
+name. In Fish you only need to type out the directory name.
+
+Similarly if you want to go back a directory in bash, you need to
+start with `cd` in Fish it's just a case of `../`.
+
+```bash
+# change directories in bash
+cd Downloads
+cd ../
+# change directories in fish
+Downloads/
+../
+```
+
+## Auto-suggestions
+
+Fish will suggest both directories and commands as you type away, you
+will see suggestions in grey which you can tab onto to select.
+
+If you want to go through you last `yarn` (or `npm`) commands, rather
+than (like in bash) arrow through all you previously entered commands
+(I know you can use `Ctr+r` in bash) or print out the history and look
+at that.
+
+In Fish if you start typing out your command, let's say `yarn` you can
+then arrow through all commands that have included `yarn` it doesn't
+even have to be the beginning of the command, if you have used a
+package and want to know what else you installed with it at the time
+you can use the package name then arrow though all command with that
+keyword in there.
+
+## Tab Completions
+
+## Aliases
+
+Aliases are where you're too lazy to keep typing in the full command
+again and again so you make a shorter one, for me I have aliased `git`
+to `g` in Fish, (I know, but that extra two characters over time is a
+lot).
+
+Aliases in shells like bash and zsh you need to open your config file
+and find a appropriate place to add you alias. In
+
+## Install Fish shell
+
+Linux and Windows Subsystem Linux:
+
+```bash
+sudo apt -y install fish
+```
+
+macOS:
+
+```bash
+brew install fish
+curl -L https://get.oh-my.fish | fish
+sudo bash -c 'echo /usr/local/bin/fish >> /etc/shells'
+chsh -s /usr/local/bin/fish
+```
+
+## Oh My Fish (OMF)
+
+[Oh My Fish] is touted as the Fishshell Framework but all I have used
+it for is the extensive themes available, once you have installed OMF
+you can list them out in the terminal with: `omf theme`
+
+There's previews available on the [OMF Themes Markdown doc].
+
+To install OMF, in the terminal enter the following command:
+
+```bash
+curl -L https://get.oh-my.fish | fish
+```
+
+An [extensive list] of packages available too
+
+```bash
+omf describe brew
+```
+
+```text
+Package: brew
+Description: Oh My Fish plugin to integrate Homebrew paths into shell.
+Repository: https://github.com/oh-my-fish/plugin-brew
+Maintainer:
+```
+
+<!-- Links -->
+
+[omf themes markdown doc]:
+  https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md
+[extensive list]:
+  https://github.com/oh-my-fish/packages-main/tree/master/packages
+[oh my fish]: https://github.com/oh-my-fish/oh-my-fish

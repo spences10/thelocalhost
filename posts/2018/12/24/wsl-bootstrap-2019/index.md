@@ -87,7 +87,7 @@ default Command Prompt you can select it from the Taskbar settings
 page located in the Personalisation section in the Settings, I suggest
 doing that now:
 
-![lsb_release image](./powershell.gif)
+![powershell activation]
 
 Whilst we're at it we should also enable hidden folders and add files
 extensions for known file types in Windows File Explorer.
@@ -103,7 +103,7 @@ The reason we're doing this is so that we can see the `.git` folder in
 project structures it's also needed for files like `.env` files which
 are used for environment configuration.
 
-![show file extensions](./show-extensions.gif)
+![show file extensions]
 
 Use Windows key+x, this is the same as right-clicking the windows icon
 on the desktop, this will open the quick link menu. From here you need
@@ -145,7 +145,7 @@ You can check what version of Ubuntu you have installed with:
 lsb_release -a
 ```
 
-![lsb_release image](./lsb_release.png)
+![lsb_release image]
 
 If you want to use a specific LTS version of Ubuntu you can get them
 from the Windows Store, here:
@@ -237,7 +237,7 @@ this is to open the integrated terminal in VSCode with the shortcut
 keys Ctrl+' 👈 that's and apostrophe. You will be prompted to select
 your default terminal, select WSL Bash.
 
-![](./vscode-wsl-config.gif)
+![vscode config]
 
 ## Install Windows Git
 
@@ -263,7 +263,7 @@ binary you can then open it and go through the install, you can keep
 clicking next through the install, I have selected a few options that
 I would like enabled.
 
-![windows git setup](./install-git.gif)
+![windows git setup]
 
 For now, that is all we need to do, when it comes to authenticating
 with with GitHub using SSH we will use the Git Bash command line to
@@ -280,7 +280,7 @@ and configurable.
 Download and install hyper for Windows, this will be the bare-bones
 version, it'll look something like this:
 
-![basic hyper](./basic_hyper.png)
+![basic hyper]
 
 You may notice that, this is the Windows Command prompt too, don't
 worry, we're going to configure that right now.
@@ -295,7 +295,7 @@ it) navigate to the file, it'll be in your User folder, right-click
 the file and select Properties, then Change for 'Opens with:' and
 select VSCode from the list.
 
-![basic hyper](./default-file-type.gif)
+![default-file-type]
 
 Now we can set WSL as the shell path in Hyper, open the `.hyper.js`
 settings file and search (Ctrl+f) for bash, we want to add the path to
@@ -314,7 +314,7 @@ add in the `hyper-adventure-time` theme into the plugins section.
 Open another Hyper tab with Ctrl+Shift+t, this will show the bash
 terminal for WSL now.
 
-![basic hyper](./hyper-config.gif)
+![hyper config]
 
 Quick orientation with the Hyper terminal keyboard shortcuts:
 
@@ -344,7 +344,7 @@ module.exports = {
 }
 ```
 
-![final hyper config](./hyper-final-config.gif)
+![final hyper config]
 
 ## Install Fish Shell!
 
@@ -357,7 +357,7 @@ get with Oh My Fish
 sudo apt -y install fish
 ```
 
-![install fish](./install-fish.gif)
+![install fish]
 
 ### Install Oh My Fish
 
@@ -370,7 +370,7 @@ tab first then paste in the following:
 curl -L https://get.oh-my.fish | fish
 ```
 
-![install fish](./install-omf.gif)
+![install omf]
 
 #### Fish themes with OMF
 
@@ -385,7 +385,7 @@ have already installed by selecting `omf theme` let's change it once
 more to the `one` theme, adjust the size of the window first as things
 are getting a bit cramped.
 
-![omf one](./omf-install-one.gif)
+![omf one]
 
 Have a play around there's loads there, I prefer the one theme because
 you can see what version of node you're running on, over on the far
@@ -415,7 +415,7 @@ n to install Node `. /home/scott/.bashrc` but your username in place
 of mine 😄, now we can use f instead of fish! Well done you saved
 yourself typing three extra characters!!!.
 
-![alias fish in .bashrc](./alias-fish.gif)
+![alias fish in .bashrc]
 
 ## Git config
 
@@ -485,7 +485,7 @@ speed the gif up to 20x faster, it does take a while.🙃
 
 Wheeeeeeeeeeeeeeeeeeeee!
 
-![npx cra](./npx-cra.gif)
+![npx cra]
 
 So, now that we have spun up a React app to work on we should make a
 change and then add it to GitHub.
@@ -534,7 +534,7 @@ Ctrl+Enter again will commit the changes with a message, you can check
 that there are no changes to commit with `git status` from the
 terminal or visually from the Source Control section in VSCode.
 
-![cra change](./cra-change.gif)
+![cra change]
 
 Ok, time to add our super sweet code changes to a repository on GitHub
 for the world to see!
@@ -559,7 +559,7 @@ git remote add origin git@github.com:spences10/cra.git
 And to push the changes up to GitHub `git push -u origin master` but
 we're going to get an error, as we haven't set up SSH.
 
-![make repo](./make-repo.gif)
+![make repo]
 
 ### WSL SSH Config
 
@@ -605,7 +605,7 @@ Finally authenticate with GitHub:
 ssh -T git@github.com
 ```
 
-![ssh config wsl](./ssh-config-wsl.gif)
+![ssh config wsl]
 
 ### Windows Git Bash SSH Config
 
@@ -637,12 +637,12 @@ Authenticate:
 ssh -T git@github.com
 ```
 
-![ssh config win](./ssh-config-win.gif)
+![ssh config win]
 
 Now the additional set up for SSH is done we should be able to go back
 to Hyper and push our change to GitHub.
 
-![final push github](./final-push-github.gif)
+![final push github]
 
 Also you may have noticed that the SSH Key 🔑 token went from black to
 green on the settings screen there this indicates that you have
@@ -713,3 +713,46 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
   https://github.com/spences10/cheat-sheets/blob/master/fish.md
 [dotfiles]: https://github.com/spences10/dotfiles
 [download section]: https://code.visualstudio.com/download
+
+<!-- Images -->
+
+[powershell activation]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/powershell.gif
+[show file extensions]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/show-extensions.gif
+[lsb_release image]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/lsb_release.png
+[vscode config]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/vscode-wsl-config.gif
+[windows git setup]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/install-git.gif
+[basic hyper]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/basic_hyper.png
+[default-file-type]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/default-file-type.gif
+[hyper config]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/hyper-config.gif
+[final hyper config]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/hyper-final-config.gif
+[install fish]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/install-fish.gif
+[install omf]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/install-omf.gif
+[omf one]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/omf-install-one.gif
+[alias fish in .bashrc]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/alias-fish.gif
+[npx cra]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/npx-cra.gif
+[cra change]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/cra-change.gif
+[make repo]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/make-repo.gif
+[ssh config wsl]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/ssh-config-wsl.gif
+[ssh config wsl]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/ssh-config-wsl.gif
+[ssh config win]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/ssh-config-win.gif
+[final push github]:
+  https://now-images-wine.now.sh/2018/wsl-bootstrap-2019/final-push-github.gif

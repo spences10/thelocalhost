@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
+import { CustomScroll } from '../components/shared'
 
 export const theme = {
   breakpoints: {
@@ -154,6 +155,8 @@ export const GlobalStyle = createGlobalStyle`
       ${({ theme }) => theme.colours.primary[200]},
       ${({ theme }) => theme.colours.primary[500]}
     );
+    --scrollbar-bg: ${({ theme }) => theme.colours.primary[100]};
+    --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
   body[data-theme="dark"] {
     --color-background: ${({ theme }) => theme.colours.grey[900]};
@@ -176,6 +179,8 @@ export const GlobalStyle = createGlobalStyle`
       ${({ theme }) => theme.colours.primary[100]},
       ${({ theme }) => theme.colours.primary[300]}
     );
+    --scrollbar-bg: ${({ theme }) => theme.colours.primary[900]};
+    --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
   *, *:before, *:after {
     box-sizing: border-box;
@@ -192,7 +197,7 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--color-background);
     color: var(--color-on-background);
     -webkit-font-smoothing: antialiased;
-  }
+  ${CustomScroll}
   .vimeo-mdx-embed,
   .youtube-mdx-embed, 
   .twitter-tweet-mdx-embed,

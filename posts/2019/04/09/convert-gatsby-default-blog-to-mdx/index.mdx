@@ -82,31 +82,31 @@ all the pages and data nodes are generated.
 Change all markdown remark occurrences with MDX, that's the initial
 GraphQL query in create pages, then again in the result.
 
-![initial gatsby node changes](./initialGatsbyNode.png)
+![initial gatsby node changes]
 
 Then change the `node.internal.type` in `onCreateNode` from
 `MarkdownRemark` to `Mdx`.
 
-![last gatsby node changes](./lastGatsbyNode.png)
+![last gatsby node changes]
 
 ## `gatsby-config.js`
 
 Here we're going to replace `gatsby-transformer-remark` with
 `gatsby-mdx`
 
-![replace transformer remark with gatsby-mdx](./gatsbyConfig.png)
+![replace transformer remark with gatsby-mdx]
 
 ## `index.js`
 
 Here we're going to alter the `posts` variable to take the `Mdx`
 edges.
 
-![replace all markdown edges](./indexPageEdges.png)
+![replace all markdown edges]
 
 The `Mdx` edges are taken from the page query, which is also altered
 to use `allMdx` in place of `allMarkdownRemark`.
 
-![index page query](./indexPageQuery.png)
+![index page query]
 
 ## `blog-post.js`
 
@@ -114,17 +114,17 @@ Now last on the list to get MDX working is the blog post template,
 we're going to need to import `MDXRenderer` from `gatsby-mdx` we're
 going to replace `dangerouslySetInnerHTML` with this shortly.
 
-![MDX renderer](./importMdxRenderer.png)
+![MDX renderer]
 
 Here's where we use it, we'll come onto `post.code.body`.
 
-![replace dangerously set html](./replaceDangerHtml.png)
+![replace dangerously set html]
 
 Again in the query we're replacing `markdownRemark` with `mdx` and
 this time also doing away with `html` from the query and adding in
 `code` for `body` which we're using in our render method.
 
-![](./blogPostQuery.png)
+![blog post query]
 
 ## Now we're using MDX!
 
@@ -232,3 +232,22 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 [codesandbox import wizard]: https://codesandbox.io/s/github
 [codesandbox docs for importing projects]:
   https://codesandbox.io/docs/importing
+
+<!-- Images -->
+
+[initial gatsby node changes]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/initialGatsbyNode.png
+[last gatsby node changes]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/lastGatsbyNode.png
+[replace transformer remark with gatsby-mdx]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/gatsbyConfig.png
+[replace all markdown edges]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/indexPageEdges.png
+[index page query]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/indexPageQuery.png
+[mdx renderer]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/importMdxRenderer.png
+[replace dangerously set html]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/replaceDangerHtml.png
+[blog post query]:
+  https://now-images-wine.now.sh/2019/convert-gatsby-default-blog-to-mdx/blogPostQuery.png

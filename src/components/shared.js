@@ -78,3 +78,20 @@ export const NegMargin = css`
     margin-right: -${({ theme }) => theme.spacing[0]};
   }
 `
+
+// https://css-tricks.com/the-current-state-of-styling-scrollbars/
+export const CustomScroll = css`
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumb-bg) var(--scrollbar-bg);
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-bg);
+    border-radius: 14px;
+    border: 3px solid var(--scrollbar-bg);
+  }
+`
