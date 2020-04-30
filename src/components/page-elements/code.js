@@ -26,12 +26,18 @@ const Pre = styled.pre`
   margin: 1em 0;
   padding: 0.5em;
   overflow-x: auto;
-  border-radius: 3px;
+  border-radius: 5px;
   font-family: 'Victor Mono', 'Courier New', Courier, monospace;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
   overflow: hidden;
   overflow-x: auto;
-  ${CustomScroll}
+  ${CustomScroll};
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+  }
 `
 
 const LineNo = styled.span`
