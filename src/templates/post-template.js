@@ -37,7 +37,14 @@ const PrevNextWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing[2]};
 `
 
-const Link = styled(GatsbyLink)``
+const Link = styled(GatsbyLink)`
+  text-decoration: underline;
+  color: var(--color-on-background);
+  text-decoration-color: var(--color-on-background);
+  &:hover {
+    opacity: 0.5;
+  }
+`
 
 const Toc = styled.aside`
   position: fixed;

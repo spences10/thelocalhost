@@ -79,6 +79,7 @@ export const NegMargin = css`
   }
 `
 
+// https://css-tricks.com/the-current-state-of-styling-scrollbars/
 export const CustomScroll = css`
   scrollbar-width: thin;
   scrollbar-color: var(--thumb-bg) var(--scrollbar-bg);
