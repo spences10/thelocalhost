@@ -123,7 +123,7 @@ export default ({ data, pageContext }) => {
   const ogImageUrl = buildURL('https://image-og.now.sh/og.jpg', {
     author: authorName,
     website: 'thelocalhost.io',
-    title,
+    title: title.length > 55 ? `${title.substring(0, 55)}...` : title,
     image: 'https://scottspence.me/favicon.png',
   })
 
