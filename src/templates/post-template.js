@@ -8,6 +8,7 @@ import { down } from 'styled-breakpoints'
 import styled from 'styled-components'
 import { A, Br, H1 } from '../components/page-elements'
 import {
+  CustomScroll,
   Link as GatsbyLink,
   PostEditOnGitHub,
   PostInfo,
@@ -42,9 +43,10 @@ const Toc = styled.aside`
   position: fixed;
   left: calc(50% + 400px);
   top: 80px;
-  max-height: 70vh;
+  max-height: 50vh;
   width: 310px;
   display: flex;
+  flex-direction: column;
   box-shadow: var(--box-shadow-xl);
   border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: ${({ theme }) => theme.fontSize.sm};
@@ -55,18 +57,26 @@ const Toc = styled.aside`
     display: none;
   }
   h3 {
+    margin: 0 ${({ theme }) => theme.spacing[3]};
     font-size: ${({ theme }) => theme.fontSize['2xl']};
     font-family: ${({ theme }) => theme.font.serif};
-    margin-top: ${({ theme }) => theme.spacing[2]};
   }
   ul {
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: ${({ theme }) => theme.spacing[3]};
+    ${CustomScroll}
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 14px;
+    }
   }
   li {
     line-height: ${({ theme }) => theme.lineHeight.tight};
-    margin-top: ${({ theme }) => theme.spacing[3]};
+    margin-bottom: ${({ theme }) => theme.spacing[3]};
+    margin-right: ${({ theme }) => theme.spacing[4]};
   }
   a {
     text-decoration: none;
@@ -154,8 +164,8 @@ export default ({ data, pageContext }) => {
       </article>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
+          <h3>Table of contents</h3>
           <ul>
-            <h3>Table of contents</h3>
             {tableOfContents.items.map(i => (
               <li key={i.url}>
                 <A href={i.url} key={i.url}>

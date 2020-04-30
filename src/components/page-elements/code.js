@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components'
 import 'victormono'
 import { copyToClipboard } from '../../utils/copy-to-clipboard'
-import { NegMargin } from '../shared'
+import { CustomScroll, NegMargin } from '../shared'
 
 const RE = /{([\d,-]+)}/
 
@@ -29,6 +29,9 @@ const Pre = styled.pre`
   border-radius: 3px;
   font-family: 'Victor Mono', 'Courier New', Courier, monospace;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
+  overflow: hidden;
+  overflow-x: auto;
+  ${CustomScroll}
 `
 
 const LineNo = styled.span`
