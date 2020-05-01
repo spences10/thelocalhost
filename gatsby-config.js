@@ -172,6 +172,11 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/2019/*`, `/2020/*`],
+      },
+    },
   ],
 }
