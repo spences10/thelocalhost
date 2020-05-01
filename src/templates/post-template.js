@@ -7,6 +7,7 @@ import ReactTooltip from 'react-tooltip'
 import { down } from 'styled-breakpoints'
 import styled from 'styled-components'
 import { A, Br, H1 } from '../components/page-elements'
+import { Share } from '../components/share'
 import {
   CustomScroll,
   Link as GatsbyLink,
@@ -39,8 +40,8 @@ const PrevNextWrapper = styled.div`
 
 const Link = styled(GatsbyLink)`
   text-decoration: underline;
-  color: var(--color-on-background);
-  text-decoration-color: var(--color-on-background);
+  color: var(--colour-on-background);
+  text-decoration-color: var(--colour-on-background);
   &:hover {
     opacity: 0.5;
   }
@@ -58,7 +59,7 @@ const Toc = styled.aside`
   border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: ${({ theme }) => theme.fontSize.sm};
   a {
-    color: var(--color-on-background);
+    color: var(--colour-on-background);
   }
   ${down('sm')} {
     display: none;
@@ -168,6 +169,12 @@ export default ({ data, pageContext }) => {
       <article>
         <Br />
         <MDXRenderer>{body}</MDXRenderer>
+        <Br />
+        <Share
+          url={`${siteUrl}${slug}`}
+          title={title}
+          twitterHandle={twitterUsername}
+        />
       </article>
       {typeof tableOfContents.items === 'undefined' ? null : (
         <Toc>
