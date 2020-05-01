@@ -32,6 +32,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `@pauliescanlon/gatsby-mdx-embed`,
     `gatsby-plugin-use-dark-mode`,
+    `gatsby-plugin-prettier-build`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -176,14 +177,6 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         precachePages: [`/2019/*`, `/2020/*`],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-prettier-build`,
-      options: {
-        types: ['html'],
-        concurrency: 20,
-        verbose: true,
       },
     },
   ],
