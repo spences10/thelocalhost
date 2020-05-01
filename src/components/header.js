@@ -34,7 +34,7 @@ const HeaderWrapper = styled.header`
     margin-top: ${({ theme }) => theme.spacing[0]};
     font-weight: ${({ theme }) => theme.fontWeight.light};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    color: var(--color-on-background);
+    color: var(--colour-on-background);
   }
   button {
     background: none;

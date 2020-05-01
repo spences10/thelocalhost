@@ -11,7 +11,7 @@ export const AutoLink = `
       visibility: visible;
       height: 25px;
       width: 20px;
-      fill: var(--color-on-background);
+      fill: var(--colour-on-background);
     }
   }
 `

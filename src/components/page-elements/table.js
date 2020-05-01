@@ -9,12 +9,12 @@ export const StyledTable = styled.table`
   thead {
     font-size: ${({ theme }) => theme.fontSize.base};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
-    background-color: var(--color-secondary);
+    background-color: var(--colour-secondary);
     border: 1px solid ${({ theme }) => theme.colours.grey[500]};
   }
   th,
   td {
-    border: 1px solid var(--color-on-secondary);
+    border: 1px solid var(--colour-on-secondary);
   }
   th,
   td {
@@ -27,7 +27,7 @@ export const StyledTable = styled.table`
   th,
   td {
     &:hover {
-      background-color: var(--color-on-secondary);
+      background-color: var(--colour-on-secondary);
     }
   }
 `
