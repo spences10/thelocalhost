@@ -178,5 +178,13 @@ module.exports = {
         precachePages: [`/2019/*`, `/2020/*`],
       },
     },
+    {
+      resolve: `gatsby-plugin-prettier-build`,
+      options: {
+        types: ['html'],
+        concurrency: 20,
+        verbose: true,
+      },
+    },
   ],
 }
