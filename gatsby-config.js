@@ -153,8 +153,8 @@ module.exports = {
                   filter: {frontmatter: {published: {eq:true}}}
                 ) {
                   nodes {
-                    excerpt
-                    html
+                    id
+                    rawBody
                     fields { 
                       slug 
                     }
