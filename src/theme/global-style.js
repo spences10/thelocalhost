@@ -135,14 +135,12 @@ export const theme = {
 export const GlobalStyle = createGlobalStyle`
   ${reset}
   body[data-theme="light"] {
-    --color-background: ${({ theme }) => theme.colours.grey[100]};
-    --color-on-background: ${({ theme }) => theme.colours.grey[900]};
-    --color-primary: #6200ee;
-    --color-on-primary: #fff;
-    --color-secondary: #03dac6;
-    --color-on-secondary: #000;
-    --color-error: #b00020;
-    --color-on-error: #fff;
+    --colour-background: ${({ theme }) => theme.colours.grey[100]};
+    --colour-on-background: ${({ theme }) => theme.colours.grey[900]};
+    --colour-primary: #6200ee;
+    --colour-on-primary: #fff;
+    --colour-secondary: ${({ theme }) => theme.colours.grey[300]};
+    --colour-on-secondary: ${({ theme }) => theme.colours.grey[400]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
@@ -159,14 +157,12 @@ export const GlobalStyle = createGlobalStyle`
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
   body[data-theme="dark"] {
-    --color-background: ${({ theme }) => theme.colours.grey[900]};
-    --color-on-background: ${({ theme }) => theme.colours.grey[100]};
-    --color-primary: #bb86fc;
-    --color-on-primary: #000;
-    --color-secondary: #03dac6;
-    --color-on-secondary: #000;
-    --color-error: #cf6679;
-    --color-on-error: #000;
+    --colour-background: ${({ theme }) => theme.colours.grey[900]};
+    --colour-on-background: ${({ theme }) => theme.colours.grey[100]};
+    --colour-primary: #bb86fc;
+    --colour-on-primary: #000;
+    --colour-secondary: ${({ theme }) => theme.colours.grey[800]};
+    --colour-on-secondary: ${({ theme }) => theme.colours.grey[700]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 5);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
@@ -194,8 +190,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     line-height: ${({ theme }) => theme.lineHeight.relaxed};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    background: var(--color-background);
-    color: var(--color-on-background);
+    background: var(--colour-background);
+    color: var(--colour-on-background);
     -webkit-font-smoothing: antialiased;
   ${CustomScroll}
   .vimeo-mdx-embed,

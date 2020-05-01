@@ -4,7 +4,7 @@ import 'victormono'
 
 export const inlineCode = css`
   padding: 0 3px;
-  background-color: ${({ theme }) => theme.colours.grey[400]};
+  background-color: var(--colour-on-secondary);
   font-family: 'Victor Mono', monospace;
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 `

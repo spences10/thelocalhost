@@ -31,6 +31,7 @@ module.exports = {
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `@pauliescanlon/gatsby-mdx-embed`,
+    `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -141,7 +142,6 @@ module.exports = {
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ 'content:encoded': node.html }],
                 })
               })
             },
@@ -153,8 +153,8 @@ module.exports = {
                   filter: {frontmatter: {published: {eq:true}}}
                 ) {
                   nodes {
-                    excerpt
-                    html
+                    id
+                    rawBody
                     fields { 
                       slug 
                     }
@@ -172,6 +172,11 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/2019/*`, `/2020/*`],
+      },
+    },
   ],
 }
