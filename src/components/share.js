@@ -10,7 +10,7 @@ const ShareWrapper = styled.section`
     -webkit-text-fill-color: transparent;
   }
   span {
-    font-weight: 700;
+    font-weight: 500;
   }
 `
 
@@ -23,7 +23,8 @@ export const Share = ({ url, title, twitterHandle }) => {
         via={twitterHandle.split('@').join('')}
       >
         <h6>
-          Click here to <span>share this</span> post on Twitter.
+          Useful? Click here to <span>share this</span> post on
+          Twitter.
         </h6>
       </TwitterShareButton>
     </ShareWrapper>
