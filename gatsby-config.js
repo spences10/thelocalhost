@@ -32,7 +32,6 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `@pauliescanlon/gatsby-mdx-embed`,
     `gatsby-plugin-use-dark-mode`,
-    `gatsby-plugin-prettier-build`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
