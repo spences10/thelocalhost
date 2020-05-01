@@ -9,25 +9,25 @@ export const StyledTable = styled.table`
   thead {
     font-size: ${({ theme }) => theme.fontSize.base};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
-    background-color: ${({ theme }) => theme.colours.grey[400]};
+    background-color: var(--color-secondary);
     border: 1px solid ${({ theme }) => theme.colours.grey[500]};
   }
   th,
   td {
-    border: 1px solid ${({ theme }) => theme.colours.grey[500]};
+    border: 1px solid var(--color-on-secondary);
   }
   th,
   td {
-    padding-left: ${({ theme }) => theme.spacing['2']};
-    padding-right: ${({ theme }) => theme.spacing['3']};
-    padding-top: ${({ theme }) => theme.spacing['2']};
-    padding-bottom: ${({ theme }) => theme.spacing['1']};
+    padding-left: ${({ theme }) => theme.spacing[2]};
+    padding-right: ${({ theme }) => theme.spacing[3]};
+    padding-top: ${({ theme }) => theme.spacing[2]};
+    padding-bottom: ${({ theme }) => theme.spacing[1]};
     text-align: left;
   }
   th,
   td {
     &:hover {
-      background-color: ${({ theme }) => theme.colours.grey[300]};
+      background-color: var(--color-on-secondary);
     }
   }
 `

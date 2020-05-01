@@ -139,10 +139,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-on-background: ${({ theme }) => theme.colours.grey[900]};
     --color-primary: #6200ee;
     --color-on-primary: #fff;
-    --color-secondary: #03dac6;
-    --color-on-secondary: #000;
-    --color-error: #b00020;
-    --color-on-error: #fff;
+    --color-secondary: ${({ theme }) => theme.colours.grey[300]};
+    --color-on-secondary: ${({ theme }) => theme.colours.grey[400]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
@@ -163,10 +161,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-on-background: ${({ theme }) => theme.colours.grey[100]};
     --color-primary: #bb86fc;
     --color-on-primary: #000;
-    --color-secondary: #03dac6;
-    --color-on-secondary: #000;
-    --color-error: #cf6679;
-    --color-on-error: #000;
+    --color-secondary: ${({ theme }) => theme.colours.grey[800]};
+    --color-on-secondary: ${({ theme }) => theme.colours.grey[700]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 5);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
