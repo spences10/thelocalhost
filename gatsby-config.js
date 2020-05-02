@@ -31,7 +31,6 @@ module.exports = {
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `@pauliescanlon/gatsby-mdx-embed`,
-    `gatsby-plugin-use-dark-mode`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
