@@ -134,6 +134,7 @@ export const theme = {
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
+  
   body[data-theme="light"] {
     --colour-background: ${({ theme }) => theme.colours.grey[100]};
     --colour-on-background: ${({ theme }) => theme.colours.grey[900]};
@@ -145,17 +146,13 @@ export const GlobalStyle = createGlobalStyle`
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --title-gradient: linear-gradient(
-      ${({ theme }) => theme.colours.primary[200]},
-      ${({ theme }) => theme.colours.primary[500]}
-    );
-    --qrt-turn-gradient: linear-gradient(0.25turn,
-      ${({ theme }) => theme.colours.primary[200]},
-      ${({ theme }) => theme.colours.primary[500]}
-    );
+    --title-gradient-from: ${({ theme }) =>
+      theme.colours.primary[200]};
+    --title-gradient-to: ${({ theme }) => theme.colours.primary[500]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[100]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
+
   body[data-theme="dark"] {
     --colour-background: ${({ theme }) => theme.colours.grey[900]};
     --colour-on-background: ${({ theme }) => theme.colours.grey[100]};
@@ -167,33 +164,39 @@ export const GlobalStyle = createGlobalStyle`
       0 4px 6px -2px rgba(0, 0, 0, 5);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 4);
-    --title-gradient: linear-gradient(
-      ${({ theme }) => theme.colours.primary[100]},
-      ${({ theme }) => theme.colours.primary[300]}
-    );
-    --qrt-turn-gradient: linear-gradient(0.25turn,
-      ${({ theme }) => theme.colours.primary[100]},
-      ${({ theme }) => theme.colours.primary[300]}
-    );
+    --title-gradient-from: ${({ theme }) =>
+      theme.colours.primary[100]};
+    --title-gradient-to: ${({ theme }) => theme.colours.primary[300]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[900]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
+  
   *, *:before, *:after {
     box-sizing: border-box;
   }
+
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: ${({ theme }) => theme.font.sans};
     font-size: ${({ theme }) => theme.fontSize.xl};
   }
+
   body {
     line-height: ${({ theme }) => theme.lineHeight.relaxed};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    background: var(--colour-background);
-    color: var(--colour-on-background);
+    background: var(
+      --colour-background,
+      ${({ theme }) => theme.colours.grey[100]}
+    );
+    color: var(
+      --colour-on-background,
+      ${({ theme }) => theme.colours.grey[900]}
+    );
     -webkit-font-smoothing: antialiased;
-  ${CustomScroll}
+    ${CustomScroll}
+  }
+
   .vimeo-mdx-embed,
   .youtube-mdx-embed, 
   .twitter-tweet-mdx-embed,
@@ -201,6 +204,7 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: ${({ theme }) => theme.spacing[10]};
     margin-bottom: ${({ theme }) => theme.spacing[10]};
   }
+
   .highlight-line {
     background-color: rgba(201, 167, 255, 0.2);
     margin: 0 -10px;
@@ -208,6 +212,7 @@ export const GlobalStyle = createGlobalStyle`
     border-left: 5px solid ${({ theme }) =>
       theme.colours.primary[500]};
   }
+  
   .__react_component_tooltip {
     height: 100px;
     max-width: 400px;

@@ -40,8 +40,14 @@ const PrevNextWrapper = styled.div`
 
 const Link = styled(GatsbyLink)`
   text-decoration: underline;
-  color: var(--colour-on-background);
-  text-decoration-color: var(--colour-on-background);
+  color: var(
+    --colour-on-background,
+    ${({ theme }) => theme.colours.grey[900]}
+  );
+  text-decoration-color: var(
+    --colour-on-background,
+    ${({ theme }) => theme.colours.grey[900]}
+  );
   &:hover {
     opacity: 0.5;
   }
@@ -59,7 +65,10 @@ const Toc = styled.aside`
   border-radius: ${({ theme }) => theme.borderRadius.default};
   font-size: ${({ theme }) => theme.fontSize.sm};
   a {
-    color: var(--colour-on-background);
+    color: var(
+      --colour-on-background,
+      ${({ theme }) => theme.colours.grey[900]}
+    );
   }
   ${down('sm')} {
     display: none;

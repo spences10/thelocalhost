@@ -17,14 +17,31 @@ import { useSiteMetadata } from '../hooks/use-site-metadata'
 
 const PostWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: var(--box-shadow-lg);
-  color: var(--colour-on-background);
+  box-shadow: var(
+    --box-shadow-lg,
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05)
+  );
+  color: var(
+    --colour-on-background,
+    ${({ theme }) => theme.colours.grey[900]}
+  );
   overflow: hidden;
   &:before {
     height: 5px;
     display: block;
     content: '';
-    background: var(--qrt-turn-gradient);
+    background: linear-gradient(
+      0.25turn,
+      var(
+        --title-gradient-from,
+        ${({ theme }) => theme.colours.primary[200]}
+      ),
+      var(
+        --title-gradient-to,
+        ${({ theme }) => theme.colours.primary[500]}
+      )
+    );
   }
 `
 

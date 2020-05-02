@@ -9,12 +9,19 @@ export const StyledTable = styled.table`
   thead {
     font-size: ${({ theme }) => theme.fontSize.base};
     font-weight: ${({ theme }) => theme.fontWeight.medium};
-    background-color: var(--colour-secondary);
+    background-color: var(
+      --colour-secondary,
+      ${({ theme }) => theme.colours.grey[300]}
+    );
     border: 1px solid ${({ theme }) => theme.colours.grey[500]};
   }
   th,
   td {
-    border: 1px solid var(--colour-on-secondary);
+    border: 1px solid
+      var(
+        --colour-on-secondary,
+        ${({ theme }) => theme.colours.grey[400]}
+      );
   }
   th,
   td {
@@ -27,7 +34,10 @@ export const StyledTable = styled.table`
   th,
   td {
     &:hover {
-      background-color: var(--colour-on-secondary);
+      background-color: var(
+        --colour-on-secondary,
+        ${({ theme }) => theme.colours.grey[400]}
+      );
     }
   }
 `
