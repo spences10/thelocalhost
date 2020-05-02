@@ -2,10 +2,198 @@
 date: 2020-04-30
 title: Open Graph Images with Gatsby and Now
 tags: ['information', 'markdown']
-published: false
+published: true
 ---
 
-So, I followed the awesome video content and blog post from Leigh
-Halliday and I now have a way to generate Social Sharing cards for
-Twitter, Facebook and LinkedIn without having to add a cover image to
-every post I do.
+I recently purged all the cover images from this site to reduce the
+overall size of the site, plus they don't really add to the content.
+
+The only real plus for having a cover image was to that I could get
+the sweet preview cards you get when sharing on social platforms like
+Twitter and LinkedIn.
+
+I followed the awesome video content and blog post from Leigh Halliday
+to build my own. I now have a way to generate Social Sharing cards for
+without having to add a cover image to every post I do.
+
+This isn't going to be a step by step guide on how to do that as Leigh
+has done a really good job of that with this videos.
+
+They're in TypeScript, I made my project in TypeScript too, I don't
+think it's a must that you use TypeScript though.
+
+## Build and deploy
+
+Leigh really suffered with the Now CLI and was constantly restarting
+it, now it is a bit more permissive so if you follow along you won't
+get as many issues.
+
+You will need to `now` your project before you can run `now dev`
+however. it needs to be on the platform before you can use the
+`now dev` locally.
+
+For me personally, I couldn't work out why I kept getting these error
+messages:
+
+![no tsc config error]
+
+The reason? I didn't have a `tscconfig.json` file in the project so
+the Now platform had no idea what to do with the project!
+
+<YouTube youTubeId="Al3tCJKOydY" />
+
+## Parsing params
+
+<YouTube youTubeId="ANedwsfXpO0" />
+
+## Temporary file
+
+<YouTube youTubeId="KlLgjuUQoJs" />
+
+## Taking a screenshot
+
+<YouTube youTubeId="ZjGCiBpDZ7g" />
+
+## How to even though?
+
+I watched these videos twice before and a third time whilst I followed
+along, Leigh is a great teacher but there is quite a bit to take in
+here (for me anyway!).
+
+There wasn't really any issues with me getting this project up and
+running.
+
+In the beginning, before I started however, I wasn't really clear on
+how to use it in a project.
+
+I reached out to Leigh to clarify,
+
+> "do you build it onto an existing project you want to use it in?"
+
+Or,
+
+> "Or is it something you `npm` install and use like that?"
+
+<Tweet tweetLink="spences10/status/1255155419107844097" />
+
+Leigh really had to spell it out for me as I was clearly struggling
+with the concept of how it worked!
+
+<Tweet tweetLink="leighchalliday/status/1255156120219508737" />
+
+So the function lives off on the Vercel platform and creates an image
+with whatever variables you pass to it.
+
+Here's an intercalative example, edit the `params` object here to
+generate an image:
+
+```js react-live
+const params = {
+  author: `Scott Spence`,
+  website: `thelocalhost.io`,
+  title: `Serverless OG Image Example Card`,
+  image: `https://scottspence.me/favicon.png`,
+}
+
+const objectToQueryParams = obj => {
+  const params = Object.entries(obj).map(
+    ([key, value]) => `${key}=${value}`
+  )
+  return '?' + params.join('&')
+}
+
+const Image = () => {
+  return (
+    <img
+      style={{ width: '100%' }}
+      src={`https://image-og.now.sh/og.jpg${objectToQueryParams(
+        params
+      )}`}
+    />
+  )
+}
+
+render(Image)
+```
+
+Pretty neat, right? So how to get that into a project. In the case of
+this project I used a function to build the URL then passed that into
+the head of the page with React Helmet.
+
+I jacked this example from Leigh Halliday's page, in your component
+you need to build the URL you want to pass to the serverless function.
+I the case of this project I'm pulling the values from the MDX
+frontmatter for the title, the rest is either hard coded or pulled
+from the site metadata.
+
+```js
+const ogImageUrl = buildURL('https://image-og.now.sh/og.jpg', {
+  author: authorName,
+  website: 'thelocalhost.io',
+  title: title.length > 55 ? `${title.substring(0, 55)}...` : title,
+  image: 'https://scottspence.me/favicon.png',
+})
+```
+
+This is what `buildURL` looks like:
+
+```js
+const buildURL = (url, obj) => {
+  const query = Object.entries(obj)
+    .map(pair => pair.map(encodeURIComponent).join('='))
+    .join('&')
+
+  return `${url}?${query}`
+}
+```
+
+The resulting URL from `ogImageUrl` is used in React Helmet with the
+corresponding meta tags for the Open Graph images.
+
+```jsx
+<Helmet encodeSpecialCharacters={false}>
+  <meta property="og:image" content={ogImageUrl} />
+  <meta name="twitter:image:src" content={ogImageUrl} />
+</Helmet>
+```
+
+## There were issues
+
+There was one particular issue that did, and still does have me
+confused, in the previous code example with React Helmet you see the
+prop `encodeSpecialCharacters` set to false.
+
+Well, if I built the site and inspected the source I could pick out
+the image URL from the page HTML, if you take a look you may be able
+to see the issue.
+
+![page source image url]
+
+Here's an example URL of what is being added to the page source:
+
+```text
+https://image-og.now.sh/og.jpg
+  ?author=Scott%20Spence
+  &amp;website=thelocalhost.io
+  &amp;title=Serverless%20OG%20Image%20Example%20Card
+  &amp;image=https%3A%2F%2Fscottspence.me%2Ffavicon.png
+```
+
+Getting `&amp;` instead of `&` so if you copy paste this link into a
+browser you get this sort of image:
+
+![undefined og image]
+
+- The source is available here:
+  https://github.com/leighhalliday/og-image
+
+<!-- Links -->
+
+<!-- Images -->
+
+[no tsc config error]:
+  https://now-images-wine.now.sh/2020/serverless-og-images/no-tsc-config.png
+[page source image url]:
+  https://now-images-wine.now.sh/2020/serverless-og-images/page-source-image-url.png
+[undefined og image]:
+  https://now-images-wine.now.sh/2020/serverless-og-images/undefined-og-image.jpg
