@@ -686,8 +686,7 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
   https://www.microsoft.com/en-gb/p/ubuntu-1604-lts/9pjn388hp8c9?activetab=pivot:overviewtab
 [ubuntu 18.04 lts]:
   https://www.microsoft.com/en-gb/p/ubuntu-1804-lts/9n9tngvndl3q?activetab=pivot:overviewtab
-[my guide from the start of 2018]:
-  https://thelocalhost.blog/wsl-setup/
+[my guide from the start of 2018]: https://thelocalhost.io/wsl-setup/
 [official guidance]:
   https://docs.microsoft.com/en-us/windows/wsl/install-win10
 [windows keyboard shortcuts]:

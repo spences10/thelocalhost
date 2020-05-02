@@ -863,14 +863,14 @@ Follow me on [Twitter] or [Ask Me Anything] on GitHub.
 <!-- Links -->
 
 [how that went here]:
-  https://thelocalhost.blog/react-context-api-with-gatsby
+  https://thelocalhost.io/react-context-api-with-gatsby
 [styled-components getting started]:
-  https://thelocalhost.blog/styled-components-getting-started
+  https://thelocalhost.io/styled-components-getting-started
 [example]: https://codesandbox.io/s/7wwr706nz0
 [react docs]: https://reactjs.org/docs/context.html
 [prop drilling]:
   https://blog.kentcdodds.com/prop-drilling-bb62e02cb691
-[my gatsby blog]: https://thelocalhost.blog
+[my gatsby blog]: https://thelocalhost.io
 [@leighchalliday]: https://twitter.com/leighchalliday
 [great usecase]: https://www.youtube.com/watch?v=yzQ_XulhQFw
 [codesandbox]: https://codesandbox.io
