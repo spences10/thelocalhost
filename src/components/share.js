@@ -4,7 +4,17 @@ import styled from 'styled-components'
 
 const ShareWrapper = styled.section`
   h6 {
-    background: var(--qrt-turn-gradient);
+    background: linear-gradient(
+      0.25turn,
+      var(
+        --title-gradient-from,
+        ${({ theme }) => theme.colours.primary[200]}
+      ),
+      var(
+        --title-gradient-to,
+        ${({ theme }) => theme.colours.primary[500]}
+      )
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -23,7 +23,16 @@ const HeaderWrapper = styled.header`
     padding-bottom: ${({ theme }) => theme.spacing[1]};
     padding-right: ${({ theme }) => theme.spacing[16]};
     line-height: ${({ theme }) => theme.lineHeight.none};
-    background: var(--title-gradient);
+    background: linear-gradient(
+      var(
+        --title-gradient-from,
+        ${({ theme }) => theme.colours.primary[200]}
+      ),
+      var(
+        --title-gradient-to,
+        ${({ theme }) => theme.colours.primary[500]}
+      )
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -34,7 +43,10 @@ const HeaderWrapper = styled.header`
     margin-top: ${({ theme }) => theme.spacing[0]};
     font-weight: ${({ theme }) => theme.fontWeight.light};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    color: var(--colour-on-background);
+    color: var(
+      --colour-on-background,
+      ${({ theme }) => theme.colours.grey[900]}
+    );
   }
   button {
     background: none;

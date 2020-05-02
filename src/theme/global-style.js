@@ -146,14 +146,9 @@ export const GlobalStyle = createGlobalStyle`
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --title-gradient: linear-gradient(
-      ${({ theme }) => theme.colours.primary[200]},
-      ${({ theme }) => theme.colours.primary[500]}
-    );
-    --qrt-turn-gradient: linear-gradient(0.25turn,
-      ${({ theme }) => theme.colours.primary[200]},
-      ${({ theme }) => theme.colours.primary[500]}
-    );
+    --title-gradient-from: ${({ theme }) =>
+      theme.colours.primary[200]};
+    --title-gradient-to: ${({ theme }) => theme.colours.primary[500]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[100]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
@@ -169,14 +164,9 @@ export const GlobalStyle = createGlobalStyle`
       0 4px 6px -2px rgba(0, 0, 0, 5);
     --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 4);
-    --title-gradient: linear-gradient(
-      ${({ theme }) => theme.colours.primary[100]},
-      ${({ theme }) => theme.colours.primary[300]}
-    );
-    --qrt-turn-gradient: linear-gradient(0.25turn,
-      ${({ theme }) => theme.colours.primary[100]},
-      ${({ theme }) => theme.colours.primary[300]}
-    );
+    --title-gradient-from: ${({ theme }) =>
+      theme.colours.primary[100]};
+    --title-gradient-to: ${({ theme }) => theme.colours.primary[300]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[900]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
   }
@@ -195,8 +185,14 @@ export const GlobalStyle = createGlobalStyle`
   body {
     line-height: ${({ theme }) => theme.lineHeight.relaxed};
     letter-spacing: ${({ theme }) => theme.letterSpacing.wide};
-    background: var(--colour-background);
-    color: var(--colour-on-background);
+    background: var(
+      --colour-background,
+      ${({ theme }) => theme.colours.grey[100]}
+    );
+    color: var(
+      --colour-on-background,
+      ${({ theme }) => theme.colours.grey[900]}
+    );
     -webkit-font-smoothing: antialiased;
     ${CustomScroll}
   }

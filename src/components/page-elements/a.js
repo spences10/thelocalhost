@@ -3,8 +3,14 @@ import styled from 'styled-components'
 
 export const StyledA = styled.a`
   text-decoration: underline;
-  color: var(--colour-on-background);
-  text-decoration-color: var(--colour-on-background);
+  color: var(
+    --colour-on-background,
+    ${({ theme }) => theme.colours.grey[900]}
+  );
+  text-decoration-color: var(
+    --colour-on-background,
+    ${({ theme }) => theme.colours.grey[900]}
+  );
   &:hover {
     opacity: 0.5;
   }
