@@ -2,7 +2,7 @@
 date: 2017-03-15
 title: Code life balance
 tags: ['career', 'ramble']
-published: true
+private: false
 ---
 
 Just some rationalisation of what I'm currently doing.
