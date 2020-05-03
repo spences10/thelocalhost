@@ -2,7 +2,7 @@
 date: 2017-01-28
 title: Easily set up your own Twitter bot
 tags: ['information', 'guide']
-published: true
+private: false
 ---
 
 Want to get set up with your very own Twitter bot quickly and easily,
