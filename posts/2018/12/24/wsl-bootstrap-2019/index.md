@@ -11,7 +11,7 @@ tags:
     'n',
     'node',
   ]
-published: true
+private: false
 ---
 
 ## From scratch to Create React App on Windows

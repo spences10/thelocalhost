@@ -149,13 +149,13 @@ module.exports = {
                 allMdx(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: {frontmatter: {published: {eq:true}}}
+                  filter: {frontmatter: {private: {eq:false}}}
                 ) {
                   nodes {
                     id
                     rawBody
-                    fields { 
-                      slug 
+                    fields {
+                      slug
                     }
                     frontmatter {
                       title

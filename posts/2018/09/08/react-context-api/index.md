@@ -12,7 +12,7 @@ tags:
     'styled-components',
     'css-in-js',
   ]
-published: true
+private: false
 ---
 
 Let's use the React Context API to change theme in an app!
