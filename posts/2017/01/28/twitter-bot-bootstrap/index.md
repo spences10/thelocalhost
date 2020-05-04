@@ -13,38 +13,33 @@ There are some really useful Twitter bots out there that do some
 pretty cool stuff they don't all spam current hashtags and follow
 users relentlessly.
 
-![](./rust-bird.jpg)
+![rust bird]
 
-Take the [Twisst ISS alerts](https://twitter.com/twisst) bot that
-sends you a DM when the international space station (ISS) will be
-visible at your location.
+Take the [Twisst ISS alerts] bot that sends you a DM when the
+international space station (ISS) will be visible at your location.
 
-Or there's public service bots like the
-[Earthquake Robot](https://twitter.com/earthquakeBot) that tweets
+Or there's public service bots like the [Earthquake Robot] that tweets
 about any earthquake greater than 5.0 on the Richter Scale as they
 happen.
 
-There's [GoogleFacts](https://twitter.com/GoogleFacts) which tweets
-facts from Google, just remember to fact check these facts on, err,
-Google?
+There's [GoogleFacts] which tweets facts from Google, just remember to
+fact check these facts on, err, Google?
 
-And of course a robot that tweets poetry,
-[poem.exe](https://twitter.com/poem_exe) along with one that will
-retweet your tweets that also happen to be an
-[Accidental Haiku](https://twitter.com/accidental575)
+And of course a robot that tweets poetry, [poem.exe] along with one
+that will retweet your tweets that also happen to be an [Accidental
+Haiku]
 
 Bots can be used for many purposes in my case I have used it to
-enhance my [@spences10](https://twitter.com/spences10) account by
-liking and re-tweeting subjects I have an interest in, in the case of
-the [#100DaysOfCode][100docchallenge] community challenge there is a
-community bot which congratulates you on starting
-[#100DaysOfCode][100doc] and again on completing it, these are
+enhance my [@spences10] account by liking and re-tweeting subjects I
+have an interest in, in the case of the [#100DaysOfCode] community
+challenge there is a community bot which congratulates you on
+[starting #100DaysOfCode] and again on completing it, these are
 specific responses to tweets with keywords for a community, there is
-also sentiment detection used under the [#100DaysOfCode][100doc]
-community hashtag where the bot will tweet you with encouraging words
-if you post a tweet with negative sentiment.
+also sentiment detection used under the [#100DaysOfCode] community
+hashtag where the bot will tweet you with encouraging words if you
+post a tweet with negative sentiment.
 
-![](./100daysofcodetweet.png)
+![100 days of code tweet]
 
 One question I'm asked in job interviews quite often is "what do you
 get out of working with technology?". My answer, "I like to automate
@@ -58,9 +53,7 @@ off.
 
 Bearing this in mind the bot is only as good as the person that has
 programmed it, whilst researching this post I found a really good
-resource for bots in general,
-[botwiki.org](https://botwiki.org/bot-ethics) has a bot ethics
-section:
+resource for bots in general, [botwiki.org] has a bot ethics section:
 
 > - Please don't make annoying bots
 >   - An annoying bot mentions or follows people who didn't ask for it
@@ -73,17 +66,16 @@ Ok, let's do this!!
 
 ---
 
-# Twitter bot bootstrap
+## Twitter bot bootstrap
 
 This is a bootstrap for setting up a Twitter bot with Node.js using
 the `twit` library, the bot will like and re-tweet what you specify
 when configuring it, it will also reply to followers with a selection
 of canned responses.
 
-As a primer for this there are the great posts by
-[@amanhimself](https://twitter.com/amanhimself) on making your own
-twitter bot and this is an expansion on that with further detail on
-configuration on Heroku
+As a primer for this there are the great posts by [@amanhimself] on
+making your own twitter bot and this is an expansion on that with
+further detail on configuration on Heroku
 
 ## What you'll need
 
@@ -97,18 +89,16 @@ configuration on Heroku
 ## Setup twitter
 
 Set up an application on the Twitter account you want to favorite and
-retweet from via:
-[https://apps.twitter.com/app/new](https://apps.twitter.com/app/new)
+retweet from via: [https://apps.twitter.com/app/new]
 
-As an example I'll configure the old
-[@DroidScott](https://twitter.com/droidscott) twitter account I have
-so you can follow along.
+As an example I'll configure the old [@DroidScott] twitter account I
+have so you can follow along.
 
 Straight forward enough for the twitter application, just make sure
 you add your phone number to your Twitter account before clicking the
 **Create your Twitter application** button.
 
-![](./twitter-application-setup.png)
+![twitter application setup]
 
 You should now be in the 'Application Management' section where you
 will need to take a note of your keys, you should have your 'Consumer
@@ -121,11 +111,10 @@ bot.
 
 ## Setup development environment
 
-For this I'm just going to say use [Cloud9](https://c9.io/) as you can
-be up and running in minutes with one of the pre made Node.js
-environments.
+For this I'm just going to say use [Cloud9] as you can be up and
+running in minutes with one of the pre made Node.js environments.
 
-![](./c9-node-env.png)
+![cloud 9 node env]
 
 ## Set up the bot
 
@@ -143,7 +132,7 @@ $ git clone https://github.com/spences10/twitter-bot-bootstrap
 
 The environment project tree should look something like this.
 
-![](./project-structure.png)
+![project structure]
 
 ## Node dependencies
 
@@ -170,13 +159,13 @@ Onto the Twitter keys, now you'll need to add these to the `config.js`
 file and you can then add some keywords into the `strings.js` file for
 what you want to search on.
 
-![](./c9-strings-config.png)
+![c9 strings config]
 
 Then add the username of the Twitter account you are using to the
 `tweetNow` function in the `bot.js` file, this will ensure your bot
 doesn't reply to itself when it has been followed by a user.
 
-![](./c9-strings-config1.png)
+![c9 strings config1]
 
 This step isn't strictly necessary if this account isn’t going to be
 following any users.
@@ -184,33 +173,33 @@ following any users.
 That should be it, go to the terminal and enter `npm start` you should
 get some output:
 
-![](./bot-output.png)
+![bot output]
 
 Check the Twitter account:
 
-![](./twitter-account.png)
+![twitter account]
 
 ## Heroku
 
 Cool, now we have a bot that we can test on our dev environment but we
 can't leave it there, we'll need to deploy it to Heroku.
 
-If you haven't done so already set up a
-[Heroku account](https://signup.heroku.com) then select **Create a new
-app** from the dropdown box top right of your dashboard, in the next
-screen name the app it if you want, then click **Create App**.
+If you haven't done so already set up a [Heroku account] then select
+**Create a new app** from the dropdown box top right of your
+dashboard, in the next screen name the app it if you want, then click
+**Create App**.
 
-![](./heroku-create-new-app.png)
+![heroku create new app]
 
 You'll be presented with your app dashboard and instructions for the
 deployment method.
 
-![](./heroku-deploy.png)
+![heroku deploy]
 
 Your app name should be displayed on the top of your dashboard, you'll
 need this when logging in with the Heroku CLI.
 
-![](./heroku-app-name.png)
+![heroku app name]
 
 ## Heroku CLI
 
@@ -242,7 +231,7 @@ $ git push heroku master
 
 You should get build output on the terminal.
 
-![](./heroku-build.png)
+![heroku build]
 
 Then check the output with.
 
@@ -318,13 +307,13 @@ this repo then you can just enter `twitter-bot-bootstrap` and
 **Search** you can then click the **Connect** button, you can then
 auto deploy from GitHub.
 
-![](./heroku-connect-github.png)
+![heroku connect github]
 
 ## Heroku troubleshooting
 
 What do you mean it crashed!?
 
-![](./heroku-crash.png)
+![heroku crash]
 
 Ok, I found that sometimes the `worker` is set as `web` and it crashes
 out, try setting the `worker` again with:
@@ -360,28 +349,81 @@ reviewed and discussed.
 
 ---
 
-### Links
+## Links
 
-Credit for the inspiration for this should go to
-[@amanhimself](https://twitter.com/amanhimself) and his posts on
-creating your own twitter bot.
+Credit for the inspiration for this should go to [@amanhimself] and
+his posts on creating your own twitter bot.
 
-[create-a-simple-twitter-bot-with-node-js](https://hackernoon.com/create-a-simple-twitter-bot-with-node-js-5b14eb006c08#.flysreo60)
-
-[how-to-make-a-twitter-bot-with-nodejs](https://chatbotslife.com/how-to-make-a-twitter-bot-with-nodejs-d5cb04fdbf97#.h5ah8dq5n)
-
-[twitter-mctwitbot](https://medium.com/@spences10/twitter-mctwitbot-4d15cd005dc0#.dp9q5f427)
-
-[awesome-twitter-bots](https://github.com/amandeepmittal/awesome-twitter-bots)
+- [create-a-simple-twitter-bot-with-node-js]
+- [how-to-make-a-twitter-bot-with-nodejs]
+- [twitter-mctwitbot]
+- [awesome-twitter-bots]
 
 Other posts detailing useful Twitter bots.
 
-[www.brit.co/twitter-bots-to-follow](http://www.brit.co/twitter-bots-to-follow/)
+- [www.brit.co/twitter-bots-to-follow]
+- [www.hongkiat.com/using-twitter-bots]
 
-[www.hongkiat.com/using-twitter-bots](http://www.hongkiat.com/blog/using-twitter-bots/)
+<!-- Links -->
 
-<!-- links -->
+[twisst iss alerts]: https://twitter.com/twisst
+[earthquake robot]: https://twitter.com/earthquakeBot
+[googlefacts]: https://twitter.com/GoogleFacts
+[poem.exe]: https://twitter.com/poem_exe
+[accidental haiku]: https://twitter.com/accidental575
+[@spences10]: https://twitter.com/spences10
+[#100daysofcode]:
+  https://www.freecodecamp.org/news/start-2017-with-the-100daysofcode-improved-and-updated-18ce604b237b/
+[starting #100daysofcode]:
+  https://twitter.com/hashtag/100DaysOfCode?src=hash
+[botwiki.org]: https://botwiki.org/bot-ethics
+[@amanhimself]: https://twitter.com/amanhimself
+[https://apps.twitter.com/app/new]: https://apps.twitter.com/app/new
+[@droidscott]: https://twitter.com/droidscott
+[cloud9]: https://c9.io/
+[heroku account]: https://signup.heroku.com
+[create-a-simple-twitter-bot-with-node-js]:
+  https://hackernoon.com/create-a-simple-twitter-bot-with-node-js-5b14eb006c08#.flysreo60
+[how-to-make-a-twitter-bot-with-nodejs]:
+  https://chatbotslife.com/how-to-make-a-twitter-bot-with-nodejs-d5cb04fdbf97#.h5ah8dq5n
+[twitter-mctwitbot]:
+  https://medium.com/@spences10/twitter-mctwitbot-4d15cd005dc0#.dp9q5f427
+[awesome-twitter-bots]:
+  https://github.com/amandeepmittal/awesome-twitter-bots
+[www.brit.co/twitter-bots-to-follow]:
+  http://www.brit.co/twitter-bots-to-follow/
+[www.hongkiat.com/using-twitter-bots]:
+  http://www.hongkiat.com/blog/using-twitter-bots/
 
-[100docchallenge]:
-  https://medium.freecodecamp.com/start-2017-with-the-100daysofcode-improved-and-updated-18ce604b237b
-[100doc]: https://twitter.com/hashtag/100DaysOfCode?src=hash
+<!-- Images -->
+
+[rust bird]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/rust-bird.jpg
+[100 days of code tweet]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/100daysofcodetweet.png
+[twitter application setup]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/twitter-application-setup.png
+[cloud 9 node env]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/c9-node-env.png
+[project structure]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/project-structure.png
+[c9 strings config]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/c9-strings-config.png
+[c9 strings config1]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/c9-strings-config1.png
+[bot output]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/bot-output.png
+[twitter account]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/twitter-account.png
+[heroku create new app]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-create-new-app.png
+[heroku deploy]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-deploy.png
+[heroku app name]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-app-name.png
+[heroku build]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-build.png
+[heroku connect github]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-connect-github.png
+[heroku crash]:
+  https://now-images-wine.now.sh/2017/twitter-bot-bootstrap/heroku-crash.png
