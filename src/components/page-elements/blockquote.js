@@ -9,7 +9,7 @@ const StyledText = styled.blockquote`
     padding-left: 15px;
     font-style: italic;
     font-size: ${({ theme }) => theme.fontSize['2xl']};
-    color: ${({ theme }) => theme.colours.grey[700]};
+    color: var(--colour-on-background);
     word-break: break-word;
   }
 `
