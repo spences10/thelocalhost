@@ -16,9 +16,12 @@ const RE = /{([\d,-]+)}/
 
 export const CodeWrapper = styled.div`
   position: relative;
-  ${NegMargin}
+  ${NegMargin};
   margin-top: ${({ theme }) => theme.spacing['10']};
   margin-bottom: ${({ theme }) => theme.spacing['10']};
+  * {
+    font-family: 'Victor Mono', 'Courier New', Courier, monospace;
+  }
 `
 
 const Pre = styled.pre`
@@ -27,7 +30,6 @@ const Pre = styled.pre`
   padding: 0.5em;
   overflow-x: auto;
   border-radius: 5px;
-  font-family: 'Victor Mono', 'Courier New', Courier, monospace;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
   overflow: hidden;
   overflow-x: auto;
