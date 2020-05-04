@@ -2,7 +2,7 @@
 date: 2017-01-04
 title: Twitter McTwitBot
 tags: ['information', 'guide']
-published: true
+private: false
 ---
 
 I must say this was great to do and a nice little introduction to node
