@@ -11,6 +11,9 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+  &:active {
+    color: ${({ theme }) => theme.colours.primary[500]};
+  }
 `
 
 const HeaderWrapper = styled.header`
