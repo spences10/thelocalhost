@@ -21,7 +21,8 @@
     "dev": "gatsby develop -p 9988 -o",
     "build": "gatsby build",
     "serve": "gatsby serve -p 9500 -o",
-    "format": "pretty-quick"
+    "format": "pretty-quick",
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
@@ -78,6 +79,8 @@
   },
   "devDependencies": {
     "husky": "4.2.5",
+    "patch-package": "6.2.2",
+    "postinstall-postinstall": "2.1.0",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1"
   }

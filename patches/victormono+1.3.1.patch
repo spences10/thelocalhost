@@ -1,0 +1,35 @@
+diff --git a/node_modules/victormono/dist/index.css b/node_modules/victormono/dist/index.css
+index 82c84f1..9e1131f 100644
+--- a/node_modules/victormono/dist/index.css
++++ b/node_modules/victormono/dist/index.css
+@@ -4,6 +4,7 @@
+        url("woff/VictorMono-Regular.woff") format("woff");
+   font-weight: 400;
+   font-style: normal;
++  font-display: swap;
+ }
+ 
+ @font-face {
+@@ -12,6 +13,7 @@
+        url("woff/VictorMono-Italic.woff") format("woff");
+   font-weight: 400;
+   font-style: italic;
++  font-display: swap;
+ }
+ 
+ @font-face {
+@@ -20,6 +22,7 @@
+        url("woff/VictorMono-Bold.woff") format("woff");
+   font-weight: 700;
+   font-style: normal;
++  font-display: swap;
+ }
+ 
+ @font-face {
+@@ -28,4 +31,5 @@
+        url("woff/VictorMono-BoldItalic.woff") format("woff");
+   font-weight: 700;
+   font-style: italic;
++  font-display: swap;
+ }
+\ No newline at end of file
