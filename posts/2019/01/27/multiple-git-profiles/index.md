@@ -10,7 +10,7 @@ tags:
     'bash on windows',
     'git',
   ]
-published: true
+private: false
 ---
 
 Over the past couple of weeks now I have set up several development

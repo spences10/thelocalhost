@@ -2,7 +2,7 @@
 date: 2016-12-03
 title: My first Microsoft Visual Studio Code [VSCode] extension
 tags: ['information', 'vscode', 'extension']
-published: true
+private: false
 ---
 
 I'm a published developer! [sort of] Well that was a bit painful, well
