@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { inlineCode } from './inline-code'
 
 const StyledText = styled.p`
   font-size: ${({ theme }) => theme.fontSize.base};
@@ -9,6 +10,9 @@ const StyledText = styled.p`
   }
   em {
     font-style: italic;
+    code {
+      ${inlineCode}
+    }
   }
   img {
     width: 100%;
