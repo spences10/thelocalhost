@@ -11,6 +11,7 @@ import { Share } from '../components/share'
 import {
   CustomScroll,
   Link as GatsbyLink,
+  NegMargin,
   PostEditOnGitHub,
   PostInfo,
   PostTimeToRead,
@@ -62,7 +63,9 @@ const Toc = styled.aside`
   display: flex;
   flex-direction: column;
   box-shadow: var(--box-shadow-xl);
-  border-radius: ${({ theme }) => theme.borderRadius.default};
+  border-radius: ${({ theme }) => theme.borderRadius.defaultdefault};
+  padding: ${({ theme }) => theme.spacing[3]};
+  margin: ${({ theme }) => theme.spacing[3]} 0;
   font-size: ${({ theme }) => theme.fontSize.sm};
   a {
     color: var(
@@ -100,6 +103,17 @@ const Toc = styled.aside`
   }
 `
 
+const Private = styled.div`
+  background-color: var(--colour-warn);
+  color: var(--colour-on-warn);
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+  padding: ${({ theme }) => theme.spacing[3]};
+  margin: ${({ theme }) => theme.spacing[3]};
+  text-align: center;
+  ${NegMargin}
+`
+
 const buildURL = (url, obj) => {
   const query = Object.entries(obj)
     .map(pair => pair.map(encodeURIComponent).join('='))
@@ -126,7 +140,7 @@ export default ({ data, pageContext }) => {
     tableOfContents,
     timeToRead,
   } = data.mdx
-  const { title, date } = frontmatter
+  const { title, date, private: isPrivate } = frontmatter
   const { previous, next } = pageContext
   const fa = useAnalytics()
 
@@ -158,6 +172,7 @@ export default ({ data, pageContext }) => {
         <meta name="twitter:image:src" content={ogImageUrl} />
       </Helmet>
       <H1>{frontmatter.title}</H1>
+      {isPrivate && <Private>This is a private post 👀</Private>}
       <PostInfo>
         <PostTimeToRead>
           {timeToRead * 2} minutes to read
@@ -245,6 +260,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "YYYY MMMM Do")
+        private
       }
       body
       excerpt
