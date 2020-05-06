@@ -22,26 +22,18 @@ export const CodeWrapper = styled.div`
   * {
     font-family: 'Victor Mono', 'Courier New', Courier, monospace;
   }
+  overflow: hidden;
+  border-radius: 5px;
 `
 
 const Pre = styled.pre`
   text-align: left;
-  margin: 1em 0;
   padding: 0.5em;
-  border-radius: 5px;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
   overflow: hidden;
   overflow-x: auto;
-  ${CustomScroll};
-  &::-webkit-scrollbar {
-    width: 11px;
-  }
-  &::-webkit-scrollbar-track {
-    border-radius: 4px;
-  }
   float: left;
   min-width: 100%;
-  overflow: initial;
 `
 
 const LineNo = styled.span`
@@ -85,6 +77,14 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
+const Wrapper = styled.div`
+  overflow: auto;
+  ${CustomScroll};
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+`
+
 export const Code = ({ codeString, language, ...props }) => {
   const shouldHighlightLine = calculateLinesToHighlight(
     props.metastring
@@ -102,7 +102,7 @@ export const Code = ({ codeString, language, ...props }) => {
     copyToClipboard(codeString)
   }
   return (
-    <div style={{ overflow: 'auto' }}>
+    <Wrapper>
       <Highlight
         {...defaultProps}
         code={codeString}
@@ -137,6 +137,6 @@ export const Code = ({ codeString, language, ...props }) => {
           </Pre>
         )}
       </Highlight>
-    </div>
+    </Wrapper>
   )
 }
