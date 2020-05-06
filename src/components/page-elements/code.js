@@ -28,7 +28,6 @@ const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
   padding: 0.5em;
-  overflow-x: auto;
   border-radius: 5px;
   ${({ ligatures }) => ligatures && `font-variant-ligatures: none;`};
   overflow: hidden;
@@ -40,6 +39,9 @@ const Pre = styled.pre`
   &::-webkit-scrollbar-track {
     border-radius: 4px;
   }
+  float: left;
+  min-width: 100%;
+  overflow: initial;
 `
 
 const LineNo = styled.span`
@@ -100,39 +102,41 @@ export const Code = ({ codeString, language, ...props }) => {
     copyToClipboard(codeString)
   }
   return (
-    <Highlight
-      {...defaultProps}
-      code={codeString}
-      language={language}
-      theme={theme}
-    >
-      {({
-        className,
-        style,
-        tokens,
-        getLineProps,
-        getTokenProps,
-      }) => (
-        <Pre className={className} style={style}>
-          <CopyCode onClick={handleClick}>Copy</CopyCode>
-          {tokens.map((line, i) => (
-            <div
-              {...getLineProps({
-                line,
-                key: i,
-                className: shouldHighlightLine(i)
-                  ? 'highlight-line'
-                  : '',
-              })}
-            >
-              <LineNo>{i + 1}</LineNo>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </Pre>
-      )}
-    </Highlight>
+    <div style={{ overflow: 'auto' }}>
+      <Highlight
+        {...defaultProps}
+        code={codeString}
+        language={language}
+        theme={theme}
+      >
+        {({
+          className,
+          style,
+          tokens,
+          getLineProps,
+          getTokenProps,
+        }) => (
+          <Pre className={className} style={style}>
+            <CopyCode onClick={handleClick}>Copy</CopyCode>
+            {tokens.map((line, i) => (
+              <div
+                {...getLineProps({
+                  line,
+                  key: i,
+                  className: shouldHighlightLine(i)
+                    ? 'highlight-line'
+                    : '',
+                })}
+              >
+                <LineNo>{i + 1}</LineNo>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </Pre>
+        )}
+      </Highlight>
+    </div>
   )
 }
