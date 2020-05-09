@@ -27,6 +27,18 @@ export const theme = {
       900: '#221133',
     },
 
+    warn: {
+      100: '#f4c2c2',
+      200: '#efa5a5',
+      300: '#ea8888',
+      400: '#e56b6b',
+      500: '#e04e4e',
+      600: '#db3131',
+      700: '#c72323',
+      800: '#aa1e1e',
+      900: '#8d1919',
+    },
+
     grey: {
       100: '#f7fafc',
       200: '#edf2f7',
@@ -140,6 +152,8 @@ export const GlobalStyle = createGlobalStyle`
     --colour-on-background: ${({ theme }) => theme.colours.grey[900]};
     --colour-primary: #6200ee;
     --colour-on-primary: #fff;
+    --colour-warn: ${({ theme }) => theme.colours.warn[500]};
+    --colour-on-warn: ${({ theme }) => theme.colours.black};
     --colour-secondary: ${({ theme }) => theme.colours.grey[300]};
     --colour-on-secondary: ${({ theme }) => theme.colours.grey[400]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
@@ -158,6 +172,8 @@ export const GlobalStyle = createGlobalStyle`
     --colour-on-background: ${({ theme }) => theme.colours.grey[100]};
     --colour-primary: #bb86fc;
     --colour-on-primary: #000;
+    --colour-warn: ${({ theme }) => theme.colours.warn[200]};
+    --colour-on-warn: ${({ theme }) => theme.colours.white};
     --colour-secondary: ${({ theme }) => theme.colours.grey[800]};
     --colour-on-secondary: ${({ theme }) => theme.colours.grey[700]};
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
