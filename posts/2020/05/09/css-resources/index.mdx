@@ -31,7 +31,7 @@ From **Adam Wathan:**
 }
 ```
 
-<Tweet tweetLink="https://twitter.com/adamwathan/status/959078631434731521" />
+<Tweet tweetLink="adamwathan/status/959078631434731521" />
 
 ## Images
 
@@ -48,7 +48,7 @@ From **Steve Schoger:**
 
 ![circle images]
 
-<Tweet tweetLink="https://twitter.com/steveschoger/status/950764423643320320" />
+<Tweet tweetLink="steveschoger/status/950764423643320320" />
 
 ## Gradients
 
@@ -83,6 +83,28 @@ Colour Scale: [hihayk.github.io/scale]
 
 React colour tools: [react-color-tools.surge.sh]
 
+## Internal browser colour names
+
+I've asked this question a couple of times before, **"is there a way
+to list the internal browser colours?"**
+
+<Tweet tweetLink="spences10/status/1259077547683459073" />
+
+The last time I asked [Mathias Bynens] answered!
+
+<Tweet tweetLink="mathias/status/1259120846679035904" />
+
+If you want the list go to the [the CSS3 spec] and run this snippet in
+the dev console:
+
+```js
+;[
+  ...document.querySelectorAll(
+    '.named-color-table [id^="valdef-color-"]'
+  ),
+].map(element => element.textContent)
+```
+
 ## Neumorphism
 
 Neumorphism.io is a cool tool for generating your neumorphism boxes:
@@ -98,6 +120,14 @@ Fancy Border Radius: [9elements.github.io/fancy-border-radius]
 
 Width for elements changing when using numbers? Check:
 [`font-variant-numeric`]
+
+I asked and the community of course responded!
+
+<Tweet tweetLink="spences10/status/1103650317554593793" />
+
+I also found the original tweet I saw from Wes Bos back in 2017!
+
+<Tweet tweetLink="wesbos/status/932644812582522880" />
 
 ## CSS Grid
 
@@ -138,3 +168,5 @@ New CSS Logical Properties!: [medium post]
 [circle images]: ./circleImages.jpg
 [9elements.github.io/fancy-border-radius]:
   https://9elements.github.io/fancy-border-radius
+[mathias bynens]: https://twitter.com/mathias
+[the css3 spec]: https://drafts.csswg.org/css-color/#named-colors
