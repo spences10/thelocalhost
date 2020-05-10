@@ -5,6 +5,7 @@ const StyledImg = styled.img`
   &:hover {
     opacity: 0.5;
   }
+  box-shadow: var(--box-shadow-xl);
 `
 
 export const Img = props => {
