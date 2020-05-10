@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { inlineCode } from './inline-code'
 
 export const StyledA = styled.a`
   text-decoration: underline;
@@ -13,6 +14,9 @@ export const StyledA = styled.a`
   );
   &:hover {
     opacity: 0.5;
+  }
+  code {
+    ${inlineCode}
   }
 `
 
