@@ -67,6 +67,9 @@ const Toc = styled.aside`
   padding: ${({ theme }) => theme.spacing[3]};
   margin: ${({ theme }) => theme.spacing[3]} 0;
   font-size: ${({ theme }) => theme.fontSize.sm};
+  * {
+    width: 100%;
+  }
   a {
     color: var(
       --colour-on-background,
