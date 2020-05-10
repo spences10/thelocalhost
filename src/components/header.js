@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import moon from '../../static/moon.svg'
 import sun from '../../static/sun.svg'
 import { useLocalStorage } from '../hooks/use-local-storage'
@@ -14,6 +14,12 @@ const StyledLink = styled(Link)`
   &:active {
     color: ${({ theme }) => theme.colours.primary[500]};
   }
+`
+
+const thingAnim = keyframes`
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 `
 
 const HeaderWrapper = styled.header`
@@ -50,6 +56,26 @@ const HeaderWrapper = styled.header`
       --colour-on-background,
       ${({ theme }) => theme.colours.grey[900]}
     );
+    background: linear-gradient(
+        -45deg,
+        #663399,
+        #ff4d4d,
+        #ee8e3a,
+        #40cc22,
+        #2abb92,
+        #2f5faa,
+        #cc22a3,
+        #ff0004,
+        #663399
+      )
+      0% 0% / 400%;
+    animation: ${thingAnim} 50s ease-in-out infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &:hover {
+      animation: ${thingAnim} 10s ease-in-out infinite;
+    }
   }
   button {
     background: none;
