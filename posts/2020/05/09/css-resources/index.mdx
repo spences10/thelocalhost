@@ -2,12 +2,12 @@
 date: 2020-05-09
 title: CSS Resources From Around the Web
 tags: ['css', 'resource']
-private: true
+private: false
 ---
 
-This is a dump of all the snippets I have collected over the last 18
-months or so that I'm going to document here so it's probably going to
-be a mess but it mainly for my reference so 😛
+This is a collection of some handy snippets and resources I collected
+which I'm going to be documenting here, it's probably going to be a
+mess but it mainly for my reference.
 
 Big thanks to Steve Schoger and Adam Wathan 🙏
 
@@ -18,11 +18,12 @@ more hot tips 🔥
 
 From **Adam Wathan:**
 
-Ever run into annoying CSS layout bugs that are hard to troubleshoot?
-(WHY IS THERE A HORIZONTAL SCROLLBAR WHERE IS THIS COMING FROM?!?)
+> Ever run into annoying CSS layout bugs that are hard to
+> troubleshoot? (WHY IS THERE A HORIZONTAL SCROLLBAR WHERE IS THIS
+> COMING FROM?!?)
 
-Throw this style into your dev tools to see the boundaries of every
-element without affecting the layout:
+> Throw this style into your dev tools to see the boundaries of every
+> element without affecting the layout:
 
 ```css
 * {
@@ -30,20 +31,24 @@ element without affecting the layout:
 }
 ```
 
+<Tweet tweetLink="https://twitter.com/adamwathan/status/959078631434731521" />
+
 ## Images
 
 From **Steve Schoger:**
 
-Working with images that clash with each other? Try desaturating them
-to greyscale or colourising them all with a single color to make them
-a little more cohesive.
+> Working with images that clash with each other? Try desaturating
+> them to greyscale or colourising them all with a single colour to
+> make them a little more cohesive.
 
-![desaturatingImages](./desaturatingImages.jpg)
+![desaturating images]
 
-Also, containing photos in circles - Great way to make a bad photo
-look good
+> Also, containing photos in circles - Great way to make a bad photo
+> look good
 
-![circleImages](./circleImages.jpg)
+![circle images]
+
+<Tweet tweetLink="https://twitter.com/steveschoger/status/950764423643320320" />
 
 ## Gradients
 
@@ -56,13 +61,17 @@ Nice Gradient Swatches: [gradientmagic.com]
 
 ## Colours
 
-Colour Space: [mycolor.space]
+Leet speak and colours: [bada55.io]
 
-Colour Wheel: [color.adobe.com]
+For getting shades of a colour I lke to use 0to255 : [0to255.com]
+
+Colour Space has a nice UI for creating colour pallets:
+[mycolor.space]
+
+Adobe Colour Wheel has good presets for picking colour pallets:
+[color.adobe.com]
 
 Automatic UI Colour Palette Generator: [palx.jxnblk.com]
-
-0to255 Shades of a Colour: [0to255.com]
 
 Name a colour from hex: [color-hex.com]
 
@@ -72,26 +81,28 @@ Beautiful colour scales Colour Box: [colorbox.io]
 
 Colour Scale: [hihayk.github.io/scale]
 
-Gradients: [eggradients.com]
-
 React colour tools: [react-color-tools.surge.sh]
-
-Vector Logos: [worldvectorlogo.com]
-
-CSS Grid: [layoutit.com/build]
 
 ## Neumorphism
 
-Neumorphism.io: [neumorphism.io]
+Neumorphism.io is a cool tool for generating your neumorphism boxes:
+[neumorphism.io]
 
 ## Effects
 
 Glitch Text Effect: [css-tricks.com/glitch-effect-text-images-svg]
 
+Fancy Border Radius: [9elements.github.io/fancy-border-radius]
+
 ## Numbers in CSS
 
 Width for elements changing when using numbers? Check:
-[font-variant-numeric]
+[`font-variant-numeric`]
+
+## CSS Grid
+
+CSS Grid has a good UI for building CSS Grid Layouts:
+[layoutit.com/build]
 
 ## New CSS Logical Properties
 
@@ -108,11 +119,12 @@ New CSS Logical Properties!: [medium post]
   https://medium.com/@elad/new-css-logical-properties-bc6945311ce7
 [css-tricks.com/glitch-effect-text-images-svg]:
   https://css-tricks.com/glitch-effect-text-images-svg/
-[font-variant-numeric]:
+[`font-variant-numeric`]:
   https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
 [mycolor.space]: https://mycolor.space/?hex=%23663399&sub=1
 [color.adobe.com]: https://color.adobe.com
 [palx.jxnblk.com]: https://palx.jxnblk.com/
+[bada55.io]: http://bada55.io/
 [0to255.com]: https://www.0to255.com/
 [color-hex.com]: https://www.color-hex.com/
 [jxnblk.com/hello-color]: https://jxnblk.com/hello-color
@@ -122,3 +134,7 @@ New CSS Logical Properties!: [medium post]
 [react-color-tools.surge.sh]: https://react-color-tools.surge.sh/
 [worldvectorlogo.com]: https://worldvectorlogo.com/search/GraphQL
 [layoutit.com/build]: https://www.layoutit.com/build
+[desaturating images]: ./desaturatingImages.jpg
+[circle images]: ./circleImages.jpg
+[9elements.github.io/fancy-border-radius]:
+  https://9elements.github.io/fancy-border-radius
