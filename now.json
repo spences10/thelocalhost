@@ -2,7 +2,8 @@
   "version": 2,
   "build": {
     "env": {
-      "GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST": "@gatsby_fathom_tracking_id_the_localhost"
+      "GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST": "@gatsby_fathom_tracking_id_the_localhost",
+      "GATSBY_FATHOM_TRACKING_URL_THE_LOCALHOST": "@gatsby_fathom_tracking_url_the_localhost"
     }
   },
   "trailingSlash": false

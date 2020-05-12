@@ -165,6 +165,12 @@ export const GlobalStyle = createGlobalStyle`
     --title-gradient-to: ${({ theme }) => theme.colours.primary[500]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[100]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
+    --rainbow-one: #9349f0;
+    --rainbow-two: #8f6f14;
+    --rainbow-three: #da0498;
+    --rainbow-four: #b05d2e;
+    --rainbow-five: #864bfe;
+    --rainbow-six: #cc4438;
   }
 
   body[data-theme="dark"] {
@@ -185,6 +191,12 @@ export const GlobalStyle = createGlobalStyle`
     --title-gradient-to: ${({ theme }) => theme.colours.primary[300]};
     --scrollbar-bg: ${({ theme }) => theme.colours.primary[900]};
     --thumb-bg: ${({ theme }) => theme.colours.primary[500]};
+    --rainbow-one:#a269ee;
+    --rainbow-two:#fab319;
+    --rainbow-three:#f81cb1;
+    --rainbow-four:#f16623;
+    --rainbow-five:#976cf6;
+    --rainbow-six:#d86253;
   }
   
   *, *:before, *:after {
