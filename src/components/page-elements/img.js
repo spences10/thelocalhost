@@ -12,8 +12,14 @@ export const Img = props => {
   const { children, ...rest } = props
 
   return (
-    <a href={props.src} target="_blank" rel="noopener noreferrer">
-      <StyledImg {...rest}>{children}</StyledImg>
-    </a>
+    <>
+      {rest.className === `gatsby-resp-image-image` ? (
+        <StyledImg {...rest}>{children}</StyledImg>
+      ) : (
+        <a href={props.src} target="_blank" rel="noopener noreferrer">
+          <StyledImg {...rest}>{children}</StyledImg>
+        </a>
+      )}
+    </>
   )
 }
