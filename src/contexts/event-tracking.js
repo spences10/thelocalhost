@@ -1,18 +1,20 @@
 import React, { createContext, useContext, useEffect } from 'react'
+const activeEnv =
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
 const AnalyticsContext = createContext({})
 
 export const AnalyticsProvider = ({ children }) => {
   useEffect(() => {
-    if (typeof window.fathom === 'undefined') {
-      window.fathom = (x, y, z) => {
-        console.log(`I'm a fake event`, x, y, z)
+    if (activeEnv === 'development') {
+      window.fathom.trackGoal = (x, y) => {
+        console.log(`I'm a fake event`, x, y)
       }
     }
   }, [])
 
   const logClicks = goalId => {
-    window.fathom('trackGoal', goalId, 0)
+    window.fathom.trackGoal(goalId, 0)
   }
 
   return (

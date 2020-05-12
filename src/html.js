@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const activeEnv =
-  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
-
-console.log(`HTML File is using environment config: '${activeEnv}'`)
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
