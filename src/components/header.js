@@ -16,6 +16,13 @@ const StyledLink = styled(Link)`
   }
 `
 
+// For the gradient thing, check
+// https://github.com/fkhadra/react-toastify-doc/blob/e09ea2aabc/src/components/Actions.styles.ts
+// https://github.com/ChristopherBiscardi/christopherbiscardi.github.com/blob/pure-mdx/packages/www/src/components/convertkit-form/index.js#L17
+// https://github.com/ChristopherBiscardi/christopherbiscardi.github.com/blob/1fb406eafae449124f47179b08b2e2b2e4aa5dc6/packages/www/src/page-wrapper.js#L418
+
+//  Examples: https://codesandbox.io/s/muddy-sun-gp0el?file=/src/App.js:105-504
+
 const thingAnim = keyframes`
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
