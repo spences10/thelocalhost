@@ -57,24 +57,22 @@ const HeaderWrapper = styled.header`
       ${({ theme }) => theme.colours.grey[900]}
     );
     background: linear-gradient(
-        -45deg,
-        #663399,
-        #ff4d4d,
-        #ee8e3a,
-        #40cc22,
-        #2abb92,
-        #2f5faa,
-        #cc22a3,
-        #ff0004,
-        #663399
+        90deg,
+        var(--rainbow-one, #9349f0),
+        var(--rainbow-two, #8f6f14),
+        var(--rainbow-three, #da0498),
+        var(--rainbow-four, #b05d2e),
+        var(--rainbow-five, #864bfe),
+        var(--rainbow-six, #cc4438),
+        var(--rainbow-one, #a269ee)
       )
       0% 0% / 400%;
-    animation: ${thingAnim} 50s ease-in-out infinite;
+    animation: ${thingAnim} 180s ease-in-out infinite;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     &:hover {
-      animation: ${thingAnim} 10s ease-in-out infinite;
+      animation: ${thingAnim} 50s ease-in-out infinite;
     }
   }
   button {
