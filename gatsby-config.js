@@ -84,12 +84,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-fathom`,
-      options: {
-        siteId: process.env.GATSBY_FATHOM_TRACKING_ID_THE_LOCALHOST,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `The Localhost`,
