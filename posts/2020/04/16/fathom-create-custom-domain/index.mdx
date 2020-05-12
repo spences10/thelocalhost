@@ -31,7 +31,7 @@ followed, pretty straight forward.
 Fathom then give me two values, the first is the sub-domain that I'm
 going to create and the other is the Fathom DNS server.
 
-![fathom dns record for a site](./fathom-dns-record-for-site.png)
+![fathom dns record for a site]
 
 ## Add the custom domain to my site
 
@@ -83,7 +83,7 @@ dashboard, click on the Site ID for my site the pick the domain from
 the select list and verify it's working on my site that is already
 configured with Fathom.
 
-![pick custom domain in site settings](./pick-custom-domain-in-site-settings.png)
+![pick custom domain in site settings]
 
 ## Add DNS record in Netlify
 
@@ -92,10 +92,61 @@ straightforward with Netlify, I go to my sites page, select Domains,
 pick my domain scroll to the bottom of the list and select 'Add new
 record', add the details from the Fathom Domains page.
 
-![create new dns record netlify](./create-new-dns-record-netlify.png)
+![create new dns record netlify]
 
-It didn't take long to validate the record in the Fathoms setting page
+It didn't take long to validate the record in the Fathom setting page
 then I picked the custom domain like I did in the previous step.
+
+## Configure Gatsby to use the custom domain
+
+Fathom have now added instructions for adding the Fathom tracking
+snippet [to your Gatsby site].
+
+This involves customising the Gatsby [`default-html.js` file] and
+adding the snippet before the `<head>` starts.
+
+So for me, following the Fathom instructions, copy the
+`default-html.js` file from the `.cache` directory to the `src`
+directory:
+
+```bash
+cp .cache/default-html.js src/html.js
+```
+
+That command presumes that the Gatsby develop command has been run at
+least once so the `.cache` directory has been created.
+
+So now go to the `default-html.js` file and add in the Fathom snippet,
+here's what it should look like:
+
+```js
+import PropTypes from 'prop-types'
+import React from 'react'
+
+export default function HTML(props) {
+  return (
+    <html {...props.htmlAttributes}>
+      <script
+        src="https://cdrjcy.randomsite.com/script.js"
+        spa="auto"
+        site="NYMDTPLM"
+        defer
+      ></script>
+      <head>
+        <meta charSet="utf-8" />
+        ...
+```
+
+Now that's there I can build the site locally and test the analytics
+is working.
+
+## Remove `gatsby-plugin-fathom`
+
+Now that I'm using the `default-html.js` for the Fathom snippet
+there's no need to have the Gatsby plugin for Fathom installed, so
+that's one less plugin to have installed.
+
+Done!
 
 <!-- Links -->
 
@@ -112,3 +163,9 @@ then I picked the custom domain like I did in the previous step.
 [this gist]:
   https://gist.github.com/jaydenseric/f4147d7d9788d1f46b30e4ac7b57e6b2
 [dns editor for vercel domains]: https://vercel.com/integrations/dns
+[fathom dns record for a site]: ./fathom-dns-record-for-site.png
+[pick custom domain in site settings]:
+  ./pick-custom-domain-in-site-settings.png
+[create new dns record netlify]: ./create-new-dns-record-netlify.png
+[to your gatsby site]: https://usefathom.com/integrations/gatsbyjs
+[`default-html.js` file]: https://www.gatsbyjs.org/docs/custom-html/
