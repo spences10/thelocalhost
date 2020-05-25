@@ -1,6 +1,6 @@
 {
   "name": "thelocalhost",
-  "version": "0.1.102",
+  "version": "0.1.103",
   "description": "Modern web development guides hints and tips.",
   "main": "index.js",
   "keywords": [
@@ -38,8 +38,8 @@
     "proseWrap": "always"
   },
   "dependencies": {
-    "@mdx-js/mdx": "1.6.1",
-    "@mdx-js/react": "1.6.1",
+    "@mdx-js/mdx": "1.6.4",
+    "@mdx-js/react": "1.6.4",
     "@pauliescanlon/gatsby-mdx-embed": "0.0.19",
     "babel-plugin-styled-components": "1.10.7",
     "gatsby": "2.21.33",
